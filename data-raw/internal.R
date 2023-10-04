@@ -9,7 +9,7 @@ table <- session |>
   html_element("table.simple") |>
   html_table()
 
-commands <- table$`URI Template`
-names(commands) <- table$Method
+commands <- mapply(function(x, y) list(method = x, url = y), table$Method, table$`URI Template`, SIMPLIFY = FALSE)
+names(commands) <- table$Command
 
 usethis::use_data(commands, overwrite = TRUE, internal = TRUE)

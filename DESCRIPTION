@@ -1,14 +1,24 @@
 Package: selenium
-Title: What the Package Does (One Line, Title Case)
+Title: Low-Level Browser Automation Interface
 Version: 0.0.0.9000
 Authors@R: 
     person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Description: An implementation of 'W3C WebDriver 2.0'
+  (<https://w3c.github.io/webdriver/>), allowing interaction
+  with a Selenium Server <https://www.selenium.dev/documentation/grid/> 
+  instance from R.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Depends: 
     R (>= 2.10)
+Suggests: 
+    testthat (>= 3.0.0),
+    xml2
+Config/testthat/edition: 3
+Imports: 
+    httr2,
+    R6,
+    rlang

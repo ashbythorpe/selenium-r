@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>My Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div id="radio-buttons">
+      <label for="radio-1">Option 1</label>
+      <input type="radio" id="radio-1" name="radio-buttons">
+      <label for="radio-2">Option 2</label>
+      <input type="radio" id="radio-2" name="radio-buttons">
+      <label for="radio-3">Option 3</label>
+      <input type="radio" id="radio-3" name="radio-buttons">
+    </div>
+    <div id="buttons">
+      <button id="button-1">Button 1</button>
+      <button id="button-2" disabled>Button 2</button>
+    </div>
+    <div id="properties">
+      <button id="property-1">Property 1</button>
+      <input type="text" name="property-2" value="Initial value">
+      <div class="hidden-div", style="display: none;">Hidden div</div>
+      <p class="text">Example text</p>
+      <div class="fixed-size" style="width: 100px; height: 100px;">Fixed size div</div>
+    <div id="interactible">
+      <button id="interactible-1" onclick = "hideP()">Interactible 1</button>
+      <p id = "interactible-p">To be hidden</p>
+      <input type="text" name="interactible-2" value="Initial value">
+    </div>
+    <div id="shadow-container"></div>
+    <script>
+      function hideP() {
+        document.getElementById("interactible-p").style.display = "none";
+      }
+
+      const shadowRoot = document.getElementById("shadow-container").attachShadow({mode: "open"});
+      const span = document.createElement("span");
+      span.textContent = "I'm in the shadow DOM";
+      shadowRoot.appendChild(span);
+      const p = document.createElement("p");
+      p.textContent = "Me too!";
+      shadowRoot.appendChild(p);
+    </script>
+  </body>
+</html>
