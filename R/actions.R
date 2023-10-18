@@ -1,3 +1,22 @@
+#' Create a set of actions to be performed
+#'
+#' `actions_stream()` creates a set of actions to be performed by
+#' `SeleniumSession$perform_actions()`. Actions are a low level way to interact
+#' with a page.
+#'
+#' @param ... `selenium_action` objects: the actions to perform.
+#'
+#' @returns A `selenium_actions_stream` object, ready to be passed into
+#'   `SeleniumSession$perform_actions()`.
+#'
+#' @seealso
+#' * Pause actions: [actions_pause()].
+#' * Press actions: [actions_press()] and [actions_release()].
+#' * Mouse actions: [actions_mousedown()], [actions_mouseup()]
+#'   and [actions_mousemove()].
+#' * Scroll actions: [actions_scroll()].
+#'
+#' @export
 actions_stream <- function(...) {
   actions <- rlang::list2(...)
   actions_stream <- list()
@@ -57,16 +76,38 @@ sequence_type <- function(action) {
   }
 }
 
-actions_pause <- function(x) {
+#' Wait for a period of time
+#'
+#' A pause action to be passed into [actions_stream()]. Waits for a given
+#' number of seconds before performing the next action in the stream.
+#'
+#' @param seconds The number of seconds to wait for.
+#'
+#' @returns A `selenium_action` object.
+#'
+#' @export
+actions_pause <- function(seconds) {
   data <- list(
     type = "pause",
-    duration = x * 1000L
+    duration = seconds * 1000L
   )
 
   class(data) <- c("selenium_action", "selenium_action_pause")
   data
 }
 
+#' Press or release a key
+#'
+#' Key actions to be passed into [actions_stream()]. `actions_press()`
+#' represents pressing a key on the keyboard, while `actions_release()`
+#' represents releasing a key.
+#'
+#' @param key The key to press: a string consisting of a single character. Use
+#'   the [keys] object to use special keys (e.g. <Ctrl>).
+#'
+#' @returns A `selenium_action` object.
+#'
+#' @export
 actions_press <- function(key) {
   data <- list(
     type = "keyDown",
@@ -77,6 +118,9 @@ actions_press <- function(key) {
   data
 }
 
+#' @rdname actions_press
+#'
+#' @export
 actions_release <- function(key) {
   data <- list(
     type = "keyUp",
@@ -87,7 +131,29 @@ actions_release <- function(key) {
   data
 }
 
-actions_mousedown <- function(button = 0,
+#' Press, release or move the mouse.
+#'
+#' Mouse actions to be passed into [actions_stream()]. `actions_mousedown()`
+#' represents pressing a button on the mouse, while `actions_mouseup()`
+#' represents releasing a button. `actions_mousemove()` represents moving the
+#' mouse.
+#'
+#' @param button The mouse button to press.
+#' @param width The 'width' of the click, a number.
+#' @param height The 'height' of the click, a number.
+#' @param pressure The amount of pressure to apply to the click: a number
+#'   between 0 and 1.
+#' @param tangential_pressure A number between 0 and 1.
+#' @param tilt_x A whole number between -90 and 90.
+#' @param tilt_y A whole number between -90 and 90.
+#' @param twist A whole number between 0 and 359.
+#' @param altitude_angle A number between 0 and `pi/2`.
+#' @param azimuth_angle A number between 0 and `2*pi`.
+#'
+#' @returns A `selenium_action` object.
+#'
+#' @export
+actions_mousedown <- function(button = c("left", "right", "middle"),
                               width = NULL,
                               height = NULL,
                               pressure = NULL,
@@ -97,6 +163,13 @@ actions_mousedown <- function(button = 0,
                               twist = NULL,
                               altitude_angle = NULL,
                               azimuth_angle = NULL) {
+  button <- rlang::arg_match(button)
+  button <- switch(button,
+    "left" = 0,
+    "middle" = 1,
+    "right" = 2
+  )
+
   parameters <- compact(list(
     button = button,
     width = width,
@@ -119,7 +192,10 @@ actions_mousedown <- function(button = 0,
   data
 }
 
-actions_mouseup <- function(button = 0,
+#' @rdname actions_mousedown
+#'
+#' @export
+actions_mouseup <- function(button = c("left", "right", "middle"),
                             width = NULL,
                             height = NULL,
                             pressure = NULL,
@@ -129,6 +205,13 @@ actions_mouseup <- function(button = 0,
                             twist = NULL,
                             altitude_angle = NULL,
                             azimuth_angle = NULL) {
+  button <- rlang::arg_match(button)
+  button <- switch(button,
+    "left" = 0,
+    "middle" = 1,
+    "right" = 2
+  )
+
   parameters <- compact(list(
     button = button,
     width = width,
@@ -151,6 +234,16 @@ actions_mouseup <- function(button = 0,
   data
 }
 
+#' @rdname actions_mousedown
+#'
+#' @param x The x coordinate of the mouse movement.
+#' @param y The y coordinate of the mouse movement.
+#' @param duration The duration of the mouse movement, in seconds.
+#' @param origin The point from which `x` and `y` are measured. Can be a
+#'   `WebElement` object, in which case `x` and `y` are measured from the
+#'   center of the element.
+#'
+#' @export
 actions_mousemove <- function(x,
                               y,
                               duration = NULL,
@@ -164,7 +257,7 @@ actions_mousemove <- function(x,
   parameters <- compact(list(
     x = x,
     y = y,
-    duration = duration,
+    duration = duration * 1000L,
     origin = origin
   ))
 
@@ -177,6 +270,21 @@ actions_mousemove <- function(x,
   data
 }
 
+#' Scroll the page
+#'
+#' Scroll actions to be passed into [actions_stream()]. Scroll the page in
+#' a given direction.
+#'
+#' @param x The x coordinate from which the scroll action originates from.
+#' @param y The y coordinate from which the scroll action originates from.
+#' @param delta_x The number of pixels to scroll in the x direction.
+#' @param delta_y The number of pixels to scroll in the y direction.
+#' @param duration The duration of the scroll, in seconds.
+#' @param origin The point from which `x` and `y` are measured. Can be a
+#'   `WebElement` object, in which case `x` and `y` are measured from the
+#'   center of the element. Otherwise, `origin` must be `"viewport"`.
+#'
+#' @export
 actions_scroll <- function(x,
                            y,
                            delta_x,
@@ -190,7 +298,7 @@ actions_scroll <- function(x,
   parameters <- compact(list(
     x = x,
     y = y,
-    duration = duration,
+    duration = duration * 1000L,
     origin = origin,
     deltaX = delta_x,
     deltaY = delta_y

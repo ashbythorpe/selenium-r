@@ -1,19 +1,53 @@
+#' Create a live element
+#'
+#' @description
+#' This class represents a single element on the page. It is created using an
+#' existing `SeleniumSession` instance.
+#'
 #' @export
 WebElement <- R6::R6Class("WebElement",
   public = list(
+    #' @field id The id of the element, used to uniquely identify it on the
+    #'   page.
     id = NULL,
+
+    #' @description
+    #' Initialize a `WebElement` object. This should not be called manually:
+    #' instead use `SeleniumSession$create_webelement()` if you have an element
+    #' id. To find elements on the page, use `SeleniumSession$find_element()`
+    #' and `SeleniumSession$find_elements()`.
+    #'
+    #' @param session_id The id of the session that the element belongs to.
+    #' @param req,verbose Private fields of a `SeleniumSession` object.
+    #' @param id The element id.
+    #'
+    #' @returns A `WebElement` object.
     initialize = function(session_id, req, verbose, id) {
       private$session_id <- session_id
       private$req <- req
       private$verbose <- verbose
       self$id <- id
     },
+    #' @description
+    #' A shadow DOM is a self-contained DOM tree, contained within another DOM
+    #' tree. A shadow root is an element that contains a DOM subtree. This
+    #' method gets the shadow root property of an element.
+    #'
+    #' @returns A `ShadowRoot` object.
     shadow_root = function() {
       req <- req_command(private$req, "Get Element Shadow Root", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
       id <- httr2::resp_body_json(response)$value[[1]]
       ShadowRoot$new(private$session_id, private$req, private$verbose, id)
     },
+    #' @description
+    #' Find the first element matching a selector, relative to the current
+    #' element.
+    #'
+    #' @param using The type of selector to use.
+    #' @param value The value of the selector: a string.
+    #'
+    #' @returns A `WebElement` object.
     find_element = function(using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
                             value) {
       using <- rlang::arg_match(using)
@@ -23,6 +57,13 @@ WebElement <- R6::R6Class("WebElement",
       id <- httr2::resp_body_json(response)$value[[1]]
       WebElement$new(private$session_id, private$req, private$verbose, id)
     },
+    #' @description
+    #' Find all elements matching a selector, relative to the current element.
+    #'
+    #' @param using The type of selector to use.
+    #' @param value The value of the selector: a string.
+    #'
+    #' @returns A list of `WebElement` objects.
     find_elements = function(using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
                              value) {
       using <- rlang::arg_match(using)
@@ -32,82 +73,164 @@ WebElement <- R6::R6Class("WebElement",
       ids <- httr2::resp_body_json(response)$value
       lapply(ids, function(id) WebElement$new(private$session_id, private$req, private$verbose, id[[1]]))
     },
+    #' @description
+    #' Check if an element is currently selected.
+    #'
+    #' @returns A boolean value: `TRUE` or `FALSE`.
     is_selected = function() {
       req <- req_command(private$req, "Is Element Selected", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
     },
+    #' @description
+    #' Get an attribute from an element.
+    #'
+    #' @param name The name of the attribute.
+    #'
+    #' @returns The value of the attribute: a string.
     get_attribute = function(name) {
       req <- req_command(private$req, "Get Element Attribute", session_id = private$session_id, element_id = self$id, name = name)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
     },
+    #' @description
+    #' Get a property from an element. Properties are similar to attributes,
+    #' but represent the HTML source code of the page, rather than the current
+    #' state of the DOM.
+    #'
+    #' @param name The name of the property.
+    #'
+    #' @returns The value of the property: a string.
     get_property = function(name) {
       req <- req_command(private$req, "Get Element Property", session_id = private$session_id, element_id = self$id, name = name)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
     },
+    #' @description
+    #' Get the computed value of a CSS property.
+    #'
+    #' @param name The name of the CSS property.
+    #'
+    #' @returns The value of the CSS property: a string.
     get_css_value = function(name) {
       req <- req_command(private$req, "Get Element CSS Value", session_id = private$session_id, element_id = self$id, "property name" = name)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
     },
+    #' @description
+    #' Get the text content of an element.
+    #'
+    #' @returns The text content of the element: a string.
     get_text = function() {
       req <- req_command(private$req, "Get Element Text", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
     },
+    #' @description
+    #' Get the tag name of an element.
+    #'
+    #' @returns The tag name of the element: a string.
     get_tag_name = function() {
       req <- req_command(private$req, "Get Element Tag Name", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
     },
+    #' @description
+    #' Get the dimensions and coordinates of an element.
+    #'
+    #' @returns A list containing the following elements:
+    #'
+    #' * `x`: The x-coordinate of the element.
+    #' * `y`: The y-coordinate of the element.
+    #' * `width`: The width of the element in pixels.
+    #' * `height`: The height of the element in pixels.
     get_rect = function() {
       req <- req_command(private$req, "Get Element Rect", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
     },
+    #' @description
+    #' Check if an element is currently enabled.
+    #'
+    #' @returns A boolean value: `TRUE` or `FALSE`.
     is_enabled = function() {
       req <- req_command(private$req, "Is Element Enabled", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
     },
+    #' @description
+    #' Get the computed role of an element. The role of an element is usually
+    #' "generic", but is often used when an elements tag name differs from its
+    #' purpose. For example, a link that is "button-like" in nature may have
+    #' a "button" role.
+    #'
+    #' @returns A string.
     computed_role = function() {
       req <- req_command(private$req, "Get Computed Role", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
     },
+    #' @description
+    #' Get the computed label of an element (i.e. The text of the label element
+    #' that points to the current element).
+    #'
+    #' @returns A string.
     computed_label = function() {
       req <- req_command(private$req, "Get Computed Label", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
     },
+    #' @description
+    #' Click on an element.
+    #'
+    #' @returns The element, invisibly.
     click = function() {
       req <- req_command(private$req, "Element Click", session_id = private$session_id, element_id = self$id)
       req <- req_body_selenium(req, NULL)
       req_perform_selenium(req, verbose = private$verbose)
       invisible(self)
     },
+    #' @description
+    #' Clear the contents of a text input element.
+    #'
+    #' @returns The element, invisibly.
     clear = function() {
       req <- req_command(private$req, "Element Clear", session_id = private$session_id, element_id = self$id)
       req <- req_body_selenium(req, NULL)
       req_perform_selenium(req, verbose = private$verbose)
       invisible(self)
     },
+    #' @description
+    #' Send keys to an element.
+    #'
+    #' @param ... The keys to send (strings). Use [keys] for special keys, and
+    #' use [key_chord()] to send multiple keys at once.
+    #'
+    #' @returns The element, invisibly.
     send_keys = function(...) {
       req <- req_command(private$req, "Element Send Keys", session_id = private$session_id, element_id = self$id)
       body <- list(
-        text = parse_keys(...)
+        text = paste0(...)
       )
       req <- req_body_selenium(req, body)
       req_perform_selenium(req, verbose = private$verbose)
       invisible(self)
     },
+    #' @description
+    #' Take a screenshot of an element.
+    #'
+    #' @returns The base64-encoded PNG screenshot, as a string.
     screenshot = function() {
       req <- req_command(private$req, "Take Element Screenshot", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
     },
+    #' @description
+    #' Convert an element to JSON. This is used by
+    #' [SeleniumSession$execute_script()].
+    #'
+    #' @returns A list, which can then be converted to JSON using
+    #' `jsonlite::toJSON()`.
     toJSON = function() {
       res <- list(self$id)
       names(res) <- web_element_id
@@ -121,16 +244,40 @@ WebElement <- R6::R6Class("WebElement",
   )
 )
 
+#' Create a shadow root
+#'
+#' @description
+#' Create a live representation of a shadow root object.
+#'
 #' @export
 ShadowRoot <- R6::R6Class("ShadowRoot",
   public = list(
+    #' @field id The id of the shadow root.
     id = NULL,
+
+    #' @description
+    #' Initialize a new `ShadowRoot` object. This should not be called
+    #' manually: instead use `WebElement$shadow_root()`, or
+    #' `SeleniumSession$create_shadow_root()`.
+    #'
+    #' @param session_id The id of the session.
+    #' @param req,verbose Private fields of a `SeleniumSession` object.
+    #' @param id The id of the shadow root.
+    #'
+    #' @returns A `ShadowRoot` object.
     initialize = function(session_id, req, verbose, id) {
       private$session_id <- session_id
       private$req <- req
       private$verbose <- verbose
       self$id <- id
     },
+    #' @description
+    #' Find an element in the shadow root.
+    #'
+    #' @param using The type of selector to use.
+    #' @param value The value of the selector: a string.
+    #'
+    #' @returns A `WebElement` object.
     find_element = function(using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
                             value) {
       using <- rlang::arg_match(using)
@@ -140,6 +287,13 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
       id <- httr2::resp_body_json(response)$value
       WebElement$new(private$session_id, private$req, private$verbose, id[[1]])
     },
+    #' @description
+    #' Find all elements in a shadow root matching a selector.
+    #'
+    #' @param using The type of selector to use.
+    #' @param value The value of the selector: a string.
+    #'
+    #' @returns A list of `WebElement` objects.
     find_elements = function(using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
                              value) {
       using <- rlang::arg_match(using)
@@ -149,6 +303,12 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
       ids <- httr2::resp_body_json(response)$value
       lapply(ids, function(id) WebElement$new(private$session_id, private$req, private$verbose, id[[1]]))
     },
+    #' @description
+    #' Convert an element to JSON. This is used by
+    #' [SeleniumSession$execute_script()].
+    #'
+    #' @returns A list, which can then be converted to JSON using
+    #' [jsonlite::toJSON()].
     toJSON = function() {
       res <- list(self$id)
       names(res) <- shadow_element_id

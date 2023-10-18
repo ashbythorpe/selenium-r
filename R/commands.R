@@ -37,6 +37,8 @@ req_perform_selenium <- function(req, verbose = FALSE, call = rlang::caller_env(
     req <- httr2::req_verbose(req)
   }
 
+  print(req)
+
   rlang::try_fetch(
     httr2::req_perform(req),
     httr2_http = function(e) {
@@ -48,7 +50,7 @@ req_perform_selenium <- function(req, verbose = FALSE, call = rlang::caller_env(
 handle_error <- function(x, call = rlang::caller_env()) {
   value <- httr2::resp_body_json(x$resp)
   print(value)
-  if (is.null(value$value$error)) {
+  if (!is.list(value$value)) {
     error <- value$value$error
     message <- value$value$message
   } else {

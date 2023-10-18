@@ -1,4 +1,12 @@
 # https://github.com/SeleniumHQ/selenium/blob/trunk/java/src/org/openqa/selenium/Keys.java
+#' A list of special keys
+#'
+#' A named list of special keys, where each key is a single Unicode character,
+#' which will be interpreted by selenium as a special key. Each key is just a
+#' string, so can be used with string manipulaton functions like [paste()]
+#' without any special treatment.
+#'
+#' @export
 keys <- list(
   null = "\ue000",
   cancel = "\ue001", # ^break
@@ -67,15 +75,33 @@ keys <- list(
   zenkaku_hankaku = "\ue040"
 )
 
+#' Combine special keys
+#'
+#' When a chord of keys is passed into `WebElement$send_keys()`, all keys will
+#' be pressed in order, and then released at the end. This is simply done by
+#' combining the keys into a single string, and appending the NULL key
+#' ([keys$null][keys]) to the end. This is useful for keybindings like
+#' <Ctrl-V>, where you want the Ctrl key to be released after the action.
+#'
+#' @param ... The keys to be combined (strings).
+#'
+#' @examples
+#'
+#' # <Ctrl-V> will be pressed, then <Ctrl-Alt-V>
+#' paste0(
+#'   keys$ctrl, "v",
+#'   keys$alt, "v"
+#' )
+#'
+#' # <Ctrl-V> will be pressed, then <Alt-V>
+#' paste0(
+#'   key_chord(keys$ctrl, "v"),
+#'   key_chord(keys$alt, "v"),
+#' )
+#'
+#' @export
 key_chord <- function(...) {
   rlang::check_dots_unnamed()
 
-  combined_keys <- c(...)
-
-  paste0(c(combined_keys, keys$null), collapse = "")
-}
-
-parse_keys <- function(...) {
-  keys <- rlang::list2(...)
-  paste0(keys, collapse = "")
+  paste0(..., keys$null)
 }

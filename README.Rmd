@@ -53,6 +53,7 @@ One of the ways to do this is the following:
 There are a few other ways of starting Selenium Server:
 
 * Using docker to start the server. See <https://github.com/SeleniumHQ/docker-selenium>.
+  This is recommended in a non-interactive context (e.g. GitHub Actions).
 * Using the `wdman` package to start the server from R, using `wdman::selenium()`. Note
   that at the time of writing, this package does not work with the latest version of
   Chrome.
@@ -63,14 +64,14 @@ library(selenium)
 ```
 
 Client sessions can be started using `SeleniumSession$new()`
-```{r session}
+```r
 session <- SeleniumSession$new()
 ```
 
 By default, this will connect to Chrome, but you can use the `browser` argument to specify
 a different browser if you like.
 
-```r
+```{r session}
 session <- SeleniumSession$new(browser = "firefox")
 ```
 

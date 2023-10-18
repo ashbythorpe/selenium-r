@@ -49,7 +49,8 @@ One of the ways to do this is the following:
 There are a few other ways of starting Selenium Server:
 
 - Using docker to start the server. See
-  <https://github.com/SeleniumHQ/docker-selenium>.
+  <https://github.com/SeleniumHQ/docker-selenium>. This is recommended
+  in a non-interactive context (e.g. GitHub Actions).
 - Using the `wdman` package to start the server from R, using
   `wdman::selenium()`. Note that at the time of writing, this package
   does not work with the latest version of Chrome.
@@ -71,6 +72,12 @@ argument to specify a different browser if you like.
 
 ``` r
 session <- SeleniumSession$new(browser = "firefox")
+#> <httr2_request>
+#> POST http://localhost:4444/session
+#> Headers:
+#> • Content-Type: 'application/json; charset=utf-8'
+#> • Accept: 'application/json; charset=utf-8'
+#> Body: a string
 ```
 
 If this doesn’t work, you may have to specify the `port` and `host`
@@ -91,20 +98,80 @@ object to control the browser.
 
 ``` r
 session$navigate("https://www.r-project.org/")
+#> <httr2_request>
+#> POST http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/url
+#> Headers:
+#> • Content-Type: 'application/json; charset=utf-8'
+#> • Accept: 'application/json; charset=utf-8'
+#> Body: a string
 session$
   find_element(using = "css selector", value = ".row")$
   find_element(using = "css selector", value = "ul")$
   find_element(using = "css selector", value = "a")$
   click()
+#> <httr2_request>
+#> POST http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element
+#> Headers:
+#> • Content-Type: 'application/json; charset=utf-8'
+#> • Accept: 'application/json; charset=utf-8'
+#> Body: a string
+#> <httr2_request>
+#> POST
+#> http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/ff8f7f31-a5f6-44de-b7cc-91b93bc1c28f/element
+#> Headers:
+#> • Content-Type: 'application/json; charset=utf-8'
+#> • Accept: 'application/json; charset=utf-8'
+#> Body: a string
+#> <httr2_request>
+#> POST
+#> http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/44e21cef-1467-45ec-b532-17910872fd98/element
+#> Headers:
+#> • Content-Type: 'application/json; charset=utf-8'
+#> • Accept: 'application/json; charset=utf-8'
+#> Body: a string
+#> <httr2_request>
+#> POST
+#> http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/c9913f24-7583-49ba-952f-752c3431902e/click
+#> Headers:
+#> • Content-Type: 'application/json; charset=utf-8'
+#> • Accept: 'application/json; charset=utf-8'
+#> Body: a string
 
 session$
   find_element(using = "css selector", value = ".row")$
   find_elements(using = "css selector", value = "div")[[2]]$
   find_element(using = "css selector", value = "p")$
   get_text()
+#> <httr2_request>
+#> POST http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element
+#> Headers:
+#> • Content-Type: 'application/json; charset=utf-8'
+#> • Accept: 'application/json; charset=utf-8'
+#> Body: a string
+#> <httr2_request>
+#> POST
+#> http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/4e7e24cc-da16-4a03-88b6-90b0d9002d6f/elements
+#> Headers:
+#> • Content-Type: 'application/json; charset=utf-8'
+#> • Accept: 'application/json; charset=utf-8'
+#> Body: a string
+#> <httr2_request>
+#> POST
+#> http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/d42ae7f3-9049-49cc-8d66-1eb54448872c/element
+#> Headers:
+#> • Content-Type: 'application/json; charset=utf-8'
+#> • Accept: 'application/json; charset=utf-8'
+#> Body: a string
+#> <httr2_request>
+#> GET
+#> http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/f84c605c-648f-4292-b507-39959d9d602b/text
+#> Body: empty
 #> [1] ""
 
 session$close()
+#> <httr2_request>
+#> DELETE http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2
+#> Body: empty
 ```
 
 For a more detailed introduction to using selenium, see the Getting
