@@ -20,6 +20,10 @@ Suggests:
 Config/testthat/edition: 3
 Imports: 
     httr2,
+    jsonlite,
+    lifecycle,
+    processx,
     R6,
+    rappdirs,
     rlang
 URL: https://ashbythorpe.github.io/selenium-r/
