@@ -95,93 +95,27 @@
 <code class="sourceCode R"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>By default, this will connect to Chrome, but you can use the <code>browser</code> argument to specify a different browser if you like.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>browser <span class="op">=</span> <span class="st">"firefox"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; POST http://localhost:4444/session</span></span>
-<span><span class="co">#&gt; Headers:</span></span>
-<span><span class="co">#&gt; • Content-Type: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; • Accept: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; Body: a string</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>browser <span class="op">=</span> <span class="st">"firefox"</span><span class="op">)</span></span></code></pre></div>
 <p>If this doesn’t work, you may have to specify the <code>port</code> and <code>host</code> arguments manually. If you used the first method above to start the server, you should have seen a message like this output in the terminal: <code>INFO [Standalone.execute] - Started Selenium Standalone ... (revision ...): http://&lt;IP&gt;:&lt;PORT&gt;</code> The URL at the end of this message can be used to extract an IP address and a port number, which can then be passed into the <code>host</code> and <code>port</code> arguments. For example, if the URL was: <code>http://172.17.0.1/4444</code>, you would run:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>host <span class="op">=</span> <span class="st">"172.17.0.1"</span>, port <span class="op">=</span> <span class="fl">4444</span><span class="op">)</span></span></code></pre></div>
 <p>Once the session has been successfully started, you can use the session object to control the browser.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org/"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; POST http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/url</span></span>
-<span><span class="co">#&gt; Headers:</span></span>
-<span><span class="co">#&gt; • Content-Type: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; • Accept: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; Body: a string</span></span>
 <span><span class="va">session</span><span class="op">$</span></span>
 <span>  <span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">".row"</span><span class="op">)</span><span class="op">$</span></span>
 <span>  <span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"ul"</span><span class="op">)</span><span class="op">$</span></span>
 <span>  <span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"a"</span><span class="op">)</span><span class="op">$</span></span>
 <span>  <span class="fu">click</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; POST http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element</span></span>
-<span><span class="co">#&gt; Headers:</span></span>
-<span><span class="co">#&gt; • Content-Type: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; • Accept: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; Body: a string</span></span>
-<span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; POST</span></span>
-<span><span class="co">#&gt; http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/c1b4da9a-5c18-45de-8835-47c2127e038d/element</span></span>
-<span><span class="co">#&gt; Headers:</span></span>
-<span><span class="co">#&gt; • Content-Type: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; • Accept: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; Body: a string</span></span>
-<span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; POST</span></span>
-<span><span class="co">#&gt; http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/927ebbbf-c612-4e82-a603-41ffad9631fe/element</span></span>
-<span><span class="co">#&gt; Headers:</span></span>
-<span><span class="co">#&gt; • Content-Type: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; • Accept: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; Body: a string</span></span>
-<span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; POST</span></span>
-<span><span class="co">#&gt; http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/1358a79f-a2ef-414d-bfc5-268da1dea696/click</span></span>
-<span><span class="co">#&gt; Headers:</span></span>
-<span><span class="co">#&gt; • Content-Type: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; • Accept: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; Body: a string</span></span>
 <span></span>
 <span><span class="va">session</span><span class="op">$</span></span>
 <span>  <span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">".row"</span><span class="op">)</span><span class="op">$</span></span>
 <span>  <span class="fu">find_elements</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"div"</span><span class="op">)</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">$</span></span>
 <span>  <span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span><span class="op">$</span></span>
 <span>  <span class="fu">get_text</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; POST http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element</span></span>
-<span><span class="co">#&gt; Headers:</span></span>
-<span><span class="co">#&gt; • Content-Type: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; • Accept: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; Body: a string</span></span>
-<span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; POST</span></span>
-<span><span class="co">#&gt; http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/ee4645e9-f454-4e77-a154-9caa58fb647c/elements</span></span>
-<span><span class="co">#&gt; Headers:</span></span>
-<span><span class="co">#&gt; • Content-Type: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; • Accept: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; Body: a string</span></span>
-<span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; POST</span></span>
-<span><span class="co">#&gt; http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/1389fce5-9ad2-4d2e-9903-7b0fe12c93eb/element</span></span>
-<span><span class="co">#&gt; Headers:</span></span>
-<span><span class="co">#&gt; • Content-Type: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; • Accept: 'application/json; charset=utf-8'</span></span>
-<span><span class="co">#&gt; Body: a string</span></span>
-<span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; GET</span></span>
-<span><span class="co">#&gt; http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/612a6787-d2a2-4a1c-9a32-bee650fa8f17/text</span></span>
-<span><span class="co">#&gt; Body: empty</span></span>
 <span><span class="co">#&gt; [1] ""</span></span>
 <span></span>
-<span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; DELETE http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a</span></span>
-<span><span class="co">#&gt; Body: empty</span></span></code></pre></div>
+<span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>For a more detailed introduction to using selenium, see the Getting Started vignette (<code>vignette("selenium")</code>). <!-- TODO: Make this vignette ---></p>
 <p>Note that selenium is low-level and mainly aimed towards developers. If you are wanting to use browser automation for web scraping or testing, you may want to take a look at <a href="https://github.com/ashbythorpe/selenider" class="external-link">selenider</a> instead.</p>
 </div>
@@ -213,6 +147,7 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://github.com/ashbythorpe/selenium-r/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/ashbythorpe/selenium-r/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://app.codecov.io/gh/ashbythorpe/selenium-r?branch=main" class="external-link"><img src="https://codecov.io/gh/ashbythorpe/selenium-r/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 
