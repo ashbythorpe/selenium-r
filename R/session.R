@@ -27,7 +27,7 @@ SeleniumSession <- R6::R6Class(
     #' @param verbose Whether to print the web requests that are being sent and
     #'   any responses.
     #'
-    #' @returns A `SeleniumSession` object.
+    #' @return A `SeleniumSession` object.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new(browser = "firefox", verbose = TRUE)
@@ -62,7 +62,7 @@ SeleniumSession <- R6::R6Class(
     #'
     #' @param id The element id.
     #'
-    #' @returns A [WebElement] object.
+    #' @return A [WebElement] object.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -83,7 +83,7 @@ SeleniumSession <- R6::R6Class(
     #'
     #' @param id The shadow root id.
     #'
-    #' @returns A [ShadowRoot] object.
+    #' @return A [ShadowRoot] object.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -99,7 +99,7 @@ SeleniumSession <- R6::R6Class(
     #' Close the current session. Once a session is closed, its methods will
     #' no longer work. However, the Selenium server will still be running.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -118,7 +118,7 @@ SeleniumSession <- R6::R6Class(
     #' identical to [get_server_status()], but uses the host, port and verbose
     #' options passed to the session, for convenience.
     #'
-    #' @returns A list that can (but may not always) contain the following
+    #' @return A list that can (but may not always) contain the following
     #'   fields:
     #'
     #' * `ready`: Whether the server is ready to be connected to. This should
@@ -151,7 +151,7 @@ SeleniumSession <- R6::R6Class(
     #'    elements to be located, or for elements to become interactable when
     #'    required. Defaults to 0 seconds.
     #'
-    #' @returns A list with three items: `script`, `page_load`, and `implicit`.
+    #' @return A list with three items: `script`, `page_load`, and `implicit`.
     #'
     #' @examplesIf selenium_server_available()
     #'
@@ -176,7 +176,7 @@ SeleniumSession <- R6::R6Class(
     #' @param implicit_wait The amount of time to wait for elements on the
     #'   page.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #'
@@ -210,7 +210,7 @@ SeleniumSession <- R6::R6Class(
     #' @param url The URL to navigate to. Must begin with a protocol (e.g.
     #'   'https://').
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -227,7 +227,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get the current URL.
     #'
-    #' @returns The URL of the current page.
+    #' @return The URL of the current page.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -246,7 +246,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Go back in the navigation history.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -270,7 +270,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Go forward in the navigation history.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -296,7 +296,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Reload the current page.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -315,7 +315,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get the title of the current page.
     #'
-    #' @returns The title of the current page.
+    #' @return The title of the current page.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -333,7 +333,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get the current window handle.
     #'
-    #' @returns The handle of the current window (a string).
+    #' @return The handle of the current window (a string).
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -349,7 +349,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Close the current window.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -369,7 +369,7 @@ SeleniumSession <- R6::R6Class(
     #'
     #' @param handle The handle of the window to switch to.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -392,7 +392,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get the handles of all open windows.
     #'
-    #' @returns The handles of all open windows (a list of strings).
+    #' @return The handles of all open windows (a list of strings).
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -411,7 +411,7 @@ SeleniumSession <- R6::R6Class(
     #'
     #' @param type Whether to create a tab or a window.
     #'
-    #' @returns A list containing two elements:
+    #' @return A list containing two elements:
     #'
     #' * `handle`: The handle of the new window.
     #' * `type`: The type of window. ("tab" or "window").
@@ -442,7 +442,7 @@ SeleniumSession <- R6::R6Class(
     #'   a [WebElement] object, in which case the frame that contains said
     #'   element will be switched to.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -465,7 +465,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Switch to the parent frame of the current frame.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -486,7 +486,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get the size and position of the current window.
     #'
-    #' @returns A list containing four elements:
+    #' @return A list containing four elements:
     #'
     #' * `x`: The x position of the window relative to the left of the screen.
     #' * `y`: The y position of the window relative to the top of the screen.
@@ -512,7 +512,7 @@ SeleniumSession <- R6::R6Class(
     #' @param x The x position of the window relative to the left of the screen.
     #' @param y The y position of the window relative to the top of the screen.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -543,7 +543,7 @@ SeleniumSession <- R6::R6Class(
     #' Maximize the current window. This makes the window the maximum size it
     #' can be, without being full screen
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -560,7 +560,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Minimize the current window. This hides the window.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -577,7 +577,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Make the window full screen.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -594,7 +594,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get the currently active element.
     #'
-    #' @returns A [WebElement] object.
+    #' @return A [WebElement] object.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -616,7 +616,7 @@ SeleniumSession <- R6::R6Class(
     #' @param using The type of selector to use.
     #' @param value The value of the selector: a string.
     #'
-    #' @returns A [WebElement] object.
+    #' @return A [WebElement] object.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -643,7 +643,7 @@ SeleniumSession <- R6::R6Class(
     #' @param using The type of selector to use.
     #' @param value The value of the selector: a string.
     #'
-    #' @returns A list of [WebElement] objects.
+    #' @return A list of [WebElement] objects.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -667,7 +667,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get the HTML source of the current page, serialized as a string.
     #'
-    #' @returns A string.
+    #' @return A string.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -691,7 +691,7 @@ SeleniumSession <- R6::R6Class(
     #' accessed in the script using the `arguments` array. Can be [WebElement]
     #' objects or lists of such objects, which will be converted to nodes.
     #'
-    #' @returns The return value of the script. Nodes or lists of nodes will
+    #' @return The return value of the script. Nodes or lists of nodes will
     #'   be converted to [WebElement] objects.
     #'
     #' @examplesIf selenium_server_available()
@@ -727,7 +727,7 @@ SeleniumSession <- R6::R6Class(
     #' [WebElement] objects or lists of such objects, which will be converted
     #' to nodes.
     #'
-    #' @returns The return value of the script. Nodes or lists of nodes will
+    #' @return The return value of the script. Nodes or lists of nodes will
     #'   be converted to [WebElement] objects.
     #'
     #' @examplesIf selenium_server_available()
@@ -751,7 +751,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get all cookies.
     #'
-    #' @returns A list of cookies. Each cookie is a list with a `name` and
+    #' @return A list of cookies. Each cookie is a list with a `name` and
     #'   `value` field, along with some other optional fields.
     #'
     #' @examplesIf selenium_server_available()
@@ -772,7 +772,7 @@ SeleniumSession <- R6::R6Class(
     #'
     #' @param name The name of the cookie.
     #'
-    #' @returns The cookie object.
+    #' @return The cookie object.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -795,7 +795,7 @@ SeleniumSession <- R6::R6Class(
     #' @param cookie The cookie object to add: a list which must contain a
     #'   `name` and `value` field.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -816,7 +816,7 @@ SeleniumSession <- R6::R6Class(
     #'
     #' @param name The name of the cookie.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -836,7 +836,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Delete all cookies in the cookie store of the current document.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -859,7 +859,7 @@ SeleniumSession <- R6::R6Class(
     #' @param release_actions Whether to call `release_actions()` after
     #'   performing the actions.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -889,7 +889,7 @@ SeleniumSession <- R6::R6Class(
     #' Release all keys and pointers that were pressed using
     #' `perform_actions()`.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -913,7 +913,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Dismiss the current alert, if present.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -932,7 +932,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Accept the current alert, if present.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -951,7 +951,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get the message of the current alert, if present.
     #'
-    #' @returns The message of the current alert (a string).
+    #' @return The message of the current alert (a string).
     #'
     #' @examplesIf selenium_server_available()
     #'
@@ -973,7 +973,7 @@ SeleniumSession <- R6::R6Class(
     #'
     #' @param text The text to send.
     #'
-    #' @returns The session object, invisibly.
+    #' @return The session object, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -992,7 +992,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Take a screenshot of the current page.
     #'
-    #' @returns The base64-encoded PNG screenshot, as a string.
+    #' @return The base64-encoded PNG screenshot, as a string.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -1026,7 +1026,7 @@ SeleniumSession <- R6::R6Class(
     #'   height.
     #' @param page_ranges A list of page ranges (e.g. `"1"`, `"1-3"`) to print.
     #'
-    #' @returns The base64-encoded PDF, as a string.
+    #' @return The base64-encoded PDF, as a string.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()

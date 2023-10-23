@@ -22,7 +22,7 @@ WebElement <- R6::R6Class("WebElement",
     #' @param req,verbose Private fields of a [SeleniumSession] object.
     #' @param id The element id.
     #'
-    #' @returns A `WebElement` object.
+    #' @return A `WebElement` object.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -43,7 +43,7 @@ WebElement <- R6::R6Class("WebElement",
     #' tree. A shadow root is an element that contains a DOM subtree. This
     #' method gets the shadow root property of an element.
     #'
-    #' @returns A [ShadowRoot] object.
+    #' @return A [ShadowRoot] object.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -73,7 +73,7 @@ WebElement <- R6::R6Class("WebElement",
     #' @param using The type of selector to use.
     #' @param value The value of the selector: a string.
     #'
-    #' @returns A `WebElement` object.
+    #' @return A `WebElement` object.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -102,7 +102,7 @@ WebElement <- R6::R6Class("WebElement",
     #' @param using The type of selector to use.
     #' @param value The value of the selector: a string.
     #'
-    #' @returns A list of `WebElement` objects.
+    #' @return A list of `WebElement` objects.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -126,7 +126,7 @@ WebElement <- R6::R6Class("WebElement",
     #' @description
     #' Check if an element is currently selected.
     #'
-    #' @returns A boolean value: `TRUE` or `FALSE`.
+    #' @return A boolean value: `TRUE` or `FALSE`.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -146,7 +146,7 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @param name The name of the attribute.
     #'
-    #' @returns The value of the attribute: a string.
+    #' @return The value of the attribute: a string.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -168,7 +168,7 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @param name The name of the property.
     #'
-    #' @returns The value of the property: a string.
+    #' @return The value of the property: a string.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -188,7 +188,7 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @param name The name of the CSS property.
     #'
-    #' @returns The value of the CSS property: a string.
+    #' @return The value of the CSS property: a string.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -206,7 +206,7 @@ WebElement <- R6::R6Class("WebElement",
     #' @description
     #' Get the text content of an element.
     #'
-    #' @returns The text content of the element: a string.
+    #' @return The text content of the element: a string.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -224,7 +224,7 @@ WebElement <- R6::R6Class("WebElement",
     #' @description
     #' Get the tag name of an element.
     #'
-    #' @returns The tag name of the element: a string.
+    #' @return The tag name of the element: a string.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -242,7 +242,7 @@ WebElement <- R6::R6Class("WebElement",
     #' @description
     #' Get the dimensions and coordinates of an element.
     #'
-    #' @returns A list containing the following elements:
+    #' @return A list containing the following elements:
     #'
     #' * `x`: The x-coordinate of the element.
     #' * `y`: The y-coordinate of the element.
@@ -265,7 +265,7 @@ WebElement <- R6::R6Class("WebElement",
     #' @description
     #' Check if an element is currently enabled.
     #'
-    #' @returns A boolean value: `TRUE` or `FALSE`.
+    #' @return A boolean value: `TRUE` or `FALSE`.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -286,7 +286,7 @@ WebElement <- R6::R6Class("WebElement",
     #' purpose. For example, a link that is "button-like" in nature may have
     #' a "button" role.
     #'
-    #' @returns A string.
+    #' @return A string.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -305,7 +305,7 @@ WebElement <- R6::R6Class("WebElement",
     #' Get the computed label of an element (i.e. The text of the label element
     #' that points to the current element).
     #'
-    #' @returns A string.
+    #' @return A string.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -323,7 +323,7 @@ WebElement <- R6::R6Class("WebElement",
     #' @description
     #' Click on an element.
     #'
-    #' @returns The element, invisibly.
+    #' @return The element, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -342,7 +342,7 @@ WebElement <- R6::R6Class("WebElement",
     #' @description
     #' Clear the contents of a text input element.
     #'
-    #' @returns The element, invisibly.
+    #' @return The element, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -364,7 +364,7 @@ WebElement <- R6::R6Class("WebElement",
     #' @param ... The keys to send (strings). Use [keys] for special keys, and
     #' use [key_chord()] to send keys combinations.
     #'
-    #' @returns The element, invisibly.
+    #' @return The element, invisibly.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -394,7 +394,7 @@ WebElement <- R6::R6Class("WebElement",
     #' @description
     #' Take a screenshot of an element.
     #'
-    #' @returns The base64-encoded PNG screenshot, as a string.
+    #' @return The base64-encoded PNG screenshot, as a string.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -413,7 +413,7 @@ WebElement <- R6::R6Class("WebElement",
     #' Check if an element is displayed. This function may not work on all
     #' platforms.
     #'
-    #' @returns A boolean.
+    #' @return A boolean.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -432,7 +432,7 @@ WebElement <- R6::R6Class("WebElement",
     #' Convert an element to JSON. This is used by
     #' [SeleniumSession$execute_script()][SeleniumSession].
     #'
-    #' @returns A list, which can then be converted to JSON using
+    #' @return A list, which can then be converted to JSON using
     #' [jsonlite::toJSON()].
     #'
     #' @examplesIf selenium_server_available()
@@ -484,7 +484,7 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
     #' @param req,verbose Private fields of a [SeleniumSession] object.
     #' @param id The id of the shadow root.
     #'
-    #' @returns A `ShadowRoot` object.
+    #' @return A `ShadowRoot` object.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -513,7 +513,7 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
     #' @param using The type of selector to use.
     #' @param value The value of the selector: a string.
     #'
-    #' @returns A [WebElement] object.
+    #' @return A [WebElement] object.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -550,7 +550,7 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
     #' @param using The type of selector to use.
     #' @param value The value of the selector: a string.
     #'
-    #' @returns A list of [WebElement] objects.
+    #' @return A list of [WebElement] objects.
     #'
     #' @examplesIf selenium_server_available()
     #' session <- SeleniumSession$new()
@@ -588,7 +588,7 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
     #' Convert an element to JSON. This is used by
     #' [SeleniumSession$execute_script()][SeleniumSession].
     #'
-    #' @returns A list, which can then be converted to JSON using
+    #' @return A list, which can then be converted to JSON using
     #' [jsonlite::toJSON()].
     #'
     #' @examplesIf selenium_server_available()
