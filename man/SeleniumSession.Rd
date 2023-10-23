@@ -3,116 +3,6 @@
 \name{SeleniumSession}
 \alias{SeleniumSession}
 \title{Start a Selenium Client session}
-\value{
-A \code{SeleniumSession} object.
-
-A \link{WebElement} object.
-
-A \link{ShadowRoot} object.
-
-The session object, invisibly.
-
-A list that can (but may not always) contain the following
-fields:
-\itemize{
-\item \code{ready}: Whether the server is ready to be connected to. This should
-always be returned by the server.
-\item \code{message}: A message about the status of the server.
-\item \code{uptime}: How long the server has been running.
-\item \code{nodes}: Information about the slots that the server can take.
-}
-
-A list with three items: \code{script}, \code{page_load}, and \code{implicit}.
-
-The session object, invisibly.
-
-The session object, invisibly.
-
-The URL of the current page.
-
-The session object, invisibly.
-
-The session object, invisibly.
-
-The session object, invisibly.
-
-The title of the current page.
-
-The handle of the current window (a string).
-
-The session object, invisibly.
-
-The session object, invisibly.
-
-The handles of all open windows (a list of strings).
-
-A list containing two elements:
-\itemize{
-\item \code{handle}: The handle of the new window.
-\item \code{type}: The type of window. ("tab" or "window").
-}
-
-The session object, invisibly.
-
-The session object, invisibly.
-
-A list containing four elements:
-\itemize{
-\item \code{x}: The x position of the window relative to the left of the screen.
-\item \code{y}: The y position of the window relative to the top of the screen.
-\item \code{width}: The width of the window.
-\item \code{height}: The height of the window.
-}
-
-The session object, invisibly.
-
-The session object, invisibly.
-
-The session object, invisibly.
-
-The session object, invisibly.
-
-A \link{WebElement} object.
-
-A \link{WebElement} object.
-
-A list of \link{WebElement} objects.
-
-A string.
-
-The return value of the script. Nodes or lists of nodes will
-be converted to \link{WebElement} objects.
-
-The return value of the script. Nodes or lists of nodes will
-be converted to \link{WebElement} objects.
-
-A list of cookies. Each cookie is a list with a \code{name} and
-\code{value} field, along with some other optional fields.
-
-The cookie object.
-
-The session object, invisibly.
-
-The session object, invisibly.
-
-The session object, invisibly.
-
-The session object, invisibly.
-
-The session object, invisibly.
-
-The session object, invisibly.
-
-The session object, invisibly.
-
-The message of the current alert (a string).
-
-The session object, invisibly.
-
-The base64-encoded PNG screenshot, as a string.
-
-The base64-encoded PDF, as a string.
-}
 \description{
 This class represents the client to a Selenium session. It will only work
 if a Selenium server instance is running. If you get an error, use
@@ -625,6 +515,9 @@ any responses.}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+A \code{SeleniumSession} object.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-create_webelement"></a>}}
@@ -642,6 +535,9 @@ session.
 \item{\code{id}}{The element id.}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \link{WebElement} object.
 }
 }
 \if{html}{\out{<hr>}}
@@ -661,6 +557,9 @@ session.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+A \link{ShadowRoot} object.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-close"></a>}}
@@ -672,6 +571,9 @@ no longer work. However, the Selenium server will still be running.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$close()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-status"></a>}}
@@ -686,6 +588,17 @@ options passed to the session, for convenience.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$status()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A list that can (but may not always) contain the following
+fields:
+\itemize{
+\item \code{ready}: Whether the server is ready to be connected to. This should
+always be returned by the server.
+\item \code{message}: A message about the status of the server.
+\item \code{uptime}: How long the server has been running.
+\item \code{nodes}: Information about the slots that the server can take.
+}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-get_timeouts"></a>}}
@@ -706,6 +619,9 @@ required. Defaults to 0 seconds.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_timeouts()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A list with three items: \code{script}, \code{page_load}, and \code{implicit}.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-set_timeouts"></a>}}
@@ -734,6 +650,9 @@ page.}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-navigate"></a>}}
@@ -752,6 +671,9 @@ Navigate to a URL.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-current_url"></a>}}
@@ -762,6 +684,9 @@ Get the current URL.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$current_url()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The URL of the current page.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-back"></a>}}
@@ -772,6 +697,9 @@ Go back in the navigation history.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$back()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-forward"></a>}}
@@ -782,6 +710,9 @@ Go forward in the navigation history.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$forward()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-refresh"></a>}}
@@ -792,6 +723,9 @@ Reload the current page.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$refresh()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-title"></a>}}
@@ -802,6 +736,9 @@ Get the title of the current page.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$title()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The title of the current page.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-window_handle"></a>}}
@@ -812,6 +749,9 @@ Get the current window handle.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$window_handle()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The handle of the current window (a string).
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-close_window"></a>}}
@@ -822,6 +762,9 @@ Close the current window.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$close_window()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-switch_to_window"></a>}}
@@ -839,6 +782,9 @@ Switch to a specific window.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-window_handles"></a>}}
@@ -849,6 +795,9 @@ Get the handles of all open windows.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$window_handles()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The handles of all open windows (a list of strings).
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-new_window"></a>}}
@@ -866,6 +815,13 @@ switched to.
 \item{\code{type}}{Whether to create a tab or a window.}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A list containing two elements:
+\itemize{
+\item \code{handle}: The handle of the new window.
+\item \code{type}: The type of window. ("tab" or "window").
+}
 }
 }
 \if{html}{\out{<hr>}}
@@ -890,6 +846,9 @@ element will be switched to.}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-switch_to_parent_frame"></a>}}
@@ -900,6 +859,9 @@ Switch to the parent frame of the current frame.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$switch_to_parent_frame()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-get_window_rect"></a>}}
@@ -910,6 +872,15 @@ Get the size and position of the current window.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_window_rect()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A list containing four elements:
+\itemize{
+\item \code{x}: The x position of the window relative to the left of the screen.
+\item \code{y}: The y position of the window relative to the top of the screen.
+\item \code{width}: The width of the window.
+\item \code{height}: The height of the window.
+}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-set_window_rect"></a>}}
@@ -938,6 +909,9 @@ Set the size and position of the current window.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-maximize_window"></a>}}
@@ -949,6 +923,9 @@ can be, without being full screen
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$maximize_window()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-minimize_window"></a>}}
@@ -959,6 +936,9 @@ Minimize the current window. This hides the window.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$minimize_window()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-fullscreen_window"></a>}}
@@ -969,6 +949,9 @@ Make the window full screen.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$fullscreen_window()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-get_active_element"></a>}}
@@ -979,6 +962,9 @@ Get the currently active element.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_active_element()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A \link{WebElement} object.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-find_element"></a>}}
@@ -1000,6 +986,9 @@ Find the first element matching a selector.
 \item{\code{value}}{The value of the selector: a string.}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \link{WebElement} object.
 }
 }
 \if{html}{\out{<hr>}}
@@ -1023,6 +1012,9 @@ Find all elements matching a selector.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+A list of \link{WebElement} objects.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-get_page_source"></a>}}
@@ -1033,6 +1025,9 @@ Get the HTML source of the current page, serialized as a string.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_page_source()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A string.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-execute_script"></a>}}
@@ -1054,6 +1049,10 @@ accessed in the script using the \code{arguments} array. Can be \link{WebElement
 objects or lists of such objects, which will be converted to nodes.}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The return value of the script. Nodes or lists of nodes will
+be converted to \link{WebElement} objects.
 }
 }
 \if{html}{\out{<hr>}}
@@ -1081,6 +1080,10 @@ to nodes.}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+The return value of the script. Nodes or lists of nodes will
+be converted to \link{WebElement} objects.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-get_cookies"></a>}}
@@ -1091,6 +1094,10 @@ Get all cookies.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_cookies()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A list of cookies. Each cookie is a list with a \code{name} and
+\code{value} field, along with some other optional fields.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-get_cookie"></a>}}
@@ -1107,6 +1114,9 @@ Get a specific cookie using its name.
 \item{\code{name}}{The name of the cookie.}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The cookie object.
 }
 }
 \if{html}{\out{<hr>}}
@@ -1126,6 +1136,9 @@ Add a cookie to the cookie store of the current document.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-delete_cookie"></a>}}
@@ -1143,6 +1156,9 @@ Delete a cookie using its name.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-delete_all_cookies"></a>}}
@@ -1153,6 +1169,9 @@ Delete all cookies in the cookie store of the current document.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$delete_all_cookies()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-perform_actions"></a>}}
@@ -1174,6 +1193,9 @@ performing the actions.}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-release_actions"></a>}}
@@ -1185,6 +1207,9 @@ Release all keys and pointers that were pressed using
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$release_actions()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-dismiss_alert"></a>}}
@@ -1195,6 +1220,9 @@ Dismiss the current alert, if present.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$dismiss_alert()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-accept_alert"></a>}}
@@ -1205,6 +1233,9 @@ Accept the current alert, if present.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$accept_alert()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-get_alert_text"></a>}}
@@ -1215,6 +1246,9 @@ Get the message of the current alert, if present.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_alert_text()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The message of the current alert (a string).
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-send_alert_text"></a>}}
@@ -1233,6 +1267,9 @@ prompt.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+The session object, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-screenshot"></a>}}
@@ -1243,6 +1280,9 @@ Take a screenshot of the current page.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$screenshot()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The base64-encoded PNG screenshot, as a string.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-print_page"></a>}}
@@ -1293,6 +1333,9 @@ height.}
 \item{\code{page_ranges}}{A list of page ranges (e.g. \code{"1"}, \code{"1-3"}) to print.}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The base64-encoded PDF, as a string.
 }
 }
 \if{html}{\out{<hr>}}

@@ -3,16 +3,6 @@
 \name{ShadowRoot}
 \alias{ShadowRoot}
 \title{Create a shadow root}
-\value{
-A \code{ShadowRoot} object.
-
-A \link{WebElement} object.
-
-A list of \link{WebElement} objects.
-
-A list, which can then be converted to JSON using
-\code{\link[jsonlite:fromJSON]{jsonlite::toJSON()}}.
-}
 \description{
 A shadow DOM is a self-contained DOM tree, contained within another DOM
 tree. A shadow root is an element that contains a DOM subtree. This class
@@ -143,6 +133,9 @@ manually: instead use \link[=WebElement]{WebElement$shadow_root()}, or
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+A \code{ShadowRoot} object.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ShadowRoot-find_element"></a>}}
@@ -164,6 +157,9 @@ Find an element in the shadow root.
 \item{\code{value}}{The value of the selector: a string.}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \link{WebElement} object.
 }
 }
 \if{html}{\out{<hr>}}
@@ -187,6 +183,9 @@ Find all elements in a shadow root matching a selector.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+A list of \link{WebElement} objects.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ShadowRoot-toJSON"></a>}}
@@ -198,6 +197,10 @@ Convert an element to JSON. This is used by
 \if{html}{\out{<div class="r">}}\preformatted{ShadowRoot$toJSON()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A list, which can then be converted to JSON using
+\code{\link[jsonlite:fromJSON]{jsonlite::toJSON()}}.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ShadowRoot-clone"></a>}}

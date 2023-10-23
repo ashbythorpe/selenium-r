@@ -3,54 +3,6 @@
 \name{WebElement}
 \alias{WebElement}
 \title{Create a live element}
-\value{
-A \code{WebElement} object.
-
-A \link{ShadowRoot} object.
-
-A \code{WebElement} object.
-
-A list of \code{WebElement} objects.
-
-A boolean value: \code{TRUE} or \code{FALSE}.
-
-The value of the attribute: a string.
-
-The value of the property: a string.
-
-The value of the CSS property: a string.
-
-The text content of the element: a string.
-
-The tag name of the element: a string.
-
-A list containing the following elements:
-\itemize{
-\item \code{x}: The x-coordinate of the element.
-\item \code{y}: The y-coordinate of the element.
-\item \code{width}: The width of the element in pixels.
-\item \code{height}: The height of the element in pixels.
-}
-
-A boolean value: \code{TRUE} or \code{FALSE}.
-
-A string.
-
-A string.
-
-The element, invisibly.
-
-The element, invisibly.
-
-The element, invisibly.
-
-The base64-encoded PNG screenshot, as a string.
-
-A boolean.
-
-A list, which can then be converted to JSON using
-\code{\link[jsonlite:fromJSON]{jsonlite::toJSON()}}.
-}
 \description{
 This class represents a single element on the page. It is created using an
 existing \link{SeleniumSession} instance.
@@ -320,6 +272,9 @@ you have an element id. To find elements on the page, use
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+A \code{WebElement} object.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-shadow_root"></a>}}
@@ -332,6 +287,9 @@ method gets the shadow root property of an element.
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$shadow_root()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A \link{ShadowRoot} object.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-find_element"></a>}}
@@ -355,6 +313,9 @@ element.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+A \code{WebElement} object.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-find_elements"></a>}}
@@ -377,6 +338,9 @@ Find all elements matching a selector, relative to the current element.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+A list of \code{WebElement} objects.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-is_selected"></a>}}
@@ -387,6 +351,9 @@ Check if an element is currently selected.
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$is_selected()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A boolean value: \code{TRUE} or \code{FALSE}.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-get_attribute"></a>}}
@@ -403,6 +370,9 @@ Get an attribute from an element.
 \item{\code{name}}{The name of the attribute.}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The value of the attribute: a string.
 }
 }
 \if{html}{\out{<hr>}}
@@ -423,6 +393,9 @@ state of the DOM.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+The value of the property: a string.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-get_css_value"></a>}}
@@ -440,6 +413,9 @@ Get the computed value of a CSS property.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+The value of the CSS property: a string.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-get_text"></a>}}
@@ -450,6 +426,9 @@ Get the text content of an element.
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$get_text()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The text content of the element: a string.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-get_tag_name"></a>}}
@@ -460,6 +439,9 @@ Get the tag name of an element.
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$get_tag_name()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The tag name of the element: a string.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-get_rect"></a>}}
@@ -470,6 +452,15 @@ Get the dimensions and coordinates of an element.
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$get_rect()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A list containing the following elements:
+\itemize{
+\item \code{x}: The x-coordinate of the element.
+\item \code{y}: The y-coordinate of the element.
+\item \code{width}: The width of the element in pixels.
+\item \code{height}: The height of the element in pixels.
+}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-is_enabled"></a>}}
@@ -480,6 +471,9 @@ Check if an element is currently enabled.
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$is_enabled()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A boolean value: \code{TRUE} or \code{FALSE}.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-computed_role"></a>}}
@@ -493,6 +487,9 @@ a "button" role.
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$computed_role()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A string.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-computed_label"></a>}}
@@ -504,6 +501,9 @@ that points to the current element).
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$computed_label()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A string.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-click"></a>}}
@@ -514,6 +514,9 @@ Click on an element.
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$click()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The element, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-clear"></a>}}
@@ -524,6 +527,9 @@ Clear the contents of a text input element.
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$clear()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The element, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-send_keys"></a>}}
@@ -542,6 +548,9 @@ use \code{\link[=key_chord]{key_chord()}} to send keys combinations.}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+The element, invisibly.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-screenshot"></a>}}
@@ -552,6 +561,9 @@ Take a screenshot of an element.
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$screenshot()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+The base64-encoded PNG screenshot, as a string.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-is_displayed"></a>}}
@@ -563,6 +575,9 @@ platforms.
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$is_displayed()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A boolean.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-toJSON"></a>}}
@@ -574,6 +589,10 @@ Convert an element to JSON. This is used by
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$toJSON()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A list, which can then be converted to JSON using
+\code{\link[jsonlite:fromJSON]{jsonlite::toJSON()}}.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-clone"></a>}}
