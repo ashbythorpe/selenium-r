@@ -11,12 +11,22 @@ package README for more information, or use \code{\link[=selenium_server]{seleni
 start a server automatically.
 }
 \examples{
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
+## ------------------------------------------------
+## Method `SeleniumSession$new`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new(verbose = TRUE)
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$create_webelement`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 element <- session$find_element(using = "css selector", value = "*")
@@ -24,20 +34,35 @@ element <- session$find_element(using = "css selector", value = "*")
 element2 <- session$create_webelement(id = element$id)
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$create_shadowroot`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 shadow_root <- session$create_shadowroot(id = "foo")
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$close`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$status`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$status()
@@ -45,17 +70,26 @@ session$status()
 session$close()
 
 session$status()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$get_timeouts`
+## ------------------------------------------------
+
+\dontrun{
 
 session <- SeleniumSession$new()
 
 session$get_timeouts()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
 
+## ------------------------------------------------
+## Method `SeleniumSession$set_timeouts`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$set_timeouts(script = 100)
@@ -63,15 +97,25 @@ session$set_timeouts(script = 100)
 session$get_timeouts()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$navigate`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$current_url`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -79,8 +123,13 @@ session$navigate("https://www.r-project.org")
 session$current_url()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$back`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -92,8 +141,13 @@ session$back()
 session$current_url()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$forward`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -107,8 +161,13 @@ session$forward()
 session$current_url()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$refresh`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -116,8 +175,13 @@ session$navigate("https://www.r-project.org")
 session$refresh()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$title`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -125,15 +189,25 @@ session$navigate("https://www.r-project.org")
 session$title()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$window_handle`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$window_handle()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$close_window`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$new_window()
@@ -141,8 +215,13 @@ session$new_window()
 session$close_window()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$switch_to_window`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 handle <- session$window_handle()
@@ -154,15 +233,25 @@ session$switch_to_window(handle)
 session$switch_to_window(handle2)
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$window_handles`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 handles <- session$window_handles()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$new_window`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 handle <- session$new_window()$handle
@@ -170,8 +259,13 @@ handle <- session$new_window()$handle
 session$switch_to_window(handle)
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$switch_to_frame`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -179,8 +273,13 @@ session$navigate("https://www.r-project.org")
 session$switch_to_frame()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$switch_to_parent_frame`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -190,15 +289,25 @@ session$switch_to_frame()
 session$switch_to_parent_frame()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$get_window_rect`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$get_window_rect()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$set_window_rect`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -206,29 +315,49 @@ session$navigate("https://www.r-project.org")
 session$set_window_rect(width = 800, height = 600, x = 2, y = 3)
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$maximize_window`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$maximize_window()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$minimize_window`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$minimize_window()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$fullscreen_window`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$fullscreen_window()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$get_active_element`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -236,8 +365,13 @@ session$navigate("https://www.r-project.org")
 session$get_active_element()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$find_element`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -247,8 +381,13 @@ session$find_element(using = "css selector", value = "#download")
 session$find_element(using = "xpath", value = "//div[contains(@class, 'col-xs')]/h1")
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$find_elements`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -258,8 +397,13 @@ session$find_elements(using = "css selector", value = "h1")
 session$find_elements(using = "xpath", value = "//h1")
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$get_page_source`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -267,8 +411,13 @@ session$navigate("https://www.r-project.org")
 session$get_page_source()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$execute_script`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$execute_script("return 1")
@@ -280,8 +429,13 @@ element <- session$find_element(value = "*")
 session$execute_script("return arguments[0]", element)
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$execute_async_script`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$execute_async_script("
@@ -290,8 +444,13 @@ session$execute_async_script("
 ")
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$get_cookies`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -299,8 +458,13 @@ session$navigate("https://www.r-project.org")
 session$get_cookies()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$get_cookie`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -310,8 +474,13 @@ session$add_cookie(list(name = "foo", value = "bar"))
 session$get_cookie("foo")
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$add_cookie`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -319,8 +488,13 @@ session$navigate("https://www.r-project.org")
 session$add_cookie(list(name = "my_cookie", value = "1"))
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$delete_cookie`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -330,8 +504,13 @@ session$add_cookie(list(name = "foo", value = "bar"))
 session$delete_cookie("foo")
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$delete_all_cookies`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -339,8 +518,13 @@ session$navigate("https://www.r-project.org")
 session$delete_all_cookies()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$perform_actions`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -354,8 +538,13 @@ actions <- actions_stream(
 session$perform_actions(actions)
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$release_actions`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -369,8 +558,13 @@ session$perform_actions(actions, release_actions = FALSE)
 session$release_actions()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$dismiss_alert`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$execute_script("alert('hello')")
@@ -378,8 +572,13 @@ session$execute_script("alert('hello')")
 session$dismiss_alert()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$accept_alert`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$execute_script("alert('hello')")
@@ -387,9 +586,13 @@ session$execute_script("alert('hello')")
 session$accept_alert()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
 
+## ------------------------------------------------
+## Method `SeleniumSession$get_alert_text`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$execute_script("alert('hello')")
@@ -397,8 +600,13 @@ session$execute_script("alert('hello')")
 session$get_alert_text()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$send_alert_text`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$execute_script("prompt('Enter text:')")
@@ -406,8 +614,13 @@ session$execute_script("prompt('Enter text:')")
 session$send_alert_text("hello")
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$screenshot`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -415,8 +628,13 @@ session$navigate("https://www.r-project.org")
 session$screenshot()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `SeleniumSession$print_page`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -424,7 +642,7 @@ session$navigate("https://www.r-project.org")
 session$print_page()
 
 session$close()
-\dontshow{\}) # examplesIf}
+}
 }
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
@@ -518,6 +736,18 @@ any responses.}
 \subsection{Returns}{
 A \code{SeleniumSession} object.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new(verbose = TRUE)
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-create_webelement"></a>}}
@@ -539,6 +769,22 @@ session.
 \subsection{Returns}{
 A \link{WebElement} object.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+element <- session$find_element(using = "css selector", value = "*")
+
+element2 <- session$create_webelement(id = element$id)
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-create_shadowroot"></a>}}
@@ -560,6 +806,20 @@ session.
 \subsection{Returns}{
 A \link{ShadowRoot} object.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+shadow_root <- session$create_shadowroot(id = "foo")
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-close"></a>}}
@@ -574,6 +834,18 @@ no longer work. However, the Selenium server will still be running.
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-status"></a>}}
@@ -599,6 +871,22 @@ always be returned by the server.
 \item \code{nodes}: Information about the slots that the server can take.
 }
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$status()
+
+session$close()
+
+session$status()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-get_timeouts"></a>}}
@@ -622,6 +910,21 @@ required. Defaults to 0 seconds.
 \subsection{Returns}{
 A list with three items: \code{script}, \code{page_load}, and \code{implicit}.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+
+session <- SeleniumSession$new()
+
+session$get_timeouts()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-set_timeouts"></a>}}
@@ -653,6 +956,22 @@ page.}
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$set_timeouts(script = 100)
+
+session$get_timeouts()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-navigate"></a>}}
@@ -674,6 +993,20 @@ Navigate to a URL.
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-current_url"></a>}}
@@ -687,6 +1020,22 @@ Get the current URL.
 \subsection{Returns}{
 The URL of the current page.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$current_url()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-back"></a>}}
@@ -700,6 +1049,26 @@ Go back in the navigation history.
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$navigate("https://www.tidyverse.org")
+
+session$back()
+
+session$current_url()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-forward"></a>}}
@@ -713,6 +1082,28 @@ Go forward in the navigation history.
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$navigate("https://www.tidyverse.org")
+
+session$back()
+
+session$forward()
+
+session$current_url()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-refresh"></a>}}
@@ -726,6 +1117,22 @@ Reload the current page.
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$refresh()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-title"></a>}}
@@ -739,6 +1146,22 @@ Get the title of the current page.
 \subsection{Returns}{
 The title of the current page.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$title()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-window_handle"></a>}}
@@ -752,6 +1175,20 @@ Get the current window handle.
 \subsection{Returns}{
 The handle of the current window (a string).
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$window_handle()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-close_window"></a>}}
@@ -765,6 +1202,22 @@ Close the current window.
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$new_window()
+
+session$close_window()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-switch_to_window"></a>}}
@@ -785,6 +1238,26 @@ Switch to a specific window.
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+handle <- session$window_handle()
+
+handle2 <- session$new_window()$handle
+
+session$switch_to_window(handle)
+
+session$switch_to_window(handle2)
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-window_handles"></a>}}
@@ -798,6 +1271,20 @@ Get the handles of all open windows.
 \subsection{Returns}{
 The handles of all open windows (a list of strings).
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+handles <- session$window_handles()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-new_window"></a>}}
@@ -823,6 +1310,22 @@ A list containing two elements:
 \item \code{type}: The type of window. ("tab" or "window").
 }
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+handle <- session$new_window()$handle
+
+session$switch_to_window(handle)
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-switch_to_frame"></a>}}
@@ -849,6 +1352,22 @@ element will be switched to.}
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$switch_to_frame()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-switch_to_parent_frame"></a>}}
@@ -862,6 +1381,24 @@ Switch to the parent frame of the current frame.
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$switch_to_frame()
+
+session$switch_to_parent_frame()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-get_window_rect"></a>}}
@@ -881,6 +1418,20 @@ A list containing four elements:
 \item \code{height}: The height of the window.
 }
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$get_window_rect()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-set_window_rect"></a>}}
@@ -912,6 +1463,22 @@ Set the size and position of the current window.
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$set_window_rect(width = 800, height = 600, x = 2, y = 3)
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-maximize_window"></a>}}
@@ -926,6 +1493,20 @@ can be, without being full screen
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$maximize_window()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-minimize_window"></a>}}
@@ -939,6 +1520,20 @@ Minimize the current window. This hides the window.
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$minimize_window()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-fullscreen_window"></a>}}
@@ -952,6 +1547,20 @@ Make the window full screen.
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$fullscreen_window()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-get_active_element"></a>}}
@@ -965,6 +1574,22 @@ Get the currently active element.
 \subsection{Returns}{
 A \link{WebElement} object.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$get_active_element()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-find_element"></a>}}
@@ -990,6 +1615,24 @@ Find the first element matching a selector.
 \subsection{Returns}{
 A \link{WebElement} object.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "#download")
+
+session$find_element(using = "xpath", value = "//div[contains(@class, 'col-xs')]/h1")
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-find_elements"></a>}}
@@ -1015,6 +1658,24 @@ Find all elements matching a selector.
 \subsection{Returns}{
 A list of \link{WebElement} objects.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_elements(using = "css selector", value = "h1")
+
+session$find_elements(using = "xpath", value = "//h1")
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-get_page_source"></a>}}
@@ -1028,6 +1689,22 @@ Get the HTML source of the current page, serialized as a string.
 \subsection{Returns}{
 A string.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$get_page_source()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-execute_script"></a>}}
@@ -1054,6 +1731,26 @@ objects or lists of such objects, which will be converted to nodes.}
 The return value of the script. Nodes or lists of nodes will
 be converted to \link{WebElement} objects.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$execute_script("return 1")
+
+session$execute_script("return arguments[0] + arguments[1]", 1, 2)
+
+element <- session$find_element(value = "*")
+
+session$execute_script("return arguments[0]", element)
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-execute_async_script"></a>}}
@@ -1084,6 +1781,23 @@ to nodes.}
 The return value of the script. Nodes or lists of nodes will
 be converted to \link{WebElement} objects.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$execute_async_script("
+  let callback = arguments[arguments.length - 1];
+  callback(1)
+")
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-get_cookies"></a>}}
@@ -1098,6 +1812,22 @@ Get all cookies.
 A list of cookies. Each cookie is a list with a \code{name} and
 \code{value} field, along with some other optional fields.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$get_cookies()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-get_cookie"></a>}}
@@ -1118,6 +1848,24 @@ Get a specific cookie using its name.
 \subsection{Returns}{
 The cookie object.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$add_cookie(list(name = "foo", value = "bar"))
+
+session$get_cookie("foo")
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-add_cookie"></a>}}
@@ -1139,6 +1887,22 @@ Add a cookie to the cookie store of the current document.
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$add_cookie(list(name = "my_cookie", value = "1"))
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-delete_cookie"></a>}}
@@ -1159,6 +1923,24 @@ Delete a cookie using its name.
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$add_cookie(list(name = "foo", value = "bar"))
+
+session$delete_cookie("foo")
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-delete_all_cookies"></a>}}
@@ -1172,6 +1954,22 @@ Delete all cookies in the cookie store of the current document.
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$delete_all_cookies()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-perform_actions"></a>}}
@@ -1196,6 +1994,28 @@ performing the actions.}
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+actions <- actions_stream(
+  actions_press(keys$enter),
+  actions_pause(0.5),
+  actions_release(keys$enter)
+)
+
+session$perform_actions(actions)
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-release_actions"></a>}}
@@ -1210,6 +2030,28 @@ Release all keys and pointers that were pressed using
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+actions <- actions_stream(
+  actions_press("a")
+)
+
+session$perform_actions(actions, release_actions = FALSE)
+
+session$release_actions()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-dismiss_alert"></a>}}
@@ -1223,6 +2065,22 @@ Dismiss the current alert, if present.
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$execute_script("alert('hello')")
+
+session$dismiss_alert()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-accept_alert"></a>}}
@@ -1236,6 +2094,22 @@ Accept the current alert, if present.
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$execute_script("alert('hello')")
+
+session$accept_alert()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-get_alert_text"></a>}}
@@ -1249,6 +2123,22 @@ Get the message of the current alert, if present.
 \subsection{Returns}{
 The message of the current alert (a string).
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$execute_script("alert('hello')")
+
+session$get_alert_text()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-send_alert_text"></a>}}
@@ -1270,6 +2160,22 @@ prompt.
 \subsection{Returns}{
 The session object, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$execute_script("prompt('Enter text:')")
+
+session$send_alert_text("hello")
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-screenshot"></a>}}
@@ -1283,6 +2189,22 @@ Take a screenshot of the current page.
 \subsection{Returns}{
 The base64-encoded PNG screenshot, as a string.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$screenshot()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-print_page"></a>}}
@@ -1337,6 +2259,22 @@ height.}
 \subsection{Returns}{
 The base64-encoded PDF, as a string.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$print_page()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-SeleniumSession-clone"></a>}}

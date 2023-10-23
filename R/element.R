@@ -24,7 +24,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return A `WebElement` object.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.r-project.org")
@@ -32,6 +33,7 @@ WebElement <- R6::R6Class("WebElement",
     #' element <- session$find_element(using = "css selector", value = "#download")
     #'
     #' session$close()
+    #' }
     initialize = function(session_id, req, verbose, id) {
       private$session_id <- session_id
       private$req <- req
@@ -45,7 +47,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return A [ShadowRoot] object.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' # Let's create our own Shadow Root using JavaScript
@@ -60,6 +63,7 @@ WebElement <- R6::R6Class("WebElement",
     #' shadow_root <- element$shadow_root()
     #'
     #' session$close()
+    #' }
     shadow_root = function() {
       req <- req_command(private$req, "Get Element Shadow Root", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -75,7 +79,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return A `WebElement` object.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.r-project.org")
@@ -87,6 +92,7 @@ WebElement <- R6::R6Class("WebElement",
     #' logo <- logo_container$find_element(using = "css selector", value = "img")
     #'
     #' session$close()
+    #' }
     find_element = function(using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
                             value) {
       using <- rlang::arg_match(using)
@@ -104,7 +110,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return A list of `WebElement` objects.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.r-project.org")
@@ -114,6 +121,7 @@ WebElement <- R6::R6Class("WebElement",
     #' links <- row$find_elements(using = "css selector", value = "a")
     #'
     #' session$close()
+    #' }
     find_elements = function(using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
                              value) {
       using <- rlang::arg_match(using)
@@ -128,7 +136,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return A boolean value: `TRUE` or `FALSE`.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.r-project.org")
@@ -136,6 +145,7 @@ WebElement <- R6::R6Class("WebElement",
     #' session$find_element(using = "css selector", value = "#download")$is_selected()
     #'
     #' session$close()
+    #' }
     is_selected = function() {
       req <- req_command(private$req, "Is Element Selected", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -148,7 +158,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return The value of the attribute: a string.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.r-project.org")
@@ -156,6 +167,7 @@ WebElement <- R6::R6Class("WebElement",
     #' session$find_element(using = "css selector", value = "a")$get_attribute("href")
     #'
     #' session$close()
+    #' }
     get_attribute = function(name) {
       req <- req_command(private$req, "Get Element Attribute", session_id = private$session_id, element_id = self$id, name = name)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -170,7 +182,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return The value of the property: a string.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.r-project.org")
@@ -178,6 +191,7 @@ WebElement <- R6::R6Class("WebElement",
     #' session$find_element(using = "css selector", value = "a")$get_property("href")
     #'
     #' session$close()
+    #' }
     get_property = function(name) {
       req <- req_command(private$req, "Get Element Property", session_id = private$session_id, element_id = self$id, name = name)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -190,7 +204,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return The value of the CSS property: a string.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.r-project.org")
@@ -198,6 +213,7 @@ WebElement <- R6::R6Class("WebElement",
     #' session$find_element(using = "css selector", value = "a")$get_css_value("color")
     #'
     #' session$close()
+    #' }
     get_css_value = function(name) {
       req <- req_command(private$req, "Get Element CSS Value", session_id = private$session_id, element_id = self$id, "property name" = name)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -208,7 +224,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return The text content of the element: a string.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.r-project.org")
@@ -216,6 +233,7 @@ WebElement <- R6::R6Class("WebElement",
     #' session$find_element(using = "css selector", value = "#download")$get_text()
     #'
     #' session$close()
+    #' }
     get_text = function() {
       req <- req_command(private$req, "Get Element Text", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -226,7 +244,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return The tag name of the element: a string.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.r-project.org")
@@ -234,6 +253,7 @@ WebElement <- R6::R6Class("WebElement",
     #' session$find_element(using = "css selector", value = "#download")$get_tag_name()
     #'
     #' session$close()
+    #' }
     get_tag_name = function() {
       req <- req_command(private$req, "Get Element Tag Name", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -249,7 +269,8 @@ WebElement <- R6::R6Class("WebElement",
     #' * `width`: The width of the element in pixels.
     #' * `height`: The height of the element in pixels.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.r-project.org")
@@ -257,6 +278,7 @@ WebElement <- R6::R6Class("WebElement",
     #' session$find_element(using = "css selector", value = "#download")$get_rect()
     #'
     #' session$close()
+    #' }
     get_rect = function() {
       req <- req_command(private$req, "Get Element Rect", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -267,7 +289,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return A boolean value: `TRUE` or `FALSE`.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.r-project.org")
@@ -275,6 +298,7 @@ WebElement <- R6::R6Class("WebElement",
     #' session$find_element(using = "css selector", value = "a")$is_enabled()
     #'
     #' session$close()
+    #' }
     is_enabled = function() {
       req <- req_command(private$req, "Is Element Enabled", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -288,7 +312,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return A string.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.r-project.org")
@@ -296,6 +321,7 @@ WebElement <- R6::R6Class("WebElement",
     #' session$find_element(using = "css selector", value = "a")$computed_role()
     #'
     #' session$close()
+    #' }
     computed_role = function() {
       req <- req_command(private$req, "Get Computed Role", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -307,7 +333,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return A string.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.r-project.org")
@@ -315,6 +342,7 @@ WebElement <- R6::R6Class("WebElement",
     #' session$find_element(using = "css selector", value = "a")$computed_label()
     #'
     #' session$close()
+    #' }
     computed_label = function() {
       req <- req_command(private$req, "Get Computed Label", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -325,7 +353,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return The element, invisibly.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.r-project.org")
@@ -333,6 +362,7 @@ WebElement <- R6::R6Class("WebElement",
     #' session$find_element(using = "css selector", value = "a")$click()
     #'
     #' session$close()
+    #' }
     click = function() {
       req <- req_command(private$req, "Element Click", session_id = private$session_id, element_id = self$id)
       req <- req_body_selenium(req, NULL)
@@ -344,7 +374,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return The element, invisibly.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.google.com")
@@ -352,6 +383,7 @@ WebElement <- R6::R6Class("WebElement",
     #' session$find_element(using = "css selector", value = "textarea")$clear()
     #'
     #' session$close()
+    #' }
     clear = function() {
       req <- req_command(private$req, "Element Clear", session_id = private$session_id, element_id = self$id)
       req <- req_body_selenium(req, NULL)
@@ -366,7 +398,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return The element, invisibly.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.google.com")
@@ -382,6 +415,7 @@ WebElement <- R6::R6Class("WebElement",
     #' input$get_attribute("value")
     #'
     #' session$close()
+    #' }
     send_keys = function(...) {
       req <- req_command(private$req, "Element Send Keys", session_id = private$session_id, element_id = self$id)
       body <- list(
@@ -396,7 +430,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return The base64-encoded PNG screenshot, as a string.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.r-project.org")
@@ -404,6 +439,7 @@ WebElement <- R6::R6Class("WebElement",
     #' session$find_element(using = "css selector", value = "a")$screenshot()
     #'
     #' session$close()
+    #' }
     screenshot = function() {
       req <- req_command(private$req, "Take Element Screenshot", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -415,7 +451,8 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' @return A boolean.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.r-project.org")
@@ -423,6 +460,7 @@ WebElement <- R6::R6Class("WebElement",
     #' session$find_element(using = "css selector", value = "a")$is_displayed()
     #'
     #' session$close()
+    #' }
     is_displayed = function() {
       req <- req_command(private$req, "Element Displayed", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -435,7 +473,8 @@ WebElement <- R6::R6Class("WebElement",
     #' @return A list, which can then be converted to JSON using
     #' [jsonlite::toJSON()].
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' session$navigate("https://www.r-project.org")
@@ -447,6 +486,7 @@ WebElement <- R6::R6Class("WebElement",
     #' jsonlite::toJSON(result, auto_unbox = TRUE)
     #'
     #' session$close()
+    #' }
     toJSON = function() {
       res <- list(self$id)
       names(res) <- web_element_id
@@ -486,7 +526,8 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
     #'
     #' @return A `ShadowRoot` object.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' # Let's create our own Shadow Root using JavaScript
@@ -501,6 +542,7 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
     #' element$shadow_root()
     #'
     #' session$close()
+    #' }
     initialize = function(session_id, req, verbose, id) {
       private$session_id <- session_id
       private$req <- req
@@ -515,7 +557,8 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
     #'
     #' @return A [WebElement] object.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' # Let's create our own Shadow Root using JavaScript
@@ -535,6 +578,7 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
     #' shadow_root$find_element(using = "css selector", value = "span")
     #'
     #' session$close()
+    #' }
     find_element = function(using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
                             value) {
       using <- rlang::arg_match(using)
@@ -552,7 +596,8 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
     #'
     #' @return A list of [WebElement] objects.
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' # Let's create our own Shadow Root using JavaScript
@@ -575,6 +620,7 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
     #' shadow_root$find_elements(using = "css selector", value = "*")
     #'
     #' session$close()
+    #' }
     find_elements = function(using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
                              value) {
       using <- rlang::arg_match(using)
@@ -591,7 +637,8 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
     #' @return A list, which can then be converted to JSON using
     #' [jsonlite::toJSON()].
     #'
-    #' @examplesIf selenium_server_available()
+    #' @examples
+    #' \dontrun{
     #' session <- SeleniumSession$new()
     #'
     #' # Let's create our own Shadow Root using JavaScript
@@ -612,6 +659,7 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
     #' jsonlite::toJSON(result, auto_unbox = TRUE)
     #'
     #' session$close()
+    #' }
     toJSON = function() {
       res <- list(self$id)
       names(res) <- shadow_element_id

@@ -10,7 +10,12 @@ represents a shadow root object, allowing you to select elements within
 the shadow root.
 }
 \examples{
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
+## ------------------------------------------------
+## Method `ShadowRoot$new`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 # Let's create our own Shadow Root using JavaScript
@@ -25,8 +30,13 @@ element <- session$find_element(using = "css selector", value = "div")
 element$shadow_root()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `ShadowRoot$find_element`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 # Let's create our own Shadow Root using JavaScript
@@ -46,8 +56,13 @@ shadow_root <- element$shadow_root()
 shadow_root$find_element(using = "css selector", value = "span")
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `ShadowRoot$find_elements`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 # Let's create our own Shadow Root using JavaScript
@@ -70,8 +85,13 @@ shadow_root <- element$shadow_root()
 shadow_root$find_elements(using = "css selector", value = "*")
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `ShadowRoot$toJSON`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 # Let's create our own Shadow Root using JavaScript
@@ -92,7 +112,7 @@ result
 jsonlite::toJSON(result, auto_unbox = TRUE)
 
 session$close()
-\dontshow{\}) # examplesIf}
+}
 }
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
@@ -136,6 +156,29 @@ manually: instead use \link[=WebElement]{WebElement$shadow_root()}, or
 \subsection{Returns}{
 A \code{ShadowRoot} object.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+# Let's create our own Shadow Root using JavaScript
+session$execute_script("
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  div.attachShadow({mode: 'open'});
+")
+
+element <- session$find_element(using = "css selector", value = "div")
+
+element$shadow_root()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ShadowRoot-find_element"></a>}}
@@ -161,6 +204,34 @@ Find an element in the shadow root.
 \subsection{Returns}{
 A \link{WebElement} object.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+# Let's create our own Shadow Root using JavaScript
+session$execute_script("
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  const shadowRoot = div.attachShadow({mode: 'open'});
+  const span = document.createElement('span');
+  span.textContent = 'Hello';
+  shadowRoot.appendChild(span);
+")
+
+element <- session$find_element(using = "css selector", value = "div")
+
+shadow_root <- element$shadow_root()
+
+shadow_root$find_element(using = "css selector", value = "span")
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ShadowRoot-find_elements"></a>}}
@@ -186,6 +257,37 @@ Find all elements in a shadow root matching a selector.
 \subsection{Returns}{
 A list of \link{WebElement} objects.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+# Let's create our own Shadow Root using JavaScript
+session$execute_script("
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  const shadowRoot = div.attachShadow({mode: 'open'});
+  const span = document.createElement('span');
+  span.textContent = 'Hello';
+  shadowRoot.appendChild(span);
+  const p = document.createElement('p');
+  p.textContent = 'Me too!';
+  shadowRoot.appendChild(p);
+")
+
+element <- session$find_element(using = "css selector", value = "div")
+
+shadow_root <- element$shadow_root()
+
+shadow_root$find_elements(using = "css selector", value = "*")
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ShadowRoot-toJSON"></a>}}
@@ -201,6 +303,35 @@ Convert an element to JSON. This is used by
 A list, which can then be converted to JSON using
 \code{\link[jsonlite:fromJSON]{jsonlite::toJSON()}}.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+# Let's create our own Shadow Root using JavaScript
+session$execute_script("
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  div.attachShadow({mode: 'open'});
+")
+
+element <- session$find_element(using = "css selector", value = "div")
+
+shadow_root <- element$shadow_root()
+
+result <- shadow_root$toJSON()
+
+result
+
+jsonlite::toJSON(result, auto_unbox = TRUE)
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-ShadowRoot-clone"></a>}}

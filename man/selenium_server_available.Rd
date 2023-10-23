@@ -61,11 +61,12 @@ used by \code{selenium_server_available()} to figure out if the server is
 running.
 }
 \examples{
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontrun{
 get_server_status()
 
 selenium_server_available()
 
 wait_for_selenium_available()
-\dontshow{\}) # examplesIf}
+}
+
 }

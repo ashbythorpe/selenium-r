@@ -31,12 +31,14 @@
 #' * `uptime`: How long the server has been running.
 #' * `nodes`: Information about the slots that the server can take.
 #'
-#' @examplesIf selenium_server_available()
+#' @examples
+#' \dontrun{
 #' get_server_status()
 #'
 #' selenium_server_available()
 #'
 #' wait_for_selenium_available()
+#' }
 #'
 #' @export
 selenium_server_available <- function(port = 4444L, host = "localhost", verbose = FALSE) {

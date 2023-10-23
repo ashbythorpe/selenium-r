@@ -8,7 +8,12 @@ This class represents a single element on the page. It is created using an
 existing \link{SeleniumSession} instance.
 }
 \examples{
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
+## ------------------------------------------------
+## Method `WebElement$new`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -16,8 +21,13 @@ session$navigate("https://www.r-project.org")
 element <- session$find_element(using = "css selector", value = "#download")
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$shadow_root`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 # Let's create our own Shadow Root using JavaScript
@@ -32,8 +42,13 @@ element <- session$find_element(using = "css selector", value = "div")
 shadow_root <- element$shadow_root()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$find_element`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -45,8 +60,13 @@ logo_container <- row$find_element(using = "css selector", value = "p")
 logo <- logo_container$find_element(using = "css selector", value = "img")
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$find_elements`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -56,8 +76,13 @@ row <- session$find_element(using = "css selector", value = ".row")
 links <- row$find_elements(using = "css selector", value = "a")
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$is_selected`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -65,8 +90,13 @@ session$navigate("https://www.r-project.org")
 session$find_element(using = "css selector", value = "#download")$is_selected()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$get_attribute`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -74,8 +104,13 @@ session$navigate("https://www.r-project.org")
 session$find_element(using = "css selector", value = "a")$get_attribute("href")
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$get_property`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -83,8 +118,13 @@ session$navigate("https://www.r-project.org")
 session$find_element(using = "css selector", value = "a")$get_property("href")
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$get_css_value`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -92,8 +132,13 @@ session$navigate("https://www.r-project.org")
 session$find_element(using = "css selector", value = "a")$get_css_value("color")
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$get_text`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -101,8 +146,13 @@ session$navigate("https://www.r-project.org")
 session$find_element(using = "css selector", value = "#download")$get_text()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$get_tag_name`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -110,8 +160,13 @@ session$navigate("https://www.r-project.org")
 session$find_element(using = "css selector", value = "#download")$get_tag_name()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$get_rect`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -119,8 +174,13 @@ session$navigate("https://www.r-project.org")
 session$find_element(using = "css selector", value = "#download")$get_rect()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$is_enabled`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -128,8 +188,13 @@ session$navigate("https://www.r-project.org")
 session$find_element(using = "css selector", value = "a")$is_enabled()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$computed_role`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -137,8 +202,13 @@ session$navigate("https://www.r-project.org")
 session$find_element(using = "css selector", value = "a")$computed_role()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$computed_label`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -146,8 +216,13 @@ session$navigate("https://www.r-project.org")
 session$find_element(using = "css selector", value = "a")$computed_label()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$click`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -155,8 +230,13 @@ session$navigate("https://www.r-project.org")
 session$find_element(using = "css selector", value = "a")$click()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$clear`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.google.com")
@@ -164,8 +244,13 @@ session$navigate("https://www.google.com")
 session$find_element(using = "css selector", value = "textarea")$clear()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$send_keys`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.google.com")
@@ -181,8 +266,13 @@ input$send_keys(keys$ctrl, "v")
 input$get_attribute("value")
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$screenshot`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -190,8 +280,13 @@ session$navigate("https://www.r-project.org")
 session$find_element(using = "css selector", value = "a")$screenshot()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$is_displayed`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -199,8 +294,13 @@ session$navigate("https://www.r-project.org")
 session$find_element(using = "css selector", value = "a")$is_displayed()
 
 session$close()
-\dontshow{\}) # examplesIf}
-\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+}
+
+## ------------------------------------------------
+## Method `WebElement$toJSON`
+## ------------------------------------------------
+
+\dontrun{
 session <- SeleniumSession$new()
 
 session$navigate("https://www.r-project.org")
@@ -212,7 +312,7 @@ result
 jsonlite::toJSON(result, auto_unbox = TRUE)
 
 session$close()
-\dontshow{\}) # examplesIf}
+}
 }
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
@@ -275,6 +375,22 @@ you have an element id. To find elements on the page, use
 \subsection{Returns}{
 A \code{WebElement} object.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+element <- session$find_element(using = "css selector", value = "#download")
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-shadow_root"></a>}}
@@ -290,6 +406,29 @@ method gets the shadow root property of an element.
 \subsection{Returns}{
 A \link{ShadowRoot} object.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+# Let's create our own Shadow Root using JavaScript
+session$execute_script("
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  div.attachShadow({mode: 'open'});
+")
+
+element <- session$find_element(using = "css selector", value = "div")
+
+shadow_root <- element$shadow_root()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-find_element"></a>}}
@@ -316,6 +455,26 @@ element.
 \subsection{Returns}{
 A \code{WebElement} object.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+row <- session$find_element(using = "css selector", value = ".row")
+
+logo_container <- row$find_element(using = "css selector", value = "p")
+
+logo <- logo_container$find_element(using = "css selector", value = "img")
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-find_elements"></a>}}
@@ -341,6 +500,24 @@ Find all elements matching a selector, relative to the current element.
 \subsection{Returns}{
 A list of \code{WebElement} objects.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+row <- session$find_element(using = "css selector", value = ".row")
+
+links <- row$find_elements(using = "css selector", value = "a")
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-is_selected"></a>}}
@@ -354,6 +531,22 @@ Check if an element is currently selected.
 \subsection{Returns}{
 A boolean value: \code{TRUE} or \code{FALSE}.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "#download")$is_selected()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-get_attribute"></a>}}
@@ -374,6 +567,22 @@ Get an attribute from an element.
 \subsection{Returns}{
 The value of the attribute: a string.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$get_attribute("href")
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-get_property"></a>}}
@@ -396,6 +605,22 @@ state of the DOM.
 \subsection{Returns}{
 The value of the property: a string.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$get_property("href")
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-get_css_value"></a>}}
@@ -416,6 +641,22 @@ Get the computed value of a CSS property.
 \subsection{Returns}{
 The value of the CSS property: a string.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$get_css_value("color")
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-get_text"></a>}}
@@ -429,6 +670,22 @@ Get the text content of an element.
 \subsection{Returns}{
 The text content of the element: a string.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "#download")$get_text()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-get_tag_name"></a>}}
@@ -442,6 +699,22 @@ Get the tag name of an element.
 \subsection{Returns}{
 The tag name of the element: a string.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "#download")$get_tag_name()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-get_rect"></a>}}
@@ -461,6 +734,22 @@ A list containing the following elements:
 \item \code{height}: The height of the element in pixels.
 }
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "#download")$get_rect()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-is_enabled"></a>}}
@@ -474,6 +763,22 @@ Check if an element is currently enabled.
 \subsection{Returns}{
 A boolean value: \code{TRUE} or \code{FALSE}.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$is_enabled()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-computed_role"></a>}}
@@ -490,6 +795,22 @@ a "button" role.
 \subsection{Returns}{
 A string.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$computed_role()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-computed_label"></a>}}
@@ -504,6 +825,22 @@ that points to the current element).
 \subsection{Returns}{
 A string.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$computed_label()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-click"></a>}}
@@ -517,6 +854,22 @@ Click on an element.
 \subsection{Returns}{
 The element, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$click()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-clear"></a>}}
@@ -530,6 +883,22 @@ Clear the contents of a text input element.
 \subsection{Returns}{
 The element, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.google.com")
+
+session$find_element(using = "css selector", value = "textarea")$clear()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-send_keys"></a>}}
@@ -551,6 +920,30 @@ use \code{\link[=key_chord]{key_chord()}} to send keys combinations.}
 \subsection{Returns}{
 The element, invisibly.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.google.com")
+
+input <- session$find_element(using = "css selector", value = "textarea")
+
+input$send_keys("Hello")
+
+input$send_keys(key_chord(keys$ctrl, "a"), key_chord(keys$ctrl, "c"))
+
+input$send_keys(keys$ctrl, "v")
+
+input$get_attribute("value")
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-screenshot"></a>}}
@@ -564,6 +957,22 @@ Take a screenshot of an element.
 \subsection{Returns}{
 The base64-encoded PNG screenshot, as a string.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$screenshot()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-is_displayed"></a>}}
@@ -578,6 +987,22 @@ platforms.
 \subsection{Returns}{
 A boolean.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$is_displayed()
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-toJSON"></a>}}
@@ -593,6 +1018,26 @@ Convert an element to JSON. This is used by
 A list, which can then be converted to JSON using
 \code{\link[jsonlite:fromJSON]{jsonlite::toJSON()}}.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+result <- session$find_element(using = "css selector", value = "a")$toJSON()
+
+result
+
+jsonlite::toJSON(result, auto_unbox = TRUE)
+
+session$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-clone"></a>}}
