@@ -32,23 +32,25 @@ test_session <- function(verbose = FALSE) {
 }
 
 test_helper_site <- function(verbose = FALSE) {
-  skip_if(
-    is_check(),
-    "Browsers cannot access HTML files in local tempfiles"
-  )
+  file <- normalizePath(testthat::test_path("helper-site.html"))
+
+  if (grepl("^/tmp", file)) {
+    if (env_var_is_true("CI")) {
+      file.copy(file, "~/helper-site.html")
+      file <- normalizePath("~/helper-site.html")
+    } else {
+      skip("Browsers cannot access HTML files in the temporary directory.")
+    }
+  }
 
   session <- test_session(verbose = verbose)
-
-  browser <- Sys.getenv("SELENIUM_BROWSER", "chrome")
-
-  file <- normalizePath(testthat::test_path("helper-site.html"))
 
   session$navigate(paste0("file://", file))
   session
 }
 
 is_cran_check <- function() {
-  if (isTRUE(as.logical(Sys.getenv("NOT_CRAN", "false")))) {
+  if (env_var_is_true("NOT_CRAN")) {
     FALSE
   } else {
     is_check()

@@ -6,6 +6,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/ashbythorpe/selenium-r/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ashbythorpe/selenium-r/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/ashbythorpe/selenium-r/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ashbythorpe/selenium-r?branch=main)
 <!-- badges: end -->
 
 selenium is a tool for the automation of web browsers. It is a low-level
@@ -74,12 +76,6 @@ argument to specify a different browser if you like.
 
 ``` r
 session <- SeleniumSession$new(browser = "firefox")
-#> <httr2_request>
-#> POST http://localhost:4444/session
-#> Headers:
-#> • Content-Type: 'application/json; charset=utf-8'
-#> • Accept: 'application/json; charset=utf-8'
-#> Body: a string
 ```
 
 If this doesn’t work, you may have to specify the `port` and `host`
@@ -100,80 +96,20 @@ object to control the browser.
 
 ``` r
 session$navigate("https://www.r-project.org/")
-#> <httr2_request>
-#> POST http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/url
-#> Headers:
-#> • Content-Type: 'application/json; charset=utf-8'
-#> • Accept: 'application/json; charset=utf-8'
-#> Body: a string
 session$
   find_element(using = "css selector", value = ".row")$
   find_element(using = "css selector", value = "ul")$
   find_element(using = "css selector", value = "a")$
   click()
-#> <httr2_request>
-#> POST http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element
-#> Headers:
-#> • Content-Type: 'application/json; charset=utf-8'
-#> • Accept: 'application/json; charset=utf-8'
-#> Body: a string
-#> <httr2_request>
-#> POST
-#> http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/c1b4da9a-5c18-45de-8835-47c2127e038d/element
-#> Headers:
-#> • Content-Type: 'application/json; charset=utf-8'
-#> • Accept: 'application/json; charset=utf-8'
-#> Body: a string
-#> <httr2_request>
-#> POST
-#> http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/927ebbbf-c612-4e82-a603-41ffad9631fe/element
-#> Headers:
-#> • Content-Type: 'application/json; charset=utf-8'
-#> • Accept: 'application/json; charset=utf-8'
-#> Body: a string
-#> <httr2_request>
-#> POST
-#> http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/1358a79f-a2ef-414d-bfc5-268da1dea696/click
-#> Headers:
-#> • Content-Type: 'application/json; charset=utf-8'
-#> • Accept: 'application/json; charset=utf-8'
-#> Body: a string
 
 session$
   find_element(using = "css selector", value = ".row")$
   find_elements(using = "css selector", value = "div")[[2]]$
   find_element(using = "css selector", value = "p")$
   get_text()
-#> <httr2_request>
-#> POST http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element
-#> Headers:
-#> • Content-Type: 'application/json; charset=utf-8'
-#> • Accept: 'application/json; charset=utf-8'
-#> Body: a string
-#> <httr2_request>
-#> POST
-#> http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/ee4645e9-f454-4e77-a154-9caa58fb647c/elements
-#> Headers:
-#> • Content-Type: 'application/json; charset=utf-8'
-#> • Accept: 'application/json; charset=utf-8'
-#> Body: a string
-#> <httr2_request>
-#> POST
-#> http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/1389fce5-9ad2-4d2e-9903-7b0fe12c93eb/element
-#> Headers:
-#> • Content-Type: 'application/json; charset=utf-8'
-#> • Accept: 'application/json; charset=utf-8'
-#> Body: a string
-#> <httr2_request>
-#> GET
-#> http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/612a6787-d2a2-4a1c-9a32-bee650fa8f17/text
-#> Body: empty
 #> [1] ""
 
 session$close()
-#> <httr2_request>
-#> DELETE http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a
-#> Body: empty
 ```
 
 For a more detailed introduction to using selenium, see the Getting

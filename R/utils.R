@@ -44,3 +44,7 @@ merge_lists <- function(x, y) {
 
   x
 }
+
+env_var_is_true <- function(x) {
+  isTRUE(as.logical(Sys.getenv(x, "false")))
+}

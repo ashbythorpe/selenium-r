@@ -1191,8 +1191,6 @@ SeleniumSession <- R6::R6Class(
         pageRanges = page_ranges
       ))
 
-      print(jsonlite::prettify(jsonlite::toJSON(body, auto_unbox = TRUE)))
-
       req <- req_body_selenium(req, body)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
