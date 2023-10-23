@@ -60,7 +60,7 @@
 <div class="page-header"><h1 id="selenium">selenium<a class="anchor" aria-label="anchor" href="#selenium"></a>
 </h1></div>
 <!-- badges: start -->
-<!-- badges: end -->
+
 <p>selenium is a tool for the automation of web browsers. It is a low-level interface to the <a href="https://w3c.github.io/webdriver/" class="external-link">WebDriver</a> specification, and an up-to-date alternative to <a href="https://github.com/ropensci/RSelenium" class="external-link">RSelenium</a>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -109,7 +109,7 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org/"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; POST http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/url</span></span>
+<span><span class="co">#&gt; POST http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/url</span></span>
 <span><span class="co">#&gt; Headers:</span></span>
 <span><span class="co">#&gt; • Content-Type: 'application/json; charset=utf-8'</span></span>
 <span><span class="co">#&gt; • Accept: 'application/json; charset=utf-8'</span></span>
@@ -120,28 +120,28 @@
 <span>  <span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"a"</span><span class="op">)</span><span class="op">$</span></span>
 <span>  <span class="fu">click</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; POST http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element</span></span>
+<span><span class="co">#&gt; POST http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element</span></span>
 <span><span class="co">#&gt; Headers:</span></span>
 <span><span class="co">#&gt; • Content-Type: 'application/json; charset=utf-8'</span></span>
 <span><span class="co">#&gt; • Accept: 'application/json; charset=utf-8'</span></span>
 <span><span class="co">#&gt; Body: a string</span></span>
 <span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
 <span><span class="co">#&gt; POST</span></span>
-<span><span class="co">#&gt; http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/ff8f7f31-a5f6-44de-b7cc-91b93bc1c28f/element</span></span>
+<span><span class="co">#&gt; http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/c1b4da9a-5c18-45de-8835-47c2127e038d/element</span></span>
 <span><span class="co">#&gt; Headers:</span></span>
 <span><span class="co">#&gt; • Content-Type: 'application/json; charset=utf-8'</span></span>
 <span><span class="co">#&gt; • Accept: 'application/json; charset=utf-8'</span></span>
 <span><span class="co">#&gt; Body: a string</span></span>
 <span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
 <span><span class="co">#&gt; POST</span></span>
-<span><span class="co">#&gt; http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/44e21cef-1467-45ec-b532-17910872fd98/element</span></span>
+<span><span class="co">#&gt; http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/927ebbbf-c612-4e82-a603-41ffad9631fe/element</span></span>
 <span><span class="co">#&gt; Headers:</span></span>
 <span><span class="co">#&gt; • Content-Type: 'application/json; charset=utf-8'</span></span>
 <span><span class="co">#&gt; • Accept: 'application/json; charset=utf-8'</span></span>
 <span><span class="co">#&gt; Body: a string</span></span>
 <span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
 <span><span class="co">#&gt; POST</span></span>
-<span><span class="co">#&gt; http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/c9913f24-7583-49ba-952f-752c3431902e/click</span></span>
+<span><span class="co">#&gt; http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/1358a79f-a2ef-414d-bfc5-268da1dea696/click</span></span>
 <span><span class="co">#&gt; Headers:</span></span>
 <span><span class="co">#&gt; • Content-Type: 'application/json; charset=utf-8'</span></span>
 <span><span class="co">#&gt; • Accept: 'application/json; charset=utf-8'</span></span>
@@ -153,34 +153,34 @@
 <span>  <span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span><span class="op">$</span></span>
 <span>  <span class="fu">get_text</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; POST http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element</span></span>
+<span><span class="co">#&gt; POST http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element</span></span>
 <span><span class="co">#&gt; Headers:</span></span>
 <span><span class="co">#&gt; • Content-Type: 'application/json; charset=utf-8'</span></span>
 <span><span class="co">#&gt; • Accept: 'application/json; charset=utf-8'</span></span>
 <span><span class="co">#&gt; Body: a string</span></span>
 <span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
 <span><span class="co">#&gt; POST</span></span>
-<span><span class="co">#&gt; http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/4e7e24cc-da16-4a03-88b6-90b0d9002d6f/elements</span></span>
+<span><span class="co">#&gt; http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/ee4645e9-f454-4e77-a154-9caa58fb647c/elements</span></span>
 <span><span class="co">#&gt; Headers:</span></span>
 <span><span class="co">#&gt; • Content-Type: 'application/json; charset=utf-8'</span></span>
 <span><span class="co">#&gt; • Accept: 'application/json; charset=utf-8'</span></span>
 <span><span class="co">#&gt; Body: a string</span></span>
 <span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
 <span><span class="co">#&gt; POST</span></span>
-<span><span class="co">#&gt; http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/d42ae7f3-9049-49cc-8d66-1eb54448872c/element</span></span>
+<span><span class="co">#&gt; http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/1389fce5-9ad2-4d2e-9903-7b0fe12c93eb/element</span></span>
 <span><span class="co">#&gt; Headers:</span></span>
 <span><span class="co">#&gt; • Content-Type: 'application/json; charset=utf-8'</span></span>
 <span><span class="co">#&gt; • Accept: 'application/json; charset=utf-8'</span></span>
 <span><span class="co">#&gt; Body: a string</span></span>
 <span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
 <span><span class="co">#&gt; GET</span></span>
-<span><span class="co">#&gt; http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/f84c605c-648f-4292-b507-39959d9d602b/text</span></span>
+<span><span class="co">#&gt; http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/612a6787-d2a2-4a1c-9a32-bee650fa8f17/text</span></span>
 <span><span class="co">#&gt; Body: empty</span></span>
 <span><span class="co">#&gt; [1] ""</span></span>
 <span></span>
 <span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; &lt;httr2_request&gt;</span></span>
-<span><span class="co">#&gt; DELETE http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2</span></span>
+<span><span class="co">#&gt; DELETE http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a</span></span>
 <span><span class="co">#&gt; Body: empty</span></span></code></pre></div>
 <p>For a more detailed introduction to using selenium, see the Getting Started vignette (<code>vignette("selenium")</code>). <!-- TODO: Make this vignette ---></p>
 <p>Note that selenium is low-level and mainly aimed towards developers. If you are wanting to use browser automation for web scraping or testing, you may want to take a look at <a href="https://github.com/ashbythorpe/selenider" class="external-link">selenider</a> instead.</p>
@@ -209,7 +209,12 @@
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/ashbythorpe/selenium-r/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/ashbythorpe/selenium-r/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+</ul>
+</div>
 
   </aside>
 </div>

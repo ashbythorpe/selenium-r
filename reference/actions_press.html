@@ -67,6 +67,71 @@ the <a href="keys.html">keys</a> object to use special keys (e.g. <ctrl>).</ctrl
 <p>A <code>selenium_action</code> object.</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="actions_stream.html">actions_stream</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu">actions_press</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu">actions_release</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu">actions_press</span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">enter</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu">actions_release</span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">enter</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "key"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "547342"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$actions</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$actions[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "keyDown"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "selenium_action"       "selenium_action_key"   "selenium_action_press"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$actions[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "keyUp"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "selenium_action"         "selenium_action_key"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "selenium_action_release"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$actions[[3]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "keyDown"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] ""</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "selenium_action"       "selenium_action_key"   "selenium_action_press"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$actions[[4]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "keyUp"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] ""</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "selenium_action"         "selenium_action_key"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "selenium_action_release"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "selenium_actions_stream"</span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 

@@ -40,7 +40,7 @@ existing SeleniumSession instance."><!-- mathjax --><script src="https://cdnjs.c
 
     <div class="ref-description section level2">
     <p>This class represents a single element on the page. It is created using an
-existing <code>SeleniumSession</code> instance.</p>
+existing <a href="SeleniumSession.html">SeleniumSession</a> instance.</p>
     </div>
 
 
@@ -51,7 +51,7 @@ existing <code>SeleniumSession</code> instance.</p>
 <p>A <code>WebElement</code> object.</p>
 
 
-<p>A <code>ShadowRoot</code> object.</p>
+<p>A <a href="ShadowRoot.html">ShadowRoot</a> object.</p>
 
 
 <p>A <code>WebElement</code> object.</p>
@@ -103,6 +103,9 @@ existing <code>SeleniumSession</code> instance.</p>
 <p>The base64-encoded PNG screenshot, as a string.</p>
 
 
+<p>A boolean.</p>
+
+
 <p>A list, which can then be converted to JSON using
 <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">jsonlite::toJSON()</a></code>.</p>
     </div>
@@ -139,14 +142,16 @@ page.</p></dd>
 <li><p><a href="#method-WebElement-clear"><code>WebElement$clear()</code></a></p></li>
 <li><p><a href="#method-WebElement-send_keys"><code>WebElement$send_keys()</code></a></p></li>
 <li><p><a href="#method-WebElement-screenshot"><code>WebElement$screenshot()</code></a></p></li>
+<li><p><a href="#method-WebElement-is_displayed"><code>WebElement$is_displayed()</code></a></p></li>
 <li><p><a href="#method-WebElement-toJSON"><code>WebElement$toJSON()</code></a></p></li>
 <li><p><a href="#method-WebElement-clone"><code>WebElement$clone()</code></a></p></li>
 </ul></div><p></p><hr><a id="method-WebElement-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Initialize a <code>WebElement</code> object. This should not be called manually:
-instead use <code>SeleniumSession$create_webelement()</code> if you have an element
-id. To find elements on the page, use <code>SeleniumSession$find_element()</code>
-and <code>SeleniumSession$find_elements()</code>.</p><div class="section">
+instead use <a href="SeleniumSession.html">SeleniumSession$create_webelement()</a> if
+you have an element id. To find elements on the page, use
+<a href="SeleniumSession.html">SeleniumSession$find_element()</a> and
+<a href="SeleniumSession.html">SeleniumSession$find_elements()</a>.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/WebElement.html">WebElement</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">session_id</span>, <span class="va">req</span>, <span class="va">verbose</span>, <span class="va">id</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
@@ -158,7 +163,7 @@ and <code>SeleniumSession$find_elements()</code>.</p><div class="section">
 
 
 <dt><code>req, verbose</code></dt>
-<dd><p>Private fields of a <code>SeleniumSession</code> object.</p></dd>
+<dd><p>Private fields of a <a href="SeleniumSession.html">SeleniumSession</a> object.</p></dd>
 
 
 <dt><code>id</code></dt>
@@ -362,7 +367,7 @@ that points to the current element).</p><div class="section">
 <h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>The keys to send (strings). Use <a href="keys.html">keys</a> for special keys, and
-use <code><a href="key_chord.html">key_chord()</a></code> to send multiple keys at once.</p></dd>
+use <code><a href="key_chord.html">key_chord()</a></code> to send keys combinations.</p></dd>
 
 
 </dl><p></p></div>
@@ -376,11 +381,20 @@ use <code><a href="key_chord.html">key_chord()</a></code> to send multiple keys 
 </div>
 
 
+</div><p></p><hr><a id="method-WebElement-is_displayed"></a><div class="section">
+<h3 id="method-is-displayed-">Method <code>is_displayed()</code><a class="anchor" aria-label="anchor" href="#method-is-displayed-"></a></h3>
+<p>Check if an element is displayed. This function may not work on all
+platforms.</p><div class="section">
+<h4 id="usage-18">Usage<a class="anchor" aria-label="anchor" href="#usage-18"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">is_displayed</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+
 </div><p></p><hr><a id="method-WebElement-toJSON"></a><div class="section">
 <h3 id="method-tojson-">Method <code>toJSON()</code><a class="anchor" aria-label="anchor" href="#method-tojson-"></a></h3>
 <p>Convert an element to JSON. This is used by
-<code>SeleniumSession$execute_script()</code>.</p><div class="section">
-<h4 id="usage-18">Usage<a class="anchor" aria-label="anchor" href="#usage-18"></a></h4>
+<a href="SeleniumSession.html">SeleniumSession$execute_script()</a>.</p><div class="section">
+<h4 id="usage-19">Usage<a class="anchor" aria-label="anchor" href="#usage-19"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">toJSON</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -388,7 +402,7 @@ use <code><a href="key_chord.html">key_chord()</a></code> to send multiple keys 
 </div><p></p><hr><a id="method-WebElement-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-19">Usage<a class="anchor" aria-label="anchor" href="#usage-19"></a></h4>
+<h4 id="usage-20">Usage<a class="anchor" aria-label="anchor" href="#usage-20"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -405,6 +419,215 @@ use <code><a href="key_chord.html">key_chord()</a></code> to send multiple keys 
 
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">element</span> <span class="op">&lt;-</span> <span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"#download"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Let's create our own Shadow Root using JavaScript</span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">execute_script</span><span class="op">(</span><span class="st">"</span></span></span>
+<span class="r-in"><span><span class="st">  const div = document.createElement('div');</span></span></span>
+<span class="r-in"><span><span class="st">  document.body.appendChild(div);</span></span></span>
+<span class="r-in"><span><span class="st">  div.attachShadow({mode: 'open'});</span></span></span>
+<span class="r-in"><span><span class="st">"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">element</span> <span class="op">&lt;-</span> <span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"div"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">shadow_root</span> <span class="op">&lt;-</span> <span class="va">element</span><span class="op">$</span><span class="fu">shadow_root</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">row</span> <span class="op">&lt;-</span> <span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">".row"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">logo_container</span> <span class="op">&lt;-</span> <span class="va">row</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"p"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">logo</span> <span class="op">&lt;-</span> <span class="va">logo_container</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"img"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">row</span> <span class="op">&lt;-</span> <span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">".row"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">links</span> <span class="op">&lt;-</span> <span class="va">row</span><span class="op">$</span><span class="fu">find_elements</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"a"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"#download"</span><span class="op">)</span><span class="op">$</span><span class="fu">is_selected</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"a"</span><span class="op">)</span><span class="op">$</span><span class="fu">get_attribute</span><span class="op">(</span><span class="st">"href"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"a"</span><span class="op">)</span><span class="op">$</span><span class="fu">get_property</span><span class="op">(</span><span class="st">"href"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"a"</span><span class="op">)</span><span class="op">$</span><span class="fu">get_css_value</span><span class="op">(</span><span class="st">"color"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"#download"</span><span class="op">)</span><span class="op">$</span><span class="fu">get_text</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"#download"</span><span class="op">)</span><span class="op">$</span><span class="fu">get_tag_name</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"#download"</span><span class="op">)</span><span class="op">$</span><span class="fu">get_rect</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"a"</span><span class="op">)</span><span class="op">$</span><span class="fu">is_enabled</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"a"</span><span class="op">)</span><span class="op">$</span><span class="fu">computed_role</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"a"</span><span class="op">)</span><span class="op">$</span><span class="fu">computed_label</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"a"</span><span class="op">)</span><span class="op">$</span><span class="fu">click</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.google.com"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"textarea"</span><span class="op">)</span><span class="op">$</span><span class="fu">clear</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.google.com"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">input</span> <span class="op">&lt;-</span> <span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"textarea"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">input</span><span class="op">$</span><span class="fu">send_keys</span><span class="op">(</span><span class="st">"Hello"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">input</span><span class="op">$</span><span class="fu">send_keys</span><span class="op">(</span><span class="fu"><a href="key_chord.html">key_chord</a></span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">ctrl</span>, <span class="st">"a"</span><span class="op">)</span>, <span class="fu"><a href="key_chord.html">key_chord</a></span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">ctrl</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">input</span><span class="op">$</span><span class="fu">send_keys</span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">ctrl</span>, <span class="st">"v"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">input</span><span class="op">$</span><span class="fu">get_attribute</span><span class="op">(</span><span class="st">"value"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"a"</span><span class="op">)</span><span class="op">$</span><span class="fu">screenshot</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"a"</span><span class="op">)</span><span class="op">$</span><span class="fu">is_displayed</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="va">session</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">"a"</span><span class="op">)</span><span class="op">$</span><span class="fu">toJSON</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">result</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">toJSON</a></span><span class="op">(</span><span class="va">result</span>, auto_unbox <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 

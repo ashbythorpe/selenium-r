@@ -75,6 +75,126 @@ and <code><a href="actions_mousedown.html">actions_mousemove()</a></code>.</p></
 </ul></div>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">actions_stream</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="actions_press.html">actions_press</a></span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">enter</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="actions_pause.html">actions_pause</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="actions_press.html">actions_release</a></span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">enter</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="actions_scroll.html">actions_scroll</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span>, y <span class="op">=</span> <span class="fl">1</span>, delta_x <span class="op">=</span> <span class="fl">1</span>, delta_y <span class="op">=</span> <span class="fl">1</span>, duration <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="actions_mousedown.html">actions_mousemove</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span>, y <span class="op">=</span> <span class="fl">1</span>, duration <span class="op">=</span> <span class="fl">1</span>, origin <span class="op">=</span> <span class="st">"pointer"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "key"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "105934"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$actions</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$actions[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "keyDown"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] ""</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "selenium_action"       "selenium_action_key"   "selenium_action_press"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$actions[[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "pause"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $duration</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "selenium_action"       "selenium_action_pause"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$actions[[3]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "keyUp"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] ""</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "selenium_action"         "selenium_action_key"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "selenium_action_release"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]$type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "wheel"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]$id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "245225"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]$actions</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]$actions[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "scroll"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $x</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $duration</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $origin</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "viewport"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $deltaX</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $deltaY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "selenium_action"        "selenium_action_scroll"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]$type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "pointer"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]$id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "810586"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]$actions</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]$actions[[1]]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "pointerMove"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $x</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $duration</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $origin</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "pointer"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "selenium_action"              "selenium_action_pointer"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [3] "selenium_action_pointer_move"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "selenium_actions_stream"</span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 
