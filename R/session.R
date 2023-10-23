@@ -23,9 +23,13 @@ SeleniumSession <- R6::R6Class(
     #' @param port The port that the Selenium server is using, so we can
     #'   connect to it.
     #' @param host The host that the Selenium server is running on. This is
-    #'   usually 'localhost' (i.e. Your own machine).
+    #'   usually 'localhost' (i.e. your own machine).
     #' @param verbose Whether to print the web requests that are being sent and
     #'   any responses.
+    #' @param capabilities A list of capabilities to pass to the Selenium
+    #'   server, to combine with the defaults generated using `browser`.
+    #' @param request_body A list of request body parameters to pass to the
+    #'   Selenium server. Overrides `capabilities`.
     #'
     #' @return A `SeleniumSession` object.
     #'
@@ -35,10 +39,38 @@ SeleniumSession <- R6::R6Class(
     #'
     #' session$close()
     #' }
-    initialize = function(browser = "firefox", port = 4444L, host = "localhost", verbose = FALSE) {
-      env_browser <- Sys.getenv("SELENIUM_BROWSER")
-      if (env_browser != "") {
-        browser <- env_browser
+    initialize = function(
+      browser = "firefox",
+      port = 4444L,
+      host = "localhost",
+      verbose = FALSE,
+      capabilities = NULL,
+      request_body = NULL
+    ) {
+      opts <- switch(browser,
+        firefox = list(
+          browserName = "firefox",
+          acceptInsecureCerts = TRUE
+        ),
+        edge = list(
+          browserName = "microsoftEdge",
+        ),
+        list(browserName = browser)
+      )
+
+      if (!is.null(capabilities)) {
+        opts <- merge_lists(opts, capabilities)
+      }
+
+      body <- if (!is.null(request_body)) {
+        request_body
+      } else {
+        list(
+          capabilities = list(
+            firstMatch = list(named_list()),
+            alwaysMatch = opts
+          )
+        )
       }
 
       url <- sprintf("http://%s:%s", host, port)
@@ -47,14 +79,6 @@ SeleniumSession <- R6::R6Class(
 
       req <- req_command(private$req, "New Session")
 
-      body <- list(
-        capabilities = list(
-          firstMatch = list(named_list()),
-          alwaysMatch = list(
-            browserName = browser
-          )
-        )
-      )
       req <- req_body_selenium(req, body)
 
       result <- req_perform_selenium(req, verbose = private$verbose)

@@ -36,3 +36,11 @@ to_sentence_case <- function(x) {
 rand_id <- function() {
   as.character(round(stats::runif(1, min = 0, max = 1000000)))
 }
+
+merge_lists <- function(x, y) {
+  for (i in seq_along(y)) {
+    x[[names(y)[i]]] <- y[[i]]
+  }
+
+  x
+}

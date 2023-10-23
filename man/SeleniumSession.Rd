@@ -712,7 +712,9 @@ the Selenium client.
   browser = "firefox",
   port = 4444L,
   host = "localhost",
-  verbose = FALSE
+  verbose = FALSE,
+  capabilities = NULL,
+  request_body = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -726,10 +728,16 @@ the Selenium client.
 connect to it.}
 
 \item{\code{host}}{The host that the Selenium server is running on. This is
-usually 'localhost' (i.e. Your own machine).}
+usually 'localhost' (i.e. your own machine).}
 
 \item{\code{verbose}}{Whether to print the web requests that are being sent and
 any responses.}
+
+\item{\code{capabilities}}{A list of capabilities to pass to the Selenium
+server, to combine with the defaults generated using \code{browser}.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server. Overrides \code{capabilities}.}
 }
 \if{html}{\out{</div>}}
 }

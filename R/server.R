@@ -57,6 +57,7 @@ selenium_server <- function(version = "latest",
     if (n_version < "4.9.0" && selenium_manager) {
       rlang::warn(c(
         "Selenium Server 4.9.0 or higher is required to use Selenium Manager.",
+        "x" = paste0("Actual version requested: ", n_version, "."),
         "x" = "Disabling Selenium Manager.",
         "i" = "Set `selenium_manager` to `FALSE` to disable this warning."
       ))
