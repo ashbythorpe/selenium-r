@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # selenium
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/ashbythorpe/selenium-r/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ashbythorpe/selenium-r/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 selenium is a tool for the automation of web browsers. It is a low-level interface 

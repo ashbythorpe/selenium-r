@@ -4,6 +4,8 @@
 # selenium
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/ashbythorpe/selenium-r/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ashbythorpe/selenium-r/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 selenium is a tool for the automation of web browsers. It is a low-level
@@ -99,7 +101,7 @@ object to control the browser.
 ``` r
 session$navigate("https://www.r-project.org/")
 #> <httr2_request>
-#> POST http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/url
+#> POST http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/url
 #> Headers:
 #> • Content-Type: 'application/json; charset=utf-8'
 #> • Accept: 'application/json; charset=utf-8'
@@ -110,28 +112,28 @@ session$
   find_element(using = "css selector", value = "a")$
   click()
 #> <httr2_request>
-#> POST http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element
+#> POST http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element
 #> Headers:
 #> • Content-Type: 'application/json; charset=utf-8'
 #> • Accept: 'application/json; charset=utf-8'
 #> Body: a string
 #> <httr2_request>
 #> POST
-#> http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/ff8f7f31-a5f6-44de-b7cc-91b93bc1c28f/element
+#> http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/c1b4da9a-5c18-45de-8835-47c2127e038d/element
 #> Headers:
 #> • Content-Type: 'application/json; charset=utf-8'
 #> • Accept: 'application/json; charset=utf-8'
 #> Body: a string
 #> <httr2_request>
 #> POST
-#> http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/44e21cef-1467-45ec-b532-17910872fd98/element
+#> http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/927ebbbf-c612-4e82-a603-41ffad9631fe/element
 #> Headers:
 #> • Content-Type: 'application/json; charset=utf-8'
 #> • Accept: 'application/json; charset=utf-8'
 #> Body: a string
 #> <httr2_request>
 #> POST
-#> http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/c9913f24-7583-49ba-952f-752c3431902e/click
+#> http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/1358a79f-a2ef-414d-bfc5-268da1dea696/click
 #> Headers:
 #> • Content-Type: 'application/json; charset=utf-8'
 #> • Accept: 'application/json; charset=utf-8'
@@ -143,34 +145,34 @@ session$
   find_element(using = "css selector", value = "p")$
   get_text()
 #> <httr2_request>
-#> POST http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element
+#> POST http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element
 #> Headers:
 #> • Content-Type: 'application/json; charset=utf-8'
 #> • Accept: 'application/json; charset=utf-8'
 #> Body: a string
 #> <httr2_request>
 #> POST
-#> http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/4e7e24cc-da16-4a03-88b6-90b0d9002d6f/elements
+#> http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/ee4645e9-f454-4e77-a154-9caa58fb647c/elements
 #> Headers:
 #> • Content-Type: 'application/json; charset=utf-8'
 #> • Accept: 'application/json; charset=utf-8'
 #> Body: a string
 #> <httr2_request>
 #> POST
-#> http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/d42ae7f3-9049-49cc-8d66-1eb54448872c/element
+#> http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/1389fce5-9ad2-4d2e-9903-7b0fe12c93eb/element
 #> Headers:
 #> • Content-Type: 'application/json; charset=utf-8'
 #> • Accept: 'application/json; charset=utf-8'
 #> Body: a string
 #> <httr2_request>
 #> GET
-#> http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2/element/f84c605c-648f-4292-b507-39959d9d602b/text
+#> http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a/element/612a6787-d2a2-4a1c-9a32-bee650fa8f17/text
 #> Body: empty
 #> [1] ""
 
 session$close()
 #> <httr2_request>
-#> DELETE http://localhost:4444/session/a07b9550-28a1-4b85-9515-65ab2f848fd2
+#> DELETE http://localhost:4444/session/1a5fee1d-070c-4fa0-afc5-920ad61a8c1a
 #> Body: empty
 ```
 
