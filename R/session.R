@@ -30,7 +30,7 @@ SeleniumSession <- R6::R6Class(
     #' @return A `SeleniumSession` object.
     #'
     #' @examplesIf selenium_server_available()
-    #' session <- SeleniumSession$new(browser = "firefox", verbose = TRUE)
+    #' session <- SeleniumSession$new(verbose = TRUE)
     #'
     #' session$close()
     initialize = function(browser = "firefox", port = 4444L, host = "localhost", verbose = FALSE) {

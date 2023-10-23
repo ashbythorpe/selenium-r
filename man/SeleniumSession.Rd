@@ -12,7 +12,7 @@ start a server automatically.
 }
 \examples{
 \dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-session <- SeleniumSession$new(browser = "firefox", verbose = TRUE)
+session <- SeleniumSession$new(verbose = TRUE)
 
 session$close()
 \dontshow{\}) # examplesIf}
