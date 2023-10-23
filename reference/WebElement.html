@@ -45,71 +45,6 @@ existing <a href="SeleniumSession.html">SeleniumSession</a> instance.</p>
 
 
     <div class="section level2">
-    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    
-
-<p>A <code>WebElement</code> object.</p>
-
-
-<p>A <a href="ShadowRoot.html">ShadowRoot</a> object.</p>
-
-
-<p>A <code>WebElement</code> object.</p>
-
-
-<p>A list of <code>WebElement</code> objects.</p>
-
-
-<p>A boolean value: <code>TRUE</code> or <code>FALSE</code>.</p>
-
-
-<p>The value of the attribute: a string.</p>
-
-
-<p>The value of the property: a string.</p>
-
-
-<p>The value of the CSS property: a string.</p>
-
-
-<p>The text content of the element: a string.</p>
-
-
-<p>The tag name of the element: a string.</p>
-
-
-<p>A list containing the following elements:</p><ul><li><p><code>x</code>: The x-coordinate of the element.</p></li>
-<li><p><code>y</code>: The y-coordinate of the element.</p></li>
-<li><p><code>width</code>: The width of the element in pixels.</p></li>
-<li><p><code>height</code>: The height of the element in pixels.</p></li>
-</ul><p>A boolean value: <code>TRUE</code> or <code>FALSE</code>.</p>
-
-
-<p>A string.</p>
-
-
-<p>A string.</p>
-
-
-<p>The element, invisibly.</p>
-
-
-<p>The element, invisibly.</p>
-
-
-<p>The element, invisibly.</p>
-
-
-<p>The base64-encoded PNG screenshot, as a string.</p>
-
-
-<p>A boolean.</p>
-
-
-<p>A list, which can then be converted to JSON using
-<code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">jsonlite::toJSON()</a></code>.</p>
-    </div>
-    <div class="section level2">
     <h2 id="public-fields">Public fields<a class="anchor" aria-label="anchor" href="#public-fields"></a></h2>
     <p></p><div class="r6-fields"><dl><dt><code>id</code></dt>
 <dd><p>The id of the element, used to uniquely identify it on the
@@ -172,6 +107,10 @@ you have an element id. To find elements on the page, use
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
+<p>A <code>WebElement</code> object.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-shadow_root"></a><div class="section">
 <h3 id="method-shadow-root-">Method <code>shadow_root()</code><a class="anchor" aria-label="anchor" href="#method-shadow-root-"></a></h3>
@@ -182,6 +121,10 @@ method gets the shadow root property of an element.</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">shadow_root</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-1">Returns<a class="anchor" aria-label="anchor" href="#returns-1"></a></h4>
+<p>A <a href="ShadowRoot.html">ShadowRoot</a> object.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-find_element"></a><div class="section">
 <h3 id="method-find-element-">Method <code>find_element()</code><a class="anchor" aria-label="anchor" href="#method-find-element-"></a></h3>
@@ -206,6 +149,10 @@ element.</p><div class="section">
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-2">Returns<a class="anchor" aria-label="anchor" href="#returns-2"></a></h4>
+<p>A <code>WebElement</code> object.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-find_elements"></a><div class="section">
 <h3 id="method-find-elements-">Method <code>find_elements()</code><a class="anchor" aria-label="anchor" href="#method-find-elements-"></a></h3>
@@ -229,6 +176,10 @@ element.</p><div class="section">
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-3">Returns<a class="anchor" aria-label="anchor" href="#returns-3"></a></h4>
+<p>A list of <code>WebElement</code> objects.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-is_selected"></a><div class="section">
 <h3 id="method-is-selected-">Method <code>is_selected()</code><a class="anchor" aria-label="anchor" href="#method-is-selected-"></a></h3>
@@ -237,6 +188,10 @@ element.</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">is_selected</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
+<p>A boolean value: <code>TRUE</code> or <code>FALSE</code>.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-get_attribute"></a><div class="section">
 <h3 id="method-get-attribute-">Method <code>get_attribute()</code><a class="anchor" aria-label="anchor" href="#method-get-attribute-"></a></h3>
@@ -252,6 +207,10 @@ element.</p><div class="section">
 
 
 </dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-5">Returns<a class="anchor" aria-label="anchor" href="#returns-5"></a></h4>
+<p>The value of the attribute: a string.</p>
 </div>
 
 </div><p></p><hr><a id="method-WebElement-get_property"></a><div class="section">
@@ -271,6 +230,10 @@ state of the DOM.</p><div class="section">
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-6">Returns<a class="anchor" aria-label="anchor" href="#returns-6"></a></h4>
+<p>The value of the property: a string.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-get_css_value"></a><div class="section">
 <h3 id="method-get-css-value-">Method <code>get_css_value()</code><a class="anchor" aria-label="anchor" href="#method-get-css-value-"></a></h3>
@@ -287,6 +250,10 @@ state of the DOM.</p><div class="section">
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-7">Returns<a class="anchor" aria-label="anchor" href="#returns-7"></a></h4>
+<p>The value of the CSS property: a string.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-get_text"></a><div class="section">
 <h3 id="method-get-text-">Method <code>get_text()</code><a class="anchor" aria-label="anchor" href="#method-get-text-"></a></h3>
@@ -295,6 +262,10 @@ state of the DOM.</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_text</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-8">Returns<a class="anchor" aria-label="anchor" href="#returns-8"></a></h4>
+<p>The text content of the element: a string.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-get_tag_name"></a><div class="section">
 <h3 id="method-get-tag-name-">Method <code>get_tag_name()</code><a class="anchor" aria-label="anchor" href="#method-get-tag-name-"></a></h3>
@@ -303,6 +274,10 @@ state of the DOM.</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_tag_name</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-9">Returns<a class="anchor" aria-label="anchor" href="#returns-9"></a></h4>
+<p>The tag name of the element: a string.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-get_rect"></a><div class="section">
 <h3 id="method-get-rect-">Method <code>get_rect()</code><a class="anchor" aria-label="anchor" href="#method-get-rect-"></a></h3>
@@ -311,6 +286,13 @@ state of the DOM.</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_rect</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-10">Returns<a class="anchor" aria-label="anchor" href="#returns-10"></a></h4>
+<p>A list containing the following elements:</p><ul><li><p><code>x</code>: The x-coordinate of the element.</p></li>
+<li><p><code>y</code>: The y-coordinate of the element.</p></li>
+<li><p><code>width</code>: The width of the element in pixels.</p></li>
+<li><p><code>height</code>: The height of the element in pixels.</p></li>
+</ul></div>
 
 </div><p></p><hr><a id="method-WebElement-is_enabled"></a><div class="section">
 <h3 id="method-is-enabled-">Method <code>is_enabled()</code><a class="anchor" aria-label="anchor" href="#method-is-enabled-"></a></h3>
@@ -319,6 +301,10 @@ state of the DOM.</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">is_enabled</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-11">Returns<a class="anchor" aria-label="anchor" href="#returns-11"></a></h4>
+<p>A boolean value: <code>TRUE</code> or <code>FALSE</code>.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-computed_role"></a><div class="section">
 <h3 id="method-computed-role-">Method <code>computed_role()</code><a class="anchor" aria-label="anchor" href="#method-computed-role-"></a></h3>
@@ -330,6 +316,10 @@ a "button" role.</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">computed_role</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-12">Returns<a class="anchor" aria-label="anchor" href="#returns-12"></a></h4>
+<p>A string.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-computed_label"></a><div class="section">
 <h3 id="method-computed-label-">Method <code>computed_label()</code><a class="anchor" aria-label="anchor" href="#method-computed-label-"></a></h3>
@@ -339,6 +329,10 @@ that points to the current element).</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">computed_label</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-13">Returns<a class="anchor" aria-label="anchor" href="#returns-13"></a></h4>
+<p>A string.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-click"></a><div class="section">
 <h3 id="method-click-">Method <code>click()</code><a class="anchor" aria-label="anchor" href="#method-click-"></a></h3>
@@ -347,6 +341,10 @@ that points to the current element).</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">click</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-14">Returns<a class="anchor" aria-label="anchor" href="#returns-14"></a></h4>
+<p>The element, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-clear"></a><div class="section">
 <h3 id="method-clear-">Method <code>clear()</code><a class="anchor" aria-label="anchor" href="#method-clear-"></a></h3>
@@ -355,6 +353,10 @@ that points to the current element).</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">clear</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-15">Returns<a class="anchor" aria-label="anchor" href="#returns-15"></a></h4>
+<p>The element, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-send_keys"></a><div class="section">
 <h3 id="method-send-keys-">Method <code>send_keys()</code><a class="anchor" aria-label="anchor" href="#method-send-keys-"></a></h3>
@@ -372,6 +374,10 @@ use <code><a href="key_chord.html">key_chord()</a></code> to send keys combinati
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-16">Returns<a class="anchor" aria-label="anchor" href="#returns-16"></a></h4>
+<p>The element, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-screenshot"></a><div class="section">
 <h3 id="method-screenshot-">Method <code>screenshot()</code><a class="anchor" aria-label="anchor" href="#method-screenshot-"></a></h3>
@@ -380,6 +386,10 @@ use <code><a href="key_chord.html">key_chord()</a></code> to send keys combinati
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">screenshot</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-17">Returns<a class="anchor" aria-label="anchor" href="#returns-17"></a></h4>
+<p>The base64-encoded PNG screenshot, as a string.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-is_displayed"></a><div class="section">
 <h3 id="method-is-displayed-">Method <code>is_displayed()</code><a class="anchor" aria-label="anchor" href="#method-is-displayed-"></a></h3>
@@ -389,6 +399,10 @@ platforms.</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">is_displayed</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-18">Returns<a class="anchor" aria-label="anchor" href="#returns-18"></a></h4>
+<p>A boolean.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-toJSON"></a><div class="section">
 <h3 id="method-tojson-">Method <code>toJSON()</code><a class="anchor" aria-label="anchor" href="#method-tojson-"></a></h3>
@@ -398,6 +412,11 @@ platforms.</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">toJSON</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-19">Returns<a class="anchor" aria-label="anchor" href="#returns-19"></a></h4>
+<p>A list, which can then be converted to JSON using
+<code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">jsonlite::toJSON()</a></code>.</p>
+</div>
 
 </div><p></p><hr><a id="method-WebElement-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>

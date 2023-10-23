@@ -54,147 +54,6 @@ start a server automatically.</p>
 
 
     <div class="section level2">
-    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    
-
-<p>A <code>SeleniumSession</code> object.</p>
-
-
-<p>A <a href="WebElement.html">WebElement</a> object.</p>
-
-
-<p>A <a href="ShadowRoot.html">ShadowRoot</a> object.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>A list that can (but may not always) contain the following
-fields:</p><ul><li><p><code>ready</code>: Whether the server is ready to be connected to. This should
-always be returned by the server.</p></li>
-<li><p><code>message</code>: A message about the status of the server.</p></li>
-<li><p><code>uptime</code>: How long the server has been running.</p></li>
-<li><p><code>nodes</code>: Information about the slots that the server can take.</p></li>
-</ul><p>A list with three items: <code>script</code>, <code>page_load</code>, and <code>implicit</code>.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>The URL of the current page.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>The title of the current page.</p>
-
-
-<p>The handle of the current window (a string).</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>The handles of all open windows (a list of strings).</p>
-
-
-<p>A list containing two elements:</p><ul><li><p><code>handle</code>: The handle of the new window.</p></li>
-<li><p><code>type</code>: The type of window. ("tab" or "window").</p></li>
-</ul><p>The session object, invisibly.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>A list containing four elements:</p><ul><li><p><code>x</code>: The x position of the window relative to the left of the screen.</p></li>
-<li><p><code>y</code>: The y position of the window relative to the top of the screen.</p></li>
-<li><p><code>width</code>: The width of the window.</p></li>
-<li><p><code>height</code>: The height of the window.</p></li>
-</ul><p>The session object, invisibly.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>A <a href="WebElement.html">WebElement</a> object.</p>
-
-
-<p>A <a href="WebElement.html">WebElement</a> object.</p>
-
-
-<p>A list of <a href="WebElement.html">WebElement</a> objects.</p>
-
-
-<p>A string.</p>
-
-
-<p>The return value of the script. Nodes or lists of nodes will
-be converted to <a href="WebElement.html">WebElement</a> objects.</p>
-
-
-<p>The return value of the script. Nodes or lists of nodes will
-be converted to <a href="WebElement.html">WebElement</a> objects.</p>
-
-
-<p>A list of cookies. Each cookie is a list with a <code>name</code> and
-<code>value</code> field, along with some other optional fields.</p>
-
-
-<p>The cookie object.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>The message of the current alert (a string).</p>
-
-
-<p>The session object, invisibly.</p>
-
-
-<p>The base64-encoded PNG screenshot, as a string.</p>
-
-
-<p>The base64-encoded PDF, as a string.</p>
-    </div>
-    <div class="section level2">
     <h2 id="public-fields">Public fields<a class="anchor" aria-label="anchor" href="#public-fields"></a></h2>
     <p></p><div class="r6-fields"><dl><dt><code>id</code></dt>
 <dd><p>The id of the session, generated when the session is started.</p></dd>
@@ -290,6 +149,10 @@ any responses.</p></dd>
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
+<p>A <code>SeleniumSession</code> object.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-create_webelement"></a><div class="section">
 <h3 id="method-create-webelement-">Method <code>create_webelement()</code><a class="anchor" aria-label="anchor" href="#method-create-webelement-"></a></h3>
@@ -306,6 +169,10 @@ session.</p><div class="section">
 
 
 </dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-1">Returns<a class="anchor" aria-label="anchor" href="#returns-1"></a></h4>
+<p>A <a href="WebElement.html">WebElement</a> object.</p>
 </div>
 
 </div><p></p><hr><a id="method-SeleniumSession-create_shadowroot"></a><div class="section">
@@ -324,6 +191,10 @@ session.</p><div class="section">
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-2">Returns<a class="anchor" aria-label="anchor" href="#returns-2"></a></h4>
+<p>A <a href="ShadowRoot.html">ShadowRoot</a> object.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-close"></a><div class="section">
 <h3 id="method-close-">Method <code><a href="https://rdrr.io/r/base/connections.html" class="external-link">close()</a></code><a class="anchor" aria-label="anchor" href="#method-close-"></a></h3>
@@ -333,6 +204,10 @@ no longer work. However, the Selenium server will still be running.</p><div clas
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-3">Returns<a class="anchor" aria-label="anchor" href="#returns-3"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-status"></a><div class="section">
 <h3 id="method-status-">Method <code>status()</code><a class="anchor" aria-label="anchor" href="#method-status-"></a></h3>
@@ -345,6 +220,15 @@ options passed to the session, for convenience.</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">status</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
+<p>A list that can (but may not always) contain the following
+fields:</p><ul><li><p><code>ready</code>: Whether the server is ready to be connected to. This should
+always be returned by the server.</p></li>
+<li><p><code>message</code>: A message about the status of the server.</p></li>
+<li><p><code>uptime</code>: How long the server has been running.</p></li>
+<li><p><code>nodes</code>: Information about the slots that the server can take.</p></li>
+</ul></div>
 
 </div><p></p><hr><a id="method-SeleniumSession-get_timeouts"></a><div class="section">
 <h3 id="method-get-timeouts-">Method <code>get_timeouts()</code><a class="anchor" aria-label="anchor" href="#method-get-timeouts-"></a></h3>
@@ -361,6 +245,10 @@ required. Defaults to 0 seconds.</p></li>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_timeouts</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-5">Returns<a class="anchor" aria-label="anchor" href="#returns-5"></a></h4>
+<p>A list with three items: <code>script</code>, <code>page_load</code>, and <code>implicit</code>.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-set_timeouts"></a><div class="section">
 <h3 id="method-set-timeouts-">Method <code>set_timeouts()</code><a class="anchor" aria-label="anchor" href="#method-set-timeouts-"></a></h3>
@@ -392,6 +280,10 @@ page.</p></dd>
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-6">Returns<a class="anchor" aria-label="anchor" href="#returns-6"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-navigate"></a><div class="section">
 <h3 id="method-navigate-">Method <code>navigate()</code><a class="anchor" aria-label="anchor" href="#method-navigate-"></a></h3>
@@ -409,6 +301,10 @@ page.</p></dd>
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-7">Returns<a class="anchor" aria-label="anchor" href="#returns-7"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-current_url"></a><div class="section">
 <h3 id="method-current-url-">Method <code>current_url()</code><a class="anchor" aria-label="anchor" href="#method-current-url-"></a></h3>
@@ -417,6 +313,10 @@ page.</p></dd>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">current_url</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-8">Returns<a class="anchor" aria-label="anchor" href="#returns-8"></a></h4>
+<p>The URL of the current page.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-back"></a><div class="section">
 <h3 id="method-back-">Method <code>back()</code><a class="anchor" aria-label="anchor" href="#method-back-"></a></h3>
@@ -425,6 +325,10 @@ page.</p></dd>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">back</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-9">Returns<a class="anchor" aria-label="anchor" href="#returns-9"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-forward"></a><div class="section">
 <h3 id="method-forward-">Method <code>forward()</code><a class="anchor" aria-label="anchor" href="#method-forward-"></a></h3>
@@ -433,6 +337,10 @@ page.</p></dd>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">forward</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-10">Returns<a class="anchor" aria-label="anchor" href="#returns-10"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-refresh"></a><div class="section">
 <h3 id="method-refresh-">Method <code>refresh()</code><a class="anchor" aria-label="anchor" href="#method-refresh-"></a></h3>
@@ -441,6 +349,10 @@ page.</p></dd>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">refresh</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-11">Returns<a class="anchor" aria-label="anchor" href="#returns-11"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-title"></a><div class="section">
 <h3 id="method-title-">Method <code><a href="https://rdrr.io/r/graphics/title.html" class="external-link">title()</a></code><a class="anchor" aria-label="anchor" href="#method-title-"></a></h3>
@@ -449,6 +361,10 @@ page.</p></dd>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">title</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-12">Returns<a class="anchor" aria-label="anchor" href="#returns-12"></a></h4>
+<p>The title of the current page.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-window_handle"></a><div class="section">
 <h3 id="method-window-handle-">Method <code>window_handle()</code><a class="anchor" aria-label="anchor" href="#method-window-handle-"></a></h3>
@@ -457,6 +373,10 @@ page.</p></dd>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">window_handle</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-13">Returns<a class="anchor" aria-label="anchor" href="#returns-13"></a></h4>
+<p>The handle of the current window (a string).</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-close_window"></a><div class="section">
 <h3 id="method-close-window-">Method <code>close_window()</code><a class="anchor" aria-label="anchor" href="#method-close-window-"></a></h3>
@@ -465,6 +385,10 @@ page.</p></dd>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">close_window</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-14">Returns<a class="anchor" aria-label="anchor" href="#returns-14"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-switch_to_window"></a><div class="section">
 <h3 id="method-switch-to-window-">Method <code>switch_to_window()</code><a class="anchor" aria-label="anchor" href="#method-switch-to-window-"></a></h3>
@@ -481,6 +405,10 @@ page.</p></dd>
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-15">Returns<a class="anchor" aria-label="anchor" href="#returns-15"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-window_handles"></a><div class="section">
 <h3 id="method-window-handles-">Method <code>window_handles()</code><a class="anchor" aria-label="anchor" href="#method-window-handles-"></a></h3>
@@ -489,6 +417,10 @@ page.</p></dd>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">window_handles</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-16">Returns<a class="anchor" aria-label="anchor" href="#returns-16"></a></h4>
+<p>The handles of all open windows (a list of strings).</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-new_window"></a><div class="section">
 <h3 id="method-new-window-">Method <code>new_window()</code><a class="anchor" aria-label="anchor" href="#method-new-window-"></a></h3>
@@ -506,6 +438,11 @@ switched to.</p><div class="section">
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-17">Returns<a class="anchor" aria-label="anchor" href="#returns-17"></a></h4>
+<p>A list containing two elements:</p><ul><li><p><code>handle</code>: The handle of the new window.</p></li>
+<li><p><code>type</code>: The type of window. ("tab" or "window").</p></li>
+</ul></div>
 
 </div><p></p><hr><a id="method-SeleniumSession-switch_to_frame"></a><div class="section">
 <h3 id="method-switch-to-frame-">Method <code>switch_to_frame()</code><a class="anchor" aria-label="anchor" href="#method-switch-to-frame-"></a></h3>
@@ -528,6 +465,10 @@ element will be switched to.</p></dd>
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-18">Returns<a class="anchor" aria-label="anchor" href="#returns-18"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-switch_to_parent_frame"></a><div class="section">
 <h3 id="method-switch-to-parent-frame-">Method <code>switch_to_parent_frame()</code><a class="anchor" aria-label="anchor" href="#method-switch-to-parent-frame-"></a></h3>
@@ -536,6 +477,10 @@ element will be switched to.</p></dd>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">switch_to_parent_frame</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-19">Returns<a class="anchor" aria-label="anchor" href="#returns-19"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-get_window_rect"></a><div class="section">
 <h3 id="method-get-window-rect-">Method <code>get_window_rect()</code><a class="anchor" aria-label="anchor" href="#method-get-window-rect-"></a></h3>
@@ -544,6 +489,13 @@ element will be switched to.</p></dd>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_window_rect</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-20">Returns<a class="anchor" aria-label="anchor" href="#returns-20"></a></h4>
+<p>A list containing four elements:</p><ul><li><p><code>x</code>: The x position of the window relative to the left of the screen.</p></li>
+<li><p><code>y</code>: The y position of the window relative to the top of the screen.</p></li>
+<li><p><code>width</code>: The width of the window.</p></li>
+<li><p><code>height</code>: The height of the window.</p></li>
+</ul></div>
 
 </div><p></p><hr><a id="method-SeleniumSession-set_window_rect"></a><div class="section">
 <h3 id="method-set-window-rect-">Method <code>set_window_rect()</code><a class="anchor" aria-label="anchor" href="#method-set-window-rect-"></a></h3>
@@ -577,6 +529,10 @@ element will be switched to.</p></dd>
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-21">Returns<a class="anchor" aria-label="anchor" href="#returns-21"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-maximize_window"></a><div class="section">
 <h3 id="method-maximize-window-">Method <code>maximize_window()</code><a class="anchor" aria-label="anchor" href="#method-maximize-window-"></a></h3>
@@ -586,6 +542,10 @@ can be, without being full screen</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">maximize_window</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-22">Returns<a class="anchor" aria-label="anchor" href="#returns-22"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-minimize_window"></a><div class="section">
 <h3 id="method-minimize-window-">Method <code>minimize_window()</code><a class="anchor" aria-label="anchor" href="#method-minimize-window-"></a></h3>
@@ -594,6 +554,10 @@ can be, without being full screen</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">minimize_window</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-23">Returns<a class="anchor" aria-label="anchor" href="#returns-23"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-fullscreen_window"></a><div class="section">
 <h3 id="method-fullscreen-window-">Method <code>fullscreen_window()</code><a class="anchor" aria-label="anchor" href="#method-fullscreen-window-"></a></h3>
@@ -602,6 +566,10 @@ can be, without being full screen</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">fullscreen_window</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-24">Returns<a class="anchor" aria-label="anchor" href="#returns-24"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-get_active_element"></a><div class="section">
 <h3 id="method-get-active-element-">Method <code>get_active_element()</code><a class="anchor" aria-label="anchor" href="#method-get-active-element-"></a></h3>
@@ -610,6 +578,10 @@ can be, without being full screen</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_active_element</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-25">Returns<a class="anchor" aria-label="anchor" href="#returns-25"></a></h4>
+<p>A <a href="WebElement.html">WebElement</a> object.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-find_element"></a><div class="section">
 <h3 id="method-find-element-">Method <code>find_element()</code><a class="anchor" aria-label="anchor" href="#method-find-element-"></a></h3>
@@ -632,6 +604,10 @@ can be, without being full screen</p><div class="section">
 
 
 </dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-26">Returns<a class="anchor" aria-label="anchor" href="#returns-26"></a></h4>
+<p>A <a href="WebElement.html">WebElement</a> object.</p>
 </div>
 
 </div><p></p><hr><a id="method-SeleniumSession-find_elements"></a><div class="section">
@@ -656,6 +632,10 @@ can be, without being full screen</p><div class="section">
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-27">Returns<a class="anchor" aria-label="anchor" href="#returns-27"></a></h4>
+<p>A list of <a href="WebElement.html">WebElement</a> objects.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-get_page_source"></a><div class="section">
 <h3 id="method-get-page-source-">Method <code>get_page_source()</code><a class="anchor" aria-label="anchor" href="#method-get-page-source-"></a></h3>
@@ -664,6 +644,10 @@ can be, without being full screen</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_page_source</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-28">Returns<a class="anchor" aria-label="anchor" href="#returns-28"></a></h4>
+<p>A string.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-execute_script"></a><div class="section">
 <h3 id="method-execute-script-">Method <code>execute_script()</code><a class="anchor" aria-label="anchor" href="#method-execute-script-"></a></h3>
@@ -686,6 +670,11 @@ objects or lists of such objects, which will be converted to nodes.</p></dd>
 
 
 </dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-29">Returns<a class="anchor" aria-label="anchor" href="#returns-29"></a></h4>
+<p>The return value of the script. Nodes or lists of nodes will
+be converted to <a href="WebElement.html">WebElement</a> objects.</p>
 </div>
 
 </div><p></p><hr><a id="method-SeleniumSession-execute_async_script"></a><div class="section">
@@ -714,6 +703,11 @@ to nodes.</p></dd>
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-30">Returns<a class="anchor" aria-label="anchor" href="#returns-30"></a></h4>
+<p>The return value of the script. Nodes or lists of nodes will
+be converted to <a href="WebElement.html">WebElement</a> objects.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-get_cookies"></a><div class="section">
 <h3 id="method-get-cookies-">Method <code>get_cookies()</code><a class="anchor" aria-label="anchor" href="#method-get-cookies-"></a></h3>
@@ -722,6 +716,11 @@ to nodes.</p></dd>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_cookies</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-31">Returns<a class="anchor" aria-label="anchor" href="#returns-31"></a></h4>
+<p>A list of cookies. Each cookie is a list with a <code>name</code> and
+<code>value</code> field, along with some other optional fields.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-get_cookie"></a><div class="section">
 <h3 id="method-get-cookie-">Method <code>get_cookie()</code><a class="anchor" aria-label="anchor" href="#method-get-cookie-"></a></h3>
@@ -737,6 +736,10 @@ to nodes.</p></dd>
 
 
 </dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-32">Returns<a class="anchor" aria-label="anchor" href="#returns-32"></a></h4>
+<p>The cookie object.</p>
 </div>
 
 </div><p></p><hr><a id="method-SeleniumSession-add_cookie"></a><div class="section">
@@ -755,6 +758,10 @@ to nodes.</p></dd>
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-33">Returns<a class="anchor" aria-label="anchor" href="#returns-33"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-delete_cookie"></a><div class="section">
 <h3 id="method-delete-cookie-">Method <code>delete_cookie()</code><a class="anchor" aria-label="anchor" href="#method-delete-cookie-"></a></h3>
@@ -771,6 +778,10 @@ to nodes.</p></dd>
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-34">Returns<a class="anchor" aria-label="anchor" href="#returns-34"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-delete_all_cookies"></a><div class="section">
 <h3 id="method-delete-all-cookies-">Method <code>delete_all_cookies()</code><a class="anchor" aria-label="anchor" href="#method-delete-all-cookies-"></a></h3>
@@ -779,6 +790,10 @@ to nodes.</p></dd>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">delete_all_cookies</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-35">Returns<a class="anchor" aria-label="anchor" href="#returns-35"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-perform_actions"></a><div class="section">
 <h3 id="method-perform-actions-">Method <code>perform_actions()</code><a class="anchor" aria-label="anchor" href="#method-perform-actions-"></a></h3>
@@ -801,6 +816,10 @@ performing the actions.</p></dd>
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-36">Returns<a class="anchor" aria-label="anchor" href="#returns-36"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-release_actions"></a><div class="section">
 <h3 id="method-release-actions-">Method <code>release_actions()</code><a class="anchor" aria-label="anchor" href="#method-release-actions-"></a></h3>
@@ -810,6 +829,10 @@ performing the actions.</p></dd>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">release_actions</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-37">Returns<a class="anchor" aria-label="anchor" href="#returns-37"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-dismiss_alert"></a><div class="section">
 <h3 id="method-dismiss-alert-">Method <code>dismiss_alert()</code><a class="anchor" aria-label="anchor" href="#method-dismiss-alert-"></a></h3>
@@ -818,6 +841,10 @@ performing the actions.</p></dd>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">dismiss_alert</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-38">Returns<a class="anchor" aria-label="anchor" href="#returns-38"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-accept_alert"></a><div class="section">
 <h3 id="method-accept-alert-">Method <code>accept_alert()</code><a class="anchor" aria-label="anchor" href="#method-accept-alert-"></a></h3>
@@ -826,6 +853,10 @@ performing the actions.</p></dd>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">accept_alert</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-39">Returns<a class="anchor" aria-label="anchor" href="#returns-39"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-get_alert_text"></a><div class="section">
 <h3 id="method-get-alert-text-">Method <code>get_alert_text()</code><a class="anchor" aria-label="anchor" href="#method-get-alert-text-"></a></h3>
@@ -834,6 +865,10 @@ performing the actions.</p></dd>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_alert_text</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-40">Returns<a class="anchor" aria-label="anchor" href="#returns-40"></a></h4>
+<p>The message of the current alert (a string).</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-send_alert_text"></a><div class="section">
 <h3 id="method-send-alert-text-">Method <code>send_alert_text()</code><a class="anchor" aria-label="anchor" href="#method-send-alert-text-"></a></h3>
@@ -851,6 +886,10 @@ prompt.</p><div class="section">
 
 </dl><p></p></div>
 </div>
+<div class="section">
+<h4 id="returns-41">Returns<a class="anchor" aria-label="anchor" href="#returns-41"></a></h4>
+<p>The session object, invisibly.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-screenshot"></a><div class="section">
 <h3 id="method-screenshot-">Method <code>screenshot()</code><a class="anchor" aria-label="anchor" href="#method-screenshot-"></a></h3>
@@ -859,6 +898,10 @@ prompt.</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">screenshot</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="returns-42">Returns<a class="anchor" aria-label="anchor" href="#returns-42"></a></h4>
+<p>The base64-encoded PNG screenshot, as a string.</p>
+</div>
 
 </div><p></p><hr><a id="method-SeleniumSession-print_page"></a><div class="section">
 <h3 id="method-print-page-">Method <code>print_page()</code><a class="anchor" aria-label="anchor" href="#method-print-page-"></a></h3>
@@ -926,6 +969,10 @@ height.</p></dd>
 
 
 </dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns-43">Returns<a class="anchor" aria-label="anchor" href="#returns-43"></a></h4>
+<p>The base64-encoded PDF, as a string.</p>
 </div>
 
 </div><p></p><hr><a id="method-SeleniumSession-clone"></a><div class="section">
