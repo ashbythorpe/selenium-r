@@ -9,8 +9,7 @@ test_session <- function(verbose = FALSE) {
   opts <- if (browser == "chrome") {
     list(`goog:chromeOptions` = list(
       args = list(
-        "remote-debugging-port=9222",
-        "--no-sandbox"
+        "remote-debugging-port=9222"
       )
     ))
   } else {
