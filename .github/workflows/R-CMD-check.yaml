@@ -11,6 +11,10 @@ name: R-CMD-check
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
+    container:
+      image: selenium/standalone-${{ matrix.browser }}:latest
+      ports:
+        - 4444:4444
 
     name: ${{ matrix.browser }} ${{ matrix.config.os }} (${{ matrix.config.r }})
 
@@ -24,12 +28,6 @@ jobs:
           - {os: ubuntu-latest,   r: 'release'}
           - {os: ubuntu-latest,   r: 'oldrel-1'}
         browser: [chrome, firefox]
-
-    services:
-      selenium:
-        image: selenium/standalone-${{ matrix.browser }}:3.141.0
-        ports:
-          - 4444:4444
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
