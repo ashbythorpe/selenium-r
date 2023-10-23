@@ -98,6 +98,27 @@ manually: instead use <a href="WebElement.html">WebElement$shadow_root()</a>, or
 <h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
 <p>A <code>ShadowRoot</code> object.</p>
 </div>
+<div class="section">
+<h4 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code>\dontrun{
+session &lt;- SeleniumSession$new()
+
+# Let's create our own Shadow Root using JavaScript
+session$execute_script("
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  div.attachShadow({mode: 'open'});
+")
+
+element &lt;- session$find_element(using = "css selector", value = "div")
+
+element$shadow_root()
+
+session$close()
+}
+</code></pre></div><p></p></div>
+</div>
+
 
 </div><p></p><hr><a id="method-ShadowRoot-find_element"></a><div class="section">
 <h3 id="method-find-element-">Method <code>find_element()</code><a class="anchor" aria-label="anchor" href="#method-find-element-"></a></h3>
@@ -125,6 +146,32 @@ manually: instead use <a href="WebElement.html">WebElement$shadow_root()</a>, or
 <h4 id="returns-1">Returns<a class="anchor" aria-label="anchor" href="#returns-1"></a></h4>
 <p>A <a href="WebElement.html">WebElement</a> object.</p>
 </div>
+<div class="section">
+<h4 id="examples-1">Examples<a class="anchor" aria-label="anchor" href="#examples-1"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code>\dontrun{
+session &lt;- SeleniumSession$new()
+
+# Let's create our own Shadow Root using JavaScript
+session$execute_script("
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  const shadowRoot = div.attachShadow({mode: 'open'});
+  const span = document.createElement('span');
+  span.textContent = 'Hello';
+  shadowRoot.appendChild(span);
+")
+
+element &lt;- session$find_element(using = "css selector", value = "div")
+
+shadow_root &lt;- element$shadow_root()
+
+shadow_root$find_element(using = "css selector", value = "span")
+
+session$close()
+}
+</code></pre></div><p></p></div>
+</div>
+
 
 </div><p></p><hr><a id="method-ShadowRoot-find_elements"></a><div class="section">
 <h3 id="method-find-elements-">Method <code>find_elements()</code><a class="anchor" aria-label="anchor" href="#method-find-elements-"></a></h3>
@@ -152,6 +199,35 @@ manually: instead use <a href="WebElement.html">WebElement$shadow_root()</a>, or
 <h4 id="returns-2">Returns<a class="anchor" aria-label="anchor" href="#returns-2"></a></h4>
 <p>A list of <a href="WebElement.html">WebElement</a> objects.</p>
 </div>
+<div class="section">
+<h4 id="examples-2">Examples<a class="anchor" aria-label="anchor" href="#examples-2"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code>\dontrun{
+session &lt;- SeleniumSession$new()
+
+# Let's create our own Shadow Root using JavaScript
+session$execute_script("
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  const shadowRoot = div.attachShadow({mode: 'open'});
+  const span = document.createElement('span');
+  span.textContent = 'Hello';
+  shadowRoot.appendChild(span);
+  const p = document.createElement('p');
+  p.textContent = 'Me too!';
+  shadowRoot.appendChild(p);
+")
+
+element &lt;- session$find_element(using = "css selector", value = "div")
+
+shadow_root &lt;- element$shadow_root()
+
+shadow_root$find_elements(using = "css selector", value = "*")
+
+session$close()
+}
+</code></pre></div><p></p></div>
+</div>
+
 
 </div><p></p><hr><a id="method-ShadowRoot-toJSON"></a><div class="section">
 <h3 id="method-tojson-">Method <code>toJSON()</code><a class="anchor" aria-label="anchor" href="#method-tojson-"></a></h3>
@@ -166,6 +242,33 @@ manually: instead use <a href="WebElement.html">WebElement$shadow_root()</a>, or
 <p>A list, which can then be converted to JSON using
 <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html" class="external-link">jsonlite::toJSON()</a></code>.</p>
 </div>
+<div class="section">
+<h4 id="examples-3">Examples<a class="anchor" aria-label="anchor" href="#examples-3"></a></h4>
+<p></p><div class="r example copy"><div class="sourceCode"><pre><code>\dontrun{
+session &lt;- SeleniumSession$new()
+
+# Let's create our own Shadow Root using JavaScript
+session$execute_script("
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  div.attachShadow({mode: 'open'});
+")
+
+element &lt;- session$find_element(using = "css selector", value = "div")
+
+shadow_root &lt;- element$shadow_root()
+
+result &lt;- shadow_root$toJSON()
+
+result
+
+jsonlite::toJSON(result, auto_unbox = TRUE)
+
+session$close()
+}
+</code></pre></div><p></p></div>
+</div>
+
 
 </div><p></p><hr><a id="method-ShadowRoot-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
@@ -189,7 +292,12 @@ manually: instead use <a href="WebElement.html">WebElement$shadow_root()</a>, or
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `ShadowRoot$new`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Let's create our own Shadow Root using JavaScript</span></span></span>
@@ -205,7 +313,12 @@ manually: instead use <a href="WebElement.html">WebElement$shadow_root()</a>, or
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `ShadowRoot$find_element`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Let's create our own Shadow Root using JavaScript</span></span></span>
@@ -226,7 +339,12 @@ manually: instead use <a href="WebElement.html">WebElement$shadow_root()</a>, or
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `ShadowRoot$find_elements`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Let's create our own Shadow Root using JavaScript</span></span></span>
@@ -250,7 +368,12 @@ manually: instead use <a href="WebElement.html">WebElement$shadow_root()</a>, or
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># selenium_server_available()</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co">## Method `ShadowRoot$toJSON`</span></span></span>
+<span class="r-in"><span><span class="co">## ------------------------------------------------</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Let's create our own Shadow Root using JavaScript</span></span></span>
