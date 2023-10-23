@@ -11,23 +11,23 @@ name: R-CMD-check
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
-    container:
-      image: selenium/standalone-${{ matrix.browser }}:latest
-      ports:
-        - 4444:4444
 
-    name: ${{ matrix.browser }} ${{ matrix.config.os }} (${{ matrix.config.r }})
+    name: ${{ matrix.browser }}, ${{ matrix.config.os }} (${{ matrix.config.r }})
 
     strategy:
       fail-fast: false
       matrix:
         config:
-          - {os: macos-latest,   r: 'release'}
-          - {os: windows-latest, r: 'release'}
           - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-latest,   r: 'release'}
           - {os: ubuntu-latest,   r: 'oldrel-1'}
         browser: [chrome, firefox]
+
+    services:
+      selenium:
+        image: selenium/standalone-${{ matrix.browser }}:latest
+        ports:
+          - 4444:4444
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
