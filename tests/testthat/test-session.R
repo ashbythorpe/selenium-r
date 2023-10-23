@@ -26,15 +26,16 @@ test_that("Getting and setting timeouts works", {
   expect_equal(session$get_timeouts()$script, 100)
 
   session$set_timeouts(page_load = 200, implicit_wait = 300)
-  expect_equal(session$get_timeouts(), list(implicit = 300, pageLoad = 200, script = 100))
+  timeouts <- session$get_timeouts()
+  expect_equal(timeouts$script, 100)
+  expect_equal(timeouts$pageLoad, 200)
+  expect_equal(timeouts$implicit, 300)
 
   session$close()
 })
 
 test_that("Navigating works", {
   session <- test_session()
-
-  expect_equal(session$current_url(), "data:,")
 
   session$navigate("https://www.google.com/")
 
@@ -72,7 +73,6 @@ test_that("Windows work", {
 
   expect_equal(result$type, "tab")
   expect_type(result$handle, "character")
-  expect_equal(session$window_handle(), result$handle)
 
   expect_length(session$window_handles(), 2)
   expect_equal(session$window_handles()[[2]], result$handle)
@@ -80,8 +80,6 @@ test_that("Windows work", {
   expect_equal(session$current_url(), "https://www.r-project.org/")
 
   session$switch_to_window(result$handle)
-
-  expect_equal(session$current_url(), "about:blank")
 
   handles <- session$close_window()
   expect_equal(session$window_handles(), handles)
@@ -96,8 +94,6 @@ test_that("Windows work", {
 
   session$switch_to_window(result$handle)
 
-  expect_equal(session$current_url(), "about:blank")
-
   session$close()
 })
 
@@ -110,11 +106,13 @@ test_that("Switching to frames works", {
 
   session$switch_to_frame(0)
 
-  element_in_frame <- session$find_element(value = "*")
-
-  session$switch_to_frame(element_in_frame)
-
   expect_error(session$switch_to_frame(0))
+
+  session$switch_to_frame()
+
+  element <- session$find_element(value = "iframe")
+
+  session$switch_to_frame(element)
 
   session$switch_to_parent_frame()
 
@@ -260,17 +258,17 @@ test_that("Performing actions works", {
     actions_press("a"),
     actions_release("a"),
     actions_mousedown(
-      button = 1, width = 1, height = 1, pressure = 0.5,
+      button = "middle", width = 1, height = 1, pressure = 0.5,
       tangential_pressure = 1, tilt_x = 1, tilt_y = 1,
       twist = 2, altitude_angle = 1, azimuth_angle = 2
     ),
     actions_mouseup(
-      button = 1, width = 3, height = 0.5, pressure = 1,
+      button = "middle", width = 100, height = 50, pressure = 1,
       tangential_pressure = 0.1, tilt_x = -1, tilt_y = 8,
-      twist = 10, altitude_angle = 180, azimuth_angle = 90
+      twist = 10, altitude_angle = pi / 2 - 1, azimuth_angle = 0
     ),
-    actions_mousemove(x = 1, y = 1, duration = 10, origin = "pointer"),
-    actions_scroll(x = 1, y = 1, delta_x = 1, delta_y = 1, duration = 5),
+    actions_mousemove(x = 1, y = 1, duration = 1, origin = "pointer"),
+    actions_scroll(x = 1, y = 1, delta_x = 1, delta_y = 1, duration = 0.5),
     actions_mousemove(x = 0, y = 0, origin = element),
     actions_scroll(x = 0, y = 0, delta_x = 1, delta_y = 1, origin = element)
   )

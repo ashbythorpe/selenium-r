@@ -18,6 +18,16 @@ A \code{selenium_actions_stream} object, ready to be passed into
 \code{SeleniumSession$perform_actions()}. Actions are a low level way to interact
 with a page.
 }
+\examples{
+actions_stream(
+  actions_press(keys$enter),
+  actions_pause(0.5),
+  actions_release(keys$enter),
+  actions_scroll(x = 1, y = 1, delta_x = 1, delta_y = 1, duration = 0.5),
+  actions_mousemove(x = 1, y = 1, duration = 1, origin = "pointer")
+)
+
+}
 \seealso{
 \itemize{
 \item Pause actions: \code{\link[=actions_pause]{actions_pause()}}.

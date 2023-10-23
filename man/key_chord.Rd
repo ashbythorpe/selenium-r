@@ -27,7 +27,7 @@ paste0(
 # <Ctrl-V> will be pressed, then <Alt-V>
 paste0(
   key_chord(keys$ctrl, "v"),
-  key_chord(keys$alt, "v"),
+  key_chord(keys$alt, "v")
 )
 
 }

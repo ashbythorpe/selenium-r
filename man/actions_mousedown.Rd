@@ -75,3 +75,11 @@ represents pressing a button on the mouse, while \code{actions_mouseup()}
 represents releasing a button. \code{actions_mousemove()} represents moving the
 mouse.
 }
+\examples{
+actions_stream(
+  actions_mousedown("left", width = 1, height = 1, pressure = 0.5),
+  actions_mouseup("left", width = 100, height = 50, pressure = 1),
+  actions_mousemove(x = 1, y = 1, duration = 1, origin = "pointer")
+)
+
+}

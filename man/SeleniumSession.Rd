@@ -6,9 +6,9 @@
 \value{
 A \code{SeleniumSession} object.
 
-A \code{WebElement} object.
+A \link{WebElement} object.
 
-A \code{ShadowRoot} object.
+A \link{ShadowRoot} object.
 
 The session object, invisibly.
 
@@ -72,19 +72,19 @@ The session object, invisibly.
 
 The session object, invisibly.
 
-A \code{WebElement} object.
+A \link{WebElement} object.
 
-A \code{WebElement} object.
+A \link{WebElement} object.
 
-A list of \code{WebElement} objects.
+A list of \link{WebElement} objects.
 
 A string.
 
 The return value of the script. Nodes or lists of nodes will
-be converted to \code{WebElement} objects.
+be converted to \link{WebElement} objects.
 
 The return value of the script. Nodes or lists of nodes will
-be converted to \code{WebElement} objects.
+be converted to \link{WebElement} objects.
 
 A list of cookies. Each cookie is a list with a \code{name} and
 \code{value} field, along with some other optional fields.
@@ -119,6 +119,422 @@ if a Selenium server instance is running. If you get an error, use
 \code{\link[=selenium_server_available]{selenium_server_available()}} to check if a server is running. See the
 package README for more information, or use \code{\link[=selenium_server]{selenium_server()}} to try and
 start a server automatically.
+}
+\examples{
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new(browser = "firefox", verbose = TRUE)
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+element <- session$find_element(using = "css selector", value = "*")
+
+element2 <- session$create_webelement(id = element$id)
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+shadow_root <- session$create_shadowroot(id = "foo")
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$status()
+
+session$close()
+
+session$status()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
+session <- SeleniumSession$new()
+
+session$get_timeouts()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
+session <- SeleniumSession$new()
+
+session$set_timeouts(script = 100)
+
+session$get_timeouts()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$current_url()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$navigate("https://www.tidyverse.org")
+
+session$back()
+
+session$current_url()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$navigate("https://www.tidyverse.org")
+
+session$back()
+
+session$forward()
+
+session$current_url()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$refresh()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$title()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$window_handle()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$new_window()
+
+session$close_window()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+handle <- session$window_handle()
+
+handle2 <- session$new_window()$handle
+
+session$switch_to_window(handle)
+
+session$switch_to_window(handle2)
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+handles <- session$window_handles()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+handle <- session$new_window()$handle
+
+session$switch_to_window(handle)
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$switch_to_frame()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$switch_to_frame()
+
+session$switch_to_parent_frame()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$get_window_rect()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$set_window_rect(width = 800, height = 600, x = 2, y = 3)
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$maximize_window()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$minimize_window()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$fullscreen_window()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$get_active_element()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "#download")
+
+session$find_element(using = "xpath", value = "//div[contains(@class, 'col-xs')]/h1")
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_elements(using = "css selector", value = "h1")
+
+session$find_elements(using = "xpath", value = "//h1")
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$get_page_source()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$execute_script("return 1")
+
+session$execute_script("return arguments[0] + arguments[1]", 1, 2)
+
+element <- session$find_element(value = "*")
+
+session$execute_script("return arguments[0]", element)
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$execute_async_script("
+  let callback = arguments[arguments.length - 1];
+  callback(1)
+")
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$get_cookies()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$add_cookie(list(name = "foo", value = "bar"))
+
+session$get_cookie("foo")
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$add_cookie(list(name = "my_cookie", value = "1"))
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$add_cookie(list(name = "foo", value = "bar"))
+
+session$delete_cookie("foo")
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$delete_all_cookies()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+actions <- actions_stream(
+  actions_press(keys$enter),
+  actions_pause(0.5),
+  actions_release(keys$enter)
+)
+
+session$perform_actions(actions)
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+actions <- actions_stream(
+  actions_press("a")
+)
+
+session$perform_actions(actions, release_actions = FALSE)
+
+session$release_actions()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$execute_script("alert('hello')")
+
+session$dismiss_alert()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$execute_script("alert('hello')")
+
+session$accept_alert()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
+session <- SeleniumSession$new()
+
+session$execute_script("alert('hello')")
+
+session$get_alert_text()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$execute_script("prompt('Enter text:')")
+
+session$send_alert_text("hello")
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$screenshot()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$print_page()
+
+session$close()
+\dontshow{\}) # examplesIf}
 }
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
@@ -181,10 +597,11 @@ start a server automatically.
 \if{html}{\out{<a id="method-SeleniumSession-new"></a>}}
 \if{latex}{\out{\hypertarget{method-SeleniumSession-new}{}}}
 \subsection{Method \code{new()}}{
-Initialize a \code{SeleniumSession} object.
+Create a Selenium session: opening a browser which can be controlled by
+the Selenium client.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$new(
-  browser = "chrome",
+  browser = "firefox",
   port = 4444L,
   host = "localhost",
   verbose = FALSE
@@ -213,7 +630,7 @@ any responses.}
 \if{html}{\out{<a id="method-SeleniumSession-create_webelement"></a>}}
 \if{latex}{\out{\hypertarget{method-SeleniumSession-create_webelement}{}}}
 \subsection{Method \code{create_webelement()}}{
-Create a \code{WebElement} object using the parameters of the current
+Create a \link{WebElement} object using the parameters of the current
 session.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$create_webelement(id)}\if{html}{\out{</div>}}
@@ -231,7 +648,7 @@ session.
 \if{html}{\out{<a id="method-SeleniumSession-create_shadowroot"></a>}}
 \if{latex}{\out{\hypertarget{method-SeleniumSession-create_shadowroot}{}}}
 \subsection{Method \code{create_shadowroot()}}{
-Create a \code{ShadowRoot} object using the parameters of the current
+Create a \link{ShadowRoot} object using the parameters of the current
 session.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$create_shadowroot(id)}\if{html}{\out{</div>}}
@@ -262,9 +679,9 @@ no longer work. However, the Selenium server will still be running.
 \subsection{Method \code{status()}}{
 Get the status of the Selenium server. Unlike all other methods, this
 method is independent of the session itself (meaning it can be used
-even after \code{SeleniumSession$close()} is called). It is identical to
-\code{\link[=get_server_status]{get_server_status()}}, but uses the host, port and verbose options
-passed to the session, for convenience.
+even after \link[=SeleniumSession]{SeleniumSession$close()} is called). It is
+identical to \code{\link[=get_server_status]{get_server_status()}}, but uses the host, port and verbose
+options passed to the session, for convenience.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$status()}\if{html}{\out{</div>}}
 }
@@ -468,7 +885,7 @@ the current browsing context.
 \describe{
 \item{\code{id}}{The ID of the frame to switch to. By default, the top-level
 browsing context is switched to (i.e. not a frame). This can also be
-a \code{WebElement} object, in which case the frame that contains said
+a \link{WebElement} object, in which case the frame that contains said
 element will be switched to.}
 }
 \if{html}{\out{</div>}}
@@ -547,7 +964,7 @@ Minimize the current window. This hides the window.
 \if{html}{\out{<a id="method-SeleniumSession-fullscreen_window"></a>}}
 \if{latex}{\out{\hypertarget{method-SeleniumSession-fullscreen_window}{}}}
 \subsection{Method \code{fullscreen_window()}}{
-Makes the window full screen
+Make the window full screen.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$fullscreen_window()}\if{html}{\out{</div>}}
 }
@@ -633,7 +1050,7 @@ Execute a JavaScript script.
 e.g. \verb{return 1}.}
 
 \item{\code{...}}{Additional arguments to pass to the script. These can be
-accessed in the script using the \code{arguments} array. Can be \code{WebElement}
+accessed in the script using the \code{arguments} array. Can be \link{WebElement}
 objects or lists of such objects, which will be converted to nodes.}
 }
 \if{html}{\out{</div>}}
@@ -659,7 +1076,7 @@ would write \code{arguments[arguments.length - 1](1)}. This allows you to
 write asynchronous JavaScript, but treat it like synchronous R code.}
 
 \item{\code{...}}{Additional arguments to pass to the script. Can be
-\code{WebElement} objects or lists of such objects, which will be converted
+\link{WebElement} objects or lists of such objects, which will be converted
 to nodes.}
 }
 \if{html}{\out{</div>}}

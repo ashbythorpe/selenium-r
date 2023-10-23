@@ -21,7 +21,16 @@ actions_scroll(x, y, delta_x, delta_y, duration = NULL, origin = "viewport")
 \code{WebElement} object, in which case \code{x} and \code{y} are measured from the
 center of the element. Otherwise, \code{origin} must be \code{"viewport"}.}
 }
+\value{
+A \code{selenium_action} object.
+}
 \description{
 Scroll actions to be passed into \code{\link[=actions_stream]{actions_stream()}}. Scroll the page in
 a given direction.
+}
+\examples{
+actions_stream(
+  actions_scroll(x = 1, y = 1, delta_x = 1, delta_y = 1, duration = 0.5)
+)
+
 }

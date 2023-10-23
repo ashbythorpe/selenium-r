@@ -12,4 +12,9 @@ table <- session |>
 commands <- mapply(function(x, y) list(method = x, url = y), table$Method, table$`URI Template`, SIMPLIFY = FALSE)
 names(commands) <- table$Command
 
+commands[["Element Displayed"]] <- list(
+  method = "GET",
+  url = "/session/{session id}/element/{element id}/displayed"
+)
+
 usethis::use_data(commands, overwrite = TRUE, internal = TRUE)

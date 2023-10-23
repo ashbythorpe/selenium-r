@@ -21,3 +21,12 @@ Key actions to be passed into \code{\link[=actions_stream]{actions_stream()}}. \
 represents pressing a key on the keyboard, while \code{actions_release()}
 represents releasing a key.
 }
+\examples{
+actions_stream(
+  actions_press("a"),
+  actions_release("a"),
+  actions_press(keys$enter),
+  actions_release(keys$enter)
+)
+
+}

@@ -2,8 +2,8 @@
 #'
 #' @description
 #' This class represents the client to a Selenium session. It will only work
-#' if a Selenium server instance is running. If you get an error, use 
-#' [selenium_server_available()] to check if a server is running. See the 
+#' if a Selenium server instance is running. If you get an error, use
+#' [selenium_server_available()] to check if a server is running. See the
 #' package README for more information, or use [selenium_server()] to try and
 #' start a server automatically.
 #'
@@ -15,7 +15,8 @@ SeleniumSession <- R6::R6Class(
     id = NULL,
 
     #' @description
-    #' Initialize a `SeleniumSession` object.
+    #' Create a Selenium session: opening a browser which can be controlled by
+    #' the Selenium client.
     #'
     #' @param browser The name of the browser to use (e.g. "chrome", "firefox",
     #'   "edge").
@@ -27,7 +28,12 @@ SeleniumSession <- R6::R6Class(
     #'   any responses.
     #'
     #' @returns A `SeleniumSession` object.
-    initialize = function(browser = "chrome", port = 4444L, host = "localhost", verbose = FALSE) {
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new(browser = "firefox", verbose = TRUE)
+    #'
+    #' session$close()
+    initialize = function(browser = "firefox", port = 4444L, host = "localhost", verbose = FALSE) {
       url <- sprintf("http://%s:%s", host, port)
       private$req <- httr2::request(url)
       private$verbose <- verbose
@@ -49,25 +55,42 @@ SeleniumSession <- R6::R6Class(
 
       self$id <- result_r$value$sessionId
     },
+
     #' @description
-    #' Create a `WebElement` object using the parameters of the current
+    #' Create a [WebElement] object using the parameters of the current
     #' session.
     #'
     #' @param id The element id.
     #'
-    #' @returns A `WebElement` object.
+    #' @returns A [WebElement] object.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' element <- session$find_element(using = "css selector", value = "*")
+    #'
+    #' element2 <- session$create_webelement(id = element$id)
+    #'
+    #' session$close()
     create_webelement = function(id) {
       result <- WebElement$new(self$id, private$req, private$verbose, id)
       result
     },
 
     #' @description
-    #' Create a `ShadowRoot` object using the parameters of the current
+    #' Create a [ShadowRoot] object using the parameters of the current
     #' session.
     #'
     #' @param id The shadow root id.
     #'
-    #' @returns A `ShadowRoot` object.
+    #' @returns A [ShadowRoot] object.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' shadow_root <- session$create_shadowroot(id = "foo")
+    #'
+    #' session$close()
     create_shadowroot = function(id) {
       ShadowRoot$new(self$id, private$req, private$verbose, id)
     },
@@ -77,17 +100,23 @@ SeleniumSession <- R6::R6Class(
     #' no longer work. However, the Selenium server will still be running.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$close()
     close = function() {
       req <- req_command(private$req, "Delete Session", session_id = self$id)
       req_perform_selenium(req, verbose = private$verbose)
       invisible(self)
     },
+
     #' @description
     #' Get the status of the Selenium server. Unlike all other methods, this
     #' method is independent of the session itself (meaning it can be used
-    #' even after `SeleniumSession$close()` is called). It is identical to
-    #' [get_server_status()], but uses the host, port and verbose options
-    #' passed to the session, for convenience.
+    #' even after [SeleniumSession$close()][SeleniumSession] is called). It is
+    #' identical to [get_server_status()], but uses the host, port and verbose
+    #' options passed to the session, for convenience.
     #'
     #' @returns A list that can (but may not always) contain the following
     #'   fields:
@@ -97,9 +126,19 @@ SeleniumSession <- R6::R6Class(
     #' * `message`: A message about the status of the server.
     #' * `uptime`: How long the server has been running.
     #' * `nodes`: Information about the slots that the server can take.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$status()
+    #'
+    #' session$close()
+    #'
+    #' session$status()
     status = function() {
       get_status(private$req, private$verbose)
     },
+
     #' @description
     #' Get the timeouts of the current session. There are three types of
     #' timeouts:
@@ -113,11 +152,20 @@ SeleniumSession <- R6::R6Class(
     #'    required. Defaults to 0 seconds.
     #'
     #' @returns A list with three items: `script`, `page_load`, and `implicit`.
+    #'
+    #' @examplesIf selenium_server_available()
+    #'
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$get_timeouts()
+    #'
+    #' session$close()
     get_timeouts = function() {
       req <- req_command(private$req, "Get Timeouts", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
     },
+
     #' @description
     #' Set the timeouts of the current session. The types of timeouts are
     #' defined in `SeleniumSession$get_timeouts()`.
@@ -129,6 +177,16 @@ SeleniumSession <- R6::R6Class(
     #'   page.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #'
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$set_timeouts(script = 100)
+    #'
+    #' session$get_timeouts()
+    #'
+    #' session$close()
     set_timeouts = function(script = NULL, page_load = NULL, implicit_wait = NULL) {
       req <- req_command(private$req, "Set Timeouts", session_id = self$id)
       body <- compact(list(
@@ -149,10 +207,17 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Navigate to a URL.
     #'
-    #' @param url The URL to navigate to. Must begin with a protocol (e.g. 
+    #' @param url The URL to navigate to. Must begin with a protocol (e.g.
     #'   'https://').
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$close()
     navigate = function(url) {
       req <- req_command(private$req, "Navigate To", session_id = self$id)
       req <- req_body_selenium(req, list(url = url))
@@ -163,35 +228,84 @@ SeleniumSession <- R6::R6Class(
     #' Get the current URL.
     #'
     #' @returns The URL of the current page.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$current_url()
+    #'
+    #' session$close()
     current_url = function() {
       req <- req_command(private$req, "Get Current URL", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
     },
+
     #' @description
     #' Go back in the navigation history.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$navigate("https://www.tidyverse.org")
+    #'
+    #' session$back()
+    #'
+    #' session$current_url()
+    #'
+    #' session$close()
     back = function() {
       req <- req_command(private$req, "Back", session_id = self$id)
       req <- req_body_selenium(req, NULL)
       req_perform_selenium(req, verbose = private$verbose)
       invisible(self)
     },
+
     #' @description
     #' Go forward in the navigation history.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$navigate("https://www.tidyverse.org")
+    #'
+    #' session$back()
+    #'
+    #' session$forward()
+    #'
+    #' session$current_url()
+    #'
+    #' session$close()
     forward = function() {
       req <- req_command(private$req, "Forward", session_id = self$id)
       req <- req_body_selenium(req, NULL)
       req_perform_selenium(req, verbose = private$verbose)
       invisible(self)
     },
+
     #' @description
     #' Reload the current page.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$refresh()
+    #'
+    #' session$close()
     refresh = function() {
       req <- req_command(private$req, "Refresh", session_id = self$id)
       req <- req_body_selenium(req, NULL)
@@ -202,6 +316,15 @@ SeleniumSession <- R6::R6Class(
     #' Get the title of the current page.
     #'
     #' @returns The title of the current page.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$title()
+    #'
+    #' session$close()
     title = function() {
       req <- req_command(private$req, "Get Title", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -211,6 +334,13 @@ SeleniumSession <- R6::R6Class(
     #' Get the current window handle.
     #'
     #' @returns The handle of the current window (a string).
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$window_handle()
+    #'
+    #' session$close()
     window_handle = function() {
       req <- req_command(private$req, "Get Window Handle", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -220,6 +350,15 @@ SeleniumSession <- R6::R6Class(
     #' Close the current window.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$new_window()
+    #'
+    #' session$close_window()
+    #'
+    #' session$close()
     close_window = function() {
       req <- req_command(private$req, "Close Window", session_id = self$id)
       resp <- req_perform_selenium(req, verbose = private$verbose)
@@ -231,6 +370,19 @@ SeleniumSession <- R6::R6Class(
     #' @param handle The handle of the window to switch to.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' handle <- session$window_handle()
+    #'
+    #' handle2 <- session$new_window()$handle
+    #'
+    #' session$switch_to_window(handle)
+    #'
+    #' session$switch_to_window(handle2)
+    #'
+    #' session$close()
     switch_to_window = function(handle) {
       req <- req_command(private$req, "Switch To Window", session_id = self$id)
       req <- req_body_selenium(req, list(handle = handle))
@@ -241,6 +393,13 @@ SeleniumSession <- R6::R6Class(
     #' Get the handles of all open windows.
     #'
     #' @returns The handles of all open windows (a list of strings).
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' handles <- session$window_handles()
+    #'
+    #' session$close()
     window_handles = function() {
       req <- req_command(private$req, "Get Window Handles", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -256,6 +415,15 @@ SeleniumSession <- R6::R6Class(
     #'
     #' * `handle`: The handle of the new window.
     #' * `type`: The type of window. ("tab" or "window").
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' handle <- session$new_window()$handle
+    #'
+    #' session$switch_to_window(handle)
+    #'
+    #' session$close()
     new_window = function(type = c("tab", "window")) {
       type <- rlang::arg_match(type)
       req <- req_command(private$req, "New Window", session_id = self$id)
@@ -271,10 +439,19 @@ SeleniumSession <- R6::R6Class(
     #'
     #' @param id The ID of the frame to switch to. By default, the top-level
     #'   browsing context is switched to (i.e. not a frame). This can also be
-    #'   a `WebElement` object, in which case the frame that contains said
+    #'   a [WebElement] object, in which case the frame that contains said
     #'   element will be switched to.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$switch_to_frame()
+    #'
+    #' session$close()
     switch_to_frame = function(id = NA) {
       if (inherits(id, "WebElement")) {
         id <- id$toJSON()
@@ -289,9 +466,21 @@ SeleniumSession <- R6::R6Class(
     #' Switch to the parent frame of the current frame.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$switch_to_frame()
+    #'
+    #' session$switch_to_parent_frame()
+    #'
+    #' session$close()
     switch_to_parent_frame = function() {
       req <- req_command(private$req, "Switch To Parent Frame", session_id = self$id)
-      req_perform_selenium(req, verbose = private$verbose)
+      req <- req_body_selenium(req, NULL)
+      req_perform_selenium(req, verbose = TRUE)
       invisible(self)
     },
     #' @description
@@ -303,6 +492,13 @@ SeleniumSession <- R6::R6Class(
     #' * `y`: The y position of the window relative to the top of the screen.
     #' * `width`: The width of the window.
     #' * `height`: The height of the window.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$get_window_rect()
+    #'
+    #' session$close()
     get_window_rect = function() {
       req <- req_command(private$req, "Get Window Rect", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -317,6 +513,15 @@ SeleniumSession <- R6::R6Class(
     #' @param y The y position of the window relative to the top of the screen.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$set_window_rect(width = 800, height = 600, x = 2, y = 3)
+    #'
+    #' session$close()
     set_window_rect = function(width = NULL, height = NULL, x = NULL, y = NULL) {
       req <- req_command(private$req, "Set Window Rect", session_id = self$id)
       body <- compact(list(
@@ -339,6 +544,13 @@ SeleniumSession <- R6::R6Class(
     #' can be, without being full screen
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$maximize_window()
+    #'
+    #' session$close()
     maximize_window = function() {
       req <- req_command(private$req, "Maximize Window", session_id = self$id)
       req <- req_body_selenium(req, NULL)
@@ -349,6 +561,13 @@ SeleniumSession <- R6::R6Class(
     #' Minimize the current window. This hides the window.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$minimize_window()
+    #'
+    #' session$close()
     minimize_window = function() {
       req <- req_command(private$req, "Minimize Window", session_id = self$id)
       req <- req_body_selenium(req, NULL)
@@ -356,9 +575,16 @@ SeleniumSession <- R6::R6Class(
       httr2::resp_body_json(resp)$value
     },
     #' @description
-    #' Makes the window full screen
+    #' Make the window full screen.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$fullscreen_window()
+    #'
+    #' session$close()
     fullscreen_window = function() {
       req <- req_command(private$req, "Fullscreen Window", session_id = self$id)
       req <- req_body_selenium(req, NULL)
@@ -368,7 +594,16 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get the currently active element.
     #'
-    #' @returns A `WebElement` object.
+    #' @returns A [WebElement] object.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$get_active_element()
+    #'
+    #' session$close()
     get_active_element = function() {
       req <- req_command(private$req, "Get Active Element", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -381,7 +616,18 @@ SeleniumSession <- R6::R6Class(
     #' @param using The type of selector to use.
     #' @param value The value of the selector: a string.
     #'
-    #' @returns A `WebElement` object.
+    #' @returns A [WebElement] object.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$find_element(using = "css selector", value = "#download")
+    #'
+    #' session$find_element(using = "xpath", value = "//div[contains(@class, 'col-xs')]/h1")
+    #'
+    #' session$close()
     find_element = function(using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
                             value) {
       using <- rlang::arg_match(using)
@@ -397,7 +643,18 @@ SeleniumSession <- R6::R6Class(
     #' @param using The type of selector to use.
     #' @param value The value of the selector: a string.
     #'
-    #' @returns A list of `WebElement` objects.
+    #' @returns A list of [WebElement] objects.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$find_elements(using = "css selector", value = "h1")
+    #'
+    #' session$find_elements(using = "xpath", value = "//h1")
+    #'
+    #' session$close()
     find_elements = function(using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
                              value) {
       using <- rlang::arg_match(using)
@@ -411,6 +668,15 @@ SeleniumSession <- R6::R6Class(
     #' Get the HTML source of the current page, serialized as a string.
     #'
     #' @returns A string.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$get_page_source()
+    #'
+    #' session$close()
     get_page_source = function() {
       req <- req_command(private$req, "Get Page Source", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -422,11 +688,24 @@ SeleniumSession <- R6::R6Class(
     #' @param x The script to execute. To return a value, do so explicitly,
     #'   e.g. `return 1`.
     #' @param ... Additional arguments to pass to the script. These can be
-    #' accessed in the script using the `arguments` array. Can be `WebElement`
+    #' accessed in the script using the `arguments` array. Can be [WebElement]
     #' objects or lists of such objects, which will be converted to nodes.
     #'
     #' @returns The return value of the script. Nodes or lists of nodes will
-    #'   be converted to `WebElement` objects.
+    #'   be converted to [WebElement] objects.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$execute_script("return 1")
+    #'
+    #' session$execute_script("return arguments[0] + arguments[1]", 1, 2)
+    #'
+    #' element <- session$find_element(value = "*")
+    #'
+    #' session$execute_script("return arguments[0]", element)
+    #'
+    #' session$close()
     execute_script = function(x, ...) {
       args <- rlang::list2(...)
       args <- prepare_for_json(args)
@@ -445,11 +724,21 @@ SeleniumSession <- R6::R6Class(
     #'   would write `arguments[arguments.length - 1](1)`. This allows you to
     #'   write asynchronous JavaScript, but treat it like synchronous R code.
     #' @param ... Additional arguments to pass to the script. Can be
-    #' `WebElement` objects or lists of such objects, which will be converted
+    #' [WebElement] objects or lists of such objects, which will be converted
     #' to nodes.
     #'
     #' @returns The return value of the script. Nodes or lists of nodes will
-    #'   be converted to `WebElement` objects.
+    #'   be converted to [WebElement] objects.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$execute_async_script("
+    #'   let callback = arguments[arguments.length - 1];
+    #'   callback(1)
+    #' ")
+    #'
+    #' session$close()
     execute_async_script = function(x, ...) {
       args <- rlang::list2(...)
       args <- prepare_for_json(args)
@@ -464,6 +753,15 @@ SeleniumSession <- R6::R6Class(
     #'
     #' @returns A list of cookies. Each cookie is a list with a `name` and
     #'   `value` field, along with some other optional fields.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$get_cookies()
+    #'
+    #' session$close()
     get_cookies = function() {
       req <- req_command(private$req, "Get All Cookies", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -475,6 +773,17 @@ SeleniumSession <- R6::R6Class(
     #' @param name The name of the cookie.
     #'
     #' @returns The cookie object.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$add_cookie(list(name = "foo", value = "bar"))
+    #'
+    #' session$get_cookie("foo")
+    #'
+    #' session$close()
     get_cookie = function(name) {
       req <- req_command(private$req, "Get Named Cookie", session_id = self$id, name = name)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -487,6 +796,15 @@ SeleniumSession <- R6::R6Class(
     #'   `name` and `value` field.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$add_cookie(list(name = "my_cookie", value = "1"))
+    #'
+    #' session$close()
     add_cookie = function(cookie) {
       req <- req_command(private$req, "Add Cookie", session_id = self$id)
       req <- req_body_selenium(req, list(cookie = cookie))
@@ -499,6 +817,17 @@ SeleniumSession <- R6::R6Class(
     #' @param name The name of the cookie.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$add_cookie(list(name = "foo", value = "bar"))
+    #'
+    #' session$delete_cookie("foo")
+    #'
+    #' session$close()
     delete_cookie = function(name) {
       req <- req_command(private$req, "Delete Cookie", session_id = self$id, name = name)
       req_perform_selenium(req, verbose = private$verbose)
@@ -508,6 +837,15 @@ SeleniumSession <- R6::R6Class(
     #' Delete all cookies in the cookie store of the current document.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$delete_all_cookies()
+    #'
+    #' session$close()
     delete_all_cookies = function() {
       req <- req_command(private$req, "Delete All Cookies", session_id = self$id)
       req_perform_selenium(req, verbose = private$verbose)
@@ -522,6 +860,21 @@ SeleniumSession <- R6::R6Class(
     #'   performing the actions.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' actions <- actions_stream(
+    #'   actions_press(keys$enter),
+    #'   actions_pause(0.5),
+    #'   actions_release(keys$enter)
+    #' )
+    #'
+    #' session$perform_actions(actions)
+    #'
+    #' session$close()
     perform_actions = function(actions, release_actions = TRUE) {
       actions <- unclass_stream(actions)
       req <- req_command(private$req, "Perform Actions", session_id = self$id)
@@ -537,6 +890,21 @@ SeleniumSession <- R6::R6Class(
     #' `perform_actions()`.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' actions <- actions_stream(
+    #'   actions_press("a")
+    #' )
+    #'
+    #' session$perform_actions(actions, release_actions = FALSE)
+    #'
+    #' session$release_actions()
+    #'
+    #' session$close()
     release_actions = function() {
       req <- req_command(private$req, "Release Actions", session_id = self$id)
       req_perform_selenium(req, verbose = private$verbose)
@@ -546,6 +914,15 @@ SeleniumSession <- R6::R6Class(
     #' Dismiss the current alert, if present.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$execute_script("alert('hello')")
+    #'
+    #' session$dismiss_alert()
+    #'
+    #' session$close()
     dismiss_alert = function() {
       req <- req_command(private$req, "Dismiss Alert", session_id = self$id)
       req <- req_body_selenium(req, NULL)
@@ -556,6 +933,15 @@ SeleniumSession <- R6::R6Class(
     #' Accept the current alert, if present.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$execute_script("alert('hello')")
+    #'
+    #' session$accept_alert()
+    #'
+    #' session$close()
     accept_alert = function() {
       req <- req_command(private$req, "Accept Alert", session_id = self$id)
       req <- req_body_selenium(req, NULL)
@@ -566,6 +952,16 @@ SeleniumSession <- R6::R6Class(
     #' Get the message of the current alert, if present.
     #'
     #' @returns The message of the current alert (a string).
+    #'
+    #' @examplesIf selenium_server_available()
+    #'
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$execute_script("alert('hello')")
+    #'
+    #' session$get_alert_text()
+    #'
+    #' session$close()
     get_alert_text = function() {
       req <- req_command(private$req, "Get Alert Text", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -578,6 +974,15 @@ SeleniumSession <- R6::R6Class(
     #' @param text The text to send.
     #'
     #' @returns The session object, invisibly.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$execute_script("prompt('Enter text:')")
+    #'
+    #' session$send_alert_text("hello")
+    #'
+    #' session$close()
     send_alert_text = function(text) {
       req <- req_command(private$req, "Send Alert Text", session_id = self$id)
       req <- req_body_selenium(req, list(text = text))
@@ -588,6 +993,15 @@ SeleniumSession <- R6::R6Class(
     #' Take a screenshot of the current page.
     #'
     #' @returns The base64-encoded PNG screenshot, as a string.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$screenshot()
+    #'
+    #' session$close()
     screenshot = function() {
       req <- req_command(private$req, "Take Screenshot", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -613,6 +1027,15 @@ SeleniumSession <- R6::R6Class(
     #' @param page_ranges A list of page ranges (e.g. `"1"`, `"1-3"`) to print.
     #'
     #' @returns The base64-encoded PDF, as a string.
+    #'
+    #' @examplesIf selenium_server_available()
+    #' session <- SeleniumSession$new()
+    #'
+    #' session$navigate("https://www.r-project.org")
+    #'
+    #' session$print_page()
+    #'
+    #' session$close()
     print_page = function(orientation = c("portrait", "landscape"),
                           scale = 1,
                           background = FALSE,
@@ -634,20 +1057,27 @@ SeleniumSession <- R6::R6Class(
         )
       }
 
+      page <- compact(list(
+        width = width,
+        height = height
+      ))
+
+      page <- if (length(page) == 0) NULL else page
+
       body <- compact(list(
         orientation = rlang::arg_match(orientation),
         scale = scale,
         background = background,
-        page = list(
-          width = width,
-          height = height
-        ),
+        page = page,
         margin = margin,
         footer = footer,
         header = header,
         shrinkToFit = shrink_to_fit,
         pageRanges = page_ranges
       ))
+
+      print(jsonlite::prettify(jsonlite::toJSON(body, auto_unbox = TRUE)))
+
       req <- req_body_selenium(req, body)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value

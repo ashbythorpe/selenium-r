@@ -16,6 +16,15 @@
 #'   and [actions_mousemove()].
 #' * Scroll actions: [actions_scroll()].
 #'
+#' @examples
+#' actions_stream(
+#'   actions_press(keys$enter),
+#'   actions_pause(0.5),
+#'   actions_release(keys$enter),
+#'   actions_scroll(x = 1, y = 1, delta_x = 1, delta_y = 1, duration = 0.5),
+#'   actions_mousemove(x = 1, y = 1, duration = 1, origin = "pointer")
+#' )
+#'
 #' @export
 actions_stream <- function(...) {
   actions <- rlang::list2(...)
@@ -85,6 +94,11 @@ sequence_type <- function(action) {
 #'
 #' @returns A `selenium_action` object.
 #'
+#' @examples
+#' actions_stream(
+#'   actions_pause(1)
+#' )
+#'
 #' @export
 actions_pause <- function(seconds) {
   data <- list(
@@ -106,6 +120,14 @@ actions_pause <- function(seconds) {
 #'   the [keys] object to use special keys (e.g. <Ctrl>).
 #'
 #' @returns A `selenium_action` object.
+#'
+#' @examples
+#' actions_stream(
+#'   actions_press("a"),
+#'   actions_release("a"),
+#'   actions_press(keys$enter),
+#'   actions_release(keys$enter)
+#' )
 #'
 #' @export
 actions_press <- function(key) {
@@ -151,6 +173,13 @@ actions_release <- function(key) {
 #' @param azimuth_angle A number between 0 and `2*pi`.
 #'
 #' @returns A `selenium_action` object.
+#'
+#' @examples
+#' actions_stream(
+#'   actions_mousedown("left", width = 1, height = 1, pressure = 0.5),
+#'   actions_mouseup("left", width = 100, height = 50, pressure = 1),
+#'   actions_mousemove(x = 1, y = 1, duration = 1, origin = "pointer")
+#' )
 #'
 #' @export
 actions_mousedown <- function(button = c("left", "right", "middle"),
@@ -283,6 +312,13 @@ actions_mousemove <- function(x,
 #' @param origin The point from which `x` and `y` are measured. Can be a
 #'   `WebElement` object, in which case `x` and `y` are measured from the
 #'   center of the element. Otherwise, `origin` must be `"viewport"`.
+#'
+#' @returns A `selenium_action` object.
+#'
+#' @examples
+#' actions_stream(
+#'   actions_scroll(x = 1, y = 1, delta_x = 1, delta_y = 1, duration = 0.5)
+#' )
 #'
 #' @export
 actions_scroll <- function(x,

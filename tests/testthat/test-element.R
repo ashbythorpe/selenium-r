@@ -29,6 +29,8 @@ test_that("Predicates on WebElements work", {
   expect_equal(buttons[[1]]$is_enabled(), TRUE)
   expect_equal(buttons[[2]]$is_enabled(), FALSE)
 
+  expect_equal(buttons[[1]]$is_displayed(), TRUE)
+
   session$close()
 })
 

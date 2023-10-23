@@ -6,7 +6,7 @@
 \value{
 A \code{WebElement} object.
 
-A \code{ShadowRoot} object.
+A \link{ShadowRoot} object.
 
 A \code{WebElement} object.
 
@@ -46,12 +46,221 @@ The element, invisibly.
 
 The base64-encoded PNG screenshot, as a string.
 
+A boolean.
+
 A list, which can then be converted to JSON using
-\code{jsonlite::toJSON()}.
+\code{\link[jsonlite:fromJSON]{jsonlite::toJSON()}}.
 }
 \description{
 This class represents a single element on the page. It is created using an
-existing \code{SeleniumSession} instance.
+existing \link{SeleniumSession} instance.
+}
+\examples{
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+element <- session$find_element(using = "css selector", value = "#download")
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+# Let's create our own Shadow Root using JavaScript
+session$execute_script("
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  div.attachShadow({mode: 'open'});
+")
+
+element <- session$find_element(using = "css selector", value = "div")
+
+shadow_root <- element$shadow_root()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+row <- session$find_element(using = "css selector", value = ".row")
+
+logo_container <- row$find_element(using = "css selector", value = "p")
+
+logo <- logo_container$find_element(using = "css selector", value = "img")
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+row <- session$find_element(using = "css selector", value = ".row")
+
+links <- row$find_elements(using = "css selector", value = "a")
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "#download")$is_selected()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$get_attribute("href")
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$get_property("href")
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$get_css_value("color")
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "#download")$get_text()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "#download")$get_tag_name()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "#download")$get_rect()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$is_enabled()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$computed_role()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$computed_label()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$click()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.google.com")
+
+session$find_element(using = "css selector", value = "textarea")$clear()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.google.com")
+
+input <- session$find_element(using = "css selector", value = "textarea")
+
+input$send_keys("Hello")
+
+input$send_keys(key_chord(keys$ctrl, "a"), key_chord(keys$ctrl, "c"))
+
+input$send_keys(keys$ctrl, "v")
+
+input$get_attribute("value")
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$screenshot()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+session$find_element(using = "css selector", value = "a")$is_displayed()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+session$navigate("https://www.r-project.org")
+
+result <- session$find_element(using = "css selector", value = "a")$toJSON()
+
+result
+
+jsonlite::toJSON(result, auto_unbox = TRUE)
+
+session$close()
+\dontshow{\}) # examplesIf}
 }
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
@@ -82,6 +291,7 @@ page.}
 \item \href{#method-WebElement-clear}{\code{WebElement$clear()}}
 \item \href{#method-WebElement-send_keys}{\code{WebElement$send_keys()}}
 \item \href{#method-WebElement-screenshot}{\code{WebElement$screenshot()}}
+\item \href{#method-WebElement-is_displayed}{\code{WebElement$is_displayed()}}
 \item \href{#method-WebElement-toJSON}{\code{WebElement$toJSON()}}
 \item \href{#method-WebElement-clone}{\code{WebElement$clone()}}
 }
@@ -91,9 +301,10 @@ page.}
 \if{latex}{\out{\hypertarget{method-WebElement-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize a \code{WebElement} object. This should not be called manually:
-instead use \code{SeleniumSession$create_webelement()} if you have an element
-id. To find elements on the page, use \code{SeleniumSession$find_element()}
-and \code{SeleniumSession$find_elements()}.
+instead use \link[=SeleniumSession]{SeleniumSession$create_webelement()} if
+you have an element id. To find elements on the page, use
+\link[=SeleniumSession]{SeleniumSession$find_element()} and
+\link[=SeleniumSession]{SeleniumSession$find_elements()}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$new(session_id, req, verbose, id)}\if{html}{\out{</div>}}
 }
@@ -103,7 +314,7 @@ and \code{SeleniumSession$find_elements()}.
 \describe{
 \item{\code{session_id}}{The id of the session that the element belongs to.}
 
-\item{\code{req, verbose}}{Private fields of a \code{SeleniumSession} object.}
+\item{\code{req, verbose}}{Private fields of a \link{SeleniumSession} object.}
 
 \item{\code{id}}{The element id.}
 }
@@ -327,7 +538,7 @@ Send keys to an element.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{...}}{The keys to send (strings). Use \link{keys} for special keys, and
-use \code{\link[=key_chord]{key_chord()}} to send multiple keys at once.}
+use \code{\link[=key_chord]{key_chord()}} to send keys combinations.}
 }
 \if{html}{\out{</div>}}
 }
@@ -343,11 +554,22 @@ Take a screenshot of an element.
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-WebElement-is_displayed"></a>}}
+\if{latex}{\out{\hypertarget{method-WebElement-is_displayed}{}}}
+\subsection{Method \code{is_displayed()}}{
+Check if an element is displayed. This function may not work on all
+platforms.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$is_displayed()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-WebElement-toJSON"></a>}}
 \if{latex}{\out{\hypertarget{method-WebElement-toJSON}{}}}
 \subsection{Method \code{toJSON()}}{
 Convert an element to JSON. This is used by
-\code{\link[=SeleniumSession$execute_script]{SeleniumSession$execute_script()}}.
+\link[=SeleniumSession]{SeleniumSession$execute_script()}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$toJSON()}\if{html}{\out{</div>}}
 }

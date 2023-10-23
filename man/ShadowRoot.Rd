@@ -6,15 +6,103 @@
 \value{
 A \code{ShadowRoot} object.
 
-A \code{WebElement} object.
+A \link{WebElement} object.
 
-A list of \code{WebElement} objects.
+A list of \link{WebElement} objects.
 
 A list, which can then be converted to JSON using
 \code{\link[jsonlite:fromJSON]{jsonlite::toJSON()}}.
 }
 \description{
-Create a live representation of a shadow root object.
+A shadow DOM is a self-contained DOM tree, contained within another DOM
+tree. A shadow root is an element that contains a DOM subtree. This class
+represents a shadow root object, allowing you to select elements within
+the shadow root.
+}
+\examples{
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+# Let's create our own Shadow Root using JavaScript
+session$execute_script("
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  div.attachShadow({mode: 'open'});
+")
+
+element <- session$find_element(using = "css selector", value = "div")
+
+element$shadow_root()
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+# Let's create our own Shadow Root using JavaScript
+session$execute_script("
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  const shadowRoot = div.attachShadow({mode: 'open'});
+  const span = document.createElement('span');
+  span.textContent = 'Hello';
+  shadowRoot.appendChild(span);
+")
+
+element <- session$find_element(using = "css selector", value = "div")
+
+shadow_root <- element$shadow_root()
+
+shadow_root$find_element(using = "css selector", value = "span")
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+# Let's create our own Shadow Root using JavaScript
+session$execute_script("
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  const shadowRoot = div.attachShadow({mode: 'open'});
+  const span = document.createElement('span');
+  span.textContent = 'Hello';
+  shadowRoot.appendChild(span);
+  const p = document.createElement('p');
+  p.textContent = 'Me too!';
+  shadowRoot.appendChild(p);
+")
+
+element <- session$find_element(using = "css selector", value = "div")
+
+shadow_root <- element$shadow_root()
+
+shadow_root$find_elements(using = "css selector", value = "*")
+
+session$close()
+\dontshow{\}) # examplesIf}
+\dontshow{if (selenium_server_available()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+session <- SeleniumSession$new()
+
+# Let's create our own Shadow Root using JavaScript
+session$execute_script("
+  const div = document.createElement('div');
+  document.body.appendChild(div);
+  div.attachShadow({mode: 'open'});
+")
+
+element <- session$find_element(using = "css selector", value = "div")
+
+shadow_root <- element$shadow_root()
+
+result <- shadow_root$toJSON()
+
+result
+
+jsonlite::toJSON(result, auto_unbox = TRUE)
+
+session$close()
+\dontshow{\}) # examplesIf}
 }
 \section{Public fields}{
 \if{html}{\out{<div class="r6-fields">}}
@@ -38,8 +126,8 @@ Create a live representation of a shadow root object.
 \if{latex}{\out{\hypertarget{method-ShadowRoot-new}{}}}
 \subsection{Method \code{new()}}{
 Initialize a new \code{ShadowRoot} object. This should not be called
-manually: instead use \code{WebElement$shadow_root()}, or
-\code{SeleniumSession$create_shadow_root()}.
+manually: instead use \link[=WebElement]{WebElement$shadow_root()}, or
+\link[=SeleniumSession]{SeleniumSession$create_shadow_root()}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ShadowRoot$new(session_id, req, verbose, id)}\if{html}{\out{</div>}}
 }
@@ -49,7 +137,7 @@ manually: instead use \code{WebElement$shadow_root()}, or
 \describe{
 \item{\code{session_id}}{The id of the session.}
 
-\item{\code{req, verbose}}{Private fields of a \code{SeleniumSession} object.}
+\item{\code{req, verbose}}{Private fields of a \link{SeleniumSession} object.}
 
 \item{\code{id}}{The id of the shadow root.}
 }
@@ -105,7 +193,7 @@ Find all elements in a shadow root matching a selector.
 \if{latex}{\out{\hypertarget{method-ShadowRoot-toJSON}{}}}
 \subsection{Method \code{toJSON()}}{
 Convert an element to JSON. This is used by
-\code{\link[=SeleniumSession$execute_script]{SeleniumSession$execute_script()}}.
+\link[=SeleniumSession]{SeleniumSession$execute_script()}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ShadowRoot$toJSON()}\if{html}{\out{</div>}}
 }

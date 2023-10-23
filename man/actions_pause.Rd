@@ -16,3 +16,9 @@ A \code{selenium_action} object.
 A pause action to be passed into \code{\link[=actions_stream]{actions_stream()}}. Waits for a given
 number of seconds before performing the next action in the stream.
 }
+\examples{
+actions_stream(
+  actions_pause(1)
+)
+
+}
