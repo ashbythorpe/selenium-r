@@ -34,6 +34,11 @@ SeleniumSession <- R6::R6Class(
     #'
     #' session$close()
     initialize = function(browser = "firefox", port = 4444L, host = "localhost", verbose = FALSE) {
+      env_browser <- Sys.getenv("SELENIUM_BROWSER")
+      if (env_browser != "") {
+        browser <- env_browser
+      }
+
       url <- sprintf("http://%s:%s", host, port)
       private$req <- httr2::request(url)
       private$verbose <- verbose
