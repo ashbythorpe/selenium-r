@@ -34,10 +34,12 @@ test_session <- function(verbose = FALSE) {
 test_helper_site <- function(verbose = FALSE) {
   file <- normalizePath(testthat::test_path("helper-site.html"))
 
-  if (grepl("^/tmp", file)) {
-    if (env_var_is_true("CI")) {
-      file.copy(file, "~/helper-site.html")
-      file <- normalizePath("~/helper-site.html")
+  if (grepl("^/tmp", file) || is_check()) {
+    if (!is_check() && env_var_is_true("CI")) {
+      dir <- rappdirs::user_data_dir("helper-site")
+      dir.create(dir, recursive = TRUE)
+      file.copy(file, file.path(dir, "helper-site.html"))
+      file <- normalizePath(file.path(dir, "helper-site.html"))
     } else {
       skip("Browsers cannot access HTML files in the temporary directory.")
     }
