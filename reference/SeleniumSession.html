@@ -121,7 +121,9 @@ the Selenium client.</p><div class="section">
 <span>  browser <span class="op">=</span> <span class="st">"firefox"</span>,</span>
 <span>  port <span class="op">=</span> <span class="fl">4444L</span>,</span>
 <span>  host <span class="op">=</span> <span class="st">"localhost"</span>,</span>
-<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  capabilities <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -139,12 +141,22 @@ connect to it.</p></dd>
 
 <dt><code>host</code></dt>
 <dd><p>The host that the Selenium server is running on. This is
-usually 'localhost' (i.e. Your own machine).</p></dd>
+usually 'localhost' (i.e. your own machine).</p></dd>
 
 
 <dt><code>verbose</code></dt>
 <dd><p>Whether to print the web requests that are being sent and
 any responses.</p></dd>
+
+
+<dt><code>capabilities</code></dt>
+<dd><p>A list of capabilities to pass to the Selenium
+server, to combine with the defaults generated using <code>browser</code>.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server. Overrides <code>capabilities</code>.</p></dd>
 
 
 </dl><p></p></div>
