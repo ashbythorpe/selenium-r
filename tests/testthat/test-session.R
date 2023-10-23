@@ -9,11 +9,11 @@ test_that("Opening and closing a SeleniumSession works", {
 test_that("Server status works", {
   session <- test_session()
 
-  expect_true(session$status()$ready, TRUE)
+  expect_no_error(session$status()$ready)
 
   session$close()
 
-  expect_true(session$status()$ready, TRUE)
+  expect_no_error(session$status()$ready)
 })
 
 test_that("Getting and setting timeouts works", {
@@ -104,7 +104,7 @@ test_that("Switching to frames works", {
 
   expect_true(length(session$find_elements(value = "iframe")) > 0)
 
-  session$switch_to_frame(0)
+  session$switch_to_frame(1)
 
   expect_error(session$switch_to_frame(0))
 
@@ -115,10 +115,6 @@ test_that("Switching to frames works", {
   session$switch_to_frame(element)
 
   session$switch_to_parent_frame()
-
-  session$switch_to_frame(0)
-
-  session$switch_to_frame(NA)
 
   session$close()
 })

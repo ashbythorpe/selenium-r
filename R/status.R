@@ -43,7 +43,7 @@
 #' @export
 selenium_server_available <- function(port = 4444L, host = "localhost", verbose = FALSE) {
   tryCatch(
-    get_server_status(port = port, host = host, verbose = verbose)$ready,
+    isTRUE(get_server_status(port = port, host = host, verbose = verbose)$ready),
     error = function(e) FALSE
   )
 }
@@ -79,7 +79,7 @@ wait_for_selenium_available <- function(timeout = 60,
     rlang::abort("Timed out waiting for selenium server to start", parent = result)
   }
 
-  return(FALSE)
+  FALSE
 }
 
 get_status <- function(req, verbose = FALSE) {

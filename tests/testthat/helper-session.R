@@ -1,6 +1,6 @@
 test_session <- function(verbose = FALSE) {
   skip_if_offline()
-  skip_if(!selenium_server_available())
+  skip_if_not(selenium_server_available())
 
   browser <- Sys.getenv("SELENIUM_BROWSER", "chrome")
   port <- as.integer(Sys.getenv("SELENIUM_PORT", 4444L))
