@@ -24,7 +24,7 @@ jobs:
 
     services:
       selenium:
-        image: selenium/standalone-${{ matrix.browser }}:4.14.1-20231020
+        image: selenium/standalone-firefox:4.14.1-20231020
         ports:
           - 4444:4444
         options: >-
