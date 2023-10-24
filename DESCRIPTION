@@ -28,3 +28,4 @@ Imports:
     rappdirs,
     rlang
 URL: https://ashbythorpe.github.io/selenium-r/
+Config/Needs/website: rmarkdown

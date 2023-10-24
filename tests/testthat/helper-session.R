@@ -2,7 +2,7 @@ test_session <- function(verbose = FALSE) {
   skip_if_offline()
   skip_if_not(selenium_server_available())
 
-  browser <- Sys.getenv("SELENIUM_BROWSER", "chrome")
+  browser <- Sys.getenv("SELENIUM_BROWSER", "firefox")
   port <- as.integer(Sys.getenv("SELENIUM_PORT", 4444L))
   host <- Sys.getenv("SELENIUM_HOST", "localhost")
 

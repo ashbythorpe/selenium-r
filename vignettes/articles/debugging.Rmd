@@ -1,0 +1,99 @@
+---
+title: "Debugging selenium"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Web automation is a complex and fragile task, with many ways to go wrong.
+This article describes some common errors and pitfalls, and how you might
+go about resolving them.
+
+## Starting the client
+
+If initializing a `SeleniumSession` fails, it is often useful to look at
+the logs from the server. If you ran the `java -jar ...` command manually, then
+you should be able to see the logs, but if you used `selenium_server()`, then
+you need to use the `stdout` argument to capture the output of the command:
+
+```r
+# Where `log.txt` is an already created file where you want to store the logs.
+selenium_server(stdout = "log.txt")
+```
+
+You can then look at the log file to see the output from the command.
+
+### Port and IP address
+One reason why you can't connect to the server is that the port and IP address you
+are using is wrong.
+
+To get the IP address and port number that the server is using, you need to look
+at the server logs. You should see a line like:
+`INFO [Standalone.execute] - Started Selenium Standalone ... (revision ...): http://<IP>:<PORT>`
+
+The URL at the end of this message can be used to extract an IP address and a port number, which
+can then be passed into the `host` and `port` arguments. For example, if the URL was:
+`http://172.17.0.1/4444`, you would run:
+```r
+session <- SeleniumSession$new(host = "172.17.0.1", port = 4444)
+```
+
+### Using a different debugging port for Chrome
+If you are using Chrome, and you see a browser open, but the call to
+`SeleniumSession$new()` times out, you may need to use a different debugging port.
+For example:
+
+```r
+session <- SeleniumSession$new(
+  browser = "chrome",
+  capabilities = list(
+    `goog:chromeOptions` = list(
+      args = list("remote-debugging-port=9222")
+    )
+  )
+)
+```
+
+### Increasing /dev/shm/ size when using docker
+If you are running selenium using docker, you may need to increase the size of
+`/dev/shm/` to avoid running out of memory. This issue usually happens when
+using Chrome, and usually results in a message like
+`session deleted because of page crash`.
+
+You can use the `--shm-size` to the selenium docker images to fix this issue.
+For example:
+`docker run --shm-size="2g" selenium/standalone-chrome:<version>`
+
+## Other common errors
+
+### Stale element reference errors
+At some point, when using selenium, you will encounter the following error:
+
+```r
+#> Error in `element$click()`:
+#> ! Stale element reference.
+#> ✖ The element with the reference <...> is not known in the current browsing context
+#> Caused by error in `httr2::req_perform()`:
+#> ! HTTP 404 Not Found.
+#> Run `rlang::last_trace()` to see where the error occurred.
+```
+This error is common when automating a website. Selenium is telling you that
+an element which you previously identified no longer exists. In all websites,
+especially complex ones, the DOM will be constantly updating itself, constantly
+invalidating references to elements. This error is a particularly annoying one,
+as it can happen at any time and is impossible to predict.
+
+One way to deal with this error is to use elements as soon as they are created,
+only keeping references to elements if you are sure that they will not be
+invalidated. For example, if you want to click the same element twice, with
+a second-long gap in between, you may want to consider fetching the element
+once for each time, rather than sharing the reference between the actions.
+
+However, this solution is not infallible. If you find yourself encountering
+this error a lot, it may be a sign that a more high-level package, that can
+deal with this issue (e.g. [rselenium](https://github.com/ashbythorpe/rselenium)),
+is needed.

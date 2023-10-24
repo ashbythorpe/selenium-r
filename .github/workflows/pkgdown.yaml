@@ -21,6 +21,15 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       contents: write
+
+    services:
+      selenium:
+        image: selenium/standalone-${{ matrix.browser }}:4.14.1-20231020
+        ports:
+          - 4444:4444
+        options: >-
+          --shm-size="2g"
+
     steps:
       - uses: actions/checkout@v3
 

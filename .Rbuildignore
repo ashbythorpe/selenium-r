@@ -6,3 +6,4 @@
 ^pkgdown$
 ^\.github$
 ^codecov\.yml$
+^vignettes/articles$

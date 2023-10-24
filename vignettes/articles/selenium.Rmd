@@ -1,0 +1,285 @@
+---
+title: "Getting Started with selenium"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+selenium is low-level tool, so can be complex to use. This vignette gives an
+overview of the important functions of selenium, and how to use them.
+
+```{r setup}
+library(selenium)
+```
+
+First, let's create a new session (assuming that you have a server running):
+```{r session}
+session <- SeleniumSession$new()
+```
+
+First, navigate to the website you want to automate with `SeleniumSession$navigate()`:
+
+```{r navigate}
+session$navigate("http://www.tidyverse.org")
+```
+
+## Navigation
+
+Use `SeleniumSession$back()` and `SeleniumSession$forward()` to navigate
+back and forward in the navigation history, and
+`SeleniumSession$refresh()` to reload the current page
+
+```{r history}
+session$back()
+
+session$forward()
+
+session$refresh()
+
+session$current_url()
+```
+
+## Elements
+
+To interact with a webpage, you first need to find the elements you want to
+interact with. You can do this using `SeleniumSession$find_element()` and
+`SeleniumSession$find_elements()`. Both functions take two arguments:
+`using` and `value`. `using` specifies the method you want to use to find the
+element, while `value` is the string you want to search for.
+
+By default, CSS selectors are used (`value = "css selector"`), as they provide
+a simple and concise way to find elements:
+
+* Use `"name"` to select an element with the tag name `name`. (e.g. `div`).
+* Use `"#id"` to select an element with the id `id`.
+* Use `".class"` to select an element with the class `class`.
+* Use square brackets to select elements using other properties.
+  For example, `"input[type='text']"` selects a text input element.
+
+For more information about using CSS selectors, see:
+<https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors/Selectors_and_combinators>.
+
+Another notable way to select elements is using XPaths. Xpaths can be slightly more
+verbose than CSS selectors, but are more powerful. Use `using = "xpath"` to use
+XPaths.
+
+* Use `//tagname` to select an element with the tag name `tagname`.
+* Use `//tagname[@attribute='value']` to select an element with the tag name
+  `tagname` and the attribute `attribute` with the value `value`.
+* Use `//tagname/childtagname` (single slash) to select an element that is a direct
+  child of the `tagname` element. Similarly, `/tagname` can be used to select
+  an element that is at the top level of the DOM.
+* Use `//tagname//childtagname` to select an element that is a child of the 
+  `tagname` element, but does not have to be directly below it in the DOM.
+
+To learn more about how to use Xpaths, see:
+<https://www.w3schools.com/xml/xpath_intro.asp>
+
+The other values that `using` can take are fairly self-explanatory (e.g. `"tag name"`)
+will match elements with the tag name given by `value`.
+
+Once you have an element, you can locate further sub-elements using
+`WebElement$find_element()` and `WebElement$find_elements()`, which will
+now select from the element's children.
+This is especially useful when a website does not make much use of
+classes and ids to label its elements uniquely.
+
+For example, the following code will find all the hex images on the Tidyverse
+home page:
+
+```{r hex}
+hex_stickers <- session$
+  find_element(using = "css selector", value = ".hexBadges")$
+  find_elements(using = "css selector", value = "img")
+```
+
+## Element properties
+Once you have an element, there are many properties that you can request from
+it.
+
+```{r get_element}
+element <- hex_stickers[[1]]
+```
+
+Use `WebElement$get_tag_name()` to get the tag name of an element:
+
+```{r tag_name}
+element$get_tag_name()
+```
+
+Use `WebElement$get_text()` to get the text inside of an element:
+
+```{r text}
+element$get_text()
+```
+
+`WebElement$get_attribute()` and `WebElement$get_property()` will return
+the value or property of an element (see the documentation for the
+difference between the two).
+
+```{r get_attribute}
+element$get_attribute("src")
+
+element$get_property("src")
+```
+
+`WebElement$get_css_property()` will return the computed CSS property of an
+element:
+
+```{r get_css_property}
+element$get_css_property("background-color")
+```
+
+Use `WebElement$get_rect()` to get the coordinates and size of an element:
+
+```{r rect}
+element$get_rect()
+```
+
+Use `WebElement$is_selected()`, `WebElement$is_enabled()` and
+`WebElement$is_displayed()` to check if an element is currently selected,
+enabled or visible.
+
+```{r check}
+element$is_selected()
+
+element$is_enabled()
+
+element$is_displayed()
+```
+
+## Interacting with an element
+There are many different ways to interact with an element.
+
+Use `WebElement$click()` to click on an element:
+
+```{r click}
+element$click()
+```
+
+Use `WebElement$send_keys()` to send text to an input element:
+
+```{r send_keys}
+input <- session$find_element(using = "css selector", value = "input[type='search']")
+
+input$send_keys("filter")
+```
+
+You can use the `keys` object to send more advanced key combinations to an element.
+
+For example, the below code selects all the text inside the element (`<Ctrl-A>`), and
+then deletes it.
+
+```{r keys}
+input$send_keys(keys$ctrl, "a", keys$backspace)
+```
+
+However, generally, if you want to clear an input element, use `WebElement$clear()`.
+
+```{r clear}
+input$clear()
+```
+
+## Custom JavaScript
+Use `SeleniumSession$execute_script()` to execute custom JavaScript. Any extra arguments
+will be passed into the script through the `arguments` array, and items can be returned
+explicitly using `return`. `WebElements` can also be passed in and returned.
+
+```{r js}
+session$execute_script("return arguments[0] + arguments[1];", 2, 2)
+```
+
+```{r js_element}
+session$execute_script("return arguments[0].parentElement;", element)
+```
+
+`SeleniumSession$execute_async_script()` is provided for when you need to interact
+with an asynchronous JavaScript API, but is much less commonly used.
+
+## Windows and Tabs
+A `SeleniumSession` object is not limited to a single window/tab. Use
+`SeleniumSession$new_window()` to create a new window or tab, using the
+`type` argument to choose between the two:
+
+```{r new_window}
+tab <- session$new_window(type = "tab")
+
+window <- session$new_window(type = "window")
+
+tab
+
+window
+```
+
+Each window/tab has its own handle: a string that uniquely identifies it.
+Use `SeleniumSession$window_handle()` to get the handle of the current
+window, and `SeleniumSession$window_handles()` to get the handle of
+every open window/tab.
+
+```{r window_handle}
+current_handle <- session$window_handle()
+
+current_handle
+
+session$window_handles()
+```
+
+When a new window/tab is created, it is not automatically switched to. Use
+`SeleniumSession$switch_to_window()` to switch to a window/tab with a specific
+handle:
+
+```{r switch_to_window}
+session$switch_to_window(window$handle)
+```
+
+Use `SeleniumSession$close_window()` to close a window/tab:
+
+```{r close_window}
+session$close_window()
+
+# Switch to an open window
+session$switch_to_window(current_handle)
+```
+
+## iframes and the Shadow DOM
+There are many methods that web developers use to embed self-contained
+HTML documents or elements into a page.
+
+One of these is an iframe element, allowing a nested browsing context to
+be embedded into a page. For example, iframes are often used to embed
+video players into a site. Use `SeleniumSession$switch_to_frame()` to switch
+to an frame and select elements within it. You can pass in the index of the
+frame, or the `iframe` element itself.
+
+```{r switch_to_frame}
+session$navigate("https://www.youtube.com")
+
+iframe <- session$find_element(using = "css selector", value = "iframe")
+
+session$switch_to_frame(iframe)
+```
+
+Use `SeleniumSession$switch_to_parent_frame()` to switch to the parent
+frame of the current one, or use `SeleniumSession$switch_to_frame()`
+with no arguments to switch to the top-level browsing context:
+
+```{r switch_to_parent_frame}
+session$switch_to_parent_frame()
+```
+
+The Shadow DOM is another way for websites to embed content into a page,
+this time into any element. If an element is a shadow root, use
+`WebElement$shadow_root()` to get the corresponding `ShadowRoot`
+object. You can then find sub-elements within the shadow root
+using `ShadowRoot$find_element()` and `ShadowRoot$find_elements()`.
+
+## Closing the session
+Always remember to close the session after you have finished using it:
+
+```{r close}
+session$close()
+```

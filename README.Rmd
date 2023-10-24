@@ -28,26 +28,42 @@ alternative to [RSelenium](https://github.com/ropensci/RSelenium).
 You can install the development version of selenium from GitHub:
 
 ``` r
+# install.packages("pak")
 pak::pak("ashbythorpe/selenium")
 ```
 
 However, you must also have a selenium server installed and running (see below).
 
-## Usage
+## Starting the server
 A selenium instance consists of two parts: the client and the server.
 The selenium package *only provides the client*. This means that you
 have to start the server yourself. 
 
-One of the ways to do this is the following:
+To do this you must:
 
-1. Install a browser that you want to automate (e.g. Chrome, Firefox, Edge).
-2. Download [Java](https://www.java.com/).
-3. Download the latest `.jar` file for Selenium Server. Do this by navigating to
+* Install a browser that you want to automate (e.g. Chrome, Firefox, Edge).
+* Download [Java](https://www.java.com/).
+
+There are many different ways to download and start the server, one of which
+is provided by selenium:
+
+```{r setup}
+library(selenium)
+```
+
+```r
+server <- selenium_server()
+```
+
+This will download the latest version of the server and start it. You can
+also do this manually if you want:
+
+1. Download the latest `.jar` file for Selenium Server. Do this by navigating to
    the latest GitHub release page (<https://github.com/SeleniumHQ/selenium/releases/latest/>),
    scrolling down to the **Assets** section, and downloading the file named 
    `selenium-server-standalone-<VERSION>.jar` (with `<VERSION>` being the latest release version).
-4. Make sure you are in the same directory as the file you downloaded.
-5. In the terminal, run `java -jar selenium-server-standalone-<VERSION>.jar standalone --selenium-manager true`,
+2. Make sure you are in the same directory as the file you downloaded.
+3. In the terminal, run `java -jar selenium-server-standalone-<VERSION>.jar standalone --selenium-manager true`,
    replacing `<VERSION>` with the version number that you downloaded. This will download
    any drivers you need to communicate with the server and the browser, and start the server.
 
@@ -59,6 +75,7 @@ There are a few other ways of starting Selenium Server:
   that at the time of writing, this package does not work with the latest version of
   Chrome.
 
+## Starting the client
 Once a server instance has started, move to R and load selenium.
 ```{r selenium}
 library(selenium)
@@ -69,26 +86,38 @@ Client sessions can be started using `SeleniumSession$new()`
 session <- SeleniumSession$new()
 ```
 
-By default, this will connect to Chrome, but you can use the `browser` argument to specify
+By default, this will connect to Firefox, but you can use the `browser` argument to specify
 a different browser if you like.
 
 ```{r session}
-session <- SeleniumSession$new(browser = "firefox")
+session <- SeleniumSession$new()
 ```
 
-If this doesn't work, you may have to specify the `port` and `host` arguments manually.
-If you used the first method above to start the server, you should have seen a message
-like this output in the terminal:
-`INFO [Standalone.execute] - Started Selenium Standalone ... (revision ...): http://<IP>:<PORT>`
-The URL at the end of this message can be used to extract an IP address and a port number, which
-can then be passed into the `host` and `port` arguments. For example, if the URL was:
-`http://172.17.0.1/4444`, you would run:
+Here, we use the `capabilities` argument to specify options for the browser.
+Here, the `remote-debugging-port` argument to Chrome is used to make sure the port
+that the browser uses does not conflict with any others (and may be
+necessary if Chrome is not working by default).
+
 ```r
-session <- SeleniumSession$new(host = "172.17.0.1", port = 4444)
+session <- SeleniumSession$new(
+  browser = "chrome",
+  capabilities = list(
+    `goog:chromeOptions` = list(
+      args = list("remote-debugging-port=9222")
+    )
+  )
+)
 ```
+
+If this doesn't work, please see the "Debugging Selenium" article for more information.
+
+<!-- TODO: Make this vignette --->
+
+## Usage
 
 Once the session has been successfully started, you can use the session
-object to control the browser.
+object to control the browser. Here, we dynamically navigate through
+the R project homepage.
 
 ```{r example}
 session$navigate("https://www.r-project.org/")
