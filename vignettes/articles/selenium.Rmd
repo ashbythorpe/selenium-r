@@ -127,11 +127,11 @@ element$get_attribute("src")
 element$get_property("src")
 ```
 
-`WebElement$get_css_property()` will return the computed CSS property of an
+`WebElement$get_css_value()` will return the computed CSS property of an
 element:
 
-```{r get_css_property}
-element$get_css_property("background-color")
+```{r get_css_value}
+element$get_css_value("background-color")
 ```
 
 Use `WebElement$get_rect()` to get the coordinates and size of an element:
@@ -194,7 +194,7 @@ session$execute_script("return arguments[0] + arguments[1];", 2, 2)
 ```
 
 ```{r js_element}
-session$execute_script("return arguments[0].parentElement;", element)
+session$execute_script("return arguments[0].parentElement;", input)
 ```
 
 `SeleniumSession$execute_async_script()` is provided for when you need to interact
