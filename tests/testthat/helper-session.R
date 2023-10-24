@@ -41,6 +41,7 @@ test_helper_site <- function(verbose = FALSE) {
       file.copy(file, file.path(dir, "helper-site.html"))
       file <- normalizePath(file.path(dir, "helper-site.html"))
       stopifnot(length(readLines(file)) > 1)
+      cat(paste0(readLines(file), collapse = "\n"))
     } else {
       skip("Browsers cannot access HTML files in the temporary directory.")
     }
