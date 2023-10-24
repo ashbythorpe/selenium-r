@@ -19,7 +19,7 @@ You can install the development version of selenium from GitHub:
 
 ``` r
 # install.packages("pak")
-pak::pak("ashbythorpe/selenium")
+pak::pak("ashbythorpe/selenium-r")
 ```
 
 However, you must also have a selenium server installed and running (see

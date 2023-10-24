@@ -548,7 +548,7 @@ SeleniumSession <- R6::R6Class(
     switch_to_parent_frame = function() {
       req <- req_command(private$req, "Switch To Parent Frame", session_id = self$id)
       req <- req_body_selenium(req, NULL)
-      req_perform_selenium(req, verbose = TRUE)
+      req_perform_selenium(req, verbose = private$verbose)
       invisible(self)
     },
     #' @description
