@@ -21,7 +21,11 @@ req_command <- function(req, command, session_id = NULL, element_id = NULL, shad
   httr2::req_method(httr2::req_url_path_append(req, url), method)
 }
 
-req_body_selenium <- function(req, body) {
+req_body_selenium <- function(req, body, request_body = NULL) {
+  if (!is.null(request_body)) {
+    body <- request_body
+  }
+
   body <- jsonlite::toJSON(body, auto_unbox = TRUE)
   req <- httr2::req_body_raw(req, body)
   req <- httr2::req_headers(

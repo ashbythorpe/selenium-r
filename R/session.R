@@ -62,16 +62,12 @@ SeleniumSession <- R6::R6Class(
         opts <- merge_lists(opts, capabilities)
       }
 
-      body <- if (!is.null(request_body)) {
-        request_body
-      } else {
-        list(
-          capabilities = list(
-            firstMatch = list(named_list()),
-            alwaysMatch = opts
-          )
+      body <- list(
+        capabilities = list(
+          firstMatch = list(named_list()),
+          alwaysMatch = opts
         )
-      }
+      )
 
       url <- sprintf("http://%s:%s", host, port)
       private$req <- httr2::request(url)
@@ -79,7 +75,7 @@ SeleniumSession <- R6::R6Class(
 
       req <- req_command(private$req, "New Session")
 
-      req <- req_body_selenium(req, body)
+      req <- req_body_selenium(req, body, request_body = request_body)
 
       result <- req_perform_selenium(req, verbose = private$verbose)
       result_r <- httr2::resp_body_json(result)
@@ -216,6 +212,8 @@ SeleniumSession <- R6::R6Class(
     #' @param page_load The amount of time to wait for the page to load.
     #' @param implicit_wait The amount of time to wait for elements on the
     #'   page.
+    #' @param request_body A list of request body parameters to pass to the
+    #'   Selenium server, overriding the default body of the web request
     #'
     #' @return The session object, invisibly.
     #'
@@ -229,7 +227,7 @@ SeleniumSession <- R6::R6Class(
     #'
     #' session$close()
     #' }
-    set_timeouts = function(script = NULL, page_load = NULL, implicit_wait = NULL) {
+    set_timeouts = function(script = NULL, page_load = NULL, implicit_wait = NULL, request_body = NULL) {
       req <- req_command(private$req, "Set Timeouts", session_id = self$id)
       body <- compact(list(
         script = script,
@@ -241,7 +239,7 @@ SeleniumSession <- R6::R6Class(
         stop()
       }
 
-      req <- req_body_selenium(req, body)
+      req <- req_body_selenium(req, body, request_body = request_body)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
       invisible(self)
@@ -251,6 +249,8 @@ SeleniumSession <- R6::R6Class(
     #'
     #' @param url The URL to navigate to. Must begin with a protocol (e.g.
     #'   'https://').
+    #' @param request_body A list of request body parameters to pass to the
+    #'   Selenium server, overriding the default body of the web request
     #'
     #' @return The session object, invisibly.
     #'
@@ -262,9 +262,9 @@ SeleniumSession <- R6::R6Class(
     #'
     #' session$close()
     #' }
-    navigate = function(url) {
+    navigate = function(url, request_body = NULL) {
       req <- req_command(private$req, "Navigate To", session_id = self$id)
-      req <- req_body_selenium(req, list(url = url))
+      req <- req_body_selenium(req, list(url = url), request_body = request_body)
       req_perform_selenium(req, verbose = private$verbose)
       invisible(self)
     },
@@ -426,6 +426,8 @@ SeleniumSession <- R6::R6Class(
     #' Switch to a specific window.
     #'
     #' @param handle The handle of the window to switch to.
+    #' @param request_body A list of request body parameters to pass to the
+    #'   Selenium server, overriding the default body of the web request
     #'
     #' @return The session object, invisibly.
     #'
@@ -443,9 +445,9 @@ SeleniumSession <- R6::R6Class(
     #'
     #' session$close()
     #' }
-    switch_to_window = function(handle) {
+    switch_to_window = function(handle, request_body = NULL) {
       req <- req_command(private$req, "Switch To Window", session_id = self$id)
-      req <- req_body_selenium(req, list(handle = handle))
+      req <- req_body_selenium(req, list(handle = handle), request_body = request_body)
       req_perform_selenium(req, verbose = private$verbose)
       invisible(self)
     },
@@ -472,6 +474,8 @@ SeleniumSession <- R6::R6Class(
     #' switched to.
     #'
     #' @param type Whether to create a tab or a window.
+    #' @param request_body A list of request body parameters to pass to the
+    #'   Selenium server, overriding the default body of the web request
     #'
     #' @return A list containing two elements:
     #'
@@ -488,10 +492,10 @@ SeleniumSession <- R6::R6Class(
     #'
     #' session$close()
     #' }
-    new_window = function(type = c("tab", "window")) {
+    new_window = function(type = c("tab", "window"), request_body = NULL) {
       type <- rlang::arg_match(type)
       req <- req_command(private$req, "New Window", session_id = self$id)
-      req <- req_body_selenium(req, list(type = type))
+      req <- req_body_selenium(req, list(type = type), request_body = request_body)
       resp <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(resp)$value
     },
@@ -505,6 +509,8 @@ SeleniumSession <- R6::R6Class(
     #'   browsing context is switched to (i.e. not a frame). This can also be
     #'   a [WebElement] object, in which case the frame that contains said
     #'   element will be switched to.
+    #' @param request_body A list of request body parameters to pass to the
+    #'   Selenium server, overriding the default body of the web request
     #'
     #' @return The session object, invisibly.
     #'
@@ -518,13 +524,13 @@ SeleniumSession <- R6::R6Class(
     #'
     #' session$close()
     #' }
-    switch_to_frame = function(id = NA) {
+    switch_to_frame = function(id = NA, request_body = NULL) {
       if (inherits(id, "WebElement")) {
         id <- id$toJSON()
       }
 
       req <- req_command(private$req, "Switch To Frame", session_id = self$id)
-      req <- req_body_selenium(req, list(id = id))
+      req <- req_body_selenium(req, list(id = id), request_body = request_body)
       req_perform_selenium(req, verbose = private$verbose)
       invisible(self)
     },
@@ -581,6 +587,8 @@ SeleniumSession <- R6::R6Class(
     #' @param height The height of the window.
     #' @param x The x position of the window relative to the left of the screen.
     #' @param y The y position of the window relative to the top of the screen.
+    #' @param request_body A list of request body parameters to pass to the
+    #'   Selenium server, overriding the default body of the web request
     #'
     #' @return The session object, invisibly.
     #'
@@ -594,7 +602,7 @@ SeleniumSession <- R6::R6Class(
     #'
     #' session$close()
     #' }
-    set_window_rect = function(width = NULL, height = NULL, x = NULL, y = NULL) {
+    set_window_rect = function(width = NULL, height = NULL, x = NULL, y = NULL, request_body = NULL) {
       req <- req_command(private$req, "Set Window Rect", session_id = self$id)
       body <- compact(list(
         width = width,
@@ -607,7 +615,7 @@ SeleniumSession <- R6::R6Class(
         stop()
       }
 
-      req <- req_body_selenium(req, body)
+      req <- req_body_selenium(req, body, request_body = request_body)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
     },
@@ -695,6 +703,8 @@ SeleniumSession <- R6::R6Class(
     #'
     #' @param using The type of selector to use.
     #' @param value The value of the selector: a string.
+    #' @param request_body A list of request body parameters to pass to the
+    #'   Selenium server, overriding the default body of the web request
     #'
     #' @return A [WebElement] object.
     #'
@@ -711,10 +721,10 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     find_element = function(using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
-                            value) {
+                            value, request_body = NULL) {
       using <- rlang::arg_match(using)
       req <- req_command(private$req, "Find Element", session_id = self$id)
-      req <- req_body_selenium(req, list(using = using, value = value))
+      req <- req_body_selenium(req, list(using = using, value = value), request_body = request_body)
       response <- req_perform_selenium(req, verbose = private$verbose)
       id <- httr2::resp_body_json(response)$value
       self$create_webelement(id[[1]])
@@ -724,6 +734,8 @@ SeleniumSession <- R6::R6Class(
     #'
     #' @param using The type of selector to use.
     #' @param value The value of the selector: a string.
+    #' @param request_body A list of request body parameters to pass to the
+    #'   Selenium server, overriding the default body of the web request
     #'
     #' @return A list of [WebElement] objects.
     #'
@@ -740,10 +752,10 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     find_elements = function(using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
-                             value) {
+                             value, request_body = NULL) {
       using <- rlang::arg_match(using)
       req <- req_command(private$req, "Find Elements", session_id = self$id)
-      req <- req_body_selenium(req, list(using = using, value = value))
+      req <- req_body_selenium(req, list(using = using, value = value), request_body = request_body)
       response <- req_perform_selenium(req, verbose = private$verbose)
       ids <- httr2::resp_body_json(response)$value
       lapply(ids, function(x) self$create_webelement(x[[1]]))
@@ -776,6 +788,8 @@ SeleniumSession <- R6::R6Class(
     #' @param ... Additional arguments to pass to the script. These can be
     #' accessed in the script using the `arguments` array. Can be [WebElement]
     #' objects or lists of such objects, which will be converted to nodes.
+    #' @param request_body A list of request body parameters to pass to the
+    #'   Selenium server, overriding the default body of the web request
     #'
     #' @return The return value of the script. Nodes or lists of nodes will
     #'   be converted to [WebElement] objects.
@@ -794,11 +808,11 @@ SeleniumSession <- R6::R6Class(
     #'
     #' session$close()
     #' }
-    execute_script = function(x, ...) {
+    execute_script = function(x, ..., request_body = NULL) {
       args <- rlang::list2(...)
       args <- prepare_for_json(args)
       req <- req_command(private$req, "Execute Script", session_id = self$id)
-      req <- req_body_selenium(req, list(script = x, args = args))
+      req <- req_body_selenium(req, list(script = x, args = args), request_body = request_body)
       response <- req_perform_selenium(req, verbose = private$verbose)
       parse_json_result(httr2::resp_body_json(response)$value, self)
     },
@@ -814,6 +828,8 @@ SeleniumSession <- R6::R6Class(
     #' @param ... Additional arguments to pass to the script. Can be
     #' [WebElement] objects or lists of such objects, which will be converted
     #' to nodes.
+    #' @param request_body A list of request body parameters to pass to the
+    #'   Selenium server, overriding the default body of the web request
     #'
     #' @return The return value of the script. Nodes or lists of nodes will
     #'   be converted to [WebElement] objects.
@@ -829,12 +845,11 @@ SeleniumSession <- R6::R6Class(
     #'
     #' session$close()
     #' }
-    execute_async_script = function(x, ...) {
+    execute_async_script = function(x, ..., request_body = NULL) {
       args <- rlang::list2(...)
       args <- prepare_for_json(args)
       req <- req_command(private$req, "Execute Async Script", session_id = self$id)
-      req <- req_body_selenium(req, list(script = x, args = args))
-      req <- req_body_selenium(req, list(script = x, args = args))
+      req <- req_body_selenium(req, list(script = x, args = args), request_body = request_body)
       response <- req_perform_selenium(req, verbose = private$verbose)
       parse_json_result(httr2::resp_body_json(response)$value, self)
     },
@@ -863,6 +878,8 @@ SeleniumSession <- R6::R6Class(
     #' Get a specific cookie using its name.
     #'
     #' @param name The name of the cookie.
+    #' @param request_body A list of request body parameters to pass to the
+    #'   Selenium server, overriding the default body of the web request
     #'
     #' @return The cookie object.
     #'
@@ -878,7 +895,7 @@ SeleniumSession <- R6::R6Class(
     #'
     #' session$close()
     #' }
-    get_cookie = function(name) {
+    get_cookie = function(name, request_body = NULL) {
       req <- req_command(private$req, "Get Named Cookie", session_id = self$id, name = name)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
@@ -888,6 +905,8 @@ SeleniumSession <- R6::R6Class(
     #'
     #' @param cookie The cookie object to add: a list which must contain a
     #'   `name` and `value` field.
+    #' @param request_body A list of request body parameters to pass to the
+    #'   Selenium server, overriding the default body of the web request
     #'
     #' @return The session object, invisibly.
     #'
@@ -901,9 +920,9 @@ SeleniumSession <- R6::R6Class(
     #'
     #' session$close()
     #' }
-    add_cookie = function(cookie) {
+    add_cookie = function(cookie, request_body = NULL) {
       req <- req_command(private$req, "Add Cookie", session_id = self$id)
-      req <- req_body_selenium(req, list(cookie = cookie))
+      req <- req_body_selenium(req, list(cookie = cookie), request_body = request_body)
       req_perform_selenium(req, verbose = private$verbose)
       invisible(self)
     },
@@ -911,6 +930,8 @@ SeleniumSession <- R6::R6Class(
     #' Delete a cookie using its name.
     #'
     #' @param name The name of the cookie.
+    #' @param request_body A list of request body parameters to pass to the
+    #'   Selenium server, overriding the default body of the web request
     #'
     #' @return The session object, invisibly.
     #'
@@ -926,7 +947,7 @@ SeleniumSession <- R6::R6Class(
     #'
     #' session$close()
     #' }
-    delete_cookie = function(name) {
+    delete_cookie = function(name, request_body = NULL) {
       req <- req_command(private$req, "Delete Cookie", session_id = self$id, name = name)
       req_perform_selenium(req, verbose = private$verbose)
       invisible(self)
@@ -958,6 +979,8 @@ SeleniumSession <- R6::R6Class(
     #'   [actions_stream()].
     #' @param release_actions Whether to call `release_actions()` after
     #'   performing the actions.
+    #' @param request_body A list of request body parameters to pass to the
+    #'   Selenium server, overriding the default body of the web request
     #'
     #' @return The session object, invisibly.
     #'
@@ -977,10 +1000,10 @@ SeleniumSession <- R6::R6Class(
     #'
     #' session$close()
     #' }
-    perform_actions = function(actions, release_actions = TRUE) {
+    perform_actions = function(actions, release_actions = TRUE, request_body = NULL) {
       actions <- unclass_stream(actions)
       req <- req_command(private$req, "Perform Actions", session_id = self$id)
-      req <- req_body_selenium(req, list(actions = actions))
+      req <- req_body_selenium(req, list(actions = actions), request_body = request_body)
       req_perform_selenium(req, verbose = private$verbose)
       if (release_actions) {
         self$release_actions()
@@ -1081,6 +1104,8 @@ SeleniumSession <- R6::R6Class(
     #' prompt.
     #'
     #' @param text The text to send.
+    #' @param request_body A list of request body parameters to pass to the
+    #'   Selenium server, overriding the default body of the web request
     #'
     #' @return The session object, invisibly.
     #'
@@ -1094,9 +1119,9 @@ SeleniumSession <- R6::R6Class(
     #'
     #' session$close()
     #' }
-    send_alert_text = function(text) {
+    send_alert_text = function(text, request_body = NULL) {
       req <- req_command(private$req, "Send Alert Text", session_id = self$id)
-      req <- req_body_selenium(req, list(text = text))
+      req <- req_body_selenium(req, list(text = text), request_body = request_body)
       req_perform_selenium(req, verbose = private$verbose)
       invisible(self)
     },
@@ -1138,6 +1163,8 @@ SeleniumSession <- R6::R6Class(
     #' @param shrink_to_fit Whether to shrink the page to fit the width and
     #'   height.
     #' @param page_ranges A list of page ranges (e.g. `"1"`, `"1-3"`) to print.
+    #' @param request_body A list of request body parameters to pass to the
+    #'   Selenium server, overriding the default body of the web request
     #'
     #' @return The base64-encoded PDF, as a string.
     #'
@@ -1160,7 +1187,8 @@ SeleniumSession <- R6::R6Class(
                           footer = NULL,
                           header = NULL,
                           shrink_to_fit = NULL,
-                          page_ranges = NULL) {
+                          page_ranges = NULL,
+                          request_body = NULL) {
       req <- req_command(private$req, "Print Page", session_id = self$id)
 
       if (!is.list(margin) && is.numeric(margin)) {
@@ -1191,7 +1219,7 @@ SeleniumSession <- R6::R6Class(
         pageRanges = page_ranges
       ))
 
-      req <- req_body_selenium(req, body)
+      req <- req_body_selenium(req, body, request_body = request_body)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
     }
