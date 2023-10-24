@@ -6,8 +6,6 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/ashbythorpe/selenium-r/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ashbythorpe/selenium-r/actions/workflows/R-CMD-check.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/ashbythorpe/selenium-r/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ashbythorpe/selenium-r?branch=main)
 <!-- badges: end -->
 
 selenium is a tool for the automation of web browsers. It is a low-level
