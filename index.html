@@ -42,7 +42,16 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item">
+  <a class="nav-link" href="articles/selenium.html">Get started</a>
+</li>
+<li class="nav-item">
   <a class="nav-link" href="reference/index.html">Reference</a>
+</li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="articles/debugging.html">Debugging selenium</a>
+  </div>
 </li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
@@ -67,17 +76,26 @@
 </h2>
 <p>You can install the development version of selenium from GitHub:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"ashbythorpe/selenium"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"ashbythorpe/selenium"</span><span class="op">)</span></span></code></pre></div>
 <p>However, you must also have a selenium server installed and running (see below).</p>
 </div>
 <div class="section level2">
-<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+<h2 id="starting-the-server">Starting the server<a class="anchor" aria-label="anchor" href="#starting-the-server"></a>
 </h2>
 <p>A selenium instance consists of two parts: the client and the server. The selenium package <em>only provides the client</em>. This means that you have to start the server yourself.</p>
-<p>One of the ways to do this is the following:</p>
-<ol style="list-style-type: decimal">
+<p>To do this you must:</p>
+<ul>
 <li>Install a browser that you want to automate (e.g. Chrome, Firefox, Edge).</li>
 <li>Download <a href="https://www.java.com/" class="external-link">Java</a>.</li>
+</ul>
+<p>There are many different ways to download and start the server, one of which is provided by selenium:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ashbythorpe.github.io/selenium-r/">selenium</a></span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">server</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/selenium_server.html">selenium_server</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>This will download the latest version of the server and start it. You can also do this manually if you want:</p>
+<ol style="list-style-type: decimal">
 <li>Download the latest <code>.jar</code> file for Selenium Server. Do this by navigating to the latest GitHub release page (<a href="https://github.com/SeleniumHQ/selenium/releases/latest/" class="external-link uri">https://github.com/SeleniumHQ/selenium/releases/latest/</a>), scrolling down to the <strong>Assets</strong> section, and downloading the file named <code>selenium-server-standalone-&lt;VERSION&gt;.jar</code> (with <code>&lt;VERSION&gt;</code> being the latest release version).</li>
 <li>Make sure you are in the same directory as the file you downloaded.</li>
 <li>In the terminal, run <code>java -jar selenium-server-standalone-&lt;VERSION&gt;.jar standalone --selenium-manager true</code>, replacing <code>&lt;VERSION&gt;</code> with the version number that you downloaded. This will download any drivers you need to communicate with the server and the browser, and start the server.</li>
@@ -87,20 +105,37 @@
 <li>Using docker to start the server. See <a href="https://github.com/SeleniumHQ/docker-selenium" class="external-link uri">https://github.com/SeleniumHQ/docker-selenium</a>. This is recommended in a non-interactive context (e.g. GitHub Actions).</li>
 <li>Using the <code>wdman</code> package to start the server from R, using <code>wdman::selenium()</code>. Note that at the time of writing, this package does not work with the latest version of Chrome.</li>
 </ul>
+</div>
+<div class="section level2">
+<h2 id="starting-the-client">Starting the client<a class="anchor" aria-label="anchor" href="#starting-the-client"></a>
+</h2>
 <p>Once a server instance has started, move to R and load selenium.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ashbythorpe.github.io/selenium-r/">selenium</a></span><span class="op">)</span></span></code></pre></div>
 <p>Client sessions can be started using <code>SeleniumSession$new()</code></p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>By default, this will connect to Chrome, but you can use the <code>browser</code> argument to specify a different browser if you like.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>browser <span class="op">=</span> <span class="st">"firefox"</span><span class="op">)</span></span></code></pre></div>
-<p>If this doesn’t work, you may have to specify the <code>port</code> and <code>host</code> arguments manually. If you used the first method above to start the server, you should have seen a message like this output in the terminal: <code>INFO [Standalone.execute] - Started Selenium Standalone ... (revision ...): http://&lt;IP&gt;:&lt;PORT&gt;</code> The URL at the end of this message can be used to extract an IP address and a port number, which can then be passed into the <code>host</code> and <code>port</code> arguments. For example, if the URL was: <code>http://172.17.0.1/4444</code>, you would run:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>host <span class="op">=</span> <span class="st">"172.17.0.1"</span>, port <span class="op">=</span> <span class="fl">4444</span><span class="op">)</span></span></code></pre></div>
-<p>Once the session has been successfully started, you can use the session object to control the browser.</p>
+<code class="sourceCode R"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>By default, this will connect to Firefox, but you can use the <code>browser</code> argument to specify a different browser if you like.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>Here, we use the <code>capabilities</code> argument to specify options for the browser. Here, the <code>remote-debugging-port</code> argument to Chrome is used to make sure the port that the browser uses does not conflict with any others (and may be necessary if Chrome is not working by default).</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  browser <span class="op">=</span> <span class="st">"chrome"</span>,</span>
+<span>  capabilities <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    `goog:chromeOptions` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>      args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"remote-debugging-port=9222"</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>If this doesn’t work, please see the “Debugging Selenium” article for more information.</p>
+<!-- TODO: Make this vignette --->
+</div>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
+<p>Once the session has been successfully started, you can use the session object to control the browser. Here, we dynamically navigate through the R project homepage.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org/"</span><span class="op">)</span></span>
 <span><span class="va">session</span><span class="op">$</span></span>
 <span>  <span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">".row"</span><span class="op">)</span><span class="op">$</span></span>
@@ -116,7 +151,7 @@
 <span><span class="co">#&gt; [1] ""</span></span>
 <span></span>
 <span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>For a more detailed introduction to using selenium, see the Getting Started vignette (<code>vignette("selenium")</code>). <!-- TODO: Make this vignette ---></p>
+<p>For a more detailed introduction to using selenium, see the Getting Started vignette (<code><a href="articles/selenium.html">vignette("selenium")</a></code>). <!-- TODO: Make this vignette ---></p>
 <p>Note that selenium is low-level and mainly aimed towards developers. If you are wanting to use browser automation for web scraping or testing, you may want to take a look at <a href="https://github.com/ashbythorpe/selenider" class="external-link">selenider</a> instead.</p>
 </div>
 </div>
