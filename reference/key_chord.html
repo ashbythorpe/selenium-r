@@ -78,17 +78,17 @@ combining the keys into a single string, and appending the NULL key
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># &lt;Ctrl-V&gt; will be pressed, then &lt;Ctrl-Alt-V&gt;</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="va">keys</span><span class="op">$</span><span class="va">ctrl</span>, <span class="st">"v"</span>,</span></span>
+<span class="r-in"><span>  <span class="va">keys</span><span class="op">$</span><span class="va">control</span>, <span class="st">"v"</span>,</span></span>
 <span class="r-in"><span>  <span class="va">keys</span><span class="op">$</span><span class="va">alt</span>, <span class="st">"v"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "vv"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "vv"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># &lt;Ctrl-V&gt; will be pressed, then &lt;Alt-V&gt;</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="fu">key_chord</span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">ctrl</span>, <span class="st">"v"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu">key_chord</span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">control</span>, <span class="st">"v"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  <span class="fu">key_chord</span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">alt</span>, <span class="st">"v"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "vv"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "vv"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -97,7 +97,7 @@ combining the keys into a single string, and appending the NULL key
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by First Last.</p>
+  <p></p><p>Developed by Ashby Thorpe.</p>
 </div>
 
 <div class="pkgdown-footer-right">

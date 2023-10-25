@@ -177,7 +177,8 @@ element.</p><div class="section">
 <h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span></span>
 <span>  using <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"css selector"</span>, <span class="st">"xpath"</span>, <span class="st">"tag name"</span>, <span class="st">"link text"</span>, <span class="st">"partial link text"</span><span class="op">)</span>,</span>
-<span>  <span class="va">value</span></span>
+<span>  <span class="va">value</span>,</span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -189,6 +190,11 @@ element.</p><div class="section">
 
 <dt><code>value</code></dt>
 <dd><p>The value of the selector: a string.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -222,7 +228,8 @@ session$close()
 <h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">find_elements</span><span class="op">(</span></span>
 <span>  using <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"css selector"</span>, <span class="st">"xpath"</span>, <span class="st">"tag name"</span>, <span class="st">"link text"</span>, <span class="st">"partial link text"</span><span class="op">)</span>,</span>
-<span>  <span class="va">value</span></span>
+<span>  <span class="va">value</span>,</span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -234,6 +241,11 @@ session$close()
 
 <dt><code>value</code></dt>
 <dd><p>The value of the selector: a string.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -289,13 +301,18 @@ session$close()
 <h3 id="method-get-attribute-">Method <code>get_attribute()</code><a class="anchor" aria-label="anchor" href="#method-get-attribute-"></a></h3>
 <p>Get an attribute from an element.</p><div class="section">
 <h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_attribute</span><span class="op">(</span><span class="va">name</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_attribute</span><span class="op">(</span><span class="va">name</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>name</code></dt>
 <dd><p>The name of the attribute.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -325,13 +342,18 @@ session$close()
 but represent the HTML source code of the page, rather than the current
 state of the DOM.</p><div class="section">
 <h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_property</span><span class="op">(</span><span class="va">name</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_property</span><span class="op">(</span><span class="va">name</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>name</code></dt>
 <dd><p>The name of the property.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -359,13 +381,18 @@ session$close()
 <h3 id="method-get-css-value-">Method <code>get_css_value()</code><a class="anchor" aria-label="anchor" href="#method-get-css-value-"></a></h3>
 <p>Get the computed value of a CSS property.</p><div class="section">
 <h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_css_value</span><span class="op">(</span><span class="va">name</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_css_value</span><span class="op">(</span><span class="va">name</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>name</code></dt>
 <dd><p>The name of the CSS property.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -608,7 +635,7 @@ session$close()
 <h3 id="method-send-keys-">Method <code>send_keys()</code><a class="anchor" aria-label="anchor" href="#method-send-keys-"></a></h3>
 <p>Send keys to an element.</p><div class="section">
 <h4 id="usage-16">Usage<a class="anchor" aria-label="anchor" href="#usage-16"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">send_keys</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">send_keys</span><span class="op">(</span><span class="va">...</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -616,6 +643,11 @@ session$close()
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>The keys to send (strings). Use <a href="keys.html">keys</a> for special keys, and
 use <code><a href="key_chord.html">key_chord()</a></code> to send keys combinations.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -635,9 +667,9 @@ input &lt;- session$find_element(using = "css selector", value = "textarea")
 
 input$send_keys("Hello")
 
-input$send_keys(key_chord(keys$ctrl, "a"), key_chord(keys$ctrl, "c"))
+input$send_keys(key_chord(keys$control, "a"), key_chord(keys$control, "c"))
 
-input$send_keys(keys$ctrl, "v")
+input$send_keys(keys$control, "v")
 
 input$get_attribute("value")
 
@@ -1005,9 +1037,9 @@ session$close()
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">input</span><span class="op">$</span><span class="fu">send_keys</span><span class="op">(</span><span class="st">"Hello"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">input</span><span class="op">$</span><span class="fu">send_keys</span><span class="op">(</span><span class="fu"><a href="key_chord.html">key_chord</a></span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">ctrl</span>, <span class="st">"a"</span><span class="op">)</span>, <span class="fu"><a href="key_chord.html">key_chord</a></span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">ctrl</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">input</span><span class="op">$</span><span class="fu">send_keys</span><span class="op">(</span><span class="fu"><a href="key_chord.html">key_chord</a></span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">control</span>, <span class="st">"a"</span><span class="op">)</span>, <span class="fu"><a href="key_chord.html">key_chord</a></span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">control</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">input</span><span class="op">$</span><span class="fu">send_keys</span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">ctrl</span>, <span class="st">"v"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">input</span><span class="op">$</span><span class="fu">send_keys</span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">control</span>, <span class="st">"v"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">input</span><span class="op">$</span><span class="fu">get_attribute</span><span class="op">(</span><span class="st">"value"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -1066,7 +1098,7 @@ session$close()
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by First Last.</p>
+  <p></p><p>Developed by Ashby Thorpe.</p>
 </div>
 
 <div class="pkgdown-footer-right">

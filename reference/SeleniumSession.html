@@ -352,7 +352,8 @@ defined in <code>SeleniumSession$get_timeouts()</code>.</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">set_timeouts</span><span class="op">(</span></span>
 <span>  script <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  page_load <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  implicit_wait <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  implicit_wait <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -370,6 +371,11 @@ is not set.</p></dd>
 <dt><code>implicit_wait</code></dt>
 <dd><p>The amount of time to wait for elements on the
 page.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -397,7 +403,7 @@ session$close()
 <h3 id="method-navigate-">Method <code>navigate()</code><a class="anchor" aria-label="anchor" href="#method-navigate-"></a></h3>
 <p>Navigate to a URL.</p><div class="section">
 <h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="va">url</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -405,6 +411,11 @@ session$close()
 <p></p><div class="arguments"><dl><dt><code>url</code></dt>
 <dd><p>The URL to navigate to. Must begin with a protocol (e.g.
 'https://').</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -620,13 +631,18 @@ session$close()
 <h3 id="method-switch-to-window-">Method <code>switch_to_window()</code><a class="anchor" aria-label="anchor" href="#method-switch-to-window-"></a></h3>
 <p>Switch to a specific window.</p><div class="section">
 <h4 id="usage-15">Usage<a class="anchor" aria-label="anchor" href="#usage-15"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">switch_to_window</span><span class="op">(</span><span class="va">handle</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">switch_to_window</span><span class="op">(</span><span class="va">handle</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>handle</code></dt>
 <dd><p>The handle of the window to switch to.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -683,13 +699,18 @@ session$close()
 <p>Create a new window. Note that this window is not automatically
 switched to.</p><div class="section">
 <h4 id="usage-17">Usage<a class="anchor" aria-label="anchor" href="#usage-17"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">new_window</span><span class="op">(</span>type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"tab"</span>, <span class="st">"window"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">new_window</span><span class="op">(</span>type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"tab"</span>, <span class="st">"window"</span><span class="op">)</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>type</code></dt>
 <dd><p>Whether to create a tab or a window.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -721,7 +742,7 @@ section can load a separate HTML document. This function allows you to
 switch to a specific frame, given its ID, meaning that frame will become
 the current browsing context.</p><div class="section">
 <h4 id="usage-18">Usage<a class="anchor" aria-label="anchor" href="#usage-18"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">switch_to_frame</span><span class="op">(</span>id <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">switch_to_frame</span><span class="op">(</span>id <span class="op">=</span> <span class="cn">NA</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -731,6 +752,11 @@ the current browsing context.</p><div class="section">
 browsing context is switched to (i.e. not a frame). This can also be
 a <a href="WebElement.html">WebElement</a> object, in which case the frame that contains said
 element will be switched to.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -817,7 +843,8 @@ session$close()
 <span>  width <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  height <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  x <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  y <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  y <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -837,6 +864,11 @@ session$close()
 
 <dt><code>y</code></dt>
 <dd><p>The y position of the window relative to the top of the screen.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -965,7 +997,8 @@ session$close()
 <h4 id="usage-26">Usage<a class="anchor" aria-label="anchor" href="#usage-26"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span></span>
 <span>  using <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"css selector"</span>, <span class="st">"xpath"</span>, <span class="st">"tag name"</span>, <span class="st">"link text"</span>, <span class="st">"partial link text"</span><span class="op">)</span>,</span>
-<span>  <span class="va">value</span></span>
+<span>  <span class="va">value</span>,</span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -977,6 +1010,11 @@ session$close()
 
 <dt><code>value</code></dt>
 <dd><p>The value of the selector: a string.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -1008,7 +1046,8 @@ session$close()
 <h4 id="usage-27">Usage<a class="anchor" aria-label="anchor" href="#usage-27"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">find_elements</span><span class="op">(</span></span>
 <span>  using <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"css selector"</span>, <span class="st">"xpath"</span>, <span class="st">"tag name"</span>, <span class="st">"link text"</span>, <span class="st">"partial link text"</span><span class="op">)</span>,</span>
-<span>  <span class="va">value</span></span>
+<span>  <span class="va">value</span>,</span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -1020,6 +1059,11 @@ session$close()
 
 <dt><code>value</code></dt>
 <dd><p>The value of the selector: a string.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -1075,7 +1119,7 @@ session$close()
 <h3 id="method-execute-script-">Method <code>execute_script()</code><a class="anchor" aria-label="anchor" href="#method-execute-script-"></a></h3>
 <p>Execute a JavaScript script.</p><div class="section">
 <h4 id="usage-29">Usage<a class="anchor" aria-label="anchor" href="#usage-29"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">execute_script</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">execute_script</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -1089,6 +1133,11 @@ e.g. <code>return 1</code>.</p></dd>
 <dd><p>Additional arguments to pass to the script. These can be
 accessed in the script using the <code>arguments</code> array. Can be <a href="WebElement.html">WebElement</a>
 objects or lists of such objects, which will be converted to nodes.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -1122,7 +1171,7 @@ session$close()
 <p>Execute an asynchronous JavaScript script, waiting for a value to be
 returned.</p><div class="section">
 <h4 id="usage-30">Usage<a class="anchor" aria-label="anchor" href="#usage-30"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">execute_async_script</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">execute_async_script</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -1139,6 +1188,11 @@ write asynchronous JavaScript, but treat it like synchronous R code.</p></dd>
 <dd><p>Additional arguments to pass to the script. Can be
 <a href="WebElement.html">WebElement</a> objects or lists of such objects, which will be converted
 to nodes.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -1195,13 +1249,18 @@ session$close()
 <h3 id="method-get-cookie-">Method <code>get_cookie()</code><a class="anchor" aria-label="anchor" href="#method-get-cookie-"></a></h3>
 <p>Get a specific cookie using its name.</p><div class="section">
 <h4 id="usage-32">Usage<a class="anchor" aria-label="anchor" href="#usage-32"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_cookie</span><span class="op">(</span><span class="va">name</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_cookie</span><span class="op">(</span><span class="va">name</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-13">Arguments<a class="anchor" aria-label="anchor" href="#arguments-13"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>name</code></dt>
 <dd><p>The name of the cookie.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -1231,7 +1290,7 @@ session$close()
 <h3 id="method-add-cookie-">Method <code>add_cookie()</code><a class="anchor" aria-label="anchor" href="#method-add-cookie-"></a></h3>
 <p>Add a cookie to the cookie store of the current document.</p><div class="section">
 <h4 id="usage-33">Usage<a class="anchor" aria-label="anchor" href="#usage-33"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">add_cookie</span><span class="op">(</span><span class="va">cookie</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">add_cookie</span><span class="op">(</span><span class="va">cookie</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -1239,6 +1298,11 @@ session$close()
 <p></p><div class="arguments"><dl><dt><code>cookie</code></dt>
 <dd><p>The cookie object to add: a list which must contain a
 <code>name</code> and <code>value</code> field.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -1266,13 +1330,18 @@ session$close()
 <h3 id="method-delete-cookie-">Method <code>delete_cookie()</code><a class="anchor" aria-label="anchor" href="#method-delete-cookie-"></a></h3>
 <p>Delete a cookie using its name.</p><div class="section">
 <h4 id="usage-34">Usage<a class="anchor" aria-label="anchor" href="#usage-34"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">delete_cookie</span><span class="op">(</span><span class="va">name</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">delete_cookie</span><span class="op">(</span><span class="va">name</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-15">Arguments<a class="anchor" aria-label="anchor" href="#arguments-15"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>name</code></dt>
 <dd><p>The name of the cookie.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -1328,7 +1397,11 @@ session$close()
 <h3 id="method-perform-actions-">Method <code>perform_actions()</code><a class="anchor" aria-label="anchor" href="#method-perform-actions-"></a></h3>
 <p>Perform a sequence of actions.</p><div class="section">
 <h4 id="usage-36">Usage<a class="anchor" aria-label="anchor" href="#usage-36"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">perform_actions</span><span class="op">(</span><span class="va">actions</span>, release_actions <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">perform_actions</span><span class="op">(</span></span>
+<span>  <span class="va">actions</span>,</span>
+<span>  release_actions <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -1341,6 +1414,11 @@ session$close()
 <dt><code>release_actions</code></dt>
 <dd><p>Whether to call <code>release_actions()</code> after
 performing the actions.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -1486,13 +1564,18 @@ session$close()
 <p>Send text to the current alert, if present. Useful if the alert is a
 prompt.</p><div class="section">
 <h4 id="usage-41">Usage<a class="anchor" aria-label="anchor" href="#usage-41"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">send_alert_text</span><span class="op">(</span><span class="va">text</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">send_alert_text</span><span class="op">(</span><span class="va">text</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments-17">Arguments<a class="anchor" aria-label="anchor" href="#arguments-17"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>text</code></dt>
 <dd><p>The text to send.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -1556,7 +1639,8 @@ session$close()
 <span>  footer <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  header <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  shrink_to_fit <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  page_ranges <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  page_ranges <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -1568,7 +1652,7 @@ session$close()
 
 
 <dt><code>scale</code></dt>
-<dd><p>The page scale, a number between 0 and 1.</p></dd>
+<dd><p>The page scale, a number between 0.1 and 2.</p></dd>
 
 
 <dt><code>background</code></dt>
@@ -1605,6 +1689,11 @@ height.</p></dd>
 
 <dt><code>page_ranges</code></dt>
 <dd><p>A list of page ranges (e.g. <code>"1"</code>, <code>"1-3"</code>) to print.</p></dd>
+
+
+<dt><code>request_body</code></dt>
+<dd><p>A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request</p></dd>
 
 
 </dl><p></p></div>
@@ -2289,7 +2378,7 @@ session$close()
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by First Last.</p>
+  <p></p><p>Developed by Ashby Thorpe.</p>
 </div>
 
 <div class="pkgdown-footer-right">

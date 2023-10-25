@@ -240,7 +240,7 @@ combinations to an element.</p>
 <p>For example, the below code selects all the text inside the element
 (<code>&lt;Ctrl-A&gt;</code>), and then deletes it.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">input</span><span class="op">$</span><span class="fu">send_keys</span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">ctrl</span>, <span class="st">"a"</span>, <span class="va">keys</span><span class="op">$</span><span class="va">backspace</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">input</span><span class="op">$</span><span class="fu">send_keys</span><span class="op">(</span><span class="va">keys</span><span class="op">$</span><span class="va">control</span>, <span class="st">"a"</span>, <span class="va">keys</span><span class="op">$</span><span class="va">backspace</span><span class="op">)</span></span></code></pre></div>
 <p>However, generally, if you want to clear an input element, use
 <code>WebElement$clear()</code>.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
@@ -268,24 +268,24 @@ in and returned.</p>
 <span><span class="co">#&gt;     computed_role: function () </span></span>
 <span><span class="co">#&gt;     find_element: function (using = c("css selector", "xpath", "tag name", "link text", </span></span>
 <span><span class="co">#&gt;     find_elements: function (using = c("css selector", "xpath", "tag name", "link text", </span></span>
-<span><span class="co">#&gt;     get_attribute: function (name) </span></span>
-<span><span class="co">#&gt;     get_css_value: function (name) </span></span>
-<span><span class="co">#&gt;     get_property: function (name) </span></span>
+<span><span class="co">#&gt;     get_attribute: function (name, request_body = NULL) </span></span>
+<span><span class="co">#&gt;     get_css_value: function (name, request_body = NULL) </span></span>
+<span><span class="co">#&gt;     get_property: function (name, request_body = NULL) </span></span>
 <span><span class="co">#&gt;     get_rect: function () </span></span>
 <span><span class="co">#&gt;     get_tag_name: function () </span></span>
 <span><span class="co">#&gt;     get_text: function () </span></span>
-<span><span class="co">#&gt;     id: 6c8d3ea6-3415-489f-9e17-8da3eb0210f1</span></span>
+<span><span class="co">#&gt;     id: 41a91ecb-a721-4d4e-a9dd-e24eeae59216</span></span>
 <span><span class="co">#&gt;     initialize: function (session_id, req, verbose, id) </span></span>
 <span><span class="co">#&gt;     is_displayed: function () </span></span>
 <span><span class="co">#&gt;     is_enabled: function () </span></span>
 <span><span class="co">#&gt;     is_selected: function () </span></span>
 <span><span class="co">#&gt;     screenshot: function () </span></span>
-<span><span class="co">#&gt;     send_keys: function (...) </span></span>
+<span><span class="co">#&gt;     send_keys: function (..., request_body = NULL) </span></span>
 <span><span class="co">#&gt;     shadow_root: function () </span></span>
 <span><span class="co">#&gt;     toJSON: function () </span></span>
 <span><span class="co">#&gt;   Private:</span></span>
 <span><span class="co">#&gt;     req: httr2_request</span></span>
-<span><span class="co">#&gt;     session_id: 9b1bfdc6-e34e-4b24-a1af-88e0e1a3a492</span></span>
+<span><span class="co">#&gt;     session_id: 445f88c2-eba9-40f2-baa8-652e2027ad8d</span></span>
 <span><span class="co">#&gt;     verbose: FALSE</span></span></code></pre></div>
 <p><code>SeleniumSession$execute_async_script()</code> is provided for
 when you need to interact with an asynchronous JavaScript API, but is
@@ -305,14 +305,14 @@ between the two:</p>
 <span></span>
 <span><span class="va">tab</span></span>
 <span><span class="co">#&gt; $handle</span></span>
-<span><span class="co">#&gt; [1] "03bb1579-400f-4997-af9e-f4ba6b1aa4db"</span></span>
+<span><span class="co">#&gt; [1] "488a7cc8-57f1-4c69-b0fd-e4be0de0e224"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $type</span></span>
 <span><span class="co">#&gt; [1] "tab"</span></span>
 <span></span>
 <span><span class="va">window</span></span>
 <span><span class="co">#&gt; $handle</span></span>
-<span><span class="co">#&gt; [1] "b61d4f07-719e-4574-a576-3badde4bf761"</span></span>
+<span><span class="co">#&gt; [1] "412e135a-346a-4859-bcca-ed7baf57cd9d"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $type</span></span>
 <span><span class="co">#&gt; [1] "window"</span></span></code></pre></div>
@@ -324,17 +324,17 @@ to get the handle of every open window/tab.</p>
 <code class="sourceCode R"><span><span class="va">current_handle</span> <span class="op">&lt;-</span> <span class="va">session</span><span class="op">$</span><span class="fu">window_handle</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">current_handle</span></span>
-<span><span class="co">#&gt; [1] "c03ad54d-3022-4f59-adb4-e0cb3c90a60b"</span></span>
+<span><span class="co">#&gt; [1] "cf1d175f-459b-4761-8ec8-6ea7c02b06cf"</span></span>
 <span></span>
 <span><span class="va">session</span><span class="op">$</span><span class="fu">window_handles</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; [1] "c03ad54d-3022-4f59-adb4-e0cb3c90a60b"</span></span>
+<span><span class="co">#&gt; [1] "cf1d175f-459b-4761-8ec8-6ea7c02b06cf"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; [1] "03bb1579-400f-4997-af9e-f4ba6b1aa4db"</span></span>
+<span><span class="co">#&gt; [1] "488a7cc8-57f1-4c69-b0fd-e4be0de0e224"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
-<span><span class="co">#&gt; [1] "b61d4f07-719e-4574-a576-3badde4bf761"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "412e135a-346a-4859-bcca-ed7baf57cd9d"</span></span></code></pre></div>
 <p>When a new window/tab is created, it is not automatically switched
 to. Use <code>SeleniumSession$switch_to_window()</code> to switch to a
 window/tab with a specific handle:</p>
@@ -345,10 +345,10 @@ window/tab:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">session</span><span class="op">$</span><span class="fu">close_window</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; [1] "c03ad54d-3022-4f59-adb4-e0cb3c90a60b"</span></span>
+<span><span class="co">#&gt; [1] "cf1d175f-459b-4761-8ec8-6ea7c02b06cf"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; [1] "03bb1579-400f-4997-af9e-f4ba6b1aa4db"</span></span>
+<span><span class="co">#&gt; [1] "488a7cc8-57f1-4c69-b0fd-e4be0de0e224"</span></span>
 <span></span>
 <span><span class="co"># Switch to an open window</span></span>
 <span><span class="va">session</span><span class="op">$</span><span class="fu">switch_to_window</span><span class="op">(</span><span class="va">current_handle</span><span class="op">)</span></span></code></pre></div>
@@ -375,20 +375,7 @@ to the parent frame of the current one, or use
 <code>SeleniumSession$switch_to_frame()</code> with no arguments to
 switch to the top-level browsing context:</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">session</span><span class="op">$</span><span class="fu">switch_to_parent_frame</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; -&gt; POST /session/9b1bfdc6-e34e-4b24-a1af-88e0e1a3a492/frame/parent HTTP/1.1</span></span>
-<span><span class="co">#&gt; -&gt; <span style="font-weight: bold;">Host</span>: localhost:4444</span></span>
-<span><span class="co">#&gt; -&gt; <span style="font-weight: bold;">User-Agent</span>: httr2/0.2.3 r-curl/5.1.0 libcurl/7.81.0</span></span>
-<span><span class="co">#&gt; -&gt; <span style="font-weight: bold;">Accept-Encoding</span>: deflate, gzip, br, zstd</span></span>
-<span><span class="co">#&gt; -&gt; <span style="font-weight: bold;">Accept</span>: application/json; charset=utf-8</span></span>
-<span><span class="co">#&gt; -&gt; <span style="font-weight: bold;">Content-Type</span>: application/json; charset=utf-8</span></span>
-<span><span class="co">#&gt; -&gt; <span style="font-weight: bold;">Content-Length</span>: 2</span></span>
-<span><span class="co">#&gt; -&gt; </span></span>
-<span><span class="co">#&gt; &lt;- HTTP/1.1 200 OK</span></span>
-<span><span class="co">#&gt; &lt;- <span style="font-weight: bold;">content-length</span>: 14</span></span>
-<span><span class="co">#&gt; &lt;- <span style="font-weight: bold;">content-type</span>: application/json; charset=utf-8</span></span>
-<span><span class="co">#&gt; &lt;- <span style="font-weight: bold;">cache-control</span>: no-cache</span></span>
-<span><span class="co">#&gt; &lt;-</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">session</span><span class="op">$</span><span class="fu">switch_to_parent_frame</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>The Shadow DOM is another way for websites to embed content into a
 page, this time into any element. If an element is a shadow root, use
 <code>WebElement$shadow_root()</code> to get the corresponding
@@ -412,7 +399,7 @@ it:</p>
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by First Last.</p>
+<p>Developed by Ashby Thorpe.</p>
 </div>
 
 <div class="pkgdown-footer-right">

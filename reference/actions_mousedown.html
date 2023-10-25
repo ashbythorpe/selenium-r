@@ -86,7 +86,21 @@ mouse.</p>
 <span>  azimuth_angle <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">actions_mousemove</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, duration <span class="op">=</span> <span class="cn">NULL</span>, origin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"viewport"</span>, <span class="st">"pointer"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">actions_mousemove</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  <span class="va">y</span>,</span>
+<span>  duration <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  origin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"viewport"</span>, <span class="st">"pointer"</span><span class="op">)</span>,</span>
+<span>  width <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  height <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  pressure <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  tangential_pressure <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  tilt_x <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  tilt_y <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  twist <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  altitude_angle <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  azimuth_angle <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -169,7 +183,7 @@ center of the element.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "pointer"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "565728"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "508523"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$actions</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]$actions[[1]]</span>
@@ -244,7 +258,7 @@ center of the element.</p></dd>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by First Last.</p>
+  <p></p><p>Developed by Ashby Thorpe.</p>
 </div>
 
 <div class="pkgdown-footer-right">
