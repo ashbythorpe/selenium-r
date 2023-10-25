@@ -110,8 +110,9 @@ session <- SeleniumSession$new(
 )
 ```
 
-If this doesn’t work, please see the “Debugging Selenium” article for
-more information.
+If this doesn’t work, please see the [Debugging
+Selenium](https://ashbythorpe.github.io/selenium-r/articles/debugging.html)
+article for more information.
 
 <!-- TODO: Make this vignette --->
 
@@ -139,9 +140,9 @@ session$
 session$close()
 ```
 
-For a more detailed introduction to using selenium, see the Getting
-Started vignette (`vignette("selenium")`).
-<!-- TODO: Make this vignette --->
+For a more detailed introduction to using selenium, see the [Getting
+Started](https://ashbythorpe.github.io/selenium-r/articles/selenium.html)
+article. <!-- TODO: Make this vignette --->
 
 Note that selenium is low-level and mainly aimed towards developers. If
 you are wanting to use browser automation for web scraping or testing,
