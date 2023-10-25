@@ -32,7 +32,21 @@ actions_mouseup(
   azimuth_angle = NULL
 )
 
-actions_mousemove(x, y, duration = NULL, origin = c("viewport", "pointer"))
+actions_mousemove(
+  x,
+  y,
+  duration = NULL,
+  origin = c("viewport", "pointer"),
+  width = NULL,
+  height = NULL,
+  pressure = NULL,
+  tangential_pressure = NULL,
+  tilt_x = NULL,
+  tilt_y = NULL,
+  twist = NULL,
+  altitude_angle = NULL,
+  azimuth_angle = NULL
+)
 }
 \arguments{
 \item{button}{The mouse button to press.}

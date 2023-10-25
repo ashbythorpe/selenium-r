@@ -188,7 +188,8 @@ Find an element in the shadow root.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ShadowRoot$find_element(
   using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
-  value
+  value,
+  request_body = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -198,6 +199,9 @@ Find an element in the shadow root.
 \item{\code{using}}{The type of selector to use.}
 
 \item{\code{value}}{The value of the selector: a string.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -241,7 +245,8 @@ Find all elements in a shadow root matching a selector.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ShadowRoot$find_elements(
   using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
-  value
+  value,
+  request_body = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -251,6 +256,9 @@ Find all elements in a shadow root matching a selector.
 \item{\code{using}}{The type of selector to use.}
 
 \item{\code{value}}{The value of the selector: a string.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }

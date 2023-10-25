@@ -32,6 +32,8 @@
 #'
 #' server$kill()
 #' }
+#'
+#' @export
 selenium_server <- function(version = "latest",
                             selenium_manager = TRUE,
                             interactive = TRUE,
@@ -39,6 +41,12 @@ selenium_server <- function(version = "latest",
                             stdout = NULL,
                             stderr = NULL,
                             extra_args = c()) {
+  check_string(version)
+  check_bool(selenium_manager)
+  check_bool(interactive)
+  check_bool(echo_cmd)
+  check_character(extra_args, allow_null = TRUE)
+
   if (version != "latest") {
     n_version <- numeric_version(version)
 

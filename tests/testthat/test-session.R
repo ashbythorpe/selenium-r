@@ -263,7 +263,13 @@ test_that("Performing actions works", {
       tangential_pressure = 0.1, tilt_x = -1, tilt_y = 8,
       twist = 10, altitude_angle = pi / 2 - 1, azimuth_angle = 0
     ),
-    actions_mousemove(x = 1, y = 1, duration = 1, origin = "pointer"),
+    actions_mousemove(
+      x = 1,
+      y = 1,
+      duration = 1,
+      origin = "pointer",
+      azimuth_angle = pi / 2
+    ),
     actions_scroll(x = 1, y = 1, delta_x = 1, delta_y = 1, duration = 0.5),
     actions_mousemove(x = 0, y = 0, origin = element),
     actions_scroll(x = 0, y = 0, delta_x = 1, delta_y = 1, origin = element)

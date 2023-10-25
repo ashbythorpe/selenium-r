@@ -944,7 +944,8 @@ defined in \code{SeleniumSession$get_timeouts()}.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$set_timeouts(
   script = NULL,
   page_load = NULL,
-  implicit_wait = NULL
+  implicit_wait = NULL,
+  request_body = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -958,6 +959,9 @@ is not set.}
 
 \item{\code{implicit_wait}}{The amount of time to wait for elements on the
 page.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -987,7 +991,7 @@ session$close()
 \subsection{Method \code{navigate()}}{
 Navigate to a URL.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$navigate(url)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$navigate(url, request_body = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -995,6 +999,9 @@ Navigate to a URL.
 \describe{
 \item{\code{url}}{The URL to navigate to. Must begin with a protocol (e.g.
 'https://').}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -1233,13 +1240,16 @@ session$close()
 \subsection{Method \code{switch_to_window()}}{
 Switch to a specific window.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$switch_to_window(handle)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$switch_to_window(handle, request_body = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{handle}}{The handle of the window to switch to.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -1301,13 +1311,16 @@ session$close()
 Create a new window. Note that this window is not automatically
 switched to.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$new_window(type = c("tab", "window"))}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$new_window(type = c("tab", "window"), request_body = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{type}}{Whether to create a tab or a window.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -1344,7 +1357,7 @@ section can load a separate HTML document. This function allows you to
 switch to a specific frame, given its ID, meaning that frame will become
 the current browsing context.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$switch_to_frame(id = NA)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$switch_to_frame(id = NA, request_body = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -1354,6 +1367,9 @@ the current browsing context.
 browsing context is switched to (i.e. not a frame). This can also be
 a \link{WebElement} object, in which case the frame that contains said
 element will be switched to.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -1451,7 +1467,8 @@ Set the size and position of the current window.
   width = NULL,
   height = NULL,
   x = NULL,
-  y = NULL
+  y = NULL,
+  request_body = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -1465,6 +1482,9 @@ Set the size and position of the current window.
 \item{\code{x}}{The x position of the window relative to the left of the screen.}
 
 \item{\code{y}}{The y position of the window relative to the top of the screen.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -1607,7 +1627,8 @@ Find the first element matching a selector.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$find_element(
   using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
-  value
+  value,
+  request_body = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -1617,6 +1638,9 @@ Find the first element matching a selector.
 \item{\code{using}}{The type of selector to use.}
 
 \item{\code{value}}{The value of the selector: a string.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -1650,7 +1674,8 @@ Find all elements matching a selector.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$find_elements(
   using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
-  value
+  value,
+  request_body = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -1660,6 +1685,9 @@ Find all elements matching a selector.
 \item{\code{using}}{The type of selector to use.}
 
 \item{\code{value}}{The value of the selector: a string.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -1720,7 +1748,7 @@ session$close()
 \subsection{Method \code{execute_script()}}{
 Execute a JavaScript script.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$execute_script(x, ...)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$execute_script(x, ..., request_body = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -1732,6 +1760,9 @@ e.g. \verb{return 1}.}
 \item{\code{...}}{Additional arguments to pass to the script. These can be
 accessed in the script using the \code{arguments} array. Can be \link{WebElement}
 objects or lists of such objects, which will be converted to nodes.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -1767,7 +1798,7 @@ session$close()
 Execute an asynchronous JavaScript script, waiting for a value to be
 returned.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$execute_async_script(x, ...)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$execute_async_script(x, ..., request_body = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -1782,6 +1813,9 @@ write asynchronous JavaScript, but treat it like synchronous R code.}
 \item{\code{...}}{Additional arguments to pass to the script. Can be
 \link{WebElement} objects or lists of such objects, which will be converted
 to nodes.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -1843,13 +1877,16 @@ session$close()
 \subsection{Method \code{get_cookie()}}{
 Get a specific cookie using its name.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_cookie(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_cookie(name, request_body = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{name}}{The name of the cookie.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -1881,7 +1918,7 @@ session$close()
 \subsection{Method \code{add_cookie()}}{
 Add a cookie to the cookie store of the current document.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$add_cookie(cookie)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$add_cookie(cookie, request_body = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -1889,6 +1926,9 @@ Add a cookie to the cookie store of the current document.
 \describe{
 \item{\code{cookie}}{The cookie object to add: a list which must contain a
 \code{name} and \code{value} field.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -1918,13 +1958,16 @@ session$close()
 \subsection{Method \code{delete_cookie()}}{
 Delete a cookie using its name.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$delete_cookie(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$delete_cookie(name, request_body = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{name}}{The name of the cookie.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -1985,7 +2028,11 @@ session$close()
 \subsection{Method \code{perform_actions()}}{
 Perform a sequence of actions.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$perform_actions(actions, release_actions = TRUE)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$perform_actions(
+  actions,
+  release_actions = TRUE,
+  request_body = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -1996,6 +2043,9 @@ Perform a sequence of actions.
 
 \item{\code{release_actions}}{Whether to call \code{release_actions()} after
 performing the actions.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -2155,13 +2205,16 @@ session$close()
 Send text to the current alert, if present. Useful if the alert is a
 prompt.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$send_alert_text(text)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$send_alert_text(text, request_body = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{text}}{The text to send.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -2230,7 +2283,8 @@ Render the current page as a PDF.
   footer = NULL,
   header = NULL,
   shrink_to_fit = NULL,
-  page_ranges = NULL
+  page_ranges = NULL,
+  request_body = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -2240,7 +2294,7 @@ Render the current page as a PDF.
 \item{\code{orientation}}{The page orientation, either \code{"portrait"} or
 \code{"landscape"}.}
 
-\item{\code{scale}}{The page scale, a number between 0 and 1.}
+\item{\code{scale}}{The page scale, a number between 0.1 and 2.}
 
 \item{\code{background}}{Whether to print the background of the page.}
 
@@ -2261,6 +2315,9 @@ case the margin on each side is set individually.}
 height.}
 
 \item{\code{page_ranges}}{A list of page ranges (e.g. \code{"1"}, \code{"1-3"}) to print.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }

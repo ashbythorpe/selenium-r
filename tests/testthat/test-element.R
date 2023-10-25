@@ -93,7 +93,7 @@ test_that("Actions work", {
 })
 
 test_that("ShadowRoot elements work", {
-  session <- test_helper_site(verbose = TRUE)
+  session <- test_helper_site()
 
   div <- session$find_element(value = "#shadow-container")
 

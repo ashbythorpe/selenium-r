@@ -259,9 +259,9 @@ input <- session$find_element(using = "css selector", value = "textarea")
 
 input$send_keys("Hello")
 
-input$send_keys(key_chord(keys$ctrl, "a"), key_chord(keys$ctrl, "c"))
+input$send_keys(key_chord(keys$control, "a"), key_chord(keys$control, "c"))
 
-input$send_keys(keys$ctrl, "v")
+input$send_keys(keys$control, "v")
 
 input$get_attribute("value")
 
@@ -439,7 +439,8 @@ element.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$find_element(
   using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
-  value
+  value,
+  request_body = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -449,6 +450,9 @@ element.
 \item{\code{using}}{The type of selector to use.}
 
 \item{\code{value}}{The value of the selector: a string.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -484,7 +488,8 @@ Find all elements matching a selector, relative to the current element.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$find_elements(
   using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
-  value
+  value,
+  request_body = NULL
 )}\if{html}{\out{</div>}}
 }
 
@@ -494,6 +499,9 @@ Find all elements matching a selector, relative to the current element.
 \item{\code{using}}{The type of selector to use.}
 
 \item{\code{value}}{The value of the selector: a string.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -554,13 +562,16 @@ session$close()
 \subsection{Method \code{get_attribute()}}{
 Get an attribute from an element.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_attribute(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_attribute(name, request_body = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{name}}{The name of the attribute.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -592,13 +603,16 @@ Get a property from an element. Properties are similar to attributes,
 but represent the HTML source code of the page, rather than the current
 state of the DOM.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_property(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_property(name, request_body = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{name}}{The name of the property.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -628,13 +642,16 @@ session$close()
 \subsection{Method \code{get_css_value()}}{
 Get the computed value of a CSS property.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_css_value(name)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_css_value(name, request_body = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{name}}{The name of the CSS property.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -906,7 +923,7 @@ session$close()
 \subsection{Method \code{send_keys()}}{
 Send keys to an element.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$send_keys(...)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$send_keys(..., request_body = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -914,6 +931,9 @@ Send keys to an element.
 \describe{
 \item{\code{...}}{The keys to send (strings). Use \link{keys} for special keys, and
 use \code{\link[=key_chord]{key_chord()}} to send keys combinations.}
+
+\item{\code{request_body}}{A list of request body parameters to pass to the
+Selenium server, overriding the default body of the web request}
 }
 \if{html}{\out{</div>}}
 }
@@ -931,9 +951,9 @@ input <- session$find_element(using = "css selector", value = "textarea")
 
 input$send_keys("Hello")
 
-input$send_keys(key_chord(keys$ctrl, "a"), key_chord(keys$ctrl, "c"))
+input$send_keys(key_chord(keys$control, "a"), key_chord(keys$control, "c"))
 
-input$send_keys(keys$ctrl, "v")
+input$send_keys(keys$control, "v")
 
 input$get_attribute("value")
 

@@ -99,6 +99,9 @@ WebElement <- R6::R6Class("WebElement",
                             value,
                             request_body = NULL) {
       using <- rlang::arg_match(using)
+      check_string(value)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Find Element From Element", session_id = private$session_id, element_id = self$id)
       req <- req_body_selenium(req, list(using = using, value = value), request_body = request_body)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -131,6 +134,9 @@ WebElement <- R6::R6Class("WebElement",
                              value,
                              request_body = NULL) {
       using <- rlang::arg_match(using)
+      check_string(value)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Find Elements From Element", session_id = private$session_id, element_id = self$id)
       req <- req_body_selenium(req, list(using = using, value = value), request_body = request_body)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -177,6 +183,9 @@ WebElement <- R6::R6Class("WebElement",
     #' session$close()
     #' }
     get_attribute = function(name, request_body = NULL) {
+      check_string(name)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Element Attribute", session_id = private$session_id, element_id = self$id, name = name)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
@@ -203,6 +212,9 @@ WebElement <- R6::R6Class("WebElement",
     #' session$close()
     #' }
     get_property = function(name, request_body = NULL) {
+      check_string(name)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Element Property", session_id = private$session_id, element_id = self$id, name = name)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
@@ -227,6 +239,9 @@ WebElement <- R6::R6Class("WebElement",
     #' session$close()
     #' }
     get_css_value = function(name, request_body = NULL) {
+      check_string(name)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Element CSS Value", session_id = private$session_id, element_id = self$id, "property name" = name)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
@@ -377,7 +392,7 @@ WebElement <- R6::R6Class("WebElement",
     #' }
     click = function() {
       req <- req_command(private$req, "Element Click", session_id = private$session_id, element_id = self$id)
-      req <- req_body_selenium(req, NULL, request_body = request_body)
+      req <- req_body_selenium(req, NULL)
       req_perform_selenium(req, verbose = private$verbose)
       invisible(self)
     },
@@ -422,15 +437,20 @@ WebElement <- R6::R6Class("WebElement",
     #'
     #' input$send_keys("Hello")
     #'
-    #' input$send_keys(key_chord(keys$ctrl, "a"), key_chord(keys$ctrl, "c"))
+    #' input$send_keys(key_chord(keys$control, "a"), key_chord(keys$control, "c"))
     #'
-    #' input$send_keys(keys$ctrl, "v")
+    #' input$send_keys(keys$control, "v")
     #'
     #' input$get_attribute("value")
     #'
     #' session$close()
     #' }
     send_keys = function(..., request_body = NULL) {
+      for (a in list2(...)) {
+        check_string(a, arg = I("Every element in `...`"))
+      }
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Element Send Keys", session_id = private$session_id, element_id = self$id)
       body <- list(
         text = paste0(...)
@@ -598,6 +618,9 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
     find_element = function(using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
                             value, request_body = NULL) {
       using <- rlang::arg_match(using)
+      check_string(value)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Find Element From Shadow Root", session_id = private$session_id, shadow_id = self$id)
       req <- req_body_selenium(req, list(using = using, value = value), request_body = request_body)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -641,6 +664,10 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
     #' }
     find_elements = function(using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
                              value, request_body = NULL) {
+      using <- rlang::arg_match(using)
+      check_string(value)
+      check_list(request_body, allow_null = TRUE)
+
       using <- rlang::arg_match(using)
       req <- req_command(private$req, "Find Elements From Shadow Root", session_id = private$session_id, shadow_id = self$id)
       req <- req_body_selenium(req, list(using = using, value = value), request_body = request_body)

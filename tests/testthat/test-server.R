@@ -6,11 +6,13 @@ test_that("selenium_server() works", {
   dir <- withr::local_tempdir()
   withr::local_envvar(list(R_USER_DATA_DIR = dir))
 
-  session <- selenium_server(interactive = FALSE)
+  expect_no_error({
+    session <- selenium_server(interactive = FALSE)
 
-  session$kill()
+    session$kill()
 
-  session2 <- selenium_server(interactive = FALSE, version = "4.10.0")
+    session2 <- selenium_server(interactive = FALSE, version = "4.10.0")
 
-  session2$kill()
+    session2$kill()
+  })
 })

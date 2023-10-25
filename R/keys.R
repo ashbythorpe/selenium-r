@@ -89,13 +89,13 @@ keys <- list(
 #'
 #' # <Ctrl-V> will be pressed, then <Ctrl-Alt-V>
 #' paste0(
-#'   keys$ctrl, "v",
+#'   keys$control, "v",
 #'   keys$alt, "v"
 #' )
 #'
 #' # <Ctrl-V> will be pressed, then <Alt-V>
 #' paste0(
-#'   key_chord(keys$ctrl, "v"),
+#'   key_chord(keys$control, "v"),
 #'   key_chord(keys$alt, "v")
 #' )
 #'

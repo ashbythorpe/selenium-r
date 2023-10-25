@@ -30,6 +30,7 @@ actions_stream <- function(...) {
   actions <- rlang::list2(...)
   actions_stream <- list()
   for (action in actions) {
+    check_class(action, "selenium_action", arg = I("All items in `...`"))
     actions_stream <- append_action(actions_stream, action)
   }
 
@@ -101,6 +102,8 @@ sequence_type <- function(action) {
 #'
 #' @export
 actions_pause <- function(seconds) {
+  check_number_decimal(seconds)
+
   data <- list(
     type = "pause",
     duration = seconds * 1000L
@@ -131,6 +134,8 @@ actions_pause <- function(seconds) {
 #'
 #' @export
 actions_press <- function(key) {
+  check_char(key)
+
   data <- list(
     type = "keyDown",
     value = key
@@ -144,6 +149,8 @@ actions_press <- function(key) {
 #'
 #' @export
 actions_release <- function(key) {
+  check_char(key)
+
   data <- list(
     type = "keyUp",
     value = key
@@ -198,6 +205,15 @@ actions_mousedown <- function(button = c("left", "right", "middle"),
     "middle" = 1,
     "right" = 2
   )
+  check_number_whole(width, min = 0, allow_null = TRUE)
+  check_number_whole(height, min = 0, allow_null = TRUE)
+  check_number_decimal(pressure, min = 0, max = 1, allow_null = TRUE)
+  check_number_decimal(tangential_pressure, min = 0, max = 1, allow_null = TRUE)
+  check_number_whole(tilt_x, min = -90, max = 90, allow_null = TRUE)
+  check_number_whole(tilt_y, min = -90, max = 90, allow_null = TRUE)
+  check_number_whole(twist, min = 0, max = 359, allow_null = TRUE)
+  check_number_decimal(altitude_angle, min = 0, max = pi / 2, allow_null = TRUE)
+  check_number_decimal(azimuth_angle, min = 0, max = 2 * pi, allow_null = TRUE)
 
   parameters <- compact(list(
     button = button,
@@ -240,6 +256,15 @@ actions_mouseup <- function(button = c("left", "right", "middle"),
     "middle" = 1,
     "right" = 2
   )
+  check_number_whole(width, min = 0, allow_null = TRUE)
+  check_number_whole(height, min = 0, allow_null = TRUE)
+  check_number_decimal(pressure, min = 0, max = 1, allow_null = TRUE)
+  check_number_decimal(tangential_pressure, min = 0, max = 1, allow_null = TRUE)
+  check_number_whole(tilt_x, min = -90, max = 90, allow_null = TRUE)
+  check_number_whole(tilt_y, min = -90, max = 90, allow_null = TRUE)
+  check_number_whole(twist, min = 0, max = 359, allow_null = TRUE)
+  check_number_decimal(altitude_angle, min = 0, max = pi / 2, allow_null = TRUE)
+  check_number_decimal(azimuth_angle, min = 0, max = 2 * pi, allow_null = TRUE)
 
   parameters <- compact(list(
     button = button,
@@ -276,18 +301,48 @@ actions_mouseup <- function(button = c("left", "right", "middle"),
 actions_mousemove <- function(x,
                               y,
                               duration = NULL,
-                              origin = c("viewport", "pointer")) {
+                              origin = c("viewport", "pointer"),
+                              width = NULL,
+                              height = NULL,
+                              pressure = NULL,
+                              tangential_pressure = NULL,
+                              tilt_x = NULL,
+                              tilt_y = NULL,
+                              twist = NULL,
+                              altitude_angle = NULL,
+                              azimuth_angle = NULL) {
+  check_number_whole(x)
+  check_number_whole(y)
+  check_number_decimal(duration, min = 0, allow_null = TRUE)
   if (inherits(origin, "WebElement")) {
     origin <- origin$toJSON()
   } else {
     origin <- rlang::arg_match(origin)
   }
+  check_number_whole(width, min = 0, allow_null = TRUE)
+  check_number_whole(height, min = 0, allow_null = TRUE)
+  check_number_decimal(pressure, min = 0, max = 1, allow_null = TRUE)
+  check_number_decimal(tangential_pressure, min = 0, max = 1, allow_null = TRUE)
+  check_number_whole(tilt_x, min = -90, max = 90, allow_null = TRUE)
+  check_number_whole(tilt_y, min = -90, max = 90, allow_null = TRUE)
+  check_number_whole(twist, min = 0, max = 359, allow_null = TRUE)
+  check_number_decimal(altitude_angle, min = 0, max = pi / 2, allow_null = TRUE)
+  check_number_decimal(azimuth_angle, min = 0, max = 2 * pi, allow_null = TRUE)
 
   parameters <- compact(list(
     x = x,
     y = y,
     duration = duration * 1000L,
-    origin = origin
+    origin = origin,
+    width = width,
+    height = height,
+    pressure = pressure,
+    tangentialPressure = tangential_pressure,
+    tiltX = tilt_x,
+    tiltY = tilt_y,
+    twist = twist,
+    altitudeAngle = altitude_angle,
+    azimuthAngle = azimuth_angle
   ))
 
   data <- rlang::list2(
@@ -327,8 +382,15 @@ actions_scroll <- function(x,
                            delta_y,
                            duration = NULL,
                            origin = "viewport") {
+  check_number_whole(x)
+  check_number_whole(y)
+  check_number_whole(delta_x)
+  check_number_whole(delta_y)
+  check_number_decimal(duration, min = 0, allow_null = TRUE)
   if (inherits(origin, "WebElement")) {
     origin <- origin$toJSON()
+  } else {
+    origin <- rlang::arg_match(origin)
   }
 
   parameters <- compact(list(

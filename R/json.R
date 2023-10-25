@@ -1,7 +1,7 @@
 prepare_for_json <- function(x) {
-  if (rlang::inherits_any(x, c("WebElement", "ShadowRoot"))) {
+  if (inherits_any(x, c("WebElement", "ShadowRoot"))) {
     x$toJSON()
-  } else if (rlang::is_bare_list(x)) {
+  } else if (is_bare_list(x)) {
     lapply(x, prepare_for_json)
   } else {
     x

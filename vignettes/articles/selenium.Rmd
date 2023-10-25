@@ -175,7 +175,7 @@ For example, the below code selects all the text inside the element (`<Ctrl-A>`)
 then deletes it.
 
 ```{r keys}
-input$send_keys(keys$ctrl, "a", keys$backspace)
+input$send_keys(keys$control, "a", keys$backspace)
 ```
 
 However, generally, if you want to clear an input element, use `WebElement$clear()`.

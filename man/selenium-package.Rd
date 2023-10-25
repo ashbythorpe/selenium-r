@@ -6,7 +6,7 @@
 \alias{selenium-package}
 \title{selenium: Low-Level Browser Automation Interface}
 \description{
-An implementation of 'W3C WebDriver 2.0' (\url{https://w3c.github.io/webdriver/}), allowing interaction with a Selenium Server \url{https://www.selenium.dev/documentation/grid/} instance from R.
+An implementation of 'W3C WebDriver 2.0' (\url{https://w3c.github.io/webdriver/}), allowing interaction with a Selenium Server (\url{https://www.selenium.dev/documentation/grid/}) instance from R.
 }
 \seealso{
 Useful links:
@@ -16,7 +16,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: Ashby Thorpe \email{ashbythorpe@gmail.com} (\href{https://orcid.org/0000-0003-3106-099X}{ORCID}) [copyright holder]
 
 }
 \keyword{internal}

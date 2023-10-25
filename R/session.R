@@ -47,6 +47,13 @@ SeleniumSession <- R6::R6Class(
       capabilities = NULL,
       request_body = NULL
     ) {
+      check_string(browser)
+      check_number_whole(port)
+      check_string(host)
+      check_bool(verbose)
+      check_list(capabilities, allow_null = TRUE)
+      check_list(request_body, allow_null = TRUE)
+
       opts <- switch(browser,
         firefox = list(
           browserName = "firefox",
@@ -102,6 +109,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     create_webelement = function(id) {
+      check_string(id)
+
       result <- WebElement$new(self$id, private$req, private$verbose, id)
       result
     },
@@ -123,6 +132,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     create_shadowroot = function(id) {
+      check_string(id)
+
       ShadowRoot$new(self$id, private$req, private$verbose, id)
     },
 
@@ -228,6 +239,11 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     set_timeouts = function(script = NULL, page_load = NULL, implicit_wait = NULL, request_body = NULL) {
+      check_number_decimal(script, allow_null = TRUE)
+      check_number_decimal(page_load, allow_null = TRUE)
+      check_number_decimal(implicit_wait, allow_null = TRUE)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Set Timeouts", session_id = self$id)
       body <- compact(list(
         script = script,
@@ -263,6 +279,9 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     navigate = function(url, request_body = NULL) {
+      check_string(url)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Navigate To", session_id = self$id)
       req <- req_body_selenium(req, list(url = url), request_body = request_body)
       req_perform_selenium(req, verbose = private$verbose)
@@ -446,6 +465,9 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     switch_to_window = function(handle, request_body = NULL) {
+      check_string(handle)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Switch To Window", session_id = self$id)
       req <- req_body_selenium(req, list(handle = handle), request_body = request_body)
       req_perform_selenium(req, verbose = private$verbose)
@@ -494,6 +516,8 @@ SeleniumSession <- R6::R6Class(
     #' }
     new_window = function(type = c("tab", "window"), request_body = NULL) {
       type <- rlang::arg_match(type)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "New Window", session_id = self$id)
       req <- req_body_selenium(req, list(type = type), request_body = request_body)
       resp <- req_perform_selenium(req, verbose = private$verbose)
@@ -525,8 +549,12 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     switch_to_frame = function(id = NA, request_body = NULL) {
+      check_list(request_body, allow_null = TRUE)
+
       if (inherits(id, "WebElement")) {
         id <- id$toJSON()
+      } else {
+        check_number_whole(id, allow_na = TRUE)
       }
 
       req <- req_command(private$req, "Switch To Frame", session_id = self$id)
@@ -603,6 +631,12 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     set_window_rect = function(width = NULL, height = NULL, x = NULL, y = NULL, request_body = NULL) {
+      check_number_decimal(width, min = 0)
+      check_number_decimal(height, min = 0)
+      check_number_decimal(x)
+      check_number_decimal(y)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Set Window Rect", session_id = self$id)
       body <- compact(list(
         width = width,
@@ -696,7 +730,7 @@ SeleniumSession <- R6::R6Class(
       req <- req_command(private$req, "Get Active Element", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose)
       id <- httr2::resp_body_json(response)$value
-      self$create_webelement(id)
+      self$create_webelement(id[[1]])
     },
     #' @description
     #' Find the first element matching a selector.
@@ -723,6 +757,9 @@ SeleniumSession <- R6::R6Class(
     find_element = function(using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
                             value, request_body = NULL) {
       using <- rlang::arg_match(using)
+      check_string(value)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Find Element", session_id = self$id)
       req <- req_body_selenium(req, list(using = using, value = value), request_body = request_body)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -754,6 +791,9 @@ SeleniumSession <- R6::R6Class(
     find_elements = function(using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
                              value, request_body = NULL) {
       using <- rlang::arg_match(using)
+      check_string(value)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Find Elements", session_id = self$id)
       req <- req_body_selenium(req, list(using = using, value = value), request_body = request_body)
       response <- req_perform_selenium(req, verbose = private$verbose)
@@ -809,7 +849,11 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     execute_script = function(x, ..., request_body = NULL) {
+      check_string(x)
+      check_dots_unnamed()
       args <- rlang::list2(...)
+      check_list(request_body, allow_null = TRUE)
+
       args <- prepare_for_json(args)
       req <- req_command(private$req, "Execute Script", session_id = self$id)
       req <- req_body_selenium(req, list(script = x, args = args), request_body = request_body)
@@ -846,7 +890,11 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     execute_async_script = function(x, ..., request_body = NULL) {
+      check_string(x)
+      check_dots_unnamed()
       args <- rlang::list2(...)
+      check_list(request_body, allow_null = TRUE)
+
       args <- prepare_for_json(args)
       req <- req_command(private$req, "Execute Async Script", session_id = self$id)
       req <- req_body_selenium(req, list(script = x, args = args), request_body = request_body)
@@ -896,6 +944,9 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     get_cookie = function(name, request_body = NULL) {
+      check_string(name)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Named Cookie", session_id = self$id, name = name)
       response <- req_perform_selenium(req, verbose = private$verbose)
       httr2::resp_body_json(response)$value
@@ -921,6 +972,9 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     add_cookie = function(cookie, request_body = NULL) {
+      check_list(cookie)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Add Cookie", session_id = self$id)
       req <- req_body_selenium(req, list(cookie = cookie), request_body = request_body)
       req_perform_selenium(req, verbose = private$verbose)
@@ -948,6 +1002,9 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     delete_cookie = function(name, request_body = NULL) {
+      check_string(name)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Delete Cookie", session_id = self$id, name = name)
       req_perform_selenium(req, verbose = private$verbose)
       invisible(self)
@@ -1001,6 +1058,10 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     perform_actions = function(actions, release_actions = TRUE, request_body = NULL) {
+      check_class(actions, "selenium_actions_stream")
+      check_bool(release_actions)
+      check_list(request_body, allow_null = TRUE)
+
       actions <- unclass_stream(actions)
       req <- req_command(private$req, "Perform Actions", session_id = self$id)
       req <- req_body_selenium(req, list(actions = actions), request_body = request_body)
@@ -1120,6 +1181,9 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     send_alert_text = function(text, request_body = NULL) {
+      check_string(text)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Send Alert Text", session_id = self$id)
       req <- req_body_selenium(req, list(text = text), request_body = request_body)
       req_perform_selenium(req, verbose = private$verbose)
@@ -1150,7 +1214,7 @@ SeleniumSession <- R6::R6Class(
     #'
     #' @param orientation The page orientation, either `"portrait"` or
     #'   `"landscape"`.
-    #' @param scale The page scale, a number between 0 and 1.
+    #' @param scale The page scale, a number between 0.1 and 2.
     #' @param background Whether to print the background of the page.
     #' @param width The page width, in inches.
     #' @param height The page height, in inches.
@@ -1189,6 +1253,31 @@ SeleniumSession <- R6::R6Class(
                           shrink_to_fit = NULL,
                           page_ranges = NULL,
                           request_body = NULL) {
+      orientation <- rlang::arg_match(orientation)
+      check_number_decimal(scale, min = 0.1, max = 2)
+      check_bool(background)
+      check_number_decimal(width, min = 0, allow_null = TRUE)
+      check_number_decimal(height, min = 0, allow_null = TRUE)
+      if (is.list(margin)) {
+        check_number_decimal(margin$left, allow_null = TRUE, min = 0)
+        check_number_decimal(margin$right, allow_null = TRUE, min = 0)
+        check_number_decimal(margin$top, allow_null = TRUE, min = 0)
+        check_number_decimal(margin$bottom, allow_null = TRUE, min = 0)
+        if (any(!names(margin) %in% c("left", "right", "top", "bottom"))) {
+          bad_name <- names(margin)[!names(margin) %in% c("left", "right", "top", "bottom")][1]
+          rlang::abort(c(
+            "Argument 'margin' must be a list of four numbers, with names:",
+            "'left', 'right', 'top', and 'bottom'.",
+            "i" = paste0("Incorrect name: ", bad_name)
+          ))
+        }
+      } else {
+        check_number_decimal(margin, allow_null = TRUE, min = 0)
+      }
+      check_bool(shrink_to_fit, allow_null = TRUE)
+      check_list(page_ranges, allow_null = TRUE)
+      check_list(request_body, allow_null = TRUE)
+
       req <- req_command(private$req, "Print Page", session_id = self$id)
 
       if (!is.list(margin) && is.numeric(margin)) {

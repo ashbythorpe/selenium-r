@@ -42,6 +42,10 @@
 #'
 #' @export
 selenium_server_available <- function(port = 4444L, host = "localhost", verbose = FALSE) {
+  check_number_whole(port)
+  check_string(host)
+  check_bool(verbose)
+
   tryCatch(
     isTRUE(get_server_status(port = port, host = host, verbose = verbose)$ready),
     error = function(e) FALSE
@@ -62,6 +66,11 @@ wait_for_selenium_available <- function(timeout = 60,
                                         host = "localhost",
                                         verbose = FALSE,
                                         error = FALSE) {
+  check_number_decimal(timeout)
+  check_number_whole(port)
+  check_string(host)
+  check_bool(verbose)
+  check_bool(error)
   end <- Sys.time() + timeout
 
   while (Sys.time() <= end) {
@@ -92,6 +101,10 @@ get_status <- function(req, verbose = FALSE) {
 #'
 #' @export
 get_server_status <- function(port = 4444L, host = "localhost", verbose = FALSE) {
+  check_number_whole(port)
+  check_string(host)
+  check_bool(verbose)
+
   url <- sprintf("http://%s:%s", host, port)
   req <- httr2::request(url)
   get_status(req, verbose = verbose)

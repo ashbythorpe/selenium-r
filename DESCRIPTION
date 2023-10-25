@@ -26,6 +26,6 @@ Imports:
     processx,
     R6,
     rappdirs,
-    rlang
+    rlang (>= 1.1.0)
 URL: https://ashbythorpe.github.io/selenium-r/
 Config/Needs/website: rmarkdown
