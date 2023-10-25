@@ -5,12 +5,20 @@ output: github_document
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
+available <- selenium::selenium_server_available()
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  eval = available
 )
+```
+
+```{r eval = !available, echo = FALSE, comment = NA}
+if (!available) {
+  message("Selenium server is not available.")
+}
 ```
 
 # selenium

@@ -4,7 +4,7 @@
 \alias{actions_mousedown}
 \alias{actions_mouseup}
 \alias{actions_mousemove}
-\title{Press, release or move the mouse.}
+\title{Press, release or move the mouse}
 \usage{
 actions_mousedown(
   button = c("left", "right", "middle"),

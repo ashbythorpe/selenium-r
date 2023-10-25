@@ -3,10 +3,18 @@ title: "Debugging selenium"
 ---
 
 ```{r, include = FALSE}
+available <- selenium::selenium_server_available()
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  eval = available
 )
+```
+
+```{r eval = !available, echo = FALSE, comment = NA}
+if (!available) {
+  message("Selenium server is not available.")
+}
 ```
 
 Web automation is a complex and fragile task, with many ways to go wrong.

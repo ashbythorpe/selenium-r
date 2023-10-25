@@ -3,10 +3,18 @@ title: "Getting Started with selenium"
 ---
 
 ```{r, include = FALSE}
+available <- selenium::selenium_server_available()
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  eval = available
 )
+```
+
+```{r eval = !available, echo = FALSE, comment = NA}
+if (!available) {
+  message("Selenium server is not available.")
+}
 ```
 
 selenium is low-level tool, so can be complex to use. This vignette gives an

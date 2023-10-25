@@ -160,7 +160,7 @@ actions_release <- function(key) {
   data
 }
 
-#' Press, release or move the mouse.
+#' Press, release or move the mouse
 #'
 #' Mouse actions to be passed into [actions_stream()]. `actions_mousedown()`
 #' represents pressing a button on the mouse, while `actions_mouseup()`
