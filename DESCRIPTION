@@ -6,8 +6,8 @@ Authors@R:
            comment = c(ORCID = "0000-0003-3106-099X"))
 Description: An implementation of 'W3C WebDriver 2.0'
   (<https://w3c.github.io/webdriver/>), allowing interaction
-  with a Selenium Server (<https://www.selenium.dev/documentation/grid/>)
-  instance from R.
+  with a 'Selenium Server' (<https://www.selenium.dev/documentation/grid/>)
+  instance from 'R'. Allows a web browser to be automated from 'R'.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -27,5 +27,6 @@ Imports:
     R6,
     rappdirs,
     rlang (>= 1.1.0)
-URL: https://ashbythorpe.github.io/selenium-r/
+URL: https://ashbythorpe.github.io/selenium-r/, https://github.com/ashbythorpe/selenium-r
 Config/Needs/website: rmarkdown
+BugReports: https://github.com/ashbythorpe/selenium-r/issues
