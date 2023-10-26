@@ -30,10 +30,19 @@
     <a class="dropdown-item" href="../articles/debugging.html">Debugging selenium</a>
   </div>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
-      <ul class="navbar-nav"></ul></div>
+      <ul class="navbar-nav"><li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/ashbythorpe/selenium-r/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul></div>
 
     
   </div>
@@ -44,9 +53,30 @@
     </div>
 
     <div class="section level2">
-      <h2 id="all-functions">All functions<a class="anchor" aria-label="anchor" href="#all-functions"></a></h2>
+      <h2 id="start-a-selenium-server">Start a Selenium Server<a class="anchor" aria-label="anchor" href="#start-a-selenium-server"></a></h2>
+      
+      <p class="section-desc"></p><p>Start a Selenium server instance and check that it is running.</p>
+
+      
+    </div><div id="" class="section level2">
       
       
+      
+
+      <dl><dt>
+          
+          <code><a href="selenium_server.html">selenium_server()</a></code> 
+        </dt>
+        <dd>Download and start the Selenium server.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="selenium_server_available.html">selenium_server_available()</a></code> <code><a href="selenium_server_available.html">wait_for_selenium_available()</a></code> <code><a href="selenium_server_available.html">get_server_status()</a></code> 
+        </dt>
+        <dd>Is a selenium server instance running?</dd>
+      </dl></div><div class="section level2">
+      <h2 id="start-a-session">Start a session<a class="anchor" aria-label="anchor" href="#start-a-session"></a></h2>
+      
+      <p class="section-desc"></p><p>R6 classes for automating a web page.</p>
 
       
     </div><div id="" class="section level2">
@@ -61,19 +91,51 @@
         <dd>Start a Selenium Client session</dd>
       </dl><dl><dt>
           
-          <code><a href="ShadowRoot.html">ShadowRoot</a></code> 
-        </dt>
-        <dd>Create a shadow root</dd>
-      </dl><dl><dt>
-          
           <code><a href="WebElement.html">WebElement</a></code> 
         </dt>
         <dd>Create a live element</dd>
       </dl><dl><dt>
           
-          <code><a href="actions_mousedown.html">actions_mousedown()</a></code> <code><a href="actions_mousedown.html">actions_mouseup()</a></code> <code><a href="actions_mousedown.html">actions_mousemove()</a></code> 
+          <code><a href="ShadowRoot.html">ShadowRoot</a></code> 
         </dt>
-        <dd>Press, release or move the mouse.</dd>
+        <dd>Create a shadow root</dd>
+      </dl></div><div class="section level2">
+      <h2 id="keys">Keys<a class="anchor" aria-label="anchor" href="#keys"></a></h2>
+      
+      <p class="section-desc"></p><p>Send keys to the page.</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="keys.html">keys</a></code> 
+        </dt>
+        <dd>A list of special keys</dd>
+      </dl><dl><dt>
+          
+          <code><a href="key_chord.html">key_chord()</a></code> 
+        </dt>
+        <dd>Combine special keys</dd>
+      </dl></div><div class="section level2">
+      <h2 id="actions">Actions<a class="anchor" aria-label="anchor" href="#actions"></a></h2>
+      
+      <p class="section-desc"></p><p>Perform custom actions.</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="actions_stream.html">actions_stream()</a></code> 
+        </dt>
+        <dd>Create a set of actions to be performed</dd>
       </dl><dl><dt>
           
           <code><a href="actions_pause.html">actions_pause()</a></code> 
@@ -86,36 +148,17 @@
         <dd>Press or release a key</dd>
       </dl><dl><dt>
           
+          <code><a href="actions_mousedown.html">actions_mousedown()</a></code> <code><a href="actions_mousedown.html">actions_mouseup()</a></code> <code><a href="actions_mousedown.html">actions_mousemove()</a></code> 
+        </dt>
+        <dd>Press, release or move the mouse</dd>
+      </dl><dl><dt>
+          
           <code><a href="actions_scroll.html">actions_scroll()</a></code> 
         </dt>
         <dd>Scroll the page</dd>
-      </dl><dl><dt>
-          
-          <code><a href="actions_stream.html">actions_stream()</a></code> 
-        </dt>
-        <dd>Create a set of actions to be performed</dd>
-      </dl><dl><dt>
-          
-          <code><a href="key_chord.html">key_chord()</a></code> 
-        </dt>
-        <dd>Combine special keys</dd>
-      </dl><dl><dt>
-          
-          <code><a href="keys.html">keys</a></code> 
-        </dt>
-        <dd>A list of special keys</dd>
-      </dl><dl><dt>
-          
-          <code><a href="selenium_server.html">selenium_server()</a></code> 
-        </dt>
-        <dd>Download and start the Selenium server.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="selenium_server_available.html">selenium_server_available()</a></code> <code><a href="selenium_server_available.html">wait_for_selenium_available()</a></code> <code><a href="selenium_server_available.html">get_server_status()</a></code> 
-        </dt>
-        <dd>Is a selenium server instance running?</dd>
       </dl></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">

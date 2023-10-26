@@ -47,12 +47,22 @@
     <a class="dropdown-item" href="../articles/debugging.html">Debugging selenium</a>
   </div>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
 </form>
 
-      <ul class="navbar-nav"></ul>
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/ashbythorpe/selenium-r/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 
     
@@ -67,7 +77,7 @@
       <img src="" class="logo" alt=""><h1>Getting Started with selenium</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/ashbythorpe/selenium-r/blob/HEAD/vignettes/articles/selenium.Rmd" class="external-link"><code>vignettes/articles/selenium.Rmd</code></a></small>
       <div class="d-none name"><code>selenium.Rmd</code></div>
     </div>
 
@@ -184,10 +194,10 @@ of an element (see the documentation for the difference between the
 two).</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">element</span><span class="op">$</span><span class="fu">get_attribute</span><span class="op">(</span><span class="st">"src"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "https://d33wubrfki0l68.cloudfront.net/621a9c8c5d7b47c4b6d72e8f01f28d14310e8370/193fc/css/images/hex/dplyr.png"</span></span>
+<span><span class="co">#&gt; [1] "/css/images/hex/dplyr.png"</span></span>
 <span></span>
 <span><span class="va">element</span><span class="op">$</span><span class="fu">get_property</span><span class="op">(</span><span class="st">"src"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "https://d33wubrfki0l68.cloudfront.net/621a9c8c5d7b47c4b6d72e8f01f28d14310e8370/193fc/css/images/hex/dplyr.png"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "https://www.tidyverse.org/css/images/hex/dplyr.png"</span></span></code></pre></div>
 <p><code>WebElement$get_css_value()</code> will return the computed CSS
 property of an element:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
@@ -274,7 +284,7 @@ in and returned.</p>
 <span><span class="co">#&gt;     get_rect: function () </span></span>
 <span><span class="co">#&gt;     get_tag_name: function () </span></span>
 <span><span class="co">#&gt;     get_text: function () </span></span>
-<span><span class="co">#&gt;     id: 41a91ecb-a721-4d4e-a9dd-e24eeae59216</span></span>
+<span><span class="co">#&gt;     id: 5944d49e-30df-4b5a-a89a-ff1db95e452c</span></span>
 <span><span class="co">#&gt;     initialize: function (session_id, req, verbose, id) </span></span>
 <span><span class="co">#&gt;     is_displayed: function () </span></span>
 <span><span class="co">#&gt;     is_enabled: function () </span></span>
@@ -285,7 +295,7 @@ in and returned.</p>
 <span><span class="co">#&gt;     toJSON: function () </span></span>
 <span><span class="co">#&gt;   Private:</span></span>
 <span><span class="co">#&gt;     req: httr2_request</span></span>
-<span><span class="co">#&gt;     session_id: 445f88c2-eba9-40f2-baa8-652e2027ad8d</span></span>
+<span><span class="co">#&gt;     session_id: fa6622f6-1d76-411c-bdab-95c04caaf118</span></span>
 <span><span class="co">#&gt;     verbose: FALSE</span></span></code></pre></div>
 <p><code>SeleniumSession$execute_async_script()</code> is provided for
 when you need to interact with an asynchronous JavaScript API, but is
@@ -305,14 +315,14 @@ between the two:</p>
 <span></span>
 <span><span class="va">tab</span></span>
 <span><span class="co">#&gt; $handle</span></span>
-<span><span class="co">#&gt; [1] "488a7cc8-57f1-4c69-b0fd-e4be0de0e224"</span></span>
+<span><span class="co">#&gt; [1] "6f294bef-a42c-4dba-bdff-bc42724832db"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $type</span></span>
 <span><span class="co">#&gt; [1] "tab"</span></span>
 <span></span>
 <span><span class="va">window</span></span>
 <span><span class="co">#&gt; $handle</span></span>
-<span><span class="co">#&gt; [1] "412e135a-346a-4859-bcca-ed7baf57cd9d"</span></span>
+<span><span class="co">#&gt; [1] "a8564e35-e10d-42fd-98b9-2abb22c65ee5"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $type</span></span>
 <span><span class="co">#&gt; [1] "window"</span></span></code></pre></div>
@@ -324,17 +334,17 @@ to get the handle of every open window/tab.</p>
 <code class="sourceCode R"><span><span class="va">current_handle</span> <span class="op">&lt;-</span> <span class="va">session</span><span class="op">$</span><span class="fu">window_handle</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">current_handle</span></span>
-<span><span class="co">#&gt; [1] "cf1d175f-459b-4761-8ec8-6ea7c02b06cf"</span></span>
+<span><span class="co">#&gt; [1] "3b087674-3f0f-4ec4-b3bf-bd7ca55a111a"</span></span>
 <span></span>
 <span><span class="va">session</span><span class="op">$</span><span class="fu">window_handles</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; [1] "cf1d175f-459b-4761-8ec8-6ea7c02b06cf"</span></span>
+<span><span class="co">#&gt; [1] "3b087674-3f0f-4ec4-b3bf-bd7ca55a111a"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; [1] "488a7cc8-57f1-4c69-b0fd-e4be0de0e224"</span></span>
+<span><span class="co">#&gt; [1] "6f294bef-a42c-4dba-bdff-bc42724832db"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
-<span><span class="co">#&gt; [1] "412e135a-346a-4859-bcca-ed7baf57cd9d"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "a8564e35-e10d-42fd-98b9-2abb22c65ee5"</span></span></code></pre></div>
 <p>When a new window/tab is created, it is not automatically switched
 to. Use <code>SeleniumSession$switch_to_window()</code> to switch to a
 window/tab with a specific handle:</p>
@@ -345,10 +355,10 @@ window/tab:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">session</span><span class="op">$</span><span class="fu">close_window</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; [1] "cf1d175f-459b-4761-8ec8-6ea7c02b06cf"</span></span>
+<span><span class="co">#&gt; [1] "3b087674-3f0f-4ec4-b3bf-bd7ca55a111a"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; [1] "488a7cc8-57f1-4c69-b0fd-e4be0de0e224"</span></span>
+<span><span class="co">#&gt; [1] "6f294bef-a42c-4dba-bdff-bc42724832db"</span></span>
 <span></span>
 <span><span class="co"># Switch to an open window</span></span>
 <span><span class="va">session</span><span class="op">$</span><span class="fu">switch_to_window</span><span class="op">(</span><span class="va">current_handle</span><span class="op">)</span></span></code></pre></div>
