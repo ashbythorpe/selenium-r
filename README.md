@@ -15,9 +15,11 @@ specification, and an up-to-date alternative to
 
 ## Installation
 
-You can install the development version of selenium from GitHub:
-
 ``` r
+# Install selenider from CRAN
+install.packages("selenium")
+
+# Or the development version from Github
 # install.packages("pak")
 pak::pak("ashbythorpe/selenium-r")
 ```

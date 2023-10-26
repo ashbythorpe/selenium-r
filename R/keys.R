@@ -6,6 +6,9 @@
 #' string, so can be used with string manipulaton functions like [paste()]
 #' without any special treatment.
 #'
+#' @examples
+#' keys$enter
+#'
 #' @export
 keys <- list(
   null = "\ue000",
@@ -81,19 +84,20 @@ keys <- list(
 #' be pressed in order, and then released at the end. This is simply done by
 #' combining the keys into a single string, and appending the NULL key
 #' ([keys$null][keys]) to the end. This is useful for keybindings like
-#' <Ctrl-V>, where you want the Ctrl key to be released after the action.
+#' `Ctrl-V`, where you want the Ctrl key to be released after the action.
 #'
 #' @param ... The keys to be combined (strings).
 #'
-#' @examples
+#' @returns A string.
 #'
-#' # <Ctrl-V> will be pressed, then <Ctrl-Alt-V>
+#' @examples
+#' # `Ctrl-V` will be pressed, then `Ctrl-Alt-V`
 #' paste0(
 #'   keys$control, "v",
 #'   keys$alt, "v"
 #' )
 #'
-#' # <Ctrl-V> will be pressed, then <Alt-V>
+#' # `Ctrl-V` will be pressed, then `Alt-V`
 #' paste0(
 #'   key_chord(keys$control, "v"),
 #'   key_chord(keys$alt, "v")

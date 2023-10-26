@@ -33,9 +33,11 @@ alternative to [RSelenium](https://github.com/ropensci/RSelenium).
 
 ## Installation
 
-You can install the development version of selenium from GitHub:
-
 ``` r
+# Install selenider from CRAN
+install.packages("selenium")
+
+# Or the development version from Github
 # install.packages("pak")
 pak::pak("ashbythorpe/selenium-r")
 ```

@@ -16,4 +16,8 @@ which will be interpreted by selenium as a special key. Each key is just a
 string, so can be used with string manipulaton functions like \code{\link[=paste]{paste()}}
 without any special treatment.
 }
+\examples{
+keys$enter
+
+}
 \keyword{datasets}

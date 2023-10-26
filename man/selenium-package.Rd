@@ -6,12 +6,14 @@
 \alias{selenium-package}
 \title{selenium: Low-Level Browser Automation Interface}
 \description{
-An implementation of 'W3C WebDriver 2.0' (\url{https://w3c.github.io/webdriver/}), allowing interaction with a Selenium Server (\url{https://www.selenium.dev/documentation/grid/}) instance from R.
+An implementation of 'W3C WebDriver 2.0' (\url{https://w3c.github.io/webdriver/}), allowing interaction with a 'Selenium Server' (\url{https://www.selenium.dev/documentation/grid/}) instance from 'R'. Allows a web browser to be automated from 'R'.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://ashbythorpe.github.io/selenium-r/}
+  \item \url{https://github.com/ashbythorpe/selenium-r}
+  \item Report bugs at \url{https://github.com/ashbythorpe/selenium-r/issues}
 }
 
 }

@@ -7,3 +7,4 @@
 ^\.github$
 ^codecov\.yml$
 ^vignettes/articles$
+^cran-comments\.md$

@@ -120,7 +120,7 @@ actions_pause <- function(seconds) {
 #' represents releasing a key.
 #'
 #' @param key The key to press: a string consisting of a single character. Use
-#'   the [keys] object to use special keys (e.g. <Ctrl>).
+#'   the [keys] object to use special keys (e.g. `Ctrl`).
 #'
 #' @returns A `selenium_action` object.
 #'

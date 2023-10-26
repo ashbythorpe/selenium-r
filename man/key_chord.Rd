@@ -9,22 +9,24 @@ key_chord(...)
 \arguments{
 \item{...}{The keys to be combined (strings).}
 }
+\value{
+A string.
+}
 \description{
 When a chord of keys is passed into \code{WebElement$send_keys()}, all keys will
 be pressed in order, and then released at the end. This is simply done by
 combining the keys into a single string, and appending the NULL key
 (\link[=keys]{keys$null}) to the end. This is useful for keybindings like
-\if{html}{\out{<Ctrl-V>}}, where you want the Ctrl key to be released after the action.
+\code{Ctrl-V}, where you want the Ctrl key to be released after the action.
 }
 \examples{
-
-# <Ctrl-V> will be pressed, then <Ctrl-Alt-V>
+# `Ctrl-V` will be pressed, then `Ctrl-Alt-V`
 paste0(
   keys$control, "v",
   keys$alt, "v"
 )
 
-# <Ctrl-V> will be pressed, then <Alt-V>
+# `Ctrl-V` will be pressed, then `Alt-V`
 paste0(
   key_chord(keys$control, "v"),
   key_chord(keys$alt, "v")

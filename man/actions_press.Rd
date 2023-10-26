@@ -11,7 +11,7 @@ actions_release(key)
 }
 \arguments{
 \item{key}{The key to press: a string consisting of a single character. Use
-the \link{keys} object to use special keys (e.g. \if{html}{\out{<Ctrl>}}).}
+the \link{keys} object to use special keys (e.g. \code{Ctrl}).}
 }
 \value{
 A \code{selenium_action} object.
