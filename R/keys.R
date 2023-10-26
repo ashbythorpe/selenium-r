@@ -3,7 +3,7 @@
 #'
 #' A named list of special keys, where each key is a single Unicode character,
 #' which will be interpreted by selenium as a special key. Each key is just a
-#' string, so can be used with string manipulaton functions like [paste()]
+#' string, so can be used with string manipulation functions like [paste()]
 #' without any special treatment.
 #'
 #' @examples

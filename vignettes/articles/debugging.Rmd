@@ -103,5 +103,5 @@ once for each time, rather than sharing the reference between the actions.
 
 However, this solution is not infallible. If you find yourself encountering
 this error a lot, it may be a sign that a more high-level package, that can
-deal with this issue (e.g. [rselenium](https://github.com/ashbythorpe/rselenium)),
+deal with this issue (e.g. [selenider](https://github.com/ashbythorpe/selenider)),
 is needed.

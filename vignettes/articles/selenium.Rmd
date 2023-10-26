@@ -71,7 +71,7 @@ a simple and concise way to find elements:
 For more information about using CSS selectors, see:
 <https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors/Selectors_and_combinators>.
 
-Another notable way to select elements is using XPaths. Xpaths can be slightly more
+Another notable way to select elements is using XPaths. XPaths can be slightly more
 verbose than CSS selectors, but are more powerful. Use `using = "xpath"` to use
 XPaths.
 
@@ -84,7 +84,7 @@ XPaths.
 * Use `//tagname//childtagname` to select an element that is a child of the 
   `tagname` element, but does not have to be directly below it in the DOM.
 
-To learn more about how to use Xpaths, see:
+To learn more about how to use XPaths, see:
 <https://www.w3schools.com/xml/xpath_intro.asp>
 
 The other values that `using` can take are fairly self-explanatory (e.g. `"tag name"`)

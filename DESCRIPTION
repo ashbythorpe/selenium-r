@@ -30,3 +30,4 @@ Imports:
 URL: https://ashbythorpe.github.io/selenium-r/, https://github.com/ashbythorpe/selenium-r
 Config/Needs/website: rmarkdown
 BugReports: https://github.com/ashbythorpe/selenium-r/issues
+Language: en-GB
