@@ -1001,7 +1001,7 @@ Navigate to a URL.
 'https://').}
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
-Selenium server, overriding the default body of the web request}
+Selenium server, overriding the default body of the web request.}
 }
 \if{html}{\out{</div>}}
 }

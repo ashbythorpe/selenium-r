@@ -266,7 +266,7 @@ SeleniumSession <- R6::R6Class(
     #' @param url The URL to navigate to. Must begin with a protocol (e.g.
     #'   'https://').
     #' @param request_body A list of request body parameters to pass to the
-    #'   Selenium server, overriding the default body of the web request
+    #'   Selenium server, overriding the default body of the web request.
     #'
     #' @return The session object, invisibly.
     #'
