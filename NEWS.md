@@ -1,3 +1,5 @@
+# selenium 0.1.2
+
 # selenium 0.1.1
 
 * Added `path` argument to `selenium_server()`, allowing the file to be
