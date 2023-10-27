@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/ashbythorpe/selenium-r",
   "issueTracker": "https://github.com/ashbythorpe/selenium-r/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -175,7 +175,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "264.492KB",
+  "fileSize": "266.195KB",
   "releaseNotes": "https://github.com/ashbythorpe/selenium-r/blob/master/NEWS.md",
   "readme": "https://github.com/ashbythorpe/selenium-r/blob/main/README.md",
   "contIntegration": "https://github.com/ashbythorpe/selenium-r/actions/workflows/R-CMD-check.yaml"

@@ -65,8 +65,18 @@ library(selenium)
 server <- selenium_server()
 ```
 
-This will download the latest version of the server and start it. You can
-also do this manually if you want:
+This will download the latest version of the server and start it.
+
+By default, the server file will be stored in a temporary directory, meaning it
+will be deleted when the session is closed. If you want the server to persist,
+meaning that you don't have to re-download the server each time, you can use
+the `temp` argument:
+
+```r
+server <- selenium_server(temp = FALSE)
+```
+
+You can also do this manually if you want:
 
 1. Download the latest `.jar` file for Selenium Server. Do this by navigating to
    the latest GitHub release page (<https://github.com/SeleniumHQ/selenium/releases/latest/>),

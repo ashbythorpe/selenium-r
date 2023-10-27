@@ -14,8 +14,12 @@
 #'   will be prompted to confirm that you want to download it, and the function
 #'   will error if [rlang::is_interactive()] returns `FALSE`. To allow this
 #'   function to work in a non-interactive setting, set this to `FALSE`.
+#' @param temp Whether to use a temporary directory to download the Selenium
+#'   Server `.jar` file. This will ensure that the file is deleted after it is
+#'   used, but means that you will have to redownload the file with every new
+#'   R session. If `FALSE`, the file is saved in your user data directory.
 #' @param path The path where the downloaded Selenium Server `.jar` file will
-#'   be saved. By default, it is saved in your user data directory.
+#'   be saved. Overrides `temp`.
 #' @param echo_cmd,stdout,stderr Passed into
 #'   [processx::process$new()][processx::process].
 #' @param extra_args A character vector of extra arguments to pass into the
@@ -29,20 +33,15 @@
 #' for more ways to start the Selenium server.
 #'
 #' @examplesIf rlang::is_interactive()
-#' # Create a temporary directory to store the download
-#' dir <- tempfile(pattern = "file", tmpdir = tempdir())
-#' dir.create(dir)
-#'
-#' server <- selenium_server(path = dir, interactive = FALSE)
+#' server <- selenium_server(interactive = FALSE)
 #'
 #' server$kill()
-#'
-#' unlink(dir)
 #'
 #' @export
 selenium_server <- function(version = "latest",
                             selenium_manager = TRUE,
                             interactive = TRUE,
+                            temp = TRUE,
                             path = NULL,
                             echo_cmd = FALSE,
                             stdout = NULL,
@@ -94,11 +93,14 @@ selenium_server <- function(version = "latest",
 
   file_name <- paste0("selenium-server-", version, ".jar")
 
-  if (is.null(path)) {
+  if (!is.null(path)) {
+    dir <- normalizePath(path, winslash = "/", mustWork = TRUE)
+  } else if (temp) {
+    dir <- tempfile(pattern = "file", tmpdir = tempdir())
+    dir.create(dir)
+  } else {
     app_dir <- rappdirs::user_data_dir("selenium-server", "seleniumHQ", version = version)
     dir <- normalizePath(app_dir, winslash = "/", mustWork = FALSE)
-  } else {
-    dir <- normalizePath(path, winslash = "/", mustWork = TRUE)
   }
 
   full_path <- if (dir == "") {
