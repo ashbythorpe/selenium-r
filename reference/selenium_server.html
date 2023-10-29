@@ -14,7 +14,7 @@ background process. You must have Java installed for this command to work."><!--
     
     <a class="navbar-brand me-2" href="../index.html">selenium</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,6 +70,8 @@ background process. You must have Java installed for this command to work.</p>
 <span>  version <span class="op">=</span> <span class="st">"latest"</span>,</span>
 <span>  selenium_manager <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  interactive <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  temp <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  path <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  echo_cmd <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  stdout <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  stderr <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -94,6 +96,18 @@ automatically download any missing drivers. Defaults to <code>TRUE</code>.</p></
 will be prompted to confirm that you want to download it, and the function
 will error if <code><a href="https://rlang.r-lib.org/reference/is_interactive.html" class="external-link">rlang::is_interactive()</a></code> returns <code>FALSE</code>. To allow this
 function to work in a non-interactive setting, set this to <code>FALSE</code>.</p></dd>
+
+
+<dt>temp</dt>
+<dd><p>Whether to use a temporary directory to download the Selenium
+Server <code>.jar</code> file. This will ensure that the file is deleted after it is
+used, but means that you will have to redownload the file with every new
+R session. If <code>FALSE</code>, the file is saved in your user data directory.</p></dd>
+
+
+<dt>path</dt>
+<dd><p>The path where the downloaded Selenium Server <code>.jar</code> file will
+be saved. Overrides <code>temp</code>.</p></dd>
 
 
 <dt>echo_cmd, stdout, stderr</dt>
@@ -122,11 +136,9 @@ for more ways to start the Selenium server.</p></div>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># rlang::is_interactive()</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="va">server</span> <span class="op">&lt;-</span> <span class="fu">selenium_server</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">server</span> <span class="op">&lt;-</span> <span class="fu">selenium_server</span><span class="op">(</span>interactive <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">server</span><span class="op">$</span><span class="fu">kill</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
