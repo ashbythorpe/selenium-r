@@ -1,6 +1,6 @@
 Package: selenium
 Title: Low-Level Browser Automation Interface
-Version: 0.1.2
+Version: 0.1.2.9000
 Authors@R: 
     person("Ashby", "Thorpe", , "ashbythorpe@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0003-3106-099X"))
