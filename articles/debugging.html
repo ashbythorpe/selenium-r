@@ -93,13 +93,13 @@ you might go about resolving them.</p>
 useful to look at the logs from the server. If you ran the
 <code>java -jar ...</code> command manually, then you should be able to
 see the logs, but if you used <code><a href="../reference/selenium_server.html">selenium_server()</a></code>, then you
-need to use the <code>stdout</code> argument to capture the output of
-the command:</p>
+can use the <code>read_output()</code> method to read the logs.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Where `log.txt` is an already created file where you want to store the logs.</span></span>
-<span><span class="fu"><a href="../reference/selenium_server.html">selenium_server</a></span><span class="op">(</span>stdout <span class="op">=</span> <span class="st">"log.txt"</span><span class="op">)</span></span></code></pre></div>
-<p>You can then look at the log file to see the output from the
-command.</p>
+<code class="sourceCode R"><span><span class="va">server</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/selenium_server.html">selenium_server</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">server</span><span class="op">$</span><span class="fu">read_output</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>This will show any output that the server has written to the console.
+Similarly, use <code>read_error()</code> to read any errors that the
+server has written to the console.</p>
 <div class="section level3">
 <h3 id="port-and-ip-address">Port and IP address<a class="anchor" aria-label="anchor" href="#port-and-ip-address"></a>
 </h3>
