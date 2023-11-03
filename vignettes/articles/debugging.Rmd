@@ -26,14 +26,16 @@ go about resolving them.
 If initializing a `SeleniumSession` fails, it is often useful to look at
 the logs from the server. If you ran the `java -jar ...` command manually, then
 you should be able to see the logs, but if you used `selenium_server()`, then
-you need to use the `stdout` argument to capture the output of the command:
+you can use the `read_output()` method to read the logs.
 
 ```r
-# Where `log.txt` is an already created file where you want to store the logs.
-selenium_server(stdout = "log.txt")
+server <- selenium_server()
+server$read_output()
 ```
 
-You can then look at the log file to see the output from the command.
+This will show any output that the server has written to the console.
+Similarly, use `read_error()` to read any errors that the server has written to
+the console.
 
 ### Port and IP address
 One reason why you can't connect to the server is that the port and IP address you

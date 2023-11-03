@@ -44,8 +44,6 @@ selenium_server <- function(version = "latest",
                             temp = TRUE,
                             path = NULL,
                             echo_cmd = FALSE,
-                            stdout = NULL,
-                            stderr = NULL,
                             extra_args = c()) {
   check_string(version)
   check_bool(selenium_manager)
@@ -147,8 +145,8 @@ selenium_server <- function(version = "latest",
     java_check(),
     args = args,
     echo_cmd = echo_cmd,
-    stdout = stdout,
-    stderr = stderr,
+    stdout = "|",
+    stderr = "|",
     supervise = TRUE
   )
 }
