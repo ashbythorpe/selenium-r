@@ -20,6 +20,9 @@ SeleniumSession <- R6::R6Class(
     #' @field port The port that the session is using.
     port = NULL,
 
+    #' @field host The host that the session is running on.
+    host = NULL,
+
     #' @description
     #' Create a Selenium session: opening a browser which can be controlled by
     #' the Selenium client.
@@ -96,6 +99,7 @@ SeleniumSession <- R6::R6Class(
       self$id <- result_r$value$sessionId
       self$browser <- browser
       self$port <- port
+      self$host <- host
     },
 
     #' @description
