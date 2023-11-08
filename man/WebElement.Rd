@@ -400,9 +400,17 @@ A shadow DOM is a self-contained DOM tree, contained within another DOM
 tree. A shadow root is an element that contains a DOM subtree. This
 method gets the shadow root property of an element.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$shadow_root()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$shadow_root(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 A \link{ShadowRoot} object.
 }
@@ -440,7 +448,8 @@ element.
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$find_element(
   using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
   value,
-  request_body = NULL
+  request_body = NULL,
+  timeout = 20
 )}\if{html}{\out{</div>}}
 }
 
@@ -453,6 +462,9 @@ element.
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -489,7 +501,8 @@ Find all elements matching a selector, relative to the current element.
 \if{html}{\out{<div class="r">}}\preformatted{WebElement$find_elements(
   using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
   value,
-  request_body = NULL
+  request_body = NULL,
+  timeout = 20
 )}\if{html}{\out{</div>}}
 }
 
@@ -502,6 +515,9 @@ Find all elements matching a selector, relative to the current element.
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -533,9 +549,17 @@ session$close()
 \subsection{Method \code{is_selected()}}{
 Check if an element is currently selected.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$is_selected()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$is_selected(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 A boolean value: \code{TRUE} or \code{FALSE}.
 }
@@ -562,7 +586,7 @@ session$close()
 \subsection{Method \code{get_attribute()}}{
 Get an attribute from an element.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_attribute(name, request_body = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_attribute(name, request_body = NULL, timeout = 20)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -572,6 +596,9 @@ Get an attribute from an element.
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -603,7 +630,7 @@ Get a property from an element. Properties are similar to attributes,
 but represent the HTML source code of the page, rather than the current
 state of the DOM.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_property(name, request_body = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_property(name, request_body = NULL, timeout = 20)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -613,6 +640,9 @@ state of the DOM.
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -642,7 +672,7 @@ session$close()
 \subsection{Method \code{get_css_value()}}{
 Get the computed value of a CSS property.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_css_value(name, request_body = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_css_value(name, request_body = NULL, timeout = 20)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -652,6 +682,9 @@ Get the computed value of a CSS property.
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -681,9 +714,17 @@ session$close()
 \subsection{Method \code{get_text()}}{
 Get the text content of an element.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_text()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_text(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The text content of the element: a string.
 }
@@ -710,9 +751,17 @@ session$close()
 \subsection{Method \code{get_tag_name()}}{
 Get the tag name of an element.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_tag_name()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_tag_name(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The tag name of the element: a string.
 }
@@ -739,9 +788,17 @@ session$close()
 \subsection{Method \code{get_rect()}}{
 Get the dimensions and coordinates of an element.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_rect()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$get_rect(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 A list containing the following elements:
 \itemize{
@@ -774,9 +831,17 @@ session$close()
 \subsection{Method \code{is_enabled()}}{
 Check if an element is currently enabled.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$is_enabled()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$is_enabled(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 A boolean value: \code{TRUE} or \code{FALSE}.
 }
@@ -806,9 +871,17 @@ Get the computed role of an element. The role of an element is usually
 purpose. For example, a link that is "button-like" in nature may have
 a "button" role.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$computed_role()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$computed_role(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 A string.
 }
@@ -836,9 +909,17 @@ session$close()
 Get the computed label of an element (i.e. The text of the label element
 that points to the current element).
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$computed_label()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$computed_label(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 A string.
 }
@@ -865,9 +946,17 @@ session$close()
 \subsection{Method \code{click()}}{
 Click on an element.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$click()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$click(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The element, invisibly.
 }
@@ -894,9 +983,17 @@ session$close()
 \subsection{Method \code{clear()}}{
 Clear the contents of a text input element.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$clear()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$clear(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The element, invisibly.
 }
@@ -923,7 +1020,7 @@ session$close()
 \subsection{Method \code{send_keys()}}{
 Send keys to an element.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$send_keys(..., request_body = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$send_keys(..., request_body = NULL, timeout = 20)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -934,6 +1031,9 @@ use \code{\link[=key_chord]{key_chord()}} to send keys combinations.}
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -971,9 +1071,17 @@ session$close()
 \subsection{Method \code{screenshot()}}{
 Take a screenshot of an element.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$screenshot()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$screenshot(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The base64-encoded PNG screenshot, as a string.
 }
@@ -1001,9 +1109,17 @@ session$close()
 Check if an element is displayed. This function may not work on all
 platforms.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{WebElement$is_displayed()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{WebElement$is_displayed(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 A boolean.
 }

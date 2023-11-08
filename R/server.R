@@ -20,8 +20,7 @@
 #'   R session. If `FALSE`, the file is saved in your user data directory.
 #' @param path The path where the downloaded Selenium Server `.jar` file will
 #'   be saved. Overrides `temp`.
-#' @param echo_cmd,stdout,stderr Passed into
-#'   [processx::process$new()][processx::process].
+#' @param echo_cmd Passed into [processx::process$new()][processx::process].
 #' @param extra_args A character vector of extra arguments to pass into the
 #'   Selenium Server call.
 #'

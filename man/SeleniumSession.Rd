@@ -648,6 +648,12 @@ session$close()
 \if{html}{\out{<div class="r6-fields">}}
 \describe{
 \item{\code{id}}{The id of the session, generated when the session is started.}
+
+\item{\code{browser}}{The browser that the session is using.}
+
+\item{\code{port}}{The port that the session is using.}
+
+\item{\code{host}}{The host that the session is running on.}
 }
 \if{html}{\out{</div>}}
 }
@@ -714,7 +720,8 @@ the Selenium client.
   host = "localhost",
   verbose = FALSE,
   capabilities = NULL,
-  request_body = NULL
+  request_body = NULL,
+  timeout = 20
 )}\if{html}{\out{</div>}}
 }
 
@@ -738,6 +745,9 @@ server, to combine with the defaults generated using \code{browser}.}
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server. Overrides \code{capabilities}.}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -836,9 +846,17 @@ session$close()
 Close the current session. Once a session is closed, its methods will
 no longer work. However, the Selenium server will still be running.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$close()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$close(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The session object, invisibly.
 }
@@ -865,9 +883,17 @@ even after \link[=SeleniumSession]{SeleniumSession$close()} is called). It is
 identical to \code{\link[=get_server_status]{get_server_status()}}, but uses the host, port and verbose
 options passed to the session, for convenience.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$status()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$status(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 A list that can (but may not always) contain the following
 fields:
@@ -912,9 +938,17 @@ elements to be located, or for elements to become interactable when
 required. Defaults to 0 seconds.
 }
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_timeouts()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_timeouts(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 A list with three items: \code{script}, \code{page_load}, and \code{implicit}.
 }
@@ -945,7 +979,8 @@ defined in \code{SeleniumSession$get_timeouts()}.
   script = NULL,
   page_load = NULL,
   implicit_wait = NULL,
-  request_body = NULL
+  request_body = NULL,
+  timeout = 20
 )}\if{html}{\out{</div>}}
 }
 
@@ -962,6 +997,9 @@ page.}
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -991,7 +1029,7 @@ session$close()
 \subsection{Method \code{navigate()}}{
 Navigate to a URL.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$navigate(url, request_body = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$navigate(url, request_body = NULL, timeout = 20)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -1002,6 +1040,9 @@ Navigate to a URL.
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request.}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1029,9 +1070,17 @@ session$close()
 \subsection{Method \code{current_url()}}{
 Get the current URL.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$current_url()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$current_url(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The URL of the current page.
 }
@@ -1058,9 +1107,17 @@ session$close()
 \subsection{Method \code{back()}}{
 Go back in the navigation history.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$back()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$back(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The session object, invisibly.
 }
@@ -1091,9 +1148,17 @@ session$close()
 \subsection{Method \code{forward()}}{
 Go forward in the navigation history.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$forward()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$forward(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The session object, invisibly.
 }
@@ -1126,9 +1191,17 @@ session$close()
 \subsection{Method \code{refresh()}}{
 Reload the current page.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$refresh()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$refresh(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The session object, invisibly.
 }
@@ -1155,9 +1228,17 @@ session$close()
 \subsection{Method \code{title()}}{
 Get the title of the current page.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$title()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$title(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The title of the current page.
 }
@@ -1184,9 +1265,17 @@ session$close()
 \subsection{Method \code{window_handle()}}{
 Get the current window handle.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$window_handle()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$window_handle(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The handle of the current window (a string).
 }
@@ -1211,9 +1300,17 @@ session$close()
 \subsection{Method \code{close_window()}}{
 Close the current window.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$close_window()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$close_window(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The session object, invisibly.
 }
@@ -1240,7 +1337,7 @@ session$close()
 \subsection{Method \code{switch_to_window()}}{
 Switch to a specific window.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$switch_to_window(handle, request_body = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$switch_to_window(handle, request_body = NULL, timeout = 20)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -1250,6 +1347,9 @@ Switch to a specific window.
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1283,9 +1383,17 @@ session$close()
 \subsection{Method \code{window_handles()}}{
 Get the handles of all open windows.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$window_handles()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$window_handles(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The handles of all open windows (a list of strings).
 }
@@ -1311,7 +1419,11 @@ session$close()
 Create a new window. Note that this window is not automatically
 switched to.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$new_window(type = c("tab", "window"), request_body = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$new_window(
+  type = c("tab", "window"),
+  request_body = NULL,
+  timeout = 20
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -1321,6 +1433,9 @@ switched to.
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1357,7 +1472,7 @@ section can load a separate HTML document. This function allows you to
 switch to a specific frame, given its ID, meaning that frame will become
 the current browsing context.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$switch_to_frame(id = NA, request_body = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$switch_to_frame(id = NA, request_body = NULL, timeout = 20)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -1370,6 +1485,9 @@ element will be switched to.}
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1399,9 +1517,17 @@ session$close()
 \subsection{Method \code{switch_to_parent_frame()}}{
 Switch to the parent frame of the current frame.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$switch_to_parent_frame()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$switch_to_parent_frame(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The session object, invisibly.
 }
@@ -1430,9 +1556,17 @@ session$close()
 \subsection{Method \code{get_window_rect()}}{
 Get the size and position of the current window.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_window_rect()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_window_rect(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 A list containing four elements:
 \itemize{
@@ -1468,7 +1602,8 @@ Set the size and position of the current window.
   height = NULL,
   x = NULL,
   y = NULL,
-  request_body = NULL
+  request_body = NULL,
+  timeout = 20
 )}\if{html}{\out{</div>}}
 }
 
@@ -1485,6 +1620,9 @@ Set the size and position of the current window.
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1513,11 +1651,19 @@ session$close()
 \if{latex}{\out{\hypertarget{method-SeleniumSession-maximize_window}{}}}
 \subsection{Method \code{maximize_window()}}{
 Maximize the current window. This makes the window the maximum size it
-can be, without being full screen
+can be, without being full screen.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$maximize_window()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$maximize_window(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The session object, invisibly.
 }
@@ -1542,9 +1688,17 @@ session$close()
 \subsection{Method \code{minimize_window()}}{
 Minimize the current window. This hides the window.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$minimize_window()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$minimize_window(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The session object, invisibly.
 }
@@ -1569,9 +1723,17 @@ session$close()
 \subsection{Method \code{fullscreen_window()}}{
 Make the window full screen.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$fullscreen_window()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$fullscreen_window(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The session object, invisibly.
 }
@@ -1596,9 +1758,17 @@ session$close()
 \subsection{Method \code{get_active_element()}}{
 Get the currently active element.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_active_element()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_active_element(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 A \link{WebElement} object.
 }
@@ -1628,7 +1798,8 @@ Find the first element matching a selector.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$find_element(
   using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
   value,
-  request_body = NULL
+  request_body = NULL,
+  timeout = 20
 )}\if{html}{\out{</div>}}
 }
 
@@ -1641,6 +1812,9 @@ Find the first element matching a selector.
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1675,7 +1849,8 @@ Find all elements matching a selector.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$find_elements(
   using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
   value,
-  request_body = NULL
+  request_body = NULL,
+  timeout = 20
 )}\if{html}{\out{</div>}}
 }
 
@@ -1688,6 +1863,9 @@ Find all elements matching a selector.
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1719,9 +1897,17 @@ session$close()
 \subsection{Method \code{get_page_source()}}{
 Get the HTML source of the current page, serialized as a string.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_page_source()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_page_source(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 A string.
 }
@@ -1748,7 +1934,7 @@ session$close()
 \subsection{Method \code{execute_script()}}{
 Execute a JavaScript script.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$execute_script(x, ..., request_body = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$execute_script(x, ..., request_body = NULL, timeout = 20)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -1763,6 +1949,9 @@ objects or lists of such objects, which will be converted to nodes.}
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1798,7 +1987,7 @@ session$close()
 Execute an asynchronous JavaScript script, waiting for a value to be
 returned.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$execute_async_script(x, ..., request_body = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$execute_async_script(x, ..., request_body = NULL, timeout = 20)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -1816,6 +2005,9 @@ to nodes.}
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1847,9 +2039,17 @@ session$close()
 \subsection{Method \code{get_cookies()}}{
 Get all cookies.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_cookies()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_cookies(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 A list of cookies. Each cookie is a list with a \code{name} and
 \code{value} field, along with some other optional fields.
@@ -1877,7 +2077,7 @@ session$close()
 \subsection{Method \code{get_cookie()}}{
 Get a specific cookie using its name.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_cookie(name, request_body = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_cookie(name, request_body = NULL, timeout = 20)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -1887,6 +2087,9 @@ Get a specific cookie using its name.
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1918,7 +2121,7 @@ session$close()
 \subsection{Method \code{add_cookie()}}{
 Add a cookie to the cookie store of the current document.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$add_cookie(cookie, request_body = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$add_cookie(cookie, request_body = NULL, timeout = 20)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -1929,6 +2132,9 @@ Add a cookie to the cookie store of the current document.
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1958,7 +2164,7 @@ session$close()
 \subsection{Method \code{delete_cookie()}}{
 Delete a cookie using its name.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$delete_cookie(name, request_body = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$delete_cookie(name, request_body = NULL, timeout = 20)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -1968,6 +2174,9 @@ Delete a cookie using its name.
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -1999,9 +2208,17 @@ session$close()
 \subsection{Method \code{delete_all_cookies()}}{
 Delete all cookies in the cookie store of the current document.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$delete_all_cookies()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$delete_all_cookies(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The session object, invisibly.
 }
@@ -2031,7 +2248,8 @@ Perform a sequence of actions.
 \if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$perform_actions(
   actions,
   release_actions = TRUE,
-  request_body = NULL
+  request_body = NULL,
+  timeout = 20
 )}\if{html}{\out{</div>}}
 }
 
@@ -2046,6 +2264,9 @@ performing the actions.}
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -2082,9 +2303,17 @@ session$close()
 Release all keys and pointers that were pressed using
 \code{perform_actions()}.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$release_actions()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$release_actions(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The session object, invisibly.
 }
@@ -2117,9 +2346,17 @@ session$close()
 \subsection{Method \code{dismiss_alert()}}{
 Dismiss the current alert, if present.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$dismiss_alert()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$dismiss_alert(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The session object, invisibly.
 }
@@ -2146,9 +2383,17 @@ session$close()
 \subsection{Method \code{accept_alert()}}{
 Accept the current alert, if present.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$accept_alert()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$accept_alert(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The session object, invisibly.
 }
@@ -2175,9 +2420,17 @@ session$close()
 \subsection{Method \code{get_alert_text()}}{
 Get the message of the current alert, if present.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_alert_text()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$get_alert_text(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The message of the current alert (a string).
 }
@@ -2205,7 +2458,7 @@ session$close()
 Send text to the current alert, if present. Useful if the alert is a
 prompt.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$send_alert_text(text, request_body = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$send_alert_text(text, request_body = NULL, timeout = 20)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -2215,6 +2468,9 @@ prompt.
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -2244,9 +2500,17 @@ session$close()
 \subsection{Method \code{screenshot()}}{
 Take a screenshot of the current page.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$screenshot()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{SeleniumSession$screenshot(timeout = 20)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 The base64-encoded PNG screenshot, as a string.
 }
@@ -2284,7 +2548,8 @@ Render the current page as a PDF.
   header = NULL,
   shrink_to_fit = NULL,
   page_ranges = NULL,
-  request_body = NULL
+  request_body = NULL,
+  timeout = 20
 )}\if{html}{\out{</div>}}
 }
 
@@ -2318,6 +2583,9 @@ height.}
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }

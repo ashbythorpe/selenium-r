@@ -128,8 +128,6 @@ If this doesn’t work, please see the [Debugging
 Selenium](https://ashbythorpe.github.io/selenium-r/articles/debugging.html)
 article for more information.
 
-<!-- TODO: Make this vignette --->
-
 ## Usage
 
 Once the session has been successfully started, you can use the session
@@ -156,7 +154,7 @@ session$close()
 
 For a more detailed introduction to using selenium, see the [Getting
 Started](https://ashbythorpe.github.io/selenium-r/articles/selenium.html)
-article. <!-- TODO: Make this vignette --->
+article.
 
 Note that selenium is low-level and mainly aimed towards developers. If
 you are wanting to use browser automation for web scraping or testing,

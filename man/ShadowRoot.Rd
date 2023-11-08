@@ -189,7 +189,8 @@ Find an element in the shadow root.
 \if{html}{\out{<div class="r">}}\preformatted{ShadowRoot$find_element(
   using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
   value,
-  request_body = NULL
+  request_body = NULL,
+  timeout = 20
 )}\if{html}{\out{</div>}}
 }
 
@@ -202,6 +203,9 @@ Find an element in the shadow root.
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }
@@ -246,7 +250,8 @@ Find all elements in a shadow root matching a selector.
 \if{html}{\out{<div class="r">}}\preformatted{ShadowRoot$find_elements(
   using = c("css selector", "xpath", "tag name", "link text", "partial link text"),
   value,
-  request_body = NULL
+  request_body = NULL,
+  timeout = 20
 )}\if{html}{\out{</div>}}
 }
 
@@ -259,6 +264,9 @@ Find all elements in a shadow root matching a selector.
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
+
+\item{\code{timeout}}{How long to wait for a request to recieve a response
+before throwing an error.}
 }
 \if{html}{\out{</div>}}
 }

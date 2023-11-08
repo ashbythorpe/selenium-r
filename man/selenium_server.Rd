@@ -11,8 +11,6 @@ selenium_server(
   temp = TRUE,
   path = NULL,
   echo_cmd = FALSE,
-  stdout = NULL,
-  stderr = NULL,
   extra_args = c()
 )
 }
@@ -36,8 +34,7 @@ R session. If \code{FALSE}, the file is saved in your user data directory.}
 \item{path}{The path where the downloaded Selenium Server \code{.jar} file will
 be saved. Overrides \code{temp}.}
 
-\item{echo_cmd, stdout, stderr}{Passed into
-\link[processx:process]{processx::process$new()}.}
+\item{echo_cmd}{Passed into \link[processx:process]{processx::process$new()}.}
 
 \item{extra_args}{A character vector of extra arguments to pass into the
 Selenium Server call.}

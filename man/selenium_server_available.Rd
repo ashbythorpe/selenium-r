@@ -6,17 +6,28 @@
 \alias{get_server_status}
 \title{Is a selenium server instance running?}
 \usage{
-selenium_server_available(port = 4444L, host = "localhost", verbose = FALSE)
-
-wait_for_selenium_available(
-  timeout = 60,
+selenium_server_available(
   port = 4444L,
   host = "localhost",
   verbose = FALSE,
+  timeout = 20
+)
+
+wait_for_selenium_available(
+  max_time = 60,
+  port = 4444L,
+  host = "localhost",
+  verbose = FALSE,
+  timeout = 20,
   error = FALSE
 )
 
-get_server_status(port = 4444L, host = "localhost", verbose = FALSE)
+get_server_status(
+  port = 4444L,
+  host = "localhost",
+  verbose = FALSE,
+  timeout = 20
+)
 }
 \arguments{
 \item{port}{The port that the Selenium server is using, so we can
@@ -28,7 +39,10 @@ usually 'localhost' (i.e. Your own machine).}
 \item{verbose}{Whether to print information about the web request that is
 sent.}
 
-\item{timeout}{The amount of time to wait for the Selenium server to
+\item{timeout}{How long to wait for a request to recieve a response before
+throwing an error.}
+
+\item{max_time}{The amount of time to wait for the Selenium server to
 become available.}
 
 \item{error}{Whether to throw an error if the web request throws an error

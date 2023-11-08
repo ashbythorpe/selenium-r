@@ -36,9 +36,13 @@ req_body_selenium <- function(req, body, request_body = NULL) {
   req
 }
 
-req_perform_selenium <- function(req, verbose = FALSE, call = rlang::caller_env()) {
+req_perform_selenium <- function(req, verbose = FALSE, timeout = NULL, call = rlang::caller_env()) {
   if (verbose) {
     req <- httr2::req_verbose(req)
+  }
+
+  if (!is.null(timeout)) {
+    req <- httr2::req_timeout(req, timeout)
   }
 
   rlang::try_fetch(
