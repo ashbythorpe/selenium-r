@@ -77,6 +77,18 @@ start a server automatically.</p>
 <dd><p>The id of the session, generated when the session is started.</p></dd>
 
 
+<dt><code>browser</code></dt>
+<dd><p>The browser that the session is using.</p></dd>
+
+
+<dt><code>port</code></dt>
+<dd><p>The port that the session is using.</p></dd>
+
+
+<dt><code>host</code></dt>
+<dd><p>The host that the session is running on.</p></dd>
+
+
 </dl><p></p></div>
     </div>
     <div class="section level2">
@@ -141,7 +153,8 @@ the Selenium client.</p><div class="section">
 <span>  host <span class="op">=</span> <span class="st">"localhost"</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  capabilities <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  timeout <span class="op">=</span> <span class="fl">20</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -175,6 +188,11 @@ server, to combine with the defaults generated using <code>browser</code>.</p></
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server. Overrides <code>capabilities</code>.</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -267,9 +285,18 @@ session$close()
 <p>Close the current session. Once a session is closed, its methods will
 no longer work. However, the Selenium server will still be running.</p><div class="section">
 <h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-3">Returns<a class="anchor" aria-label="anchor" href="#returns-3"></a></h4>
 <p>The session object, invisibly.</p>
@@ -293,9 +320,18 @@ even after SeleniumSession$close() is called). It is
 identical to <code><a href="selenium_server_available.html">get_server_status()</a></code>, but uses the host, port and verbose
 options passed to the session, for convenience.</p><div class="section">
 <h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">status</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">status</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
 <p>A list that can (but may not always) contain the following
@@ -332,9 +368,18 @@ elements to be located, or for elements to become interactable when
 required. Defaults to 0 seconds.</p></li>
 </ul><div class="section">
 <h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_timeouts</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_timeouts</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-5">Returns<a class="anchor" aria-label="anchor" href="#returns-5"></a></h4>
 <p>A list with three items: <code>script</code>, <code>page_load</code>, and <code>implicit</code>.</p>
@@ -362,12 +407,13 @@ defined in <code>SeleniumSession$get_timeouts()</code>.</p><div class="section">
 <span>  script <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  page_load <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  implicit_wait <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  timeout <span class="op">=</span> <span class="fl">20</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
+<h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>script</code></dt>
 <dd><p>The amount of time to wait for scripts. By default, this
 is not set.</p></dd>
@@ -385,6 +431,11 @@ page.</p></dd>
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -412,11 +463,11 @@ session$close()
 <h3 id="method-navigate-">Method <code>navigate()</code><a class="anchor" aria-label="anchor" href="#method-navigate-"></a></h3>
 <p>Navigate to a URL.</p><div class="section">
 <h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="va">url</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="va">url</span>, request_body <span class="op">=</span> <span class="cn">NULL</span>, timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
+<h4 id="arguments-7">Arguments<a class="anchor" aria-label="anchor" href="#arguments-7"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>url</code></dt>
 <dd><p>The URL to navigate to. Must begin with a protocol (e.g.
 'https://').</p></dd>
@@ -425,6 +476,11 @@ session$close()
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request.</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -450,9 +506,18 @@ session$close()
 <h3 id="method-current-url-">Method <code>current_url()</code><a class="anchor" aria-label="anchor" href="#method-current-url-"></a></h3>
 <p>Get the current URL.</p><div class="section">
 <h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">current_url</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">current_url</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-8">Arguments<a class="anchor" aria-label="anchor" href="#arguments-8"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-8">Returns<a class="anchor" aria-label="anchor" href="#returns-8"></a></h4>
 <p>The URL of the current page.</p>
@@ -476,9 +541,18 @@ session$close()
 <h3 id="method-back-">Method <code>back()</code><a class="anchor" aria-label="anchor" href="#method-back-"></a></h3>
 <p>Go back in the navigation history.</p><div class="section">
 <h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">back</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">back</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-9">Arguments<a class="anchor" aria-label="anchor" href="#arguments-9"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-9">Returns<a class="anchor" aria-label="anchor" href="#returns-9"></a></h4>
 <p>The session object, invisibly.</p>
@@ -506,9 +580,18 @@ session$close()
 <h3 id="method-forward-">Method <code>forward()</code><a class="anchor" aria-label="anchor" href="#method-forward-"></a></h3>
 <p>Go forward in the navigation history.</p><div class="section">
 <h4 id="usage-10">Usage<a class="anchor" aria-label="anchor" href="#usage-10"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">forward</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">forward</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-10">Arguments<a class="anchor" aria-label="anchor" href="#arguments-10"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-10">Returns<a class="anchor" aria-label="anchor" href="#returns-10"></a></h4>
 <p>The session object, invisibly.</p>
@@ -538,9 +621,18 @@ session$close()
 <h3 id="method-refresh-">Method <code>refresh()</code><a class="anchor" aria-label="anchor" href="#method-refresh-"></a></h3>
 <p>Reload the current page.</p><div class="section">
 <h4 id="usage-11">Usage<a class="anchor" aria-label="anchor" href="#usage-11"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">refresh</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">refresh</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-11">Arguments<a class="anchor" aria-label="anchor" href="#arguments-11"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-11">Returns<a class="anchor" aria-label="anchor" href="#returns-11"></a></h4>
 <p>The session object, invisibly.</p>
@@ -564,9 +656,18 @@ session$close()
 <h3 id="method-title-">Method <code><a href="https://rdrr.io/r/graphics/title.html" class="external-link">title()</a></code><a class="anchor" aria-label="anchor" href="#method-title-"></a></h3>
 <p>Get the title of the current page.</p><div class="section">
 <h4 id="usage-12">Usage<a class="anchor" aria-label="anchor" href="#usage-12"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">title</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">title</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-12">Arguments<a class="anchor" aria-label="anchor" href="#arguments-12"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-12">Returns<a class="anchor" aria-label="anchor" href="#returns-12"></a></h4>
 <p>The title of the current page.</p>
@@ -590,9 +691,18 @@ session$close()
 <h3 id="method-window-handle-">Method <code>window_handle()</code><a class="anchor" aria-label="anchor" href="#method-window-handle-"></a></h3>
 <p>Get the current window handle.</p><div class="section">
 <h4 id="usage-13">Usage<a class="anchor" aria-label="anchor" href="#usage-13"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">window_handle</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">window_handle</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-13">Arguments<a class="anchor" aria-label="anchor" href="#arguments-13"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-13">Returns<a class="anchor" aria-label="anchor" href="#returns-13"></a></h4>
 <p>The handle of the current window (a string).</p>
@@ -614,9 +724,18 @@ session$close()
 <h3 id="method-close-window-">Method <code>close_window()</code><a class="anchor" aria-label="anchor" href="#method-close-window-"></a></h3>
 <p>Close the current window.</p><div class="section">
 <h4 id="usage-14">Usage<a class="anchor" aria-label="anchor" href="#usage-14"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">close_window</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">close_window</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-14">Arguments<a class="anchor" aria-label="anchor" href="#arguments-14"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-14">Returns<a class="anchor" aria-label="anchor" href="#returns-14"></a></h4>
 <p>The session object, invisibly.</p>
@@ -640,11 +759,11 @@ session$close()
 <h3 id="method-switch-to-window-">Method <code>switch_to_window()</code><a class="anchor" aria-label="anchor" href="#method-switch-to-window-"></a></h3>
 <p>Switch to a specific window.</p><div class="section">
 <h4 id="usage-15">Usage<a class="anchor" aria-label="anchor" href="#usage-15"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">switch_to_window</span><span class="op">(</span><span class="va">handle</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">switch_to_window</span><span class="op">(</span><span class="va">handle</span>, request_body <span class="op">=</span> <span class="cn">NULL</span>, timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
+<h4 id="arguments-15">Arguments<a class="anchor" aria-label="anchor" href="#arguments-15"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>handle</code></dt>
 <dd><p>The handle of the window to switch to.</p></dd>
 
@@ -652,6 +771,11 @@ session$close()
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -683,9 +807,18 @@ session$close()
 <h3 id="method-window-handles-">Method <code>window_handles()</code><a class="anchor" aria-label="anchor" href="#method-window-handles-"></a></h3>
 <p>Get the handles of all open windows.</p><div class="section">
 <h4 id="usage-16">Usage<a class="anchor" aria-label="anchor" href="#usage-16"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">window_handles</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">window_handles</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-16">Arguments<a class="anchor" aria-label="anchor" href="#arguments-16"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-16">Returns<a class="anchor" aria-label="anchor" href="#returns-16"></a></h4>
 <p>The handles of all open windows (a list of strings).</p>
@@ -708,11 +841,15 @@ session$close()
 <p>Create a new window. Note that this window is not automatically
 switched to.</p><div class="section">
 <h4 id="usage-17">Usage<a class="anchor" aria-label="anchor" href="#usage-17"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">new_window</span><span class="op">(</span>type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"tab"</span>, <span class="st">"window"</span><span class="op">)</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">new_window</span><span class="op">(</span></span>
+<span>  type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"tab"</span>, <span class="st">"window"</span><span class="op">)</span>,</span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  timeout <span class="op">=</span> <span class="fl">20</span></span>
+<span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
+<h4 id="arguments-17">Arguments<a class="anchor" aria-label="anchor" href="#arguments-17"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>type</code></dt>
 <dd><p>Whether to create a tab or a window.</p></dd>
 
@@ -720,6 +857,11 @@ switched to.</p><div class="section">
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -751,11 +893,11 @@ section can load a separate HTML document. This function allows you to
 switch to a specific frame, given its ID, meaning that frame will become
 the current browsing context.</p><div class="section">
 <h4 id="usage-18">Usage<a class="anchor" aria-label="anchor" href="#usage-18"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">switch_to_frame</span><span class="op">(</span>id <span class="op">=</span> <span class="cn">NA</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">switch_to_frame</span><span class="op">(</span>id <span class="op">=</span> <span class="cn">NA</span>, request_body <span class="op">=</span> <span class="cn">NULL</span>, timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-7">Arguments<a class="anchor" aria-label="anchor" href="#arguments-7"></a></h4>
+<h4 id="arguments-18">Arguments<a class="anchor" aria-label="anchor" href="#arguments-18"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>id</code></dt>
 <dd><p>The ID of the frame to switch to. By default, the top-level
 browsing context is switched to (i.e. not a frame). This can also be
@@ -766,6 +908,11 @@ element will be switched to.</p></dd>
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -793,9 +940,18 @@ session$close()
 <h3 id="method-switch-to-parent-frame-">Method <code>switch_to_parent_frame()</code><a class="anchor" aria-label="anchor" href="#method-switch-to-parent-frame-"></a></h3>
 <p>Switch to the parent frame of the current frame.</p><div class="section">
 <h4 id="usage-19">Usage<a class="anchor" aria-label="anchor" href="#usage-19"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">switch_to_parent_frame</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">switch_to_parent_frame</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-19">Arguments<a class="anchor" aria-label="anchor" href="#arguments-19"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-19">Returns<a class="anchor" aria-label="anchor" href="#returns-19"></a></h4>
 <p>The session object, invisibly.</p>
@@ -821,9 +977,18 @@ session$close()
 <h3 id="method-get-window-rect-">Method <code>get_window_rect()</code><a class="anchor" aria-label="anchor" href="#method-get-window-rect-"></a></h3>
 <p>Get the size and position of the current window.</p><div class="section">
 <h4 id="usage-20">Usage<a class="anchor" aria-label="anchor" href="#usage-20"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_window_rect</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_window_rect</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-20">Arguments<a class="anchor" aria-label="anchor" href="#arguments-20"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-20">Returns<a class="anchor" aria-label="anchor" href="#returns-20"></a></h4>
 <p>A list containing four elements:</p><ul><li><p><code>x</code>: The x position of the window relative to the left of the screen.</p></li>
@@ -853,12 +1018,13 @@ session$close()
 <span>  height <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  x <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  y <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  timeout <span class="op">=</span> <span class="fl">20</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-8">Arguments<a class="anchor" aria-label="anchor" href="#arguments-8"></a></h4>
+<h4 id="arguments-21">Arguments<a class="anchor" aria-label="anchor" href="#arguments-21"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>width</code></dt>
 <dd><p>The width of the window.</p></dd>
 
@@ -878,6 +1044,11 @@ session$close()
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -904,11 +1075,20 @@ session$close()
 </div><p></p><hr><a id="method-SeleniumSession-maximize_window"></a><div class="section">
 <h3 id="method-maximize-window-">Method <code>maximize_window()</code><a class="anchor" aria-label="anchor" href="#method-maximize-window-"></a></h3>
 <p>Maximize the current window. This makes the window the maximum size it
-can be, without being full screen</p><div class="section">
+can be, without being full screen.</p><div class="section">
 <h4 id="usage-22">Usage<a class="anchor" aria-label="anchor" href="#usage-22"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">maximize_window</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">maximize_window</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-22">Arguments<a class="anchor" aria-label="anchor" href="#arguments-22"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-22">Returns<a class="anchor" aria-label="anchor" href="#returns-22"></a></h4>
 <p>The session object, invisibly.</p>
@@ -930,9 +1110,18 @@ session$close()
 <h3 id="method-minimize-window-">Method <code>minimize_window()</code><a class="anchor" aria-label="anchor" href="#method-minimize-window-"></a></h3>
 <p>Minimize the current window. This hides the window.</p><div class="section">
 <h4 id="usage-23">Usage<a class="anchor" aria-label="anchor" href="#usage-23"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">minimize_window</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">minimize_window</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-23">Arguments<a class="anchor" aria-label="anchor" href="#arguments-23"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-23">Returns<a class="anchor" aria-label="anchor" href="#returns-23"></a></h4>
 <p>The session object, invisibly.</p>
@@ -954,9 +1143,18 @@ session$close()
 <h3 id="method-fullscreen-window-">Method <code>fullscreen_window()</code><a class="anchor" aria-label="anchor" href="#method-fullscreen-window-"></a></h3>
 <p>Make the window full screen.</p><div class="section">
 <h4 id="usage-24">Usage<a class="anchor" aria-label="anchor" href="#usage-24"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">fullscreen_window</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">fullscreen_window</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-24">Arguments<a class="anchor" aria-label="anchor" href="#arguments-24"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-24">Returns<a class="anchor" aria-label="anchor" href="#returns-24"></a></h4>
 <p>The session object, invisibly.</p>
@@ -978,9 +1176,18 @@ session$close()
 <h3 id="method-get-active-element-">Method <code>get_active_element()</code><a class="anchor" aria-label="anchor" href="#method-get-active-element-"></a></h3>
 <p>Get the currently active element.</p><div class="section">
 <h4 id="usage-25">Usage<a class="anchor" aria-label="anchor" href="#usage-25"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_active_element</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_active_element</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-25">Arguments<a class="anchor" aria-label="anchor" href="#arguments-25"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-25">Returns<a class="anchor" aria-label="anchor" href="#returns-25"></a></h4>
 <p>A <a href="WebElement.html">WebElement</a> object.</p>
@@ -1007,12 +1214,13 @@ session$close()
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span></span>
 <span>  using <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"css selector"</span>, <span class="st">"xpath"</span>, <span class="st">"tag name"</span>, <span class="st">"link text"</span>, <span class="st">"partial link text"</span><span class="op">)</span>,</span>
 <span>  <span class="va">value</span>,</span>
-<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  timeout <span class="op">=</span> <span class="fl">20</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-9">Arguments<a class="anchor" aria-label="anchor" href="#arguments-9"></a></h4>
+<h4 id="arguments-26">Arguments<a class="anchor" aria-label="anchor" href="#arguments-26"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>using</code></dt>
 <dd><p>The type of selector to use.</p></dd>
 
@@ -1024,6 +1232,11 @@ session$close()
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -1056,12 +1269,13 @@ session$close()
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">find_elements</span><span class="op">(</span></span>
 <span>  using <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"css selector"</span>, <span class="st">"xpath"</span>, <span class="st">"tag name"</span>, <span class="st">"link text"</span>, <span class="st">"partial link text"</span><span class="op">)</span>,</span>
 <span>  <span class="va">value</span>,</span>
-<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  timeout <span class="op">=</span> <span class="fl">20</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-10">Arguments<a class="anchor" aria-label="anchor" href="#arguments-10"></a></h4>
+<h4 id="arguments-27">Arguments<a class="anchor" aria-label="anchor" href="#arguments-27"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>using</code></dt>
 <dd><p>The type of selector to use.</p></dd>
 
@@ -1073,6 +1287,11 @@ session$close()
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -1102,9 +1321,18 @@ session$close()
 <h3 id="method-get-page-source-">Method <code>get_page_source()</code><a class="anchor" aria-label="anchor" href="#method-get-page-source-"></a></h3>
 <p>Get the HTML source of the current page, serialized as a string.</p><div class="section">
 <h4 id="usage-28">Usage<a class="anchor" aria-label="anchor" href="#usage-28"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_page_source</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_page_source</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-28">Arguments<a class="anchor" aria-label="anchor" href="#arguments-28"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-28">Returns<a class="anchor" aria-label="anchor" href="#returns-28"></a></h4>
 <p>A string.</p>
@@ -1128,11 +1356,11 @@ session$close()
 <h3 id="method-execute-script-">Method <code>execute_script()</code><a class="anchor" aria-label="anchor" href="#method-execute-script-"></a></h3>
 <p>Execute a JavaScript script.</p><div class="section">
 <h4 id="usage-29">Usage<a class="anchor" aria-label="anchor" href="#usage-29"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">execute_script</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">execute_script</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, request_body <span class="op">=</span> <span class="cn">NULL</span>, timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-11">Arguments<a class="anchor" aria-label="anchor" href="#arguments-11"></a></h4>
+<h4 id="arguments-29">Arguments<a class="anchor" aria-label="anchor" href="#arguments-29"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>x</code></dt>
 <dd><p>The script to execute. To return a value, do so explicitly,
 e.g. <code>return 1</code>.</p></dd>
@@ -1147,6 +1375,11 @@ objects or lists of such objects, which will be converted to nodes.</p></dd>
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -1180,11 +1413,11 @@ session$close()
 <p>Execute an asynchronous JavaScript script, waiting for a value to be
 returned.</p><div class="section">
 <h4 id="usage-30">Usage<a class="anchor" aria-label="anchor" href="#usage-30"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">execute_async_script</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">execute_async_script</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, request_body <span class="op">=</span> <span class="cn">NULL</span>, timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-12">Arguments<a class="anchor" aria-label="anchor" href="#arguments-12"></a></h4>
+<h4 id="arguments-30">Arguments<a class="anchor" aria-label="anchor" href="#arguments-30"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>x</code></dt>
 <dd><p>The script to execute. Unlike <code>execute_script()</code>. You return
 an value using the callback function, which can be accessed using
@@ -1202,6 +1435,11 @@ to nodes.</p></dd>
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -1231,9 +1469,18 @@ session$close()
 <h3 id="method-get-cookies-">Method <code>get_cookies()</code><a class="anchor" aria-label="anchor" href="#method-get-cookies-"></a></h3>
 <p>Get all cookies.</p><div class="section">
 <h4 id="usage-31">Usage<a class="anchor" aria-label="anchor" href="#usage-31"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_cookies</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_cookies</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-31">Arguments<a class="anchor" aria-label="anchor" href="#arguments-31"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-31">Returns<a class="anchor" aria-label="anchor" href="#returns-31"></a></h4>
 <p>A list of cookies. Each cookie is a list with a <code>name</code> and
@@ -1258,11 +1505,11 @@ session$close()
 <h3 id="method-get-cookie-">Method <code>get_cookie()</code><a class="anchor" aria-label="anchor" href="#method-get-cookie-"></a></h3>
 <p>Get a specific cookie using its name.</p><div class="section">
 <h4 id="usage-32">Usage<a class="anchor" aria-label="anchor" href="#usage-32"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_cookie</span><span class="op">(</span><span class="va">name</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_cookie</span><span class="op">(</span><span class="va">name</span>, request_body <span class="op">=</span> <span class="cn">NULL</span>, timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-13">Arguments<a class="anchor" aria-label="anchor" href="#arguments-13"></a></h4>
+<h4 id="arguments-32">Arguments<a class="anchor" aria-label="anchor" href="#arguments-32"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>name</code></dt>
 <dd><p>The name of the cookie.</p></dd>
 
@@ -1270,6 +1517,11 @@ session$close()
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -1299,11 +1551,11 @@ session$close()
 <h3 id="method-add-cookie-">Method <code>add_cookie()</code><a class="anchor" aria-label="anchor" href="#method-add-cookie-"></a></h3>
 <p>Add a cookie to the cookie store of the current document.</p><div class="section">
 <h4 id="usage-33">Usage<a class="anchor" aria-label="anchor" href="#usage-33"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">add_cookie</span><span class="op">(</span><span class="va">cookie</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">add_cookie</span><span class="op">(</span><span class="va">cookie</span>, request_body <span class="op">=</span> <span class="cn">NULL</span>, timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-14">Arguments<a class="anchor" aria-label="anchor" href="#arguments-14"></a></h4>
+<h4 id="arguments-33">Arguments<a class="anchor" aria-label="anchor" href="#arguments-33"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>cookie</code></dt>
 <dd><p>The cookie object to add: a list which must contain a
 <code>name</code> and <code>value</code> field.</p></dd>
@@ -1312,6 +1564,11 @@ session$close()
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -1339,11 +1596,11 @@ session$close()
 <h3 id="method-delete-cookie-">Method <code>delete_cookie()</code><a class="anchor" aria-label="anchor" href="#method-delete-cookie-"></a></h3>
 <p>Delete a cookie using its name.</p><div class="section">
 <h4 id="usage-34">Usage<a class="anchor" aria-label="anchor" href="#usage-34"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">delete_cookie</span><span class="op">(</span><span class="va">name</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">delete_cookie</span><span class="op">(</span><span class="va">name</span>, request_body <span class="op">=</span> <span class="cn">NULL</span>, timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-15">Arguments<a class="anchor" aria-label="anchor" href="#arguments-15"></a></h4>
+<h4 id="arguments-34">Arguments<a class="anchor" aria-label="anchor" href="#arguments-34"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>name</code></dt>
 <dd><p>The name of the cookie.</p></dd>
 
@@ -1351,6 +1608,11 @@ session$close()
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -1380,9 +1642,18 @@ session$close()
 <h3 id="method-delete-all-cookies-">Method <code>delete_all_cookies()</code><a class="anchor" aria-label="anchor" href="#method-delete-all-cookies-"></a></h3>
 <p>Delete all cookies in the cookie store of the current document.</p><div class="section">
 <h4 id="usage-35">Usage<a class="anchor" aria-label="anchor" href="#usage-35"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">delete_all_cookies</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">delete_all_cookies</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-35">Arguments<a class="anchor" aria-label="anchor" href="#arguments-35"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-35">Returns<a class="anchor" aria-label="anchor" href="#returns-35"></a></h4>
 <p>The session object, invisibly.</p>
@@ -1409,12 +1680,13 @@ session$close()
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">perform_actions</span><span class="op">(</span></span>
 <span>  <span class="va">actions</span>,</span>
 <span>  release_actions <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  timeout <span class="op">=</span> <span class="fl">20</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-16">Arguments<a class="anchor" aria-label="anchor" href="#arguments-16"></a></h4>
+<h4 id="arguments-36">Arguments<a class="anchor" aria-label="anchor" href="#arguments-36"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>actions</code></dt>
 <dd><p>A <code>selenium_actions_stream</code> object, created using
 <code><a href="actions_stream.html">actions_stream()</a></code>.</p></dd>
@@ -1428,6 +1700,11 @@ performing the actions.</p></dd>
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -1462,9 +1739,18 @@ session$close()
 <p>Release all keys and pointers that were pressed using
 <code>perform_actions()</code>.</p><div class="section">
 <h4 id="usage-37">Usage<a class="anchor" aria-label="anchor" href="#usage-37"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">release_actions</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">release_actions</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-37">Arguments<a class="anchor" aria-label="anchor" href="#arguments-37"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-37">Returns<a class="anchor" aria-label="anchor" href="#returns-37"></a></h4>
 <p>The session object, invisibly.</p>
@@ -1494,9 +1780,18 @@ session$close()
 <h3 id="method-dismiss-alert-">Method <code>dismiss_alert()</code><a class="anchor" aria-label="anchor" href="#method-dismiss-alert-"></a></h3>
 <p>Dismiss the current alert, if present.</p><div class="section">
 <h4 id="usage-38">Usage<a class="anchor" aria-label="anchor" href="#usage-38"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">dismiss_alert</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">dismiss_alert</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-38">Arguments<a class="anchor" aria-label="anchor" href="#arguments-38"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-38">Returns<a class="anchor" aria-label="anchor" href="#returns-38"></a></h4>
 <p>The session object, invisibly.</p>
@@ -1520,9 +1815,18 @@ session$close()
 <h3 id="method-accept-alert-">Method <code>accept_alert()</code><a class="anchor" aria-label="anchor" href="#method-accept-alert-"></a></h3>
 <p>Accept the current alert, if present.</p><div class="section">
 <h4 id="usage-39">Usage<a class="anchor" aria-label="anchor" href="#usage-39"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">accept_alert</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">accept_alert</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-39">Arguments<a class="anchor" aria-label="anchor" href="#arguments-39"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-39">Returns<a class="anchor" aria-label="anchor" href="#returns-39"></a></h4>
 <p>The session object, invisibly.</p>
@@ -1546,9 +1850,18 @@ session$close()
 <h3 id="method-get-alert-text-">Method <code>get_alert_text()</code><a class="anchor" aria-label="anchor" href="#method-get-alert-text-"></a></h3>
 <p>Get the message of the current alert, if present.</p><div class="section">
 <h4 id="usage-40">Usage<a class="anchor" aria-label="anchor" href="#usage-40"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_alert_text</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">get_alert_text</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-40">Arguments<a class="anchor" aria-label="anchor" href="#arguments-40"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-40">Returns<a class="anchor" aria-label="anchor" href="#returns-40"></a></h4>
 <p>The message of the current alert (a string).</p>
@@ -1573,11 +1886,11 @@ session$close()
 <p>Send text to the current alert, if present. Useful if the alert is a
 prompt.</p><div class="section">
 <h4 id="usage-41">Usage<a class="anchor" aria-label="anchor" href="#usage-41"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">send_alert_text</span><span class="op">(</span><span class="va">text</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">send_alert_text</span><span class="op">(</span><span class="va">text</span>, request_body <span class="op">=</span> <span class="cn">NULL</span>, timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-17">Arguments<a class="anchor" aria-label="anchor" href="#arguments-17"></a></h4>
+<h4 id="arguments-41">Arguments<a class="anchor" aria-label="anchor" href="#arguments-41"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>text</code></dt>
 <dd><p>The text to send.</p></dd>
 
@@ -1585,6 +1898,11 @@ prompt.</p><div class="section">
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -1612,9 +1930,18 @@ session$close()
 <h3 id="method-screenshot-">Method <code>screenshot()</code><a class="anchor" aria-label="anchor" href="#method-screenshot-"></a></h3>
 <p>Take a screenshot of the current page.</p><div class="section">
 <h4 id="usage-42">Usage<a class="anchor" aria-label="anchor" href="#usage-42"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">screenshot</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">screenshot</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-42">Arguments<a class="anchor" aria-label="anchor" href="#arguments-42"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-42">Returns<a class="anchor" aria-label="anchor" href="#returns-42"></a></h4>
 <p>The base64-encoded PNG screenshot, as a string.</p>
@@ -1649,12 +1976,13 @@ session$close()
 <span>  header <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  shrink_to_fit <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  page_ranges <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  timeout <span class="op">=</span> <span class="fl">20</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-18">Arguments<a class="anchor" aria-label="anchor" href="#arguments-18"></a></h4>
+<h4 id="arguments-43">Arguments<a class="anchor" aria-label="anchor" href="#arguments-43"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>orientation</code></dt>
 <dd><p>The page orientation, either <code>"portrait"</code> or
 <code>"landscape"</code>.</p></dd>
@@ -1705,6 +2033,11 @@ height.</p></dd>
 Selenium server, overriding the default body of the web request</p></dd>
 
 
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
 </dl><p></p></div>
 </div>
 <div class="section">
@@ -1734,7 +2067,7 @@ session$close()
 </div>
 
 <div class="section">
-<h4 id="arguments-19">Arguments<a class="anchor" aria-label="anchor" href="#arguments-19"></a></h4>
+<h4 id="arguments-44">Arguments<a class="anchor" aria-label="anchor" href="#arguments-44"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 

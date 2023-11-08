@@ -271,31 +271,31 @@ in and returned.</p>
 <code class="sourceCode R"><span><span class="va">session</span><span class="op">$</span><span class="fu">execute_script</span><span class="op">(</span><span class="st">"return arguments[0].parentElement;"</span>, <span class="va">input</span><span class="op">)</span></span>
 <span><span class="co">#&gt; &lt;WebElement&gt;</span></span>
 <span><span class="co">#&gt;   Public:</span></span>
-<span><span class="co">#&gt;     clear: function () </span></span>
-<span><span class="co">#&gt;     click: function () </span></span>
+<span><span class="co">#&gt;     clear: function (timeout = 20) </span></span>
+<span><span class="co">#&gt;     click: function (timeout = 20) </span></span>
 <span><span class="co">#&gt;     clone: function (deep = FALSE) </span></span>
-<span><span class="co">#&gt;     computed_label: function () </span></span>
-<span><span class="co">#&gt;     computed_role: function () </span></span>
+<span><span class="co">#&gt;     computed_label: function (timeout = 20) </span></span>
+<span><span class="co">#&gt;     computed_role: function (timeout = 20) </span></span>
 <span><span class="co">#&gt;     find_element: function (using = c("css selector", "xpath", "tag name", "link text", </span></span>
 <span><span class="co">#&gt;     find_elements: function (using = c("css selector", "xpath", "tag name", "link text", </span></span>
-<span><span class="co">#&gt;     get_attribute: function (name, request_body = NULL) </span></span>
-<span><span class="co">#&gt;     get_css_value: function (name, request_body = NULL) </span></span>
-<span><span class="co">#&gt;     get_property: function (name, request_body = NULL) </span></span>
-<span><span class="co">#&gt;     get_rect: function () </span></span>
-<span><span class="co">#&gt;     get_tag_name: function () </span></span>
-<span><span class="co">#&gt;     get_text: function () </span></span>
-<span><span class="co">#&gt;     id: a88dbb54-f9f8-4943-ab64-b096d3c0d48f</span></span>
+<span><span class="co">#&gt;     get_attribute: function (name, request_body = NULL, timeout = 20) </span></span>
+<span><span class="co">#&gt;     get_css_value: function (name, request_body = NULL, timeout = 20) </span></span>
+<span><span class="co">#&gt;     get_property: function (name, request_body = NULL, timeout = 20) </span></span>
+<span><span class="co">#&gt;     get_rect: function (timeout = 20) </span></span>
+<span><span class="co">#&gt;     get_tag_name: function (timeout = 20) </span></span>
+<span><span class="co">#&gt;     get_text: function (timeout = 20) </span></span>
+<span><span class="co">#&gt;     id: 6a47e2b1-02d6-45bc-9b0a-d16e59a51551</span></span>
 <span><span class="co">#&gt;     initialize: function (session_id, req, verbose, id) </span></span>
-<span><span class="co">#&gt;     is_displayed: function () </span></span>
-<span><span class="co">#&gt;     is_enabled: function () </span></span>
-<span><span class="co">#&gt;     is_selected: function () </span></span>
-<span><span class="co">#&gt;     screenshot: function () </span></span>
-<span><span class="co">#&gt;     send_keys: function (..., request_body = NULL) </span></span>
-<span><span class="co">#&gt;     shadow_root: function () </span></span>
+<span><span class="co">#&gt;     is_displayed: function (timeout = 20) </span></span>
+<span><span class="co">#&gt;     is_enabled: function (timeout = 20) </span></span>
+<span><span class="co">#&gt;     is_selected: function (timeout = 20) </span></span>
+<span><span class="co">#&gt;     screenshot: function (timeout = 20) </span></span>
+<span><span class="co">#&gt;     send_keys: function (..., request_body = NULL, timeout = 20) </span></span>
+<span><span class="co">#&gt;     shadow_root: function (timeout = 20) </span></span>
 <span><span class="co">#&gt;     toJSON: function () </span></span>
 <span><span class="co">#&gt;   Private:</span></span>
 <span><span class="co">#&gt;     req: httr2_request</span></span>
-<span><span class="co">#&gt;     session_id: 76e3fd85-749d-410d-96a1-e2b1b60e09a6</span></span>
+<span><span class="co">#&gt;     session_id: a9eddc08-80ff-45b7-833a-ceaabc63c900</span></span>
 <span><span class="co">#&gt;     verbose: FALSE</span></span></code></pre></div>
 <p><code>SeleniumSession$execute_async_script()</code> is provided for
 when you need to interact with an asynchronous JavaScript API, but is
@@ -315,14 +315,14 @@ between the two:</p>
 <span></span>
 <span><span class="va">tab</span></span>
 <span><span class="co">#&gt; $handle</span></span>
-<span><span class="co">#&gt; [1] "748e0f29-a128-4a3f-a1fd-859fdaa793d1"</span></span>
+<span><span class="co">#&gt; [1] "57f744af-794d-42ae-a9c0-c048ba23659d"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $type</span></span>
 <span><span class="co">#&gt; [1] "tab"</span></span>
 <span></span>
 <span><span class="va">window</span></span>
 <span><span class="co">#&gt; $handle</span></span>
-<span><span class="co">#&gt; [1] "f0b8ddb4-9485-4091-a393-49e7ffd39bf3"</span></span>
+<span><span class="co">#&gt; [1] "db8e5967-c6fc-472f-9ff0-a777706c87f9"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $type</span></span>
 <span><span class="co">#&gt; [1] "window"</span></span></code></pre></div>
@@ -334,17 +334,17 @@ to get the handle of every open window/tab.</p>
 <code class="sourceCode R"><span><span class="va">current_handle</span> <span class="op">&lt;-</span> <span class="va">session</span><span class="op">$</span><span class="fu">window_handle</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">current_handle</span></span>
-<span><span class="co">#&gt; [1] "7c19f730-b6d7-4784-a1c1-d9bfd6e142c2"</span></span>
+<span><span class="co">#&gt; [1] "1c88d771-4457-4ade-88ff-ad5bbc971fc5"</span></span>
 <span></span>
 <span><span class="va">session</span><span class="op">$</span><span class="fu">window_handles</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; [1] "7c19f730-b6d7-4784-a1c1-d9bfd6e142c2"</span></span>
+<span><span class="co">#&gt; [1] "1c88d771-4457-4ade-88ff-ad5bbc971fc5"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; [1] "748e0f29-a128-4a3f-a1fd-859fdaa793d1"</span></span>
+<span><span class="co">#&gt; [1] "57f744af-794d-42ae-a9c0-c048ba23659d"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
-<span><span class="co">#&gt; [1] "f0b8ddb4-9485-4091-a393-49e7ffd39bf3"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "db8e5967-c6fc-472f-9ff0-a777706c87f9"</span></span></code></pre></div>
 <p>When a new window/tab is created, it is not automatically switched
 to. Use <code>SeleniumSession$switch_to_window()</code> to switch to a
 window/tab with a specific handle:</p>
@@ -355,10 +355,10 @@ window/tab:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">session</span><span class="op">$</span><span class="fu">close_window</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; [1] "7c19f730-b6d7-4784-a1c1-d9bfd6e142c2"</span></span>
+<span><span class="co">#&gt; [1] "1c88d771-4457-4ade-88ff-ad5bbc971fc5"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; [1] "748e0f29-a128-4a3f-a1fd-859fdaa793d1"</span></span>
+<span><span class="co">#&gt; [1] "57f744af-794d-42ae-a9c0-c048ba23659d"</span></span>
 <span></span>
 <span><span class="co"># Switch to an open window</span></span>
 <span><span class="va">session</span><span class="op">$</span><span class="fu">switch_to_window</span><span class="op">(</span><span class="va">current_handle</span><span class="op">)</span></span></code></pre></div>

@@ -150,9 +150,18 @@ session$close()
 tree. A shadow root is an element that contains a DOM subtree. This
 method gets the shadow root property of an element.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">shadow_root</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">shadow_root</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-1">Returns<a class="anchor" aria-label="anchor" href="#returns-1"></a></h4>
 <p>A <a href="ShadowRoot.html">ShadowRoot</a> object.</p>
@@ -187,12 +196,13 @@ element.</p><div class="section">
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span></span>
 <span>  using <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"css selector"</span>, <span class="st">"xpath"</span>, <span class="st">"tag name"</span>, <span class="st">"link text"</span>, <span class="st">"partial link text"</span><span class="op">)</span>,</span>
 <span>  <span class="va">value</span>,</span>
-<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  timeout <span class="op">=</span> <span class="fl">20</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
+<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>using</code></dt>
 <dd><p>The type of selector to use.</p></dd>
 
@@ -204,6 +214,11 @@ element.</p><div class="section">
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -238,12 +253,13 @@ session$close()
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">find_elements</span><span class="op">(</span></span>
 <span>  using <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"css selector"</span>, <span class="st">"xpath"</span>, <span class="st">"tag name"</span>, <span class="st">"link text"</span>, <span class="st">"partial link text"</span><span class="op">)</span>,</span>
 <span>  <span class="va">value</span>,</span>
-<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  timeout <span class="op">=</span> <span class="fl">20</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
+<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>using</code></dt>
 <dd><p>The type of selector to use.</p></dd>
 
@@ -255,6 +271,11 @@ session$close()
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -284,9 +305,18 @@ session$close()
 <h3 id="method-is-selected-">Method <code>is_selected()</code><a class="anchor" aria-label="anchor" href="#method-is-selected-"></a></h3>
 <p>Check if an element is currently selected.</p><div class="section">
 <h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">is_selected</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">is_selected</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-4">Returns<a class="anchor" aria-label="anchor" href="#returns-4"></a></h4>
 <p>A boolean value: <code>TRUE</code> or <code>FALSE</code>.</p>
@@ -310,11 +340,11 @@ session$close()
 <h3 id="method-get-attribute-">Method <code>get_attribute()</code><a class="anchor" aria-label="anchor" href="#method-get-attribute-"></a></h3>
 <p>Get an attribute from an element.</p><div class="section">
 <h4 id="usage-5">Usage<a class="anchor" aria-label="anchor" href="#usage-5"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_attribute</span><span class="op">(</span><span class="va">name</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_attribute</span><span class="op">(</span><span class="va">name</span>, request_body <span class="op">=</span> <span class="cn">NULL</span>, timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a></h4>
+<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>name</code></dt>
 <dd><p>The name of the attribute.</p></dd>
 
@@ -322,6 +352,11 @@ session$close()
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -351,11 +386,11 @@ session$close()
 but represent the HTML source code of the page, rather than the current
 state of the DOM.</p><div class="section">
 <h4 id="usage-6">Usage<a class="anchor" aria-label="anchor" href="#usage-6"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_property</span><span class="op">(</span><span class="va">name</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_property</span><span class="op">(</span><span class="va">name</span>, request_body <span class="op">=</span> <span class="cn">NULL</span>, timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-4">Arguments<a class="anchor" aria-label="anchor" href="#arguments-4"></a></h4>
+<h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>name</code></dt>
 <dd><p>The name of the property.</p></dd>
 
@@ -363,6 +398,11 @@ state of the DOM.</p><div class="section">
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -390,11 +430,11 @@ session$close()
 <h3 id="method-get-css-value-">Method <code>get_css_value()</code><a class="anchor" aria-label="anchor" href="#method-get-css-value-"></a></h3>
 <p>Get the computed value of a CSS property.</p><div class="section">
 <h4 id="usage-7">Usage<a class="anchor" aria-label="anchor" href="#usage-7"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_css_value</span><span class="op">(</span><span class="va">name</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_css_value</span><span class="op">(</span><span class="va">name</span>, request_body <span class="op">=</span> <span class="cn">NULL</span>, timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a></h4>
+<h4 id="arguments-7">Arguments<a class="anchor" aria-label="anchor" href="#arguments-7"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>name</code></dt>
 <dd><p>The name of the CSS property.</p></dd>
 
@@ -402,6 +442,11 @@ session$close()
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -429,9 +474,18 @@ session$close()
 <h3 id="method-get-text-">Method <code>get_text()</code><a class="anchor" aria-label="anchor" href="#method-get-text-"></a></h3>
 <p>Get the text content of an element.</p><div class="section">
 <h4 id="usage-8">Usage<a class="anchor" aria-label="anchor" href="#usage-8"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_text</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_text</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-8">Arguments<a class="anchor" aria-label="anchor" href="#arguments-8"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-8">Returns<a class="anchor" aria-label="anchor" href="#returns-8"></a></h4>
 <p>The text content of the element: a string.</p>
@@ -455,9 +509,18 @@ session$close()
 <h3 id="method-get-tag-name-">Method <code>get_tag_name()</code><a class="anchor" aria-label="anchor" href="#method-get-tag-name-"></a></h3>
 <p>Get the tag name of an element.</p><div class="section">
 <h4 id="usage-9">Usage<a class="anchor" aria-label="anchor" href="#usage-9"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_tag_name</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_tag_name</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-9">Arguments<a class="anchor" aria-label="anchor" href="#arguments-9"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-9">Returns<a class="anchor" aria-label="anchor" href="#returns-9"></a></h4>
 <p>The tag name of the element: a string.</p>
@@ -481,9 +544,18 @@ session$close()
 <h3 id="method-get-rect-">Method <code>get_rect()</code><a class="anchor" aria-label="anchor" href="#method-get-rect-"></a></h3>
 <p>Get the dimensions and coordinates of an element.</p><div class="section">
 <h4 id="usage-10">Usage<a class="anchor" aria-label="anchor" href="#usage-10"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_rect</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">get_rect</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-10">Arguments<a class="anchor" aria-label="anchor" href="#arguments-10"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-10">Returns<a class="anchor" aria-label="anchor" href="#returns-10"></a></h4>
 <p>A list containing the following elements:</p><ul><li><p><code>x</code>: The x-coordinate of the element.</p></li>
@@ -510,9 +582,18 @@ session$close()
 <h3 id="method-is-enabled-">Method <code>is_enabled()</code><a class="anchor" aria-label="anchor" href="#method-is-enabled-"></a></h3>
 <p>Check if an element is currently enabled.</p><div class="section">
 <h4 id="usage-11">Usage<a class="anchor" aria-label="anchor" href="#usage-11"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">is_enabled</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">is_enabled</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-11">Arguments<a class="anchor" aria-label="anchor" href="#arguments-11"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-11">Returns<a class="anchor" aria-label="anchor" href="#returns-11"></a></h4>
 <p>A boolean value: <code>TRUE</code> or <code>FALSE</code>.</p>
@@ -539,9 +620,18 @@ session$close()
 purpose. For example, a link that is "button-like" in nature may have
 a "button" role.</p><div class="section">
 <h4 id="usage-12">Usage<a class="anchor" aria-label="anchor" href="#usage-12"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">computed_role</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">computed_role</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-12">Arguments<a class="anchor" aria-label="anchor" href="#arguments-12"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-12">Returns<a class="anchor" aria-label="anchor" href="#returns-12"></a></h4>
 <p>A string.</p>
@@ -566,9 +656,18 @@ session$close()
 <p>Get the computed label of an element (i.e. The text of the label element
 that points to the current element).</p><div class="section">
 <h4 id="usage-13">Usage<a class="anchor" aria-label="anchor" href="#usage-13"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">computed_label</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">computed_label</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-13">Arguments<a class="anchor" aria-label="anchor" href="#arguments-13"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-13">Returns<a class="anchor" aria-label="anchor" href="#returns-13"></a></h4>
 <p>A string.</p>
@@ -592,9 +691,18 @@ session$close()
 <h3 id="method-click-">Method <code>click()</code><a class="anchor" aria-label="anchor" href="#method-click-"></a></h3>
 <p>Click on an element.</p><div class="section">
 <h4 id="usage-14">Usage<a class="anchor" aria-label="anchor" href="#usage-14"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">click</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">click</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-14">Arguments<a class="anchor" aria-label="anchor" href="#arguments-14"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-14">Returns<a class="anchor" aria-label="anchor" href="#returns-14"></a></h4>
 <p>The element, invisibly.</p>
@@ -618,9 +726,18 @@ session$close()
 <h3 id="method-clear-">Method <code>clear()</code><a class="anchor" aria-label="anchor" href="#method-clear-"></a></h3>
 <p>Clear the contents of a text input element.</p><div class="section">
 <h4 id="usage-15">Usage<a class="anchor" aria-label="anchor" href="#usage-15"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">clear</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">clear</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-15">Arguments<a class="anchor" aria-label="anchor" href="#arguments-15"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-15">Returns<a class="anchor" aria-label="anchor" href="#returns-15"></a></h4>
 <p>The element, invisibly.</p>
@@ -644,11 +761,11 @@ session$close()
 <h3 id="method-send-keys-">Method <code>send_keys()</code><a class="anchor" aria-label="anchor" href="#method-send-keys-"></a></h3>
 <p>Send keys to an element.</p><div class="section">
 <h4 id="usage-16">Usage<a class="anchor" aria-label="anchor" href="#usage-16"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">send_keys</span><span class="op">(</span><span class="va">...</span>, request_body <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">send_keys</span><span class="op">(</span><span class="va">...</span>, request_body <span class="op">=</span> <span class="cn">NULL</span>, timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a></h4>
+<h4 id="arguments-16">Arguments<a class="anchor" aria-label="anchor" href="#arguments-16"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>The keys to send (strings). Use <a href="keys.html">keys</a> for special keys, and
 use <code><a href="key_chord.html">key_chord()</a></code> to send keys combinations.</p></dd>
@@ -657,6 +774,11 @@ use <code><a href="key_chord.html">key_chord()</a></code> to send keys combinati
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -692,9 +814,18 @@ session$close()
 <h3 id="method-screenshot-">Method <code>screenshot()</code><a class="anchor" aria-label="anchor" href="#method-screenshot-"></a></h3>
 <p>Take a screenshot of an element.</p><div class="section">
 <h4 id="usage-17">Usage<a class="anchor" aria-label="anchor" href="#usage-17"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">screenshot</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">screenshot</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-17">Arguments<a class="anchor" aria-label="anchor" href="#arguments-17"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-17">Returns<a class="anchor" aria-label="anchor" href="#returns-17"></a></h4>
 <p>The base64-encoded PNG screenshot, as a string.</p>
@@ -719,9 +850,18 @@ session$close()
 <p>Check if an element is displayed. This function may not work on all
 platforms.</p><div class="section">
 <h4 id="usage-18">Usage<a class="anchor" aria-label="anchor" href="#usage-18"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">is_displayed</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">WebElement</span><span class="op">$</span><span class="fu">is_displayed</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
+<div class="section">
+<h4 id="arguments-18">Arguments<a class="anchor" aria-label="anchor" href="#arguments-18"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
+
+
+</dl><p></p></div>
+</div>
 <div class="section">
 <h4 id="returns-18">Returns<a class="anchor" aria-label="anchor" href="#returns-18"></a></h4>
 <p>A boolean.</p>
@@ -781,7 +921,7 @@ session$close()
 </div>
 
 <div class="section">
-<h4 id="arguments-7">Arguments<a class="anchor" aria-label="anchor" href="#arguments-7"></a></h4>
+<h4 id="arguments-19">Arguments<a class="anchor" aria-label="anchor" href="#arguments-19"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 

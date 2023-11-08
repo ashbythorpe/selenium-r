@@ -73,8 +73,6 @@ background process. You must have Java installed for this command to work.</p>
 <span>  temp <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  path <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  echo_cmd <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  stdout <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  stderr <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  extra_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -110,9 +108,8 @@ R session. If <code>FALSE</code>, the file is saved in your user data directory.
 be saved. Overrides <code>temp</code>.</p></dd>
 
 
-<dt>echo_cmd, stdout, stderr</dt>
-<dd><p>Passed into
-<a href="http://processx.r-lib.org/reference/process.html" class="external-link">processx::process$new()</a>.</p></dd>
+<dt>echo_cmd</dt>
+<dd><p>Passed into <a href="http://processx.r-lib.org/reference/process.html" class="external-link">processx::process$new()</a>.</p></dd>
 
 
 <dt>extra_args</dt>

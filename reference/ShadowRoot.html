@@ -145,7 +145,8 @@ session$close()
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">ShadowRoot</span><span class="op">$</span><span class="fu">find_element</span><span class="op">(</span></span>
 <span>  using <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"css selector"</span>, <span class="st">"xpath"</span>, <span class="st">"tag name"</span>, <span class="st">"link text"</span>, <span class="st">"partial link text"</span><span class="op">)</span>,</span>
 <span>  <span class="va">value</span>,</span>
-<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  timeout <span class="op">=</span> <span class="fl">20</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -162,6 +163,11 @@ session$close()
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
@@ -204,7 +210,8 @@ session$close()
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">ShadowRoot</span><span class="op">$</span><span class="fu">find_elements</span><span class="op">(</span></span>
 <span>  using <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"css selector"</span>, <span class="st">"xpath"</span>, <span class="st">"tag name"</span>, <span class="st">"link text"</span>, <span class="st">"partial link text"</span><span class="op">)</span>,</span>
 <span>  <span class="va">value</span>,</span>
-<span>  request_body <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  request_body <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  timeout <span class="op">=</span> <span class="fl">20</span></span>
 <span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -221,6 +228,11 @@ session$close()
 <dt><code>request_body</code></dt>
 <dd><p>A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request</p></dd>
+
+
+<dt><code>timeout</code></dt>
+<dd><p>How long to wait for a request to recieve a response
+before throwing an error.</p></dd>
 
 
 </dl><p></p></div>
