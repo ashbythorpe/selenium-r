@@ -160,6 +160,21 @@ download_server <- function(path, file, name) {
 get_latest_version_name <- function(page = 1) {
   req <- httr2::request("https://api.github.com/repos/seleniumHQ/selenium/tags")
   req <- httr2::req_headers(req, "Accept" = "application/vnd.github.v3+json")
+
+  token <- if (is_installed("gitcreds")) {
+    tryCatch(
+      gitcreds::gitcreds_get(),
+      error = function(e) NULL
+    )
+  } else {
+    NULL
+  }
+
+  if (!is.null(token)) {
+    token <- paste("token", token$password)
+    req <- httr2::req_add_headers(req, Authorization = token)
+  }
+
   req <- httr2::req_url_query(req, per_page = 100, page = page)
   response <- httr2::req_perform(req)
   releases <- httr2::resp_body_json(response)
