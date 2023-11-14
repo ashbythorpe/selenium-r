@@ -78,6 +78,7 @@ selenium_server <- function(version = "latest",
 
   if (version == "latest") {
     release_name <- rlang::try_fetch(get_latest_version_name(), error = identity)
+    print(release_name)
     if (rlang::is_error(release_name)) {
       version <- get_version_from_files(release_name)
       release_name <- paste0("selenium-", version)
@@ -172,7 +173,7 @@ get_latest_version_name <- function(page = 1) {
 
   if (!is.null(token)) {
     token <- paste("token", token$password)
-    req <- httr2::req_add_headers(req, Authorization = token)
+    req <- httr2::req_headers(req, Authorization = token)
   }
 
   req <- httr2::req_url_query(req, per_page = 100, page = page)
