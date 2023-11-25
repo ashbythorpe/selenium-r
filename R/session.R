@@ -65,6 +65,7 @@ SeleniumSession <- R6::R6Class(
       check_bool(verbose)
       check_list(capabilities, allow_null = TRUE)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       opts <- switch(browser,
         firefox = list(
@@ -168,6 +169,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     close = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Delete Session", session_id = self$id)
       req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       invisible(self)
@@ -203,6 +206,8 @@ SeleniumSession <- R6::R6Class(
     #' session$status()
     #' }
     status = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       get_status(private$req, private$verbose)
     },
 
@@ -233,6 +238,7 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     get_timeouts = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
       req <- req_command(private$req, "Get Timeouts", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -269,6 +275,7 @@ SeleniumSession <- R6::R6Class(
       check_number_decimal(page_load, allow_null = TRUE)
       check_number_decimal(implicit_wait, allow_null = TRUE)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "Set Timeouts", session_id = self$id)
       body <- compact(list(
@@ -309,6 +316,7 @@ SeleniumSession <- R6::R6Class(
     navigate = function(url, request_body = NULL, timeout = 20) {
       check_string(url)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "Navigate To", session_id = self$id)
       req <- req_body_selenium(req, list(url = url), request_body = request_body)
@@ -334,6 +342,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     current_url = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Current URL", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -362,6 +372,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     back = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Back", session_id = self$id)
       req <- req_body_selenium(req, NULL)
       req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
@@ -393,6 +405,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     forward = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Forward", session_id = self$id)
       req <- req_body_selenium(req, NULL)
       req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
@@ -418,6 +432,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     refresh = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Refresh", session_id = self$id)
       req <- req_body_selenium(req, NULL)
       req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
@@ -442,6 +458,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     title = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Title", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -463,6 +481,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     window_handle = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Window Handle", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -486,6 +506,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     close_window = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Close Window", session_id = self$id)
       resp <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(resp)$value
@@ -518,6 +540,7 @@ SeleniumSession <- R6::R6Class(
     switch_to_window = function(handle, request_body = NULL, timeout = 20) {
       check_string(handle)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "Switch To Window", session_id = self$id)
       req <- req_body_selenium(req, list(handle = handle), request_body = request_body)
@@ -541,6 +564,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     window_handles = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Window Handles", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -573,6 +598,7 @@ SeleniumSession <- R6::R6Class(
     new_window = function(type = c("tab", "window"), request_body = NULL, timeout = 20) {
       type <- rlang::arg_match(type)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "New Window", session_id = self$id)
       req <- req_body_selenium(req, list(type = type), request_body = request_body)
@@ -608,6 +634,7 @@ SeleniumSession <- R6::R6Class(
     #' }
     switch_to_frame = function(id = NA, request_body = NULL, timeout = 20) {
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       if (inherits(id, "WebElement")) {
         id <- id$toJSON()
@@ -641,6 +668,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     switch_to_parent_frame = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Switch To Parent Frame", session_id = self$id)
       req <- req_body_selenium(req, NULL)
       req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
@@ -668,6 +697,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     get_window_rect = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Window Rect", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -702,6 +733,7 @@ SeleniumSession <- R6::R6Class(
       check_number_decimal(x)
       check_number_decimal(y)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "Set Window Rect", session_id = self$id)
       body <- compact(list(
@@ -737,6 +769,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     maximize_window = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Maximize Window", session_id = self$id)
       req <- req_body_selenium(req, NULL)
       resp <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
@@ -759,6 +793,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     minimize_window = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Minimize Window", session_id = self$id)
       req <- req_body_selenium(req, NULL)
       resp <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
@@ -781,6 +817,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     fullscreen_window = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Fullscreen Window", session_id = self$id)
       req <- req_body_selenium(req, NULL)
       resp <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
@@ -805,6 +843,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     get_active_element = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Active Element", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       id <- httr2::resp_body_json(response)$value
@@ -839,6 +879,7 @@ SeleniumSession <- R6::R6Class(
       using <- rlang::arg_match(using)
       check_string(value)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "Find Element", session_id = self$id)
       req <- req_body_selenium(req, list(using = using, value = value), request_body = request_body)
@@ -875,6 +916,7 @@ SeleniumSession <- R6::R6Class(
       using <- rlang::arg_match(using)
       check_string(value)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "Find Elements", session_id = self$id)
       req <- req_body_selenium(req, list(using = using, value = value), request_body = request_body)
@@ -901,6 +943,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     get_page_source = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Page Source", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -940,6 +984,7 @@ SeleniumSession <- R6::R6Class(
       check_dots_unnamed()
       args <- rlang::list2(...)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       args <- prepare_for_json(args)
       req <- req_command(private$req, "Execute Script", session_id = self$id)
@@ -983,6 +1028,7 @@ SeleniumSession <- R6::R6Class(
       check_dots_unnamed()
       args <- rlang::list2(...)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       args <- prepare_for_json(args)
       req <- req_command(private$req, "Execute Async Script", session_id = self$id)
@@ -1010,6 +1056,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     get_cookies = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Get All Cookies", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -1040,6 +1088,7 @@ SeleniumSession <- R6::R6Class(
     get_cookie = function(name, request_body = NULL, timeout = 20) {
       check_string(name)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "Get Named Cookie", session_id = self$id, name = name)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
@@ -1070,6 +1119,7 @@ SeleniumSession <- R6::R6Class(
     add_cookie = function(cookie, request_body = NULL, timeout = 20) {
       check_list(cookie)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "Add Cookie", session_id = self$id)
       req <- req_body_selenium(req, list(cookie = cookie), request_body = request_body)
@@ -1102,6 +1152,7 @@ SeleniumSession <- R6::R6Class(
     delete_cookie = function(name, request_body = NULL, timeout = 20) {
       check_string(name)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "Delete Cookie", session_id = self$id, name = name)
       req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
@@ -1126,6 +1177,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     delete_all_cookies = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Delete All Cookies", session_id = self$id)
       req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       invisible(self)
@@ -1162,8 +1215,10 @@ SeleniumSession <- R6::R6Class(
     #' }
     perform_actions = function(actions, release_actions = TRUE, request_body = NULL, timeout = 20) {
       check_class(actions, "selenium_actions_stream")
+
       check_bool(release_actions)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       actions <- unclass_stream(actions)
       req <- req_command(private$req, "Perform Actions", session_id = self$id)
@@ -1200,6 +1255,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     release_actions = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Release Actions", session_id = self$id)
       req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       invisible(self)
@@ -1223,6 +1280,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     dismiss_alert = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Dismiss Alert", session_id = self$id)
       req <- req_body_selenium(req, NULL)
       req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
@@ -1247,6 +1306,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     accept_alert = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Accept Alert", session_id = self$id)
       req <- req_body_selenium(req, NULL)
       req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
@@ -1271,6 +1332,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     get_alert_text = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Alert Text", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -1301,6 +1364,8 @@ SeleniumSession <- R6::R6Class(
     send_alert_text = function(text, request_body = NULL, timeout = 20) {
       check_string(text)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
+
 
       req <- req_command(private$req, "Send Alert Text", session_id = self$id)
       req <- req_body_selenium(req, list(text = text), request_body = request_body)
@@ -1326,6 +1391,8 @@ SeleniumSession <- R6::R6Class(
     #' session$close()
     #' }
     screenshot = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Take Screenshot", session_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -1382,6 +1449,7 @@ SeleniumSession <- R6::R6Class(
       check_bool(background)
       check_number_decimal(width, min = 0, allow_null = TRUE)
       check_number_decimal(height, min = 0, allow_null = TRUE)
+
       if (is.list(margin)) {
         check_number_decimal(margin$left, allow_null = TRUE, min = 0)
         check_number_decimal(margin$right, allow_null = TRUE, min = 0)
@@ -1398,9 +1466,11 @@ SeleniumSession <- R6::R6Class(
       } else {
         check_number_decimal(margin, allow_null = TRUE, min = 0)
       }
+
       check_bool(shrink_to_fit, allow_null = TRUE)
       check_list(page_ranges, allow_null = TRUE)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "Print Page", session_id = self$id)
 

@@ -68,6 +68,8 @@ WebElement <- R6::R6Class("WebElement",
     #' session$close()
     #' }
     shadow_root = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Element Shadow Root", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       id <- httr2::resp_body_json(response)$value[[1]]
@@ -107,6 +109,7 @@ WebElement <- R6::R6Class("WebElement",
       using <- rlang::arg_match(using)
       check_string(value)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "Find Element From Element", session_id = private$session_id, element_id = self$id)
       req <- req_body_selenium(req, list(using = using, value = value), request_body = request_body)
@@ -144,6 +147,7 @@ WebElement <- R6::R6Class("WebElement",
       using <- rlang::arg_match(using)
       check_string(value)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "Find Elements From Element", session_id = private$session_id, element_id = self$id)
       req <- req_body_selenium(req, list(using = using, value = value), request_body = request_body)
@@ -170,6 +174,8 @@ WebElement <- R6::R6Class("WebElement",
     #' session$close()
     #' }
     is_selected = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Is Element Selected", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -198,6 +204,7 @@ WebElement <- R6::R6Class("WebElement",
     get_attribute = function(name, request_body = NULL, timeout = 20) {
       check_string(name)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "Get Element Attribute", session_id = private$session_id, element_id = self$id, name = name)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
@@ -229,6 +236,7 @@ WebElement <- R6::R6Class("WebElement",
     get_property = function(name, request_body = NULL, timeout = 20) {
       check_string(name)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "Get Element Property", session_id = private$session_id, element_id = self$id, name = name)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
@@ -258,6 +266,7 @@ WebElement <- R6::R6Class("WebElement",
     get_css_value = function(name, request_body = NULL, timeout = 20) {
       check_string(name)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "Get Element CSS Value", session_id = private$session_id, element_id = self$id, "property name" = name)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
@@ -282,6 +291,8 @@ WebElement <- R6::R6Class("WebElement",
     #' session$close()
     #' }
     get_text = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Element Text", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -305,6 +316,8 @@ WebElement <- R6::R6Class("WebElement",
     #' session$close()
     #' }
     get_tag_name = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Element Tag Name", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -333,6 +346,8 @@ WebElement <- R6::R6Class("WebElement",
     #' session$close()
     #' }
     get_rect = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Element Rect", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -356,6 +371,8 @@ WebElement <- R6::R6Class("WebElement",
     #' session$close()
     #' }
     is_enabled = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Is Element Enabled", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -382,6 +399,8 @@ WebElement <- R6::R6Class("WebElement",
     #' session$close()
     #' }
     computed_role = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Computed Role", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -406,6 +425,8 @@ WebElement <- R6::R6Class("WebElement",
     #' session$close()
     #' }
     computed_label = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Get Computed Label", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -429,6 +450,8 @@ WebElement <- R6::R6Class("WebElement",
     #' session$close()
     #' }
     click = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Element Click", session_id = private$session_id, element_id = self$id)
       req <- req_body_selenium(req, NULL)
       req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
@@ -453,6 +476,8 @@ WebElement <- R6::R6Class("WebElement",
     #' session$close()
     #' }
     clear = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Element Clear", session_id = private$session_id, element_id = self$id)
       req <- req_body_selenium(req, NULL)
       req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
@@ -493,6 +518,7 @@ WebElement <- R6::R6Class("WebElement",
         check_string(a, arg = I("Every element in `...`"))
       }
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "Element Send Keys", session_id = private$session_id, element_id = self$id)
       body <- list(
@@ -521,6 +547,8 @@ WebElement <- R6::R6Class("WebElement",
     #' session$close()
     #' }
     screenshot = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Take Element Screenshot", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -545,6 +573,8 @@ WebElement <- R6::R6Class("WebElement",
     #' session$close()
     #' }
     is_displayed = function(timeout = 20) {
+      check_number_decimal(timeout, allow_null = TRUE)
+
       req <- req_command(private$req, "Element Displayed", session_id = private$session_id, element_id = self$id)
       response <- req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
       httr2::resp_body_json(response)$value
@@ -671,6 +701,7 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
       using <- rlang::arg_match(using)
       check_string(value)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       req <- req_command(private$req, "Find Element From Shadow Root", session_id = private$session_id, shadow_id = self$id)
       req <- req_body_selenium(req, list(using = using, value = value), request_body = request_body)
@@ -720,6 +751,7 @@ ShadowRoot <- R6::R6Class("ShadowRoot",
       using <- rlang::arg_match(using)
       check_string(value)
       check_list(request_body, allow_null = TRUE)
+      check_number_decimal(timeout, allow_null = TRUE)
 
       using <- rlang::arg_match(using)
       req <- req_command(private$req, "Find Elements From Shadow Root", session_id = private$session_id, shadow_id = self$id)
