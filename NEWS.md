@@ -1,5 +1,12 @@
 # selenium (development version)
 
+* Added the `browser`, `port` and `host` fields to `SeleniumSession`.
+* All web requests now have a timeout by default, which can be customised
+  with the `timeout` argument to each method.
+* Store the latest release of selenium in an environment, meaning it will
+  persist in the current R session.
+* Use `gitcreds`, if available, to authenticate GitHub requests.
+
 # selenium 0.1.2
 
 * Add `temp` argument to `selenium_server()`.
