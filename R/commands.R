@@ -41,38 +41,36 @@ req_perform_selenium <- function(req, verbose = FALSE, timeout = NULL, call = rl
     req <- httr2::req_verbose(req)
   }
 
+  req <- httr2::req_error(req, body = extract_error_message)
+
   if (!is.null(timeout)) {
     req <- httr2::req_timeout(req, timeout)
   }
 
-  rlang::try_fetch(
-    httr2::req_perform(req),
-    httr2_http = function(e) {
-      handle_error(e, call = call)
-    }
-  )
+  rlang::local_error_call(call)
+
+  httr2::req_perform(req)
 }
 
-handle_error <- function(x, call = rlang::caller_env()) {
-  value <- httr2::resp_body_json(x$resp)
-  if (is.list(value$value)) {
-    error <- value$value$error
-    message <- value$value$message
+extract_error_message <- function(resp) {
+  body <- httr2::resp_body_json(resp)
+  if (is.list(body$value)) {
+    error <- body$value$error
+    message <- body$value$message
   } else {
-    error <- value$error
-    message <- value$message
+    error <- body$error
+    message <- body$message
   }
   message <- gsub(paste0(error, ": "), "", message, fixed = TRUE)
 
-  rlang::abort(
-    c(
-      paste0(to_sentence_case(error), "."),
-      "x" = message
-    ),
-    class = "selenium_error",
-    call = call,
-    parent = x,
-    data = value,
-    code = error
+  c(
+    "x" = paste0(to_sentence_case(error), "."),
+    "x" = indent_message(message)
   )
+}
+
+indent_message <- function(x) {
+  lines <- strsplit(x, "\n", fixed = TRUE)[[1]]
+  lines[-1] <- paste0("  ", lines[-1])
+  paste(lines, collapse = "\n")
 }
