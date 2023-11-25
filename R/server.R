@@ -32,6 +32,8 @@ set_in_env <- function(...) {
 #'   will be prompted to confirm that you want to download it, and the function
 #'   will error if [rlang::is_interactive()] returns `FALSE`. To allow this
 #'   function to work in a non-interactive setting, set this to `FALSE`.
+#' @param verbose Passed into [utils::download.file()]. Note that setting this
+#'   to `FALSE` will *not* disable the prompt if a file needs to be downloaded.
 #' @param temp Whether to use a temporary directory to download the Selenium
 #'   Server `.jar` file. This will ensure that the file is deleted after it is
 #'   used, but means that you will have to redownload the file with every new
@@ -58,6 +60,7 @@ set_in_env <- function(...) {
 selenium_server <- function(version = "latest",
                             selenium_manager = TRUE,
                             interactive = TRUE,
+                            verbose = TRUE,
                             temp = TRUE,
                             path = NULL,
                             echo_cmd = FALSE,
@@ -65,6 +68,9 @@ selenium_server <- function(version = "latest",
   check_string(version)
   check_bool(selenium_manager)
   check_bool(interactive)
+  check_bool(verbose)
+  check_bool(temp)
+  check_string(path, allow_null = TRUE)
   check_bool(echo_cmd)
   check_character(extra_args, allow_null = TRUE)
 
@@ -96,7 +102,6 @@ selenium_server <- function(version = "latest",
 
   if (version == "latest") {
     release_name <- rlang::try_fetch(get_latest_version_name(), error = identity)
-    print(release_name)
     if (rlang::is_error(release_name)) {
       version <- get_version_from_files(release_name)
       release_name <- paste0("selenium-", version)
@@ -149,7 +154,7 @@ selenium_server <- function(version = "latest",
   }
 
   if (!file.exists(full_path)) {
-    download_server(full_path, file_name, release_name)
+    download_server(full_path, file_name, release_name, verbose)
   }
 
   args <- c("-jar", full_path, "standalone")
@@ -169,7 +174,7 @@ selenium_server <- function(version = "latest",
   )
 }
 
-download_server <- function(path, file, name) {
+download_server <- function(path, file, name, verbose) {
   url <- paste0(
     "https://github.com/SeleniumHQ/selenium/releases/download/",
     name,
@@ -177,7 +182,7 @@ download_server <- function(path, file, name) {
     file
   )
 
-  utils::download.file(url, path)
+  utils::download.file(url, path, quiet = !verbose)
   file
 }
 
