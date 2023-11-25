@@ -1,3 +1,21 @@
+# Store the latest version name in an environment, that will persist until
+# the R session is closed.
+selenium <- rlang::new_environment()
+
+get_selenium_env <- function() {
+  utils::getFromNamespace("selenium", ns = "selenium")
+}
+
+get_from_env <- function(items) {
+  sel_env <- get_selenium_env()
+  env_get(sel_env, items, default = NULL)
+}
+
+set_in_env <- function(...) {
+  sel_env <- get_selenium_env()
+  env_bind(sel_env, ...)
+}
+
 #' Download and start the Selenium server.
 #'
 #' @description
@@ -152,13 +170,25 @@ selenium_server <- function(version = "latest",
 }
 
 download_server <- function(path, file, name) {
-  url <- paste0("https://github.com/SeleniumHQ/selenium/releases/download/", name, "/", file)
+  url <- paste0(
+    "https://github.com/SeleniumHQ/selenium/releases/download/",
+    name,
+    "/",
+    file
+  )
 
   utils::download.file(url, path)
   file
 }
 
 get_latest_version_name <- function(page = 1) {
+  sel_env <- get_selenium_env()
+
+  stored_name <- get_from_env("latest_version_name")
+  if (!is.null(stored_name)) {
+    return(stored_name)
+  }
+
   req <- httr2::request("https://api.github.com/repos/seleniumHQ/selenium/tags")
   req <- httr2::req_headers(req, "Accept" = "application/vnd.github.v3+json")
 
@@ -185,6 +215,8 @@ get_latest_version_name <- function(page = 1) {
   if (is.null(latest_tag)) {
     get_latest_version_name(page = page + 1)
   }
+
+  set_in_env(latest_version_name = latest_tag$name)
 
   latest_tag$name
 }
