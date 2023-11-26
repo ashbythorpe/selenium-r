@@ -105,7 +105,7 @@ By default, this will connect to Firefox, but you can use the `browser`
 argument to specify a different browser if you like.
 
 ``` r
-session <- SeleniumSession$new()
+session <- SeleniumSession$new(browser = "chrome")
 ```
 
 Here, we use the `capabilities` argument to specify options for the

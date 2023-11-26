@@ -111,7 +111,7 @@ By default, this will connect to Firefox, but you can use the `browser` argument
 a different browser if you like.
 
 ```{r session}
-session <- SeleniumSession$new()
+session <- SeleniumSession$new(browser = "chrome")
 ```
 
 Here, we use the `capabilities` argument to specify options for the browser.
@@ -119,7 +119,7 @@ Here, the `remote-debugging-port` argument to Chrome is used to make sure the po
 that the browser uses does not conflict with any others (and may be
 necessary if Chrome is not working by default).
 
-```r
+``` {r eval = FALSE}
 session <- SeleniumSession$new(
   browser = "chrome",
   capabilities = list(
