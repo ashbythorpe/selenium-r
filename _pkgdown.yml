@@ -2,28 +2,31 @@ url: https://ashbythorpe.github.io/selenium-r/
 template:
   bootstrap: 5
 
+development:
+  mode: auto
+
 reference:
-- title: Start a Selenium Server
-  desc: Start a Selenium server instance and check that it is running.
-- contents:
-  - selenium_server
-  - selenium_server_available
-- title: Start a session
-  desc: R6 classes for automating a web page.
-- contents:
-  - SeleniumSession
-  - WebElement
-  - ShadowRoot
-- title: Keys
-  desc: Send keys to the page.
-- contents:
-  - keys
-  - key_chord
-- title: Actions
-  desc: Perform custom actions.
-- contents:
-  - actions_stream
-  - actions_pause
-  - actions_press
-  - actions_mousedown
-  - actions_scroll
+  - title: Start a Selenium Server
+    desc: Start a Selenium server instance and check that it is running.
+  - contents:
+      - selenium_server
+      - selenium_server_available
+  - title: Start a session
+    desc: R6 classes for automating a web page.
+  - contents:
+      - SeleniumSession
+      - WebElement
+      - ShadowRoot
+  - title: Keys
+    desc: Send keys to the page.
+  - contents:
+      - keys
+      - key_chord
+  - title: Actions
+    desc: Perform custom actions.
+  - contents:
+      - actions_stream
+      - actions_pause
+      - actions_press
+      - actions_mousedown
+      - actions_scroll
