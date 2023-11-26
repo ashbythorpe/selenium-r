@@ -70,6 +70,7 @@ background process. You must have Java installed for this command to work.</p>
 <span>  version <span class="op">=</span> <span class="st">"latest"</span>,</span>
 <span>  selenium_manager <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  interactive <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  temp <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  path <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  echo_cmd <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -94,6 +95,11 @@ automatically download any missing drivers. Defaults to <code>TRUE</code>.</p></
 will be prompted to confirm that you want to download it, and the function
 will error if <code><a href="https://rlang.r-lib.org/reference/is_interactive.html" class="external-link">rlang::is_interactive()</a></code> returns <code>FALSE</code>. To allow this
 function to work in a non-interactive setting, set this to <code>FALSE</code>.</p></dd>
+
+
+<dt>verbose</dt>
+<dd><p>Passed into <code><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">utils::download.file()</a></code>. Note that setting this
+to <code>FALSE</code> will <em>not</em> disable the prompt if a file needs to be downloaded.</p></dd>
 
 
 <dt>temp</dt>
