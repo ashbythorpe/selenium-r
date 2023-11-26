@@ -8,6 +8,7 @@ selenium_server(
   version = "latest",
   selenium_manager = TRUE,
   interactive = TRUE,
+  verbose = TRUE,
   temp = TRUE,
   path = NULL,
   echo_cmd = FALSE,
@@ -25,6 +26,9 @@ automatically download any missing drivers. Defaults to \code{TRUE}.}
 will be prompted to confirm that you want to download it, and the function
 will error if \code{\link[rlang:is_interactive]{rlang::is_interactive()}} returns \code{FALSE}. To allow this
 function to work in a non-interactive setting, set this to \code{FALSE}.}
+
+\item{verbose}{Passed into \code{\link[utils:download.file]{utils::download.file()}}. Note that setting this
+to \code{FALSE} will \emph{not} disable the prompt if a file needs to be downloaded.}
 
 \item{temp}{Whether to use a temporary directory to download the Selenium
 Server \code{.jar} file. This will ensure that the file is deleted after it is
