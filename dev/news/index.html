@@ -55,10 +55,15 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="selenium-development-version">selenium (development version)<a class="anchor" aria-label="anchor" href="#selenium-development-version"></a></h2>
-<ul><li>Added the <code>browser</code>, <code>port</code> and <code>host</code> fields to <code>SeleniumSession</code>.</li>
-<li>All web requests now have a timeout by default, which can be customised with the <code>timeout</code> argument to each method.</li>
-<li>Store the latest release of selenium in an environment, meaning it will persist in the current R session.</li>
-<li>Use <code>gitcreds</code>, if available, to authenticate GitHub requests.</li>
+<ul><li>The <code>browser</code>, <code>host</code> and <code>port</code> fields can now be used to access the browser, host and port of a <code>SeleniumSession</code> object.</li>
+<li>All web requests now have a 20 second timeout by default, meaning that if a response is not received within 20 seconds, an error is thrown. This stops requests running indefinitely, and can be customised with the <code>timeout</code> argument to each method.</li>
+<li>Previously, <code><a href="../reference/selenium_server.html">selenium_server()</a></code> could error if called too many times with <code>version = "latest"</code>. This is because a GitHub request is made to access the latest version, which can cause GitHub’s rate limits to be exceeded. This update takes two steps to stop this from happening:
+<ul><li>The latest version, when fetched, is cached in the current R session, allowing it to be re-used.</li>
+<li>
+<code>gitcreds</code> is used, if available, to authenticate GitHub requests, increasing the rate limit.</li>
+</ul></li>
+<li>
+<code><a href="../reference/selenium_server.html">selenium_server()</a></code> passes in <code>"|"</code> to <code>stdout</code> and <code>stderr</code>, instead of exposing them as user arguments. This allows the output/error to be read using <code>$read_output()</code> and <code>$read_error()</code>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.2" id="selenium-012">selenium 0.1.2<a class="anchor" aria-label="anchor" href="#selenium-012"></a></h2><p class="text-muted">CRAN release: 2023-10-28</p>
