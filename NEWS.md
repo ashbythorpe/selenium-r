@@ -1,4 +1,4 @@
-# selenium (development version)
+# selenium 0.1.3
 
 * The `browser`, `host` and `port` fields can now be used to access the browser,
   host and port of a `SeleniumSession` object.
