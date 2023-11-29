@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">selenium</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.1.2.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.1.3.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,6 +55,9 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="selenium-development-version">selenium (development version)<a class="anchor" aria-label="anchor" href="#selenium-development-version"></a></h2>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.1.3" id="selenium-013">selenium 0.1.3<a class="anchor" aria-label="anchor" href="#selenium-013"></a></h2><p class="text-muted">CRAN release: 2023-11-28</p>
 <ul><li>The <code>browser</code>, <code>host</code> and <code>port</code> fields can now be used to access the browser, host and port of a <code>SeleniumSession</code> object.</li>
 <li>All web requests now have a 20 second timeout by default, meaning that if a response is not received within 20 seconds, an error is thrown. This stops requests running indefinitely, and can be customised with the <code>timeout</code> argument to each method.</li>
 <li>Previously, <code><a href="../reference/selenium_server.html">selenium_server()</a></code> could error if called too many times with <code>version = "latest"</code>. This is because a GitHub request is made to access the latest version, which can cause GitHub’s rate limits to be exceeded. This update takes two steps to stop this from happening:
