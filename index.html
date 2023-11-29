@@ -32,7 +32,7 @@
     
     <a class="navbar-brand me-2" href="index.html">selenium</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -134,7 +134,7 @@
 <code class="sourceCode R"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>By default, this will connect to Firefox, but you can use the <code>browser</code> argument to specify a different browser if you like.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>browser <span class="op">=</span> <span class="st">"chrome"</span><span class="op">)</span></span></code></pre></div>
 <p>Here, we use the <code>capabilities</code> argument to specify options for the browser. Here, the <code>remote-debugging-port</code> argument to Chrome is used to make sure the port that the browser uses does not conflict with any others (and may be necessary if Chrome is not working by default).</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
@@ -203,13 +203,7 @@
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://github.com/ashbythorpe/selenium-r/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/ashbythorpe/selenium-r/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://CRAN.R-project.org/package=selenium" class="external-link"><img src="https://www.r-pkg.org/badges/version/selenium" alt="CRAN status"></a></li>
-</ul>
-</div>
+
 
   </aside>
 </div>
