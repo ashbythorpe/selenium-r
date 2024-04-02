@@ -741,7 +741,8 @@ usually 'localhost' (i.e. your own machine).}
 any responses.}
 
 \item{\code{capabilities}}{A list of capabilities to pass to the Selenium
-server, to combine with the defaults generated using \code{browser}.}
+server, to combine with the defaults generated using \code{browser}.
+See \code{\link[=chrome_options]{chrome_options()}}, \code{\link[=firefox_options]{firefox_options()}}, and \code{\link[=edge_options]{edge_options()}}.}
 
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server. Overrides \code{capabilities}.}

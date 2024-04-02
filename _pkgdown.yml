@@ -17,6 +17,10 @@ reference:
       - SeleniumSession
       - WebElement
       - ShadowRoot
+  - title: Browser options
+    desc: Configure browser options for a session.
+  - contents:
+      - chrome_options
   - title: Keys
     desc: Send keys to the page.
   - contents:
