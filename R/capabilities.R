@@ -4,7 +4,7 @@
 #' [SeleniumSession$new()][SeleniumSession].
 #'
 #' @param binary Path to the browser binary.
-#' @param arguments A character vector of additional arguments to pass to the
+#' @param args A character vector of additional arguments to pass to the
 #'   browser.
 #' @param extensions A character vector of paths to browser extension (`.crx`)
 #'   files. These will be base64 encoded before being passed to the browser. If
@@ -21,6 +21,9 @@
 #'
 #' You can combine these options with non-browser specific options simply using
 #' [c()].
+#'
+#' Note that Microsoft Edge options are very similar to Chrome options, since
+#' it is based on Chromium.
 #'
 #' @returns A list of browser options, with Chrome options under the name
 #'   `goog:chromeOptions`, Firefox options under `moz:firefoxOptions`, and Edge
@@ -41,9 +44,10 @@
 #' <https://learn.microsoft.com/en-us/microsoft-edge/webdriver-chromium/capabilities-edge-options#edgeoptions-object>
 #'
 #' @examples
+#' # Basic options objects
 #' chrome_options(
 #'   binary = "/path/to/chrome",
-#'   arguments = c("--headless", "--disable-gpu"),
+#'   args = c("--headless", "--disable-gpu"),
 #'   detatch = TRUE, # An additional option described in the link above.
 #'   prefs = list(
 #'     "profile.default_content_setting_values.notifications" = 2
@@ -55,14 +59,36 @@
 #'
 #' edge_options(binary = "/path/to/edge")
 #'
+#' # Setting the user agent
+#' chrome_options(args = c("--user-agent=My User Agent"))
+#'
+#' edge_options(args = c("--user-agent=My User Agent"))
+#'
+#' firefox_options(prefs = list(
+#'   "general.useragent.override" = "My User Agent"
+#' ))
+#'
+#' # Using a proxy server
+#'
+#' chrome_options(args = c("--proxy-server=HOST:PORT"))
+#'
+#' edge_options(args = c("--proxy-server=HOST:PORT"))
+#'
+#' firefox_options(prefs = list(
+#'   "network.proxy.type" = 1,
+#'   "network.proxy.socks" = "HOST",
+#'   "network.proxy.socks_port" = PORT,
+#'   "network.proxy.socks_remote_dns" = FALSE
+#' ))
+#'
 #' @export
 chrome_options <- function(binary = NULL,
-                           arguments = NULL,
+                           args = NULL,
                            extensions = NULL,
                            prefs = NULL,
                            ...) {
   check_string(binary, allow_null = TRUE)
-  check_character(arguments, allow_null = TRUE)
+  check_character(args, allow_null = TRUE)
   check_character(extensions, allow_null = TRUE)
   check_list(prefs, allow_null = TRUE)
 
@@ -79,7 +105,7 @@ chrome_options <- function(binary = NULL,
   compact(list(
     `goog:chromeOptions` = list(
       binary = binary,
-      args = as.list(arguments),
+      args = as.list(args),
       extensions = extensions_encoded,
       prefs = prefs,
       ...
@@ -91,12 +117,12 @@ chrome_options <- function(binary = NULL,
 #'
 #' @export
 firefox_options <- function(binary = NULL,
-                            arguments = NULL,
+                            args = NULL,
                             profile = NULL,
                             prefs = NULL,
                             ...) {
   check_string(binary, allow_null = TRUE)
-  check_character(arguments, allow_null = TRUE)
+  check_character(args, allow_null = TRUE)
   check_string(profile, allow_null = TRUE)
   check_list(prefs, allow_null = TRUE)
 
@@ -108,7 +134,7 @@ firefox_options <- function(binary = NULL,
     acceptInsecureCerts = TRUE,
     `moz:firefoxOptions` = list(
       binary = binary,
-      args = as.list(arguments),
+      args = as.list(args),
       profile = profile,
       ...
     ),
@@ -120,12 +146,12 @@ firefox_options <- function(binary = NULL,
 #'
 #' @export
 edge_options <- function(binary = NULL,
-                         arguments = NULL,
+                         args = NULL,
                          extensions = NULL,
                          prefs = NULL,
                          ...) {
   check_string(binary, allow_null = TRUE)
-  check_character(arguments, allow_null = TRUE)
+  check_character(args, allow_null = TRUE)
   check_character(extensions, allow_null = TRUE)
   check_list(prefs, allow_null = TRUE)
 
@@ -142,7 +168,7 @@ edge_options <- function(binary = NULL,
   compact(list(
     `ms:edgeOptions` = list(
       binary = binary,
-      args = as.list(arguments),
+      args = as.list(args),
       extensions = extensions_encoded,
       prefs = prefs,
       ...
