@@ -37,6 +37,7 @@ SeleniumSession <- R6::R6Class(
     #'   any responses.
     #' @param capabilities A list of capabilities to pass to the Selenium
     #'   server, to combine with the defaults generated using `browser`.
+    #'   See [chrome_options()], [firefox_options()], and [edge_options()].
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server. Overrides `capabilities`.
     #' @param timeout How long to wait for a request to recieve a response
@@ -50,15 +51,13 @@ SeleniumSession <- R6::R6Class(
     #'
     #' session$close()
     #' }
-    initialize = function(
-      browser = "firefox",
-      port = 4444L,
-      host = "localhost",
-      verbose = FALSE,
-      capabilities = NULL,
-      request_body = NULL,
-      timeout = 20
-    ) {
+    initialize = function(browser = "firefox",
+                          port = 4444L,
+                          host = "localhost",
+                          verbose = FALSE,
+                          capabilities = NULL,
+                          request_body = NULL,
+                          timeout = 20) {
       check_string(browser)
       check_number_whole(port)
       check_string(host)
