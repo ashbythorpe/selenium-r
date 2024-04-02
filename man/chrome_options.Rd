@@ -8,32 +8,20 @@
 \usage{
 chrome_options(
   binary = NULL,
-  arguments = NULL,
+  args = NULL,
   extensions = NULL,
   prefs = NULL,
   ...
 )
 
-firefox_options(
-  binary = NULL,
-  arguments = NULL,
-  profile = NULL,
-  prefs = NULL,
-  ...
-)
+firefox_options(binary = NULL, args = NULL, profile = NULL, prefs = NULL, ...)
 
-edge_options(
-  binary = NULL,
-  arguments = NULL,
-  extensions = NULL,
-  prefs = NULL,
-  ...
-)
+edge_options(binary = NULL, args = NULL, extensions = NULL, prefs = NULL, ...)
 }
 \arguments{
 \item{binary}{Path to the browser binary.}
 
-\item{arguments}{A character vector of additional arguments to pass to the
+\item{args}{A character vector of additional arguments to pass to the
 browser.}
 
 \item{extensions}{A character vector of paths to browser extension (\code{.crx})
@@ -59,15 +47,39 @@ Create browser options to pass into the \code{capabilities} argument of
 }
 \details{
 These functions allow you to more easily translate between Selenium code in
-other languages (e.g. Java/Python) to R.
+other languages (e.g. Java/Python) to R. For example, consider the following
+Java code, adapted from the the
+\href{https://www.selenium.dev/documentation/webdriver/browsers/chrome/}{Selenium documentation}
+
+\if{html}{\out{<div class="sourceCode java">}}\preformatted{ChromeOptions options = new ChromeOptions();
+
+options.setBinary("/path/to/chrome");
+options.addArguments("--headless", "--disable-gpu");
+options.addExtensions("/path/to/extension.crx");
+options.setExperimentalOption("excludeSwitches", List.of("disable-popup-blocking"));
+}\if{html}{\out{</div>}}
+
+This can be translated to R as follows:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{chrome_options(
+  binary = "/path/to/chrome",
+  args = c("--headless", "--disable-gpu"),
+  extensions = "/path/to/extension.crx",
+  excludeSwitches = list("disable-popup-blocking")
+)
+}\if{html}{\out{</div>}}
 
 You can combine these options with non-browser specific options simply using
 \code{\link[=c]{c()}}.
+
+Note that Microsoft Edge options are very similar to Chrome options, since
+it is based on Chromium.
 }
 \examples{
+# Basic options objects
 chrome_options(
   binary = "/path/to/chrome",
-  arguments = c("--headless", "--disable-gpu"),
+  args = c("--headless", "--disable-gpu"),
   detatch = TRUE, # An additional option described in the link above.
   prefs = list(
     "profile.default_content_setting_values.notifications" = 2
@@ -78,6 +90,34 @@ chrome_options(
 firefox_options(binary = "/path/to/firefox")
 
 edge_options(binary = "/path/to/edge")
+
+# Setting the user agent
+chrome_options(args = c("--user-agent=My User Agent"))
+
+edge_options(args = c("--user-agent=My User Agent"))
+
+firefox_options(prefs = list(
+  "general.useragent.override" = "My User Agent"
+))
+
+# Using a proxy server
+
+chrome_options(args = c("--proxy-server=HOST:PORT"))
+
+edge_options(args = c("--proxy-server=HOST:PORT"))
+
+PORT <- 1
+firefox_options(prefs = list(
+  "network.proxy.type" = 1,
+  "network.proxy.socks" = "HOST",
+  "network.proxy.socks_port" = PORT,
+  "network.proxy.socks_remote_dns" = FALSE
+))
+
+# Combining with other options
+browser_options <- chrome_options(binary = "/path/to/chrome")
+
+c(browser_options, list(platformName = "Windows"))
 
 }
 \seealso{

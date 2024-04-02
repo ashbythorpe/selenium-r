@@ -17,7 +17,29 @@
 #'
 #' @details
 #' These functions allow you to more easily translate between Selenium code in
-#' other languages (e.g. Java/Python) to R.
+#' other languages (e.g. Java/Python) to R. For example, consider the following
+#' Java code, adapted from the the
+#' [Selenium documentation](https://www.selenium.dev/documentation/webdriver/browsers/chrome/)
+#'
+#' ```java
+#' ChromeOptions options = new ChromeOptions();
+#'
+#' options.setBinary("/path/to/chrome");
+#' options.addArguments("--headless", "--disable-gpu");
+#' options.addExtensions("/path/to/extension.crx");
+#' options.setExperimentalOption("excludeSwitches", List.of("disable-popup-blocking"));
+#' ```
+#'
+#' This can be translated to R as follows:
+#'
+#' ```r
+#' chrome_options(
+#'   binary = "/path/to/chrome",
+#'   args = c("--headless", "--disable-gpu"),
+#'   extensions = "/path/to/extension.crx",
+#'   excludeSwitches = list("disable-popup-blocking")
+#' )
+#' ```
 #'
 #' You can combine these options with non-browser specific options simply using
 #' [c()].
@@ -74,12 +96,18 @@
 #'
 #' edge_options(args = c("--proxy-server=HOST:PORT"))
 #'
+#' PORT <- 1
 #' firefox_options(prefs = list(
 #'   "network.proxy.type" = 1,
 #'   "network.proxy.socks" = "HOST",
 #'   "network.proxy.socks_port" = PORT,
 #'   "network.proxy.socks_remote_dns" = FALSE
 #' ))
+#'
+#' # Combining with other options
+#' browser_options <- chrome_options(binary = "/path/to/chrome")
+#'
+#' c(browser_options, list(platformName = "Windows"))
 #'
 #' @export
 chrome_options <- function(binary = NULL,
