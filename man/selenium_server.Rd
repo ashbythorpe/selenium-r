@@ -41,7 +41,8 @@ be saved. Overrides \code{temp}.}
 \item{echo_cmd}{Passed into \link[processx:process]{processx::process$new()}.}
 
 \item{extra_args}{A character vector of extra arguments to pass into the
-Selenium Server call.}
+Selenium Server call. See the list of options here:
+\url{https://www.selenium.dev/documentation/grid/configuration/cli_options/}}
 }
 \value{
 A \link[processx:process]{processx::process} object. Call \verb{<process>$kill()} to stop the
@@ -54,11 +55,23 @@ Downloads the latest release of Selenium Server, and then runs it as a
 background process. You must have Java installed for this command to work.
 }
 \examples{
-\dontshow{if (rlang::is_interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontrun{
+# Disables the prompt that asks you whether you want to download Selenium server
 server <- selenium_server(interactive = FALSE)
 
+# Saves the server in your user data directory
+server <- selenium_server(temp = FALSE)
 server$kill()
-\dontshow{\}) # examplesIf}
+
+# The server doesn't have to be downloaded again
+server <- selenium_server(temp = FALSE)
+
+# Here we use extra arguments to increase the timeout of client sessions,
+# allowing sessions to stay open for longer without being automatically
+# terminated.
+server <- selenium_server(extra_args = c("--session-timeout", "3000"))
+}
+
 }
 \seealso{
 The \href{https://ashbythorpe.github.io/selenium-r/index.html}{package website}

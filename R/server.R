@@ -42,7 +42,8 @@ set_in_env <- function(...) {
 #'   be saved. Overrides `temp`.
 #' @param echo_cmd Passed into [processx::process$new()][processx::process].
 #' @param extra_args A character vector of extra arguments to pass into the
-#'   Selenium Server call.
+#'   Selenium Server call. See the list of options here:
+#'   <https://www.selenium.dev/documentation/grid/configuration/cli_options/>
 #'
 #' @returns A [processx::process] object. Call `<process>$kill()` to stop the
 #'   server.
@@ -51,10 +52,23 @@ set_in_env <- function(...) {
 #' The [package website](https://ashbythorpe.github.io/selenium-r/index.html)
 #' for more ways to start the Selenium server.
 #'
-#' @examplesIf rlang::is_interactive()
+#' @examples
+#' \dontrun{
+#' # Disables the prompt that asks you whether you want to download Selenium server
 #' server <- selenium_server(interactive = FALSE)
 #'
+#' # Saves the server in your user data directory
+#' server <- selenium_server(temp = FALSE)
 #' server$kill()
+#'
+#' # The server doesn't have to be downloaded again
+#' server <- selenium_server(temp = FALSE)
+#'
+#' # Here we use extra arguments to increase the timeout of client sessions,
+#' # allowing sessions to stay open for longer without being automatically
+#' # terminated.
+#' server <- selenium_server(extra_args = c("--session-timeout", "3000"))
+#' }
 #'
 #' @export
 selenium_server <- function(version = "latest",
