@@ -4,6 +4,7 @@
   with the `capabilities` argument in `SeleniumSession$new()`. The documentation
   there includes several links that document the options available for each
   browser, along with a few examples.
+- Made fetching the latest release of Selenium Server more reliable.
 
 # selenium 0.1.3
 

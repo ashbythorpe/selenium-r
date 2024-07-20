@@ -200,7 +200,7 @@ download_server <- function(path, file, name, verbose) {
   file
 }
 
-get_latest_version_name <- function(page = 1) {
+get_latest_version_name <- function() {
   sel_env <- get_selenium_env()
 
   stored_name <- get_from_env("latest_version_name")
@@ -208,8 +208,8 @@ get_latest_version_name <- function(page = 1) {
     return(stored_name)
   }
 
-  req <- httr2::request("https://api.github.com/repos/seleniumHQ/selenium/tags")
-  req <- httr2::req_headers(req, "Accept" = "application/vnd.github.v3+json")
+  req <- httr2::request("https://api.github.com/repos/seleniumHQ/selenium/releases/latest")
+  req <- httr2::req_headers(req, "Accept" = "application/vnd.github+json")
 
   token <- if (is_installed("gitcreds")) {
     tryCatch(
@@ -225,19 +225,12 @@ get_latest_version_name <- function(page = 1) {
     req <- httr2::req_headers(req, Authorization = token)
   }
 
-  req <- httr2::req_url_query(req, per_page = 100, page = page)
   response <- httr2::req_perform(req)
-  releases <- httr2::resp_body_json(response)
-
-  latest_tag <- find_using(releases, is_nonspecific_release)
-
-  if (is.null(latest_tag)) {
-    get_latest_version_name(page = page + 1)
-  }
-
-  set_in_env(latest_version_name = latest_tag$name)
-
-  latest_tag$name
+  release <- httr2::resp_body_json(response)
+  
+  url_parts <- strsplit(release$html_url, split = "/")[[1]]
+  
+  url_parts[[length(url_parts)]]
 }
 
 get_version_from_files <- function(error) {
