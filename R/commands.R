@@ -53,7 +53,12 @@ req_perform_selenium <- function(req, verbose = FALSE, timeout = NULL, call = rl
 }
 
 extract_error_message <- function(resp) {
+  if (httr2::resp_content_type(resp) != "application/json") {
+    return(NULL)
+  }
+
   body <- httr2::resp_body_json(resp)
+
   if (is.list(body$value)) {
     error <- body$value$error
     message <- body$value$message
