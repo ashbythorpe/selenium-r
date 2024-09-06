@@ -49,7 +49,7 @@ start a server automatically."><meta name="robots" content="noindex"></head><bod
     <div class="ref-description section level2">
     <p>This class represents the client to a Selenium session. It will only work
 if a Selenium server instance is running. If you get an error, use
-<code><a href="selenium_server_available.html">selenium_server_available()</a></code> to check if a server is running. See the
+<code><a href="wait_for_server.html">selenium_server_available()</a></code> to check if a server is running. See the
 package README for more information, or use <code><a href="selenium_server.html">selenium_server()</a></code> to try and
 start a server automatically.</p>
     </div>
@@ -302,7 +302,7 @@ session$close()
 <p>Get the status of the Selenium server. Unlike all other methods, this
 method is independent of the session itself (meaning it can be used
 even after SeleniumSession$close() is called). It is
-identical to <code><a href="selenium_server_available.html">get_server_status()</a></code>, but uses the host, port and verbose
+identical to <code><a href="wait_for_server.html">get_server_status()</a></code>, but uses the host, port and verbose
 options passed to the session, for convenience.</p><div class="section">
 <h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">SeleniumSession</span><span class="op">$</span><span class="fu">status</span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div><p></p></div>
