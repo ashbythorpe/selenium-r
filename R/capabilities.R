@@ -130,15 +130,15 @@ chrome_options <- function(binary = NULL,
     })
   }
 
-  compact(list(
-    `goog:chromeOptions` = list(
+  list(
+    `goog:chromeOptions` = compact(list(
       binary = binary,
       args = as.list(args),
       extensions = extensions_encoded,
       prefs = prefs,
       ...
-    )
-  ))
+    ))
+  )
 }
 
 #' @rdname chrome_options
@@ -155,19 +155,20 @@ firefox_options <- function(binary = NULL,
   check_list(prefs, allow_null = TRUE)
 
   if (!is.null(profile) && !inherits(profile, "AsIs")) {
-    profile <- base64enc::base64encode(file = profile)
+    profile <- base64enc::base64encode(what = profile)
   }
 
-  compact(list(
+  list(
     acceptInsecureCerts = TRUE,
-    `moz:firefoxOptions` = list(
+    `moz:firefoxOptions` = compact(list(
       binary = binary,
       args = as.list(args),
       profile = profile,
+      prefs = prefs,
       ...
-    ),
+    )),
     `moz:debuggerAddress` = TRUE
-  ))
+  )
 }
 
 #' @rdname chrome_options
@@ -193,13 +194,13 @@ edge_options <- function(binary = NULL,
     })
   }
 
-  compact(list(
-    `ms:edgeOptions` = list(
+  list(
+    `ms:edgeOptions` = compact(list(
       binary = binary,
       args = as.list(args),
       extensions = extensions_encoded,
       prefs = prefs,
       ...
-    )
-  ))
+    ))
+  )
 }
