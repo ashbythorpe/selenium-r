@@ -159,9 +159,6 @@ see:
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "--disable-gpu"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`$extensions</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`$prefs</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`$prefs$profile.default_content_setting_values.notifications</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
@@ -181,12 +178,6 @@ see:
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`$binary</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/path/to/firefox"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`$args</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`$profile</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:debuggerAddress`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
@@ -197,51 +188,24 @@ see:
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`ms:edgeOptions`$binary</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/path/to/edge"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`ms:edgeOptions`$args</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`ms:edgeOptions`$extensions</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`ms:edgeOptions`$prefs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Setting the user agent</span></span></span>
 <span class="r-in"><span><span class="fu">chrome_options</span><span class="op">(</span>args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"--user-agent=My User Agent"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`$binary</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`$args</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`$args[[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "--user-agent=My User Agent"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`$extensions</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`$prefs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">edge_options</span><span class="op">(</span>args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"--user-agent=My User Agent"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`ms:edgeOptions`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`ms:edgeOptions`$binary</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`ms:edgeOptions`$args</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`ms:edgeOptions`$args[[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "--user-agent=My User Agent"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`ms:edgeOptions`$extensions</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`ms:edgeOptions`$prefs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -252,14 +216,10 @@ see:
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`$binary</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`$prefs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`$prefs$general.useragent.override</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "My User Agent"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`$args</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`$profile</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:debuggerAddress`</span>
@@ -270,37 +230,19 @@ see:
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">chrome_options</span><span class="op">(</span>args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"--proxy-server=HOST:PORT"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`$binary</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`$args</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`$args[[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "--proxy-server=HOST:PORT"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`$extensions</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`$prefs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">edge_options</span><span class="op">(</span>args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"--proxy-server=HOST:PORT"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`ms:edgeOptions`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`ms:edgeOptions`$binary</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`ms:edgeOptions`$args</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`ms:edgeOptions`$args[[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "--proxy-server=HOST:PORT"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`ms:edgeOptions`$extensions</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`ms:edgeOptions`$prefs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -315,14 +257,19 @@ see:
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`$binary</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`$prefs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`$prefs$network.proxy.type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`$args</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`$prefs$network.proxy.socks</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "HOST"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`$profile</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`$prefs$network.proxy.socks_port</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:firefoxOptions`$prefs$network.proxy.socks_remote_dns</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`moz:debuggerAddress`</span>
@@ -336,15 +283,6 @@ see:
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`$binary</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/path/to/chrome"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`$args</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`$extensions</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`goog:chromeOptions`$prefs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $platformName</span>
@@ -362,7 +300,7 @@ see:
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>
