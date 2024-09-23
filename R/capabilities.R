@@ -53,7 +53,7 @@
 #'
 #' @seealso
 #' For more information and examples on Chrome options, see:
-#' <https://chromedriver.chromium.org/capabilities>
+#' <https://developer.chrome.com/docs/chromedriver/capabilities>
 #'
 #' For Firefox options:
 #' <https://developer.mozilla.org/en-US/docs/Web/WebDriver/Capabilities/firefoxOptions>

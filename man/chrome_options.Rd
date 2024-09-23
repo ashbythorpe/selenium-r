@@ -122,7 +122,7 @@ c(browser_options, list(platformName = "Windows"))
 }
 \seealso{
 For more information and examples on Chrome options, see:
-\url{https://chromedriver.chromium.org/capabilities}
+\url{https://developer.chrome.com/docs/chromedriver/capabilities}
 
 For Firefox options:
 \url{https://developer.mozilla.org/en-US/docs/Web/WebDriver/Capabilities/firefoxOptions}

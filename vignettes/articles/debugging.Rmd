@@ -43,6 +43,19 @@ an error from `wait_for_server()`, or `wait_for_selenium_available()`, it can
 be worth increasing the `max_time` argument to something higher than 60, and
 seeing if that fixes the issue.
 
+### Wrong Java version
+
+If starting the server results in an error, and `wait_for_server()`,
+`server$read_error()` or the logs show an error similar to:
+
+`... java.lang.UnsupportedClassVersionError: {file} has been compiled by a more
+recent version of the Java Runtime ...`
+
+This probably means that you need to update your Java version. Selenium's
+minimum version is now Java 11 (see
+<https://www.selenium.dev/blog/2023/java-8-support/>). You can find later
+versions of Java [here](https://www.oracle.com/java/technologies/downloads/)
+
 ### Port and IP address
 One reason why you can't connect to the server is that the port and IP address you
 are using is wrong.

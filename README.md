@@ -39,7 +39,8 @@ To do this you must:
 
 - Install a browser that you want to automate (e.g. Chrome, Firefox,
   Edge).
-- Download [Java](https://www.java.com/).
+- Download [Java](https://www.oracle.com/java/technologies/downloads/)
+  (you need Java 11 or higher).
 
 There are many different ways to download and start the server, one of
 which is provided by selenium:

@@ -4,13 +4,14 @@
   with the `capabilities` argument in `SeleniumSession$new()`. The documentation
   there includes several links that document the options available for each
   browser, along with a few examples.
-- Made fetching the latest release of Selenium Server more reliable.
 - The `error` argument in `wait_for_selenium_available()` now defaults to
   `TRUE`. This means that the function will throw an error if a Selenium server
   is not available by default.
 - Added `wait_for_server()`, a version of `wait_for_selenium_available()` that
-  gives more detailed error messages by reading the logs of a server created
-  using `selenium_server()`.
+  gives more detailed error messages by reading the logs of a server process
+  created using `selenium_server()`.
+- Fixed a bug in `selenium_server()` where fetching the latest version
+  didn't work when Selenium was preparing to release a new version.
 
 # selenium 0.1.3
 
