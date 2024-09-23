@@ -1,72 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/404.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/articles/debugging.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/articles/selenium.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/reference/SeleniumSession.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/reference/ShadowRoot.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/reference/WebElement.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/reference/actions_mousedown.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/reference/actions_pause.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/reference/actions_press.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/reference/actions_scroll.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/reference/actions_stream.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/reference/key_chord.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/reference/keys.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/reference/selenium-package.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/reference/selenium_server.html</loc>
-  </url>
-  <url>
-    <loc>https://ashbythorpe.github.io/selenium-r/reference/selenium_server_available.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://ashbythorpe.github.io/selenium-r/404.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/LICENSE-text.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/LICENSE.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/articles/debugging.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/articles/index.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/articles/selenium.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/authors.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/index.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/news/index.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/reference/SeleniumSession.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/reference/ShadowRoot.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/reference/WebElement.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/reference/actions_mousedown.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/reference/actions_pause.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/reference/actions_press.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/reference/actions_scroll.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/reference/actions_stream.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/reference/chrome_options.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/reference/index.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/reference/key_chord.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/reference/keys.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/reference/selenium-package.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/reference/selenium_server.html</loc></url>
+<url><loc>https://ashbythorpe.github.io/selenium-r/reference/wait_for_server.html</loc></url>
 </urlset>
+
