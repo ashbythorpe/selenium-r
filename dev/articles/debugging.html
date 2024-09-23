@@ -95,6 +95,17 @@ the <code>max_time</code> argument to something higher than 60, and
 seeing if that fixes the issue.</p>
 </div>
 <div class="section level3">
+<h3 id="wrong-java-version">Wrong Java version<a class="anchor" aria-label="anchor" href="#wrong-java-version"></a>
+</h3>
+<p>If starting the server results in an error, and
+<code><a href="../reference/wait_for_server.html">wait_for_server()</a></code>, <code>server$read_error()</code> or the
+logs show an error similar to:</p>
+<p><code>... java.lang.UnsupportedClassVersionError: {file} has been compiled by a more recent version of the Java Runtime ...</code></p>
+<p>This probably means that you need to update your Java version.
+Selenium’s minimum version is now Java 11 (see <a href="https://www.selenium.dev/blog/2023/java-8-support/" class="external-link uri">https://www.selenium.dev/blog/2023/java-8-support/</a>). You
+can find later versions of Java <a href="https://www.oracle.com/java/technologies/downloads/" class="external-link">here</a></p>
+</div>
+<div class="section level3">
 <h3 id="port-and-ip-address">Port and IP address<a class="anchor" aria-label="anchor" href="#port-and-ip-address"></a>
 </h3>
 <p>One reason why you can’t connect to the server is that the port and
