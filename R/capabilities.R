@@ -126,7 +126,7 @@ chrome_options <- function(binary = NULL,
     as.list(extensions)
   } else {
     lapply(extensions, function(x) {
-      base64enc::base64encode(file = x)
+      base64enc::base64encode(what = x)
     })
   }
 
@@ -190,7 +190,7 @@ edge_options <- function(binary = NULL,
     as.list(extensions)
   } else {
     lapply(extensions, function(x) {
-      base64enc::base64encode(file = x)
+      base64enc::base64encode(what = x)
     })
   }
 

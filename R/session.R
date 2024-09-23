@@ -72,7 +72,7 @@ SeleniumSession <- R6::R6Class(
           acceptInsecureCerts = TRUE
         ),
         edge = list(
-          browserName = "microsoftEdge",
+          browserName = "microsoftEdge"
         ),
         list(browserName = browser)
       )
