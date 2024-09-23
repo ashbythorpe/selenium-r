@@ -1,3 +1,5 @@
+# selenium (development version)
+
 # selenium 0.1.4
 
 - Added `chrome_options()`, `firefox_options()` and `edge_options()` to help
