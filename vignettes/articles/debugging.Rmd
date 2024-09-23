@@ -26,16 +26,22 @@ go about resolving them.
 If initializing a `SeleniumSession` fails, it is often useful to look at
 the logs from the server. If you ran the `java -jar ...` command manually, then
 you should be able to see the logs, but if you used `selenium_server()`, then
-you can use the `read_output()` method to read the logs.
+you can use the `read_output()` and `read_error()` methods to read the logs.
 
 ```r
 server <- selenium_server()
 server$read_output()
+server$read_error()
 ```
 
-This will show any output that the server has written to the console.
-Similarly, use `read_error()` to read any errors that the server has written to
-the console.
+This will show any output/errors that the server has written to the console.
+
+### Timeout
+
+Sometimes, the server can just take a very long time to start up. If you get
+an error from `wait_for_server()`, or `wait_for_selenium_available()`, it can
+be worth increasing the `max_time` argument to something higher than 60, and
+seeing if that fixes the issue.
 
 ### Port and IP address
 One reason why you can't connect to the server is that the port and IP address you

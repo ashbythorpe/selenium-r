@@ -9,8 +9,8 @@
   `TRUE`. This means that the function will throw an error if a Selenium server
   is not available by default.
 - Added `wait_for_server()`, a version of `wait_for_selenium_available()` that
-  gives more detailed error messages using server created using
-  `selenium_server()`.
+  gives more detailed error messages by reading the logs of a server created
+  using `selenium_server()`.
 
 # selenium 0.1.3
 
