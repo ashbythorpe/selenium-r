@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/ashbythorpe/selenium-r",
   "issueTracker": "https://github.com/ashbythorpe/selenium-r/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.3.2 (2023-10-31)",
+  "runtimePlatform": "R version 4.4.1 (2024-06-14)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -108,6 +108,18 @@
     },
     "2": {
       "@type": "SoftwareApplication",
+      "identifier": "base64enc",
+      "name": "base64enc",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=base64enc"
+    },
+    "3": {
+      "@type": "SoftwareApplication",
       "identifier": "httr2",
       "name": "httr2",
       "provider": {
@@ -118,7 +130,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=httr2"
     },
-    "3": {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
@@ -130,7 +142,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
     },
-    "4": {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "lifecycle",
       "name": "lifecycle",
@@ -142,7 +154,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=lifecycle"
     },
-    "5": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "processx",
       "name": "processx",
@@ -154,7 +166,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=processx"
     },
-    "6": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "R6",
       "name": "R6",
@@ -166,7 +178,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=R6"
     },
-    "7": {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "rappdirs",
       "name": "rappdirs",
@@ -178,7 +190,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rappdirs"
     },
-    "8": {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
@@ -193,7 +205,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "293.3KB",
+  "fileSize": "309.387KB",
   "releaseNotes": "https://github.com/ashbythorpe/selenium-r/blob/master/NEWS.md",
   "readme": "https://github.com/ashbythorpe/selenium-r/blob/main/README.md",
   "contIntegration": "https://github.com/ashbythorpe/selenium-r/actions/workflows/R-CMD-check.yaml"
