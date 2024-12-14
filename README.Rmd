@@ -34,7 +34,7 @@ alternative to [RSelenium](https://github.com/ropensci/RSelenium).
 
 ## Installation
 
-``` r
+``` {r eval = FALSE}
 # Install selenider from CRAN
 install.packages("selenium")
 
@@ -62,7 +62,7 @@ is provided by selenium:
 library(selenium)
 ```
 
-```r
+```{r eval = FALSE}
 server <- selenium_server()
 ```
 
@@ -73,7 +73,7 @@ will be deleted when the session is closed. If you want the server to persist,
 meaning that you don't have to re-download the server each time, you can use
 the `temp` argument:
 
-```r
+``` {r eval = FALSE}
 server <- selenium_server(temp = FALSE)
 ```
 
@@ -102,7 +102,7 @@ The Selenium server won't be ready to be used immediately. If you used
 `selenium_server()` to create your server, you can pass it into
 `wait_for_server()`:
 
-``` r
+``` {r eval = FALSE}
 wait_for_server(server)
 ```
 
@@ -111,7 +111,7 @@ You can also use `server$read_output()` and `server$read_error()`
 If you used a different method to create your server, use
 `wait_for_selenium_available()` instead.
 
-```r
+``` {r eval = FALSE}
 wait_for_selenium_available()
 ```
 
@@ -122,7 +122,7 @@ article for more information.
 ## Starting the client
 
 Client sessions can be started using `SeleniumSession$new()`
-```r
+``` {r eval = FALSE}
 session <- SeleniumSession$new()
 ```
 
@@ -131,22 +131,6 @@ a different browser if you like.
 
 ```{r session}
 session <- SeleniumSession$new(browser = "chrome")
-```
-
-Here, we use the `capabilities` argument to specify options for the browser.
-Here, the `remote-debugging-port` argument to Chrome is used to make sure the port
-that the browser uses does not conflict with any others (and may be
-necessary if Chrome is not working by default).
-
-``` {r eval = FALSE}
-session <- SeleniumSession$new(
-  browser = "chrome",
-  capabilities = list(
-    `goog:chromeOptions` = list(
-      args = list("remote-debugging-port=9222")
-    )
-  )
-)
 ```
 
 ## Usage
@@ -172,7 +156,7 @@ session$
 
 session$close()
 ```
-```r
+``` {r eval = FALSE}
 server$kill()
 ```
 

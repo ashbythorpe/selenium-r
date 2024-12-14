@@ -6,22 +6,11 @@ test_session <- function(verbose = FALSE) {
   port <- as.integer(Sys.getenv("SELENIUM_PORT", 4444L))
   host <- Sys.getenv("SELENIUM_HOST", "localhost")
 
-  opts <- if (browser == "chrome") {
-    list(`goog:chromeOptions` = list(
-      args = list(
-        "remote-debugging-port=9222"
-      )
-    ))
-  } else {
-    NULL
-  }
-
   session <- try(SeleniumSession$new(
     browser = browser,
     port = port,
     host = host,
     verbose = verbose,
-    capabilities = opts
   ))
 
   if (inherits(session, "try-error")) {
