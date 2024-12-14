@@ -28,7 +28,7 @@ the logs from the server. If you ran the `java -jar ...` command manually, then
 you should be able to see the logs, but if you used `selenium_server()`, then
 you can use the `read_output()` and `read_error()` methods to read the logs.
 
-```r
+```{r eval = FALSE}
 server <- selenium_server()
 server$read_output()
 server$read_error()
@@ -67,7 +67,8 @@ at the server logs. You should see a line like:
 The URL at the end of this message can be used to extract an IP address and a port number, which
 can then be passed into the `host` and `port` arguments. For example, if the URL was:
 `http://172.17.0.1/4444`, you would run:
-```r
+
+```{r eval = FALSE}
 session <- SeleniumSession$new(host = "172.17.0.1", port = 4444)
 ```
 
@@ -76,7 +77,7 @@ If you are using Chrome, and you see a browser open, but the call to
 `SeleniumSession$new()` times out, you may need to use a different debugging port.
 For example:
 
-```r
+```{r eval = FALSE}
 session <- SeleniumSession$new(
   browser = "chrome",
   capabilities = list(
@@ -102,7 +103,7 @@ For example:
 ### Stale element reference errors
 At some point, when using selenium, you will encounter the following error:
 
-```r
+```{r eval = FALSE}
 #> Error in `element$click()`:
 #> ! Stale element reference.
 #> ✖ The element with the reference <...> is not known in the current browsing context
@@ -110,6 +111,7 @@ At some point, when using selenium, you will encounter the following error:
 #> ! HTTP 404 Not Found.
 #> Run `rlang::last_trace()` to see where the error occurred.
 ```
+
 This error is common when automating a website. Selenium is telling you that
 an element which you previously identified no longer exists. In all websites,
 especially complex ones, the DOM will be constantly updating itself, constantly

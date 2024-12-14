@@ -127,22 +127,6 @@ argument to specify a different browser if you like.
 session <- SeleniumSession$new(browser = "chrome")
 ```
 
-Here, we use the `capabilities` argument to specify options for the
-browser. Here, the `remote-debugging-port` argument to Chrome is used to
-make sure the port that the browser uses does not conflict with any
-others (and may be necessary if Chrome is not working by default).
-
-``` r
-session <- SeleniumSession$new(
-  browser = "chrome",
-  capabilities = list(
-    `goog:chromeOptions` = list(
-      args = list("remote-debugging-port=9222")
-    )
-  )
-)
-```
-
 ## Usage
 
 Once the session has been successfully started, you can use the session
