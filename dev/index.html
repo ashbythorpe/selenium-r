@@ -8,8 +8,8 @@
 <title>Low-Level Browser Automation Interface • selenium</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Low-Level Browser Automation Interface">
 <meta name="description" content="An implementation of W3C WebDriver 2.0 (&lt;https://w3c.github.io/webdriver/&gt;), allowing interaction with a Selenium Server (&lt;https://www.selenium.dev/documentation/grid/&gt;) instance from R. Allows a web browser to be automated from R.">
 <meta property="og:description" content="An implementation of W3C WebDriver 2.0 (&lt;https://w3c.github.io/webdriver/&gt;), allowing interaction with a Selenium Server (&lt;https://www.selenium.dev/documentation/grid/&gt;) instance from R. Allows a web browser to be automated from R.">
@@ -123,22 +123,12 @@
 <p>By default, this will connect to Firefox, but you can use the <code>browser</code> argument to specify a different browser if you like.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>browser <span class="op">=</span> <span class="st">"chrome"</span><span class="op">)</span></span></code></pre></div>
-<p>Here, we use the <code>capabilities</code> argument to specify options for the browser. Here, the <code>remote-debugging-port</code> argument to Chrome is used to make sure the port that the browser uses does not conflict with any others (and may be necessary if Chrome is not working by default).</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">session</span> <span class="op">&lt;-</span> <span class="va"><a href="reference/SeleniumSession.html">SeleniumSession</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
-<span>  browser <span class="op">=</span> <span class="st">"chrome"</span>,</span>
-<span>  capabilities <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    `goog:chromeOptions` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>      args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"remote-debugging-port=9222"</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
 <p>Once the session has been successfully started, you can use the session object to control the browser. Here, we dynamically navigate through the R project homepage. Remember to close the session and the server process when you are done.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">session</span><span class="op">$</span><span class="fu">navigate</span><span class="op">(</span><span class="st">"https://www.r-project.org/"</span><span class="op">)</span></span>
 <span><span class="va">session</span><span class="op">$</span></span>
 <span>  <span class="fu">find_element</span><span class="op">(</span>using <span class="op">=</span> <span class="st">"css selector"</span>, value <span class="op">=</span> <span class="st">".row"</span><span class="op">)</span><span class="op">$</span></span>
@@ -154,7 +144,7 @@
 <span><span class="co">#&gt; [1] ""</span></span>
 <span></span>
 <span><span class="va">session</span><span class="op">$</span><span class="fu">close</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">server</span><span class="op">$</span><span class="fu">kill</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>For a more detailed introduction to using selenium, see the <a href="https://ashbythorpe.github.io/selenium-r/articles/selenium.html">Getting Started</a> article.</p>
 <p>Note that selenium is low-level and mainly aimed towards developers. If you are wanting to use browser automation for web scraping or testing, you may want to take a look at <a href="https://github.com/ashbythorpe/selenider" class="external-link">selenider</a> instead.</p>
