@@ -227,9 +227,9 @@ get_latest_version_name <- function() {
 
   response <- httr2::req_perform(req)
   release <- httr2::resp_body_json(response)
-  
+
   url_parts <- strsplit(release$html_url, split = "/")[[1]]
-  
+
   url_parts[[length(url_parts)]]
 }
 
@@ -251,11 +251,22 @@ get_version_from_files <- function(error) {
 }
 
 java_check <- function() {
-  java <- Sys.which("java")
-  if (identical(unname(java), "")) {
-    rlang::abort("Java not found. Please install Java to use `selenium_server()`.")
+  java_home <- Sys.getenv("JAVA_HOME")
+  if (nzchar(java_home)) {
+    java <- file.path(java_home, "bin", "java")
+    java_windows <- file.path(java_home, "bin", "java.exe")
+    if (file.exists(java)) {
+      return(java)
+    } else if (file.exists(java_windows)) {
+      return(java_windows)
+    }
   }
-  java
+
+  # java <- Sys.which("java")
+  # if (identical(unname(java), "")) {
+  rlang::abort("Java not found. Please install Java to use `selenium_server()`.")
+  # }
+  # java
 }
 
 find_using <- function(x, .f) {
