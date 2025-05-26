@@ -54,6 +54,10 @@ server.
 Downloads the latest release of Selenium Server, and then runs it as a
 background process. You must have Java installed for this command to work.
 }
+\details{
+This command respects the \code{JAVA_HOME} environment variable when attempting
+to find the \code{java} executable. Otherwise, \code{\link[=Sys.which]{Sys.which()}} is used.
+}
 \examples{
 \dontrun{
 # Disables the prompt that asks you whether you want to download Selenium server

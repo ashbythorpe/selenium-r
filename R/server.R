@@ -48,6 +48,10 @@ set_in_env <- function(...) {
 #' @returns A [processx::process] object. Call `<process>$kill()` to stop the
 #'   server.
 #'
+#' @details
+#' This command respects the `JAVA_HOME` environment variable when attempting
+#' to find the `java` executable. Otherwise, [Sys.which()] is used.
+#'
 #' @seealso
 #' The [package website](https://ashbythorpe.github.io/selenium-r/index.html)
 #' for more ways to start the Selenium server.
