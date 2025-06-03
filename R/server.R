@@ -266,11 +266,11 @@ java_check <- function() {
     }
   }
 
-  # java <- Sys.which("java")
-  # if (identical(unname(java), "")) {
-  rlang::abort("Java not found. Please install Java to use `selenium_server()`.")
-  # }
-  # java
+  java <- Sys.which("java")
+  if (identical(unname(java), "")) {
+    rlang::abort("Java not found. Please install Java to use `selenium_server()`.")
+  }
+  java
 }
 
 find_using <- function(x, .f) {
