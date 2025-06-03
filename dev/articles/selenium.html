@@ -268,7 +268,7 @@ in and returned.</p>
 <span><span class="co">#&gt;     get_rect: function (timeout = 20) </span></span>
 <span><span class="co">#&gt;     get_tag_name: function (timeout = 20) </span></span>
 <span><span class="co">#&gt;     get_text: function (timeout = 20) </span></span>
-<span><span class="co">#&gt;     id: d70fddfe-406d-4199-888f-cad31cd6fc85</span></span>
+<span><span class="co">#&gt;     id: 3213230a-0516-419e-9c0b-5a88dd50b204</span></span>
 <span><span class="co">#&gt;     initialize: function (session_id, req, verbose, id) </span></span>
 <span><span class="co">#&gt;     is_displayed: function (timeout = 20) </span></span>
 <span><span class="co">#&gt;     is_enabled: function (timeout = 20) </span></span>
@@ -279,7 +279,7 @@ in and returned.</p>
 <span><span class="co">#&gt;     toJSON: function () </span></span>
 <span><span class="co">#&gt;   Private:</span></span>
 <span><span class="co">#&gt;     req: httr2_request</span></span>
-<span><span class="co">#&gt;     session_id: df01a3ac-acca-421c-bc41-bb57c4d69333</span></span>
+<span><span class="co">#&gt;     session_id: a46ca5dc-f609-4480-ab94-221313d225ad</span></span>
 <span><span class="co">#&gt;     verbose: FALSE</span></span></code></pre></div>
 <p><code>SeleniumSession$execute_async_script()</code> is provided for
 when you need to interact with an asynchronous JavaScript API, but is
@@ -299,14 +299,14 @@ between the two:</p>
 <span></span>
 <span><span class="va">tab</span></span>
 <span><span class="co">#&gt; $handle</span></span>
-<span><span class="co">#&gt; [1] "14d56653-6d1a-4cbd-8c35-d1ac69dd3b8a"</span></span>
+<span><span class="co">#&gt; [1] "83fdb235-1539-4397-a68b-511a49796cb0"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $type</span></span>
 <span><span class="co">#&gt; [1] "tab"</span></span>
 <span></span>
 <span><span class="va">window</span></span>
 <span><span class="co">#&gt; $handle</span></span>
-<span><span class="co">#&gt; [1] "8d30fea8-73b7-4e0a-81f8-23ab425fbe88"</span></span>
+<span><span class="co">#&gt; [1] "867b209e-ab88-442f-8542-d2cd3b1fc8c0"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $type</span></span>
 <span><span class="co">#&gt; [1] "window"</span></span></code></pre></div>
@@ -318,17 +318,17 @@ to get the handle of every open window/tab.</p>
 <code class="sourceCode R"><span><span class="va">current_handle</span> <span class="op">&lt;-</span> <span class="va">session</span><span class="op">$</span><span class="fu">window_handle</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">current_handle</span></span>
-<span><span class="co">#&gt; [1] "0374a8d7-84d8-4ecd-98e7-ef474f01abda"</span></span>
+<span><span class="co">#&gt; [1] "3b58e2b8-3a86-4bbc-a4b8-b31a7fc20879"</span></span>
 <span></span>
 <span><span class="va">session</span><span class="op">$</span><span class="fu">window_handles</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; [1] "0374a8d7-84d8-4ecd-98e7-ef474f01abda"</span></span>
+<span><span class="co">#&gt; [1] "3b58e2b8-3a86-4bbc-a4b8-b31a7fc20879"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; [1] "14d56653-6d1a-4cbd-8c35-d1ac69dd3b8a"</span></span>
+<span><span class="co">#&gt; [1] "83fdb235-1539-4397-a68b-511a49796cb0"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
-<span><span class="co">#&gt; [1] "8d30fea8-73b7-4e0a-81f8-23ab425fbe88"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "867b209e-ab88-442f-8542-d2cd3b1fc8c0"</span></span></code></pre></div>
 <p>When a new window/tab is created, it is not automatically switched
 to. Use <code>SeleniumSession$switch_to_window()</code> to switch to a
 window/tab with a specific handle:</p>
@@ -339,10 +339,10 @@ window/tab:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">session</span><span class="op">$</span><span class="fu">close_window</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; [1] "0374a8d7-84d8-4ecd-98e7-ef474f01abda"</span></span>
+<span><span class="co">#&gt; [1] "3b58e2b8-3a86-4bbc-a4b8-b31a7fc20879"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; [1] "14d56653-6d1a-4cbd-8c35-d1ac69dd3b8a"</span></span>
+<span><span class="co">#&gt; [1] "83fdb235-1539-4397-a68b-511a49796cb0"</span></span>
 <span></span>
 <span><span class="co"># Switch to an open window</span></span>
 <span><span class="va">session</span><span class="op">$</span><span class="fu">switch_to_window</span><span class="op">(</span><span class="va">current_handle</span><span class="op">)</span></span></code></pre></div>
