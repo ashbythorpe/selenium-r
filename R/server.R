@@ -186,8 +186,6 @@ selenium_server <- function(version = "latest",
     java_check(),
     args = args,
     echo_cmd = echo_cmd,
-    stdout = "|",
-    stderr = "|",
     supervise = TRUE
   )
 }

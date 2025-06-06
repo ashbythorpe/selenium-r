@@ -86,14 +86,6 @@ wait_for_server <- function(server,
 
     parent <- if (rlang::is_error(result)) result else NULL
 
-    server_error <- server$read_error()
-    if (!identical(server_error, "")) {
-      base_message <- c(
-        base_message,
-        "i" = paste0("Server error: ", server_error)
-      )
-    }
-
     rlang::abort(base_message, parent = parent)
   }
 
