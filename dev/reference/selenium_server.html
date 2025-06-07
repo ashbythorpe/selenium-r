@@ -52,13 +52,17 @@ background process. You must have Java installed for this command to work.</p>
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">selenium_server</span><span class="op">(</span></span>
 <span>  version <span class="op">=</span> <span class="st">"latest"</span>,</span>
+<span>  host <span class="op">=</span> <span class="st">"localhost"</span>,</span>
+<span>  port <span class="op">=</span> <span class="fl">4444L</span>,</span>
 <span>  selenium_manager <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  interactive <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  stdout <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  stderr <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  temp <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  path <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  echo_cmd <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  extra_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  extra_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -71,6 +75,14 @@ background process. You must have Java installed for this command to work.</p>
 default, the latest major or minor release is used.</p></dd>
 
 
+<dt id="arg-host">host<a class="anchor" aria-label="anchor" href="#arg-host"></a></dt>
+<dd><p>The host to run the server on.</p></dd>
+
+
+<dt id="arg-port">port<a class="anchor" aria-label="anchor" href="#arg-port"></a></dt>
+<dd><p>The port to run the server on.</p></dd>
+
+
 <dt id="arg-selenium-manager">selenium_manager<a class="anchor" aria-label="anchor" href="#arg-selenium-manager"></a></dt>
 <dd><p>Whether to enable Selenium Manager, which will
 automatically download any missing drivers. Defaults to <code>TRUE</code>.</p></dd>
@@ -81,6 +93,13 @@ automatically download any missing drivers. Defaults to <code>TRUE</code>.</p></
 will be prompted to confirm that you want to download it, and the function
 will error if <code><a href="https://rlang.r-lib.org/reference/is_interactive.html" class="external-link">rlang::is_interactive()</a></code> returns <code>FALSE</code>. To allow this
 function to work in a non-interactive setting, set this to <code>FALSE</code>.</p></dd>
+
+
+<dt id="arg-stdout-stderr">stdout, stderr<a class="anchor" aria-label="anchor" href="#arg-stdout-stderr"></a></dt>
+<dd><p>Passed into
+<a href="http://processx.r-lib.org/reference/process.html" class="external-link">processx::process$new()</a>. Set to <code>"|"</code> to capture
+output and error logs from the server, which can then be accessed with
+<code>server$read_output()</code> and <code>server$read_error()</code>.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
@@ -100,19 +119,19 @@ R session. If <code>FALSE</code>, the file is saved in your user data directory.
 be saved. Overrides <code>temp</code>.</p></dd>
 
 
-<dt id="arg-echo-cmd">echo_cmd<a class="anchor" aria-label="anchor" href="#arg-echo-cmd"></a></dt>
-<dd><p>Passed into <a href="http://processx.r-lib.org/reference/process.html" class="external-link">processx::process$new()</a>.</p></dd>
-
-
 <dt id="arg-extra-args">extra_args<a class="anchor" aria-label="anchor" href="#arg-extra-args"></a></dt>
 <dd><p>A character vector of extra arguments to pass into the
 Selenium Server call. See the list of options here:
 <a href="https://www.selenium.dev/documentation/grid/configuration/cli_options/" class="external-link">https://www.selenium.dev/documentation/grid/configuration/cli_options/</a></p></dd>
 
+
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
+<dd><p>Passed into <a href="http://processx.r-lib.org/reference/process.html" class="external-link">processx::process$new()</a>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <a href="http://processx.r-lib.org/reference/process.html" class="external-link">processx::process</a> object. Call <code>&lt;process&gt;$kill()</code> to stop the
+    <p>A <a href="SeleniumServer.html">SeleniumServer</a> object. Call <code>server$kill()</code> to stop the
 server.</p>
     </div>
     <div class="section level2">

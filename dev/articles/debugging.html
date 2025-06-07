@@ -76,11 +76,13 @@ you might go about resolving them.</p>
 <p>If initializing a <code>SeleniumSession</code> fails, it is often
 useful to look at the logs from the server. If you ran the
 <code>java -jar ...</code> command manually, then you should be able to
-see the logs, but if you used <code><a href="../reference/selenium_server.html">selenium_server()</a></code>, then you
-can use the <code>read_output()</code> and <code>read_error()</code>
-methods to read the logs.</p>
+see the logs, but if you used <code><a href="../reference/selenium_server.html">selenium_server()</a></code>, then the
+logs are unavailable by default. However, you can use the
+<code>stdout</code> and <code>stderr</code> arguments to enable log
+collection, and then use <code>read_output()</code> and
+<code>read_error()</code> to read the logs.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">server</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/selenium_server.html">selenium_server</a></span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">server</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/selenium_server.html">selenium_server</a></span><span class="op">(</span>stdout <span class="op">=</span> <span class="st">"|"</span>, stderr <span class="op">=</span> <span class="st">"|"</span><span class="op">)</span></span>
 <span><span class="va">server</span><span class="op">$</span><span class="fu">read_output</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">server</span><span class="op">$</span><span class="fu">read_error</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>This will show any output/errors that the server has written to the
@@ -89,7 +91,7 @@ console.</p>
 <h3 id="timeout">Timeout<a class="anchor" aria-label="anchor" href="#timeout"></a>
 </h3>
 <p>Sometimes, the server can just take a very long time to start up. If
-you get an error from <code><a href="../reference/wait_for_server.html">wait_for_server()</a></code>, or
+you get an error from <code><a href="../reference/wait_for_server.html">wait_for_server()</a></code> or
 <code><a href="../reference/wait_for_server.html">wait_for_selenium_available()</a></code>, it can be worth increasing
 the <code>max_time</code> argument to something higher than 60, and
 seeing if that fixes the issue.</p>
@@ -108,10 +110,13 @@ can find later versions of Java <a href="https://www.oracle.com/java/technologie
 <div class="section level3">
 <h3 id="port-and-ip-address">Port and IP address<a class="anchor" aria-label="anchor" href="#port-and-ip-address"></a>
 </h3>
-<p>One reason why you can’t connect to the server is that the port and
-IP address you are using is wrong.</p>
-<p>To get the IP address and port number that the server is using, you
-need to look at the server logs. You should see a line like:
+<p>One reason why you may be unable to connect to the server is that the
+port and IP address you are connecting to is wrong.</p>
+<p>If you are using <code><a href="../reference/selenium_server.html">selenium_server()</a></code>,
+<code>server$host</code> and <code>server$port</code> give you the host
+IP address and port, respectively.</p>
+<p>You can also get the IP address and port from the server logs. You
+should see a line like:
 <code>INFO [Standalone.execute] - Started Selenium Standalone ... (revision ...): http://&lt;IP&gt;:&lt;PORT&gt;</code></p>
 <p>The URL at the end of this message can be used to extract an IP
 address and a port number, which can then be passed into the

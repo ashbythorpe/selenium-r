@@ -40,6 +40,10 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="selenium-development-version">selenium (development version)<a class="anchor" aria-label="anchor" href="#selenium-development-version"></a></h2>
 <ul><li>Respect <code>JAVA_HOME</code> when finding the <code>java</code> executable.</li>
+<li>
+<code><a href="../reference/selenium_server.html">selenium_server()</a></code> now returns a <code>SeleniumServer</code> object, which exposes the <code>host</code> and <code>port</code> fields. This allows <code><a href="../reference/wait_for_server.html">wait_for_server()</a></code> to work without having to pass in the <code>host</code> and <code>port</code> arguments.</li>
+<li>
+<code><a href="../reference/selenium_server.html">selenium_server()</a></code> no longer saves the logs of the Selenium server process by default, as this would cause errors when creating lots of sessions. To enable logging, set the <code>stdout</code> and <code>stderr</code> arguments to <code>"|"</code>, and then use <code>$read_output()</code> and <code>$read_error()</code> to read the output/error, as before.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.4" id="selenium-014">selenium 0.1.4<a class="anchor" aria-label="anchor" href="#selenium-014"></a></h2><p class="text-muted">CRAN release: 2024-09-23</p>
