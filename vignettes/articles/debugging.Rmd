@@ -26,10 +26,12 @@ go about resolving them.
 If initializing a `SeleniumSession` fails, it is often useful to look at
 the logs from the server. If you ran the `java -jar ...` command manually, then
 you should be able to see the logs, but if you used `selenium_server()`, then
-you can use the `read_output()` and `read_error()` methods to read the logs.
+the logs are unavailable by default. However, you can use the `stdout` and
+`stderr` arguments to enable log collection, and then use `read_output()` and
+`read_error()` to read the logs.
 
 ```{r eval = FALSE}
-server <- selenium_server()
+server <- selenium_server(stdout = "|", stderr = "|")
 server$read_output()
 server$read_error()
 ```
@@ -39,7 +41,7 @@ This will show any output/errors that the server has written to the console.
 ### Timeout
 
 Sometimes, the server can just take a very long time to start up. If you get
-an error from `wait_for_server()`, or `wait_for_selenium_available()`, it can
+an error from `wait_for_server()` or `wait_for_selenium_available()`, it can
 be worth increasing the `max_time` argument to something higher than 60, and
 seeing if that fixes the issue.
 
@@ -57,16 +59,19 @@ minimum version is now Java 11 (see
 versions of Java [here](https://www.oracle.com/java/technologies/downloads/)
 
 ### Port and IP address
-One reason why you can't connect to the server is that the port and IP address you
-are using is wrong.
+One reason why you may be unable to connect to the server is that the port and
+IP address you are connecting to is wrong.
 
-To get the IP address and port number that the server is using, you need to look
-at the server logs. You should see a line like:
+If you are using `selenium_server()`, `server$host` and `server$port` give you
+the host IP address and port, respectively.
+
+You can also get the IP address and port from the server logs. You should see a
+line like:
 `INFO [Standalone.execute] - Started Selenium Standalone ... (revision ...): http://<IP>:<PORT>`
 
-The URL at the end of this message can be used to extract an IP address and a port number, which
-can then be passed into the `host` and `port` arguments. For example, if the URL was:
-`http://172.17.0.1/4444`, you would run:
+The URL at the end of this message can be used to extract an IP address and a
+port number, which can then be passed into the `host` and `port` arguments. For
+example, if the URL was: `http://172.17.0.1/4444`, you would run:
 
 ```{r eval = FALSE}
 session <- SeleniumSession$new(host = "172.17.0.1", port = 4444)
