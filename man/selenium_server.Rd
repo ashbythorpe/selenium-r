@@ -23,6 +23,10 @@ selenium_server(
 \item{version}{The version of Selenium Server to download and run. By
 default, the latest major or minor release is used.}
 
+\item{host}{The host to run the server on.}
+
+\item{port}{The port to run the server on.}
+
 \item{selenium_manager}{Whether to enable Selenium Manager, which will
 automatically download any missing drivers. Defaults to \code{TRUE}.}
 
@@ -50,6 +54,8 @@ be saved. Overrides \code{temp}.}
 \item{extra_args}{A character vector of extra arguments to pass into the
 Selenium Server call. See the list of options here:
 \url{https://www.selenium.dev/documentation/grid/configuration/cli_options/}}
+
+\item{...}{Passed into \link[processx:process]{processx::process$new()}.}
 }
 \value{
 A \link{SeleniumServer} object. Call \code{server$kill()} to stop the

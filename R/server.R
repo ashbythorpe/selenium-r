@@ -26,6 +26,8 @@ set_in_env <- function(...) {
 #'
 #' @param version The version of Selenium Server to download and run. By
 #'   default, the latest major or minor release is used.
+#' @param host The host to run the server on.
+#' @param port The port to run the server on.
 #' @param selenium_manager Whether to enable Selenium Manager, which will
 #'   automatically download any missing drivers. Defaults to `TRUE`.
 #' @param interactive By default, if you don't have a version downloaded, you
@@ -47,6 +49,7 @@ set_in_env <- function(...) {
 #' @param extra_args A character vector of extra arguments to pass into the
 #'   Selenium Server call. See the list of options here:
 #'   <https://www.selenium.dev/documentation/grid/configuration/cli_options/>
+#' @param ... Passed into [processx::process$new()][processx::process].
 #'
 #' @returns A [SeleniumServer] object. Call `server$kill()` to stop the
 #'   server.
