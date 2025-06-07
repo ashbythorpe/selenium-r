@@ -9,8 +9,6 @@
 \usage{
 wait_for_server(
   server,
-  port = 4444L,
-  host = "localhost",
   max_time = 60,
   error = TRUE,
   verbose = FALSE,
@@ -26,28 +24,22 @@ selenium_server_available(
 
 wait_for_selenium_available(
   max_time = 60,
-  port = 4444L,
   host = "localhost",
+  port = 4444L,
   error = TRUE,
   verbose = FALSE,
   timeout = 20
 )
 
 get_server_status(
-  port = 4444L,
   host = "localhost",
+  port = 4444L,
   verbose = FALSE,
   timeout = 20
 )
 }
 \arguments{
 \item{server}{The process object returned by \code{\link[=selenium_server]{selenium_server()}}.}
-
-\item{port}{The port that the Selenium server is using, so we can
-connect to it.}
-
-\item{host}{The host that the Selenium server is running on. This is
-usually 'localhost' (i.e. Your own machine).}
 
 \item{max_time}{The amount of time to wait for the Selenium server to
 become available.}
@@ -61,6 +53,11 @@ sent.}
 
 \item{timeout}{How long to wait for a request to recieve a response before
 throwing an error.}
+
+\item{port}{The port that the Selenium server is using.}
+
+\item{host}{The host that the Selenium server is running on. This is
+usually 'localhost' (i.e. Your own machine).}
 }
 \value{
 \code{wait_for_server()} and \code{wait_for_selenium_available()} return \code{TRUE} if

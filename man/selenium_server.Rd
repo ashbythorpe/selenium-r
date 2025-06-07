@@ -6,18 +6,26 @@
 \usage{
 selenium_server(
   version = "latest",
+  host = "localhost",
+  port = 4444L,
   selenium_manager = TRUE,
   interactive = TRUE,
+  stdout = NULL,
+  stderr = NULL,
   verbose = TRUE,
   temp = TRUE,
   path = NULL,
-  echo_cmd = FALSE,
-  extra_args = c()
+  extra_args = c(),
+  ...
 )
 }
 \arguments{
 \item{version}{The version of Selenium Server to download and run. By
 default, the latest major or minor release is used.}
+
+\item{host}{The host to run the server on.}
+
+\item{port}{The port to run the server on.}
 
 \item{selenium_manager}{Whether to enable Selenium Manager, which will
 automatically download any missing drivers. Defaults to \code{TRUE}.}
@@ -26,6 +34,11 @@ automatically download any missing drivers. Defaults to \code{TRUE}.}
 will be prompted to confirm that you want to download it, and the function
 will error if \code{\link[rlang:is_interactive]{rlang::is_interactive()}} returns \code{FALSE}. To allow this
 function to work in a non-interactive setting, set this to \code{FALSE}.}
+
+\item{stdout, stderr}{Passed into
+\link[processx:process]{processx::process$new()}. Set to \code{"|"} to capture
+output and error logs from the server, which can then be accessed with
+\code{server$read_output()} and \code{server$read_error()}.}
 
 \item{verbose}{Passed into \code{\link[utils:download.file]{utils::download.file()}}. Note that setting this
 to \code{FALSE} will \emph{not} disable the prompt if a file needs to be downloaded.}
@@ -38,14 +51,14 @@ R session. If \code{FALSE}, the file is saved in your user data directory.}
 \item{path}{The path where the downloaded Selenium Server \code{.jar} file will
 be saved. Overrides \code{temp}.}
 
-\item{echo_cmd}{Passed into \link[processx:process]{processx::process$new()}.}
-
 \item{extra_args}{A character vector of extra arguments to pass into the
 Selenium Server call. See the list of options here:
 \url{https://www.selenium.dev/documentation/grid/configuration/cli_options/}}
+
+\item{...}{Passed into \link[processx:process]{processx::process$new()}.}
 }
 \value{
-A \link[processx:process]{processx::process} object. Call \verb{<process>$kill()} to stop the
+A \link{SeleniumServer} object. Call \code{server$kill()} to stop the
 server.
 }
 \description{

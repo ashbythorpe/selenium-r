@@ -26,12 +26,18 @@ set_in_env <- function(...) {
 #'
 #' @param version The version of Selenium Server to download and run. By
 #'   default, the latest major or minor release is used.
+#' @param host The host to run the server on.
+#' @param port The port to run the server on.
 #' @param selenium_manager Whether to enable Selenium Manager, which will
 #'   automatically download any missing drivers. Defaults to `TRUE`.
 #' @param interactive By default, if you don't have a version downloaded, you
 #'   will be prompted to confirm that you want to download it, and the function
 #'   will error if [rlang::is_interactive()] returns `FALSE`. To allow this
 #'   function to work in a non-interactive setting, set this to `FALSE`.
+#' @param stdout,stderr Passed into
+#'   [processx::process$new()][processx::process]. Set to `"|"` to capture
+#'   output and error logs from the server, which can then be accessed with
+#'   `server$read_output()` and `server$read_error()`.
 #' @param verbose Passed into [utils::download.file()]. Note that setting this
 #'   to `FALSE` will *not* disable the prompt if a file needs to be downloaded.
 #' @param temp Whether to use a temporary directory to download the Selenium
@@ -40,12 +46,12 @@ set_in_env <- function(...) {
 #'   R session. If `FALSE`, the file is saved in your user data directory.
 #' @param path The path where the downloaded Selenium Server `.jar` file will
 #'   be saved. Overrides `temp`.
-#' @param echo_cmd Passed into [processx::process$new()][processx::process].
 #' @param extra_args A character vector of extra arguments to pass into the
 #'   Selenium Server call. See the list of options here:
 #'   <https://www.selenium.dev/documentation/grid/configuration/cli_options/>
+#' @param ... Passed into [processx::process$new()][processx::process].
 #'
-#' @returns A [processx::process] object. Call `<process>$kill()` to stop the
+#' @returns A [SeleniumServer] object. Call `server$kill()` to stop the
 #'   server.
 #'
 #' @details
@@ -76,20 +82,25 @@ set_in_env <- function(...) {
 #'
 #' @export
 selenium_server <- function(version = "latest",
+                            host = "localhost",
+                            port = 4444L,
                             selenium_manager = TRUE,
                             interactive = TRUE,
+                            stdout = NULL,
+                            stderr = NULL,
                             verbose = TRUE,
                             temp = TRUE,
                             path = NULL,
-                            echo_cmd = FALSE,
-                            extra_args = c()) {
+                            extra_args = c(),
+                            ...) {
   check_string(version)
+  check_string(host)
+  check_number_whole(port)
   check_bool(selenium_manager)
   check_bool(interactive)
   check_bool(verbose)
   check_bool(temp)
   check_string(path, allow_null = TRUE)
-  check_bool(echo_cmd)
   check_character(extra_args, allow_null = TRUE)
 
   if (version != "latest") {
@@ -180,15 +191,66 @@ selenium_server <- function(version = "latest",
   if (selenium_manager) {
     args <- c(args, "--selenium-manager", "true")
   }
+
+  args <- c(args, "--host", host, "--port", port)
+
   args <- c(args, extra_args)
 
-  processx::process$new(
+  SeleniumServer$new(
     java_check(),
     args = args,
-    echo_cmd = echo_cmd,
+    host = host,
+    port = port,
     supervise = TRUE
   )
 }
+
+#' A Selenium Server process
+#'
+#' @description
+#' A [processx::process] object representing a running Selenium Server.
+#'
+#' @export
+SeleniumServer <- R6::R6Class("SeleniumServer",
+  inherit = processx::process,
+  public = list(
+    #' @description
+    #'
+    #' Create a new `SeleniumServer` object. It is recommended that you use
+    #' the [selenium_server()] function instead.
+    #'
+    #' @param command,args,... Passed into
+    #'   [processx::process$new()][processx::process].
+    #' @param host The host that the Selenium server is running on.
+    #' @param port The port that the Selenium server is using.
+    #'
+    #' @returns A new `SeleniumServer` object.
+    initialize = function(command,
+                          args,
+                          host,
+                          port,
+                          ...) {
+      private$.host <- host
+      private$.port <- port
+
+      super$initialize(
+        command = command,
+        args = args,
+        ...,
+      )
+    }
+  ),
+  active = list(
+    #' @field host The host that the Selenium server is running on.
+    host = function() private$.host,
+    #' @field port The port that the Selenium server is using.
+    port = function() private$.port
+  ),
+  private = list(
+    .host = NULL,
+    .port = NULL
+  )
+)
 
 download_server <- function(path, file, name, verbose) {
   url <- paste0(
