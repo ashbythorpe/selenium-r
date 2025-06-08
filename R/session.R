@@ -159,7 +159,8 @@ SeleniumSession <- R6::R6Class(
     #' @param timeout How long to wait for a request to recieve a response
     #'   before throwing an error.
     #'
-    #' @return The session object, invisibly.
+    #' @return `TRUE` if the session was closed successfully, or `FALSE` if the
+    #'   session was already closed.
     #'
     #' @examples
     #' \dontrun{
@@ -170,9 +171,15 @@ SeleniumSession <- R6::R6Class(
     close = function(timeout = 20) {
       check_number_decimal(timeout, allow_null = TRUE)
 
+      if (private$closed) {
+        return(FALSE)
+      }
+
       req <- req_command(private$req, "Delete Session", session_id = self$id)
       req_perform_selenium(req, verbose = private$verbose, timeout = timeout)
-      invisible(self)
+
+      private$closed <- TRUE
+      TRUE
     },
 
     #' @description
@@ -1508,6 +1515,7 @@ SeleniumSession <- R6::R6Class(
   ),
   private = list(
     req = NULL,
-    verbose = NULL
+    verbose = NULL,
+    closed = FALSE
   )
 )
