@@ -859,7 +859,8 @@ before throwing an error.}
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-The session object, invisibly.
+\code{TRUE} if the session was closed successfully, or \code{FALSE} if the
+session was already closed.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
