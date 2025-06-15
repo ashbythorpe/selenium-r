@@ -8,6 +8,9 @@
   by default, as this would cause errors when creating lots of sessions. To
   enable logging, set the `stdout` and `stderr` arguments to `"|"`, and then
   use `$read_output()` and `$read_error()` to read the output/error, as before.
+- `SeleniumSession$close()` no longer throws an error if you use it twice.
+  Instead, it returns a boolean that indicates if the session was already
+  closed.
 
 # selenium 0.1.4
 
