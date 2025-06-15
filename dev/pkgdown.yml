@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   articles/debugging: debugging.html
   articles/selenium: selenium.html
-last_built: 2025-06-08T11:39Z
+last_built: 2025-06-15T17:00Z
 urls:
   reference: https://ashbythorpe.github.io/selenium-r/reference
   article: https://ashbythorpe.github.io/selenium-r/articles
