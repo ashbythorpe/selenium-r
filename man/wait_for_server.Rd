@@ -51,7 +51,7 @@ after the timeout is exceeded. If not, and we can't connect to a server,
 \item{verbose}{Whether to print information about the web request that is
 sent.}
 
-\item{timeout}{How long to wait for a request to recieve a response before
+\item{timeout}{How long to wait for a request to receive a response before
 throwing an error.}
 
 \item{port}{The port that the Selenium server is using.}

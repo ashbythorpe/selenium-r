@@ -204,7 +204,7 @@ Find an element in the shadow root.
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
 
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -265,7 +265,7 @@ Find all elements in a shadow root matching a selector.
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
 
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}

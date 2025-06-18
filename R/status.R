@@ -28,7 +28,7 @@
 #'   `FALSE` is returned.
 #' @param verbose Whether to print information about the web request that is
 #'   sent.
-#' @param timeout How long to wait for a request to recieve a response before
+#' @param timeout How long to wait for a request to receive a response before
 #'   throwing an error.
 #'
 #' @returns

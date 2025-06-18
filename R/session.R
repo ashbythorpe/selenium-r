@@ -40,7 +40,7 @@ SeleniumSession <- R6::R6Class(
     #'   See [chrome_options()], [firefox_options()], and [edge_options()].
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server. Overrides `capabilities`.
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return A `SeleniumSession` object.
@@ -156,7 +156,7 @@ SeleniumSession <- R6::R6Class(
     #' Close the current session. Once a session is closed, its methods will
     #' no longer work. However, the Selenium server will still be running.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return `TRUE` if the session was closed successfully, or `FALSE` if the
@@ -189,7 +189,7 @@ SeleniumSession <- R6::R6Class(
     #' identical to [get_server_status()], but uses the host, port and verbose
     #' options passed to the session, for convenience.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return A list that can (but may not always) contain the following
@@ -229,7 +229,7 @@ SeleniumSession <- R6::R6Class(
     #'    elements to be located, or for elements to become interactable when
     #'    required. Defaults to 0 seconds.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return A list with three items: `script`, `page_load`, and `implicit`.
@@ -261,7 +261,7 @@ SeleniumSession <- R6::R6Class(
     #'   page.
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server, overriding the default body of the web request
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -306,7 +306,7 @@ SeleniumSession <- R6::R6Class(
     #'   'https://').
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server, overriding the default body of the web request.
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -332,7 +332,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get the current URL.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The URL of the current page.
@@ -358,7 +358,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Go back in the navigation history.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -389,7 +389,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Go forward in the navigation history.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -422,7 +422,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Reload the current page.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -448,7 +448,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get the title of the current page.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The title of the current page.
@@ -473,7 +473,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get the current window handle.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The handle of the current window (a string).
@@ -496,7 +496,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Close the current window.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -524,7 +524,7 @@ SeleniumSession <- R6::R6Class(
     #' @param handle The handle of the window to switch to.
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server, overriding the default body of the web request
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -556,7 +556,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get the handles of all open windows.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The handles of all open windows (a list of strings).
@@ -583,7 +583,7 @@ SeleniumSession <- R6::R6Class(
     #' @param type Whether to create a tab or a window.
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server, overriding the default body of the web request
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return A list containing two elements:
@@ -623,7 +623,7 @@ SeleniumSession <- R6::R6Class(
     #'   element will be switched to.
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server, overriding the default body of the web request
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -656,7 +656,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Switch to the parent frame of the current frame.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -684,7 +684,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get the size and position of the current window.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return A list containing four elements:
@@ -718,7 +718,7 @@ SeleniumSession <- R6::R6Class(
     #' @param y The y position of the window relative to the top of the screen.
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server, overriding the default body of the web request
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -761,7 +761,7 @@ SeleniumSession <- R6::R6Class(
     #' Maximize the current window. This makes the window the maximum size it
     #' can be, without being full screen.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -785,7 +785,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Minimize the current window. This hides the window.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -809,7 +809,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Make the window full screen.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -833,7 +833,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get the currently active element.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return A [WebElement] object.
@@ -863,7 +863,7 @@ SeleniumSession <- R6::R6Class(
     #' @param value The value of the selector: a string.
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server, overriding the default body of the web request
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return A [WebElement] object.
@@ -900,7 +900,7 @@ SeleniumSession <- R6::R6Class(
     #' @param value The value of the selector: a string.
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server, overriding the default body of the web request
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return A list of [WebElement] objects.
@@ -933,7 +933,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get the HTML source of the current page, serialized as a string.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return A string.
@@ -965,7 +965,7 @@ SeleniumSession <- R6::R6Class(
     #' objects or lists of such objects, which will be converted to nodes.
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server, overriding the default body of the web request
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The return value of the script. Nodes or lists of nodes will
@@ -1012,7 +1012,7 @@ SeleniumSession <- R6::R6Class(
     #' to nodes.
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server, overriding the default body of the web request
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The return value of the script. Nodes or lists of nodes will
@@ -1045,7 +1045,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get all cookies.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return A list of cookies. Each cookie is a list with a `name` and
@@ -1074,7 +1074,7 @@ SeleniumSession <- R6::R6Class(
     #' @param name The name of the cookie.
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server, overriding the default body of the web request
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The cookie object.
@@ -1107,7 +1107,7 @@ SeleniumSession <- R6::R6Class(
     #'   `name` and `value` field.
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server, overriding the default body of the web request
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -1138,7 +1138,7 @@ SeleniumSession <- R6::R6Class(
     #' @param name The name of the cookie.
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server, overriding the default body of the web request
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -1167,7 +1167,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Delete all cookies in the cookie store of the current document.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -1198,7 +1198,7 @@ SeleniumSession <- R6::R6Class(
     #'   performing the actions.
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server, overriding the default body of the web request
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -1239,7 +1239,7 @@ SeleniumSession <- R6::R6Class(
     #' Release all keys and pointers that were pressed using
     #' `perform_actions()`.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -1270,7 +1270,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Dismiss the current alert, if present.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -1296,7 +1296,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Accept the current alert, if present.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -1322,7 +1322,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Get the message of the current alert, if present.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The message of the current alert (a string).
@@ -1352,7 +1352,7 @@ SeleniumSession <- R6::R6Class(
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server, overriding the default body of the web request
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The session object, invisibly.
@@ -1381,7 +1381,7 @@ SeleniumSession <- R6::R6Class(
     #' @description
     #' Take a screenshot of the current page.
     #'
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The base64-encoded PNG screenshot, as a string.
@@ -1423,7 +1423,7 @@ SeleniumSession <- R6::R6Class(
     #' @param page_ranges A list of page ranges (e.g. `"1"`, `"1-3"`) to print.
     #' @param request_body A list of request body parameters to pass to the
     #'   Selenium server, overriding the default body of the web request
-    #' @param timeout How long to wait for a request to recieve a response
+    #' @param timeout How long to wait for a request to receive a response
     #'   before throwing an error.
     #'
     #' @return The base64-encoded PDF, as a string.

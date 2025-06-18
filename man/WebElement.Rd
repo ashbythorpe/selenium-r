@@ -406,7 +406,7 @@ method gets the shadow root property of an element.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -463,7 +463,7 @@ element.
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
 
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -516,7 +516,7 @@ Find all elements matching a selector, relative to the current element.
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
 
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -555,7 +555,7 @@ Check if an element is currently selected.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -597,7 +597,7 @@ Get an attribute from an element.
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
 
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -641,7 +641,7 @@ state of the DOM.
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
 
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -683,7 +683,7 @@ Get the computed value of a CSS property.
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
 
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -720,7 +720,7 @@ Get the text content of an element.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -757,7 +757,7 @@ Get the tag name of an element.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -794,7 +794,7 @@ Get the dimensions and coordinates of an element.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -837,7 +837,7 @@ Check if an element is currently enabled.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -877,7 +877,7 @@ a "button" role.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -915,7 +915,7 @@ that points to the current element).
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -952,7 +952,7 @@ Click on an element.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -989,7 +989,7 @@ Clear the contents of a text input element.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -1032,7 +1032,7 @@ use \code{\link[=key_chord]{key_chord()}} to send keys combinations.}
 \item{\code{request_body}}{A list of request body parameters to pass to the
 Selenium server, overriding the default body of the web request}
 
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -1077,7 +1077,7 @@ Take a screenshot of an element.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
@@ -1115,7 +1115,7 @@ platforms.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{timeout}}{How long to wait for a request to recieve a response
+\item{\code{timeout}}{How long to wait for a request to receive a response
 before throwing an error.}
 }
 \if{html}{\out{</div>}}
