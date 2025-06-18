@@ -1,6 +1,6 @@
 # selenium (development version)
 
-- Respect `JAVA_HOME` when finding the `java` executable.
+- `JAVA_HOME` is now respected when finding the `java` executable.
 - `selenium_server()` now returns a `SeleniumServer` object, which exposes the
   `host` and `port` fields. This allows `wait_for_server()` to work without
   having to pass in the `host` and `port` arguments.
