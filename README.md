@@ -37,10 +37,10 @@ have to start the server yourself.
 
 To do this you must:
 
-- Install a browser that you want to automate (e.g. Chrome, Firefox,
-  Edge).
-- Download [Java](https://www.oracle.com/java/technologies/downloads/)
-  (you need Java 11 or higher).
+-   Install a browser that you want to automate (e.g. Chrome, Firefox,
+    Edge).
+-   Download [Java](https://www.oracle.com/java/technologies/downloads/)
+    (you need Java 11 or higher).
 
 There are many different ways to download and start the server, one of
 which is provided by selenium:
@@ -81,12 +81,12 @@ You can also do this manually if you want:
 
 There are a few other ways of starting Selenium Server:
 
-- Using docker to start the server. See
-  <https://github.com/SeleniumHQ/docker-selenium>. This is recommended
-  in a non-interactive context (e.g. GitHub Actions).
-- Using the `wdman` package to start the server from R, using
-  `wdman::selenium()`. Note that at the time of writing, this package
-  does not work with the latest version of Chrome.
+-   Using docker to start the server. See
+    <https://github.com/SeleniumHQ/docker-selenium>. This is recommended
+    in a non-interactive context (e.g. GitHub Actions).
+-   Using the `wdman` package to start the server from R, using
+    `wdman::selenium()`. Note that at the time of writing, this package
+    does not work with the latest version of Chrome.
 
 ## Waiting for the server to be online
 
@@ -150,6 +150,7 @@ session$
 #> [1] ""
 
 session$close()
+#> [1] TRUE
 ```
 
 ``` r
