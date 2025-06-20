@@ -1,3 +1,5 @@
+# selenium (development version)
+
 # selenium 0.2.0
 
 - `JAVA_HOME` is now respected when finding the `java` executable.
